@@ -2,6 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.2.31'
+    ext.arch_room_version = '1.1.0-beta3'
     repositories {
         google()
         jcenter()
@@ -24,4 +25,17 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+
+    buildToolsVersion = "25.0.0"
+    supportLibVersion = "27.1.1"
+    dataBindingVersion = "3.2.0-alpha10"
+    rxJavaVersion = "2.1.9"
+    archComponentVersion = "1.1.1"
+    rxAndroidVersion = "2.0.2"
+    retrofitVersion = "2.3.0"
+    gsonConverterVersion = "2.3.0"
+    retrofitAdapterVersion = "2.3.0"
+    okHttpLoggerVersion = "3.10.0"
 }
