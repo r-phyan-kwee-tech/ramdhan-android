@@ -35,40 +35,49 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:'+rootProject.supportLibVersion
-    implementation 'com.android.support:recyclerview-v7:'+rootProject.supportLibVersion
-    implementation 'com.android.support:support-v4:'+rootProject.supportLibVersion
-    implementation 'com.android.support:design:'+rootProject.supportLibVersion
-
+    implementation 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
+    implementation 'com.android.support:recyclerview-v7:' + rootProject.supportLibVersion
+    implementation 'com.android.support:support-v4:' + rootProject.supportLibVersion
+    implementation 'com.android.support:design:' + rootProject.supportLibVersion
 
     //LifeCycle
-    implementation "android.arch.lifecycle:runtime:"+rootProject.archComponentVersion
-    annotationProcessor "android.arch.lifecycle:compiler:"+rootProject.archComponentVersion
-    kapt "android.arch.lifecycle:compiler:"+rootProject.archComponentVersion
-    implementation "android.arch.lifecycle:common-java8:"+rootProject.archComponentVersion
+    implementation "android.arch.lifecycle:runtime:" + rootProject.archComponentVersion
+    annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
+    kapt "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
+    implementation "android.arch.lifecycle:common-java8:" + rootProject.archComponentVersion
 
     //LiveData
-    implementation "android.arch.lifecycle:extensions:"+rootProject.archComponentVersion
-    implementation "android.arch.lifecycle:reactivestreams:"+rootProject.archComponentVersion
+    implementation "android.arch.lifecycle:extensions:" + rootProject.archComponentVersion
+    implementation "android.arch.lifecycle:reactivestreams:" + rootProject.archComponentVersion
 
     // ReactiveStreams support for LiveData
-    implementation "android.arch.lifecycle:reactivestreams:"+rootProject.archComponentVersion
+    implementation "android.arch.lifecycle:reactivestreams:" + rootProject.archComponentVersion
 
     //Rx
-    implementation 'io.reactivex.rxjava2:rxjava:'+rootProject.rxJavaVersion
-    implementation 'io.reactivex.rxjava2:rxandroid:'+rootProject.rxAndroidVersion
+    implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.rxJavaVersion
+    implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.rxAndroidVersion
 
     //Square Libs
-    implementation 'com.squareup.retrofit2:retrofit:'+rootProject.retrofitVersion
-    implementation 'com.squareup.retrofit2:converter-gson:'+rootProject.gsonConverterVersion
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:'+rootProject.retrofitAdapterVersion
-    implementation 'com.squareup.okhttp3:logging-interceptor:'+rootProject.okHttpLoggerVersion
+    implementation 'com.squareup.retrofit2:retrofit:' + rootProject.retrofitVersion
+    implementation 'com.squareup.retrofit2:converter-gson:' + rootProject.gsonConverterVersion
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:' + rootProject.retrofitAdapterVersion
+    implementation 'com.squareup.okhttp3:logging-interceptor:' + rootProject.okHttpLoggerVersion
+
+    //DI
+
+    kapt "com.google.dagger:dagger-compiler:" + rootProject.daggerVersion
+    implementation 'com.google.dagger:dagger-android:' + rootProject.daggerVersion
+    annotationProcessor "com.google.dagger:dagger-compiler:" + rootProject.daggerVersion
+
+    //Support Library DI
+    implementation 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
+    annotationProcessor 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
 
     //Data Binding
-    annotationProcessor 'com.android.databinding:compiler:'+rootProject.dataBindingVersion
-    kapt 'com.android.databinding:compiler:'+rootProject.dataBindingVersion
+    annotationProcessor 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
+    kapt 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
 
     //Room
     annotationProcessor "android.arch.persistence.room:compiler:$arch_room_version"
@@ -77,15 +86,14 @@ dependencies {
     // RxJava support for Room (use 1.1.0-beta3 for latest beta)
     implementation "android.arch.persistence.room:rxjava2:$arch_room_version"
 
-
     // Test helpers for Room
     testImplementation "android.arch.persistence.room:testing:$arch_room_version"
-
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.nhaarman:mockito-kotlin:1.1.0'
-    testImplementation "android.arch.core:core-testing:1.1.1"
-    androidTestImplementation "android.arch.core:core-testing:1.1.1"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 }
