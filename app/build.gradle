@@ -50,7 +50,6 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:" + rootProject.archComponentVersion
     implementation "android.arch.lifecycle:reactivestreams:" + rootProject.archComponentVersion
     // ReactiveStreams support for LiveData
-    implementation "android.arch.lifecycle:reactivestreams:" + rootProject.archComponentVersion
     //Rx
     implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.rxJavaVersion
     implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.rxAndroidVersion

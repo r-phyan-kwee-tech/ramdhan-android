@@ -1,24 +1,24 @@
 package com.marmutech.ramdantimetable.ramadantimetable.api
 
 import android.arch.lifecycle.LiveData
-import com.marmutech.ramdantimetable.ramadantimetable.model.Country
-import com.marmutech.ramdantimetable.ramadantimetable.model.State
-import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.model.CountryResponse
+import com.marmutech.ramdantimetable.ramadantimetable.model.DayResponse
+import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface CountryService {
     @GET("api")
-    fun getCountryList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<List<Country>>>
+    fun getCountryList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<CountryResponse>>
 
 }
 
 interface StateService {
     @GET("api")
-    fun getStateList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<List<State>>>
+    fun getStateList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<StateResponse>>
 }
 
 interface TimeTableDayServie {
     @GET("api")
-    fun getTimetableList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<List<TimeTableDay>>>
+    fun getTimetableList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<DayResponse>>
 }
