@@ -11,4 +11,8 @@ object ApiUtil {
     fun <T : Any> createCall(response: Response<T>) = MutableLiveData<ApiResponse<T>>().apply {
         value = ApiResponse.create(response)
     } as LiveData<ApiResponse<T>>
+
+    fun <T:Any> toLiveData(data:T) = MutableLiveData<T>().apply {
+        value =data
+    }as LiveData<T>
 }

@@ -9,7 +9,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.model.*
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import com.nhaarman.mockito_kotlin.never
@@ -48,8 +48,11 @@ class TimeTableDayRepositoryTest {
 
         val timetableDays: List<TimeTableDay> = listOf(mockCountry1, mockCountry2, mockCountry3)
 
-        val call = ApiUtil.successCall(timetableDays)
-        Mockito.`when`(timetableDayService!!.getTimetableList("")).thenReturn(call)
+//        val call = ApiUtil.successCall(timetableDays)
+        val call = DayResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("demo"))),
+                days = Days(data = timetableDays),states = States(listOf(TestUtil.createState("123456")))))
+
+        Mockito.`when`(timetableDayService!!.getTimetableList("")).thenReturn(ApiUtil.successCall(call))
 
         val observer = mock<Observer<Resource<List<TimeTableDay>>>>()
 

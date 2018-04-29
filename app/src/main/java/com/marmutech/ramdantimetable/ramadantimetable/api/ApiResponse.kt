@@ -7,7 +7,7 @@ import retrofit2.Response
  * @param <T> the type of the response object
 </T> */
 @Suppress("unused") // T is used in extending classes
-sealed class ApiResponse<T> {
+abstract class ApiResponse<T> {
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> {
             return ApiErrorResponse(error.message ?: "unknown error")

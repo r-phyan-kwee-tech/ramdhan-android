@@ -20,7 +20,18 @@ class CountryRepository @Inject constructor(
         return object : NetworkBoundResource<List<Country>, List<Country>>(appExecutors) {
             override fun shouldFetch(data: List<Country>?) = data == null
 
-            var query = ""
+            var query = "{\n" +
+                    "  countries(limit: $limit, page: $page) {\n" +
+                    "    data {\n" +
+                    "      id\n" +
+                    "      objectId\n" +
+                    "      name\n" +
+                    "      createdDate\n" +
+                    "      updatedDate\n" +
+                    "    }\n" +
+                    "  }\n" +
+                    "}"
+
             override fun createCall() = countryService.getCountryList(query)
 
             override fun loadFromDb(): LiveData<List<Country>> {

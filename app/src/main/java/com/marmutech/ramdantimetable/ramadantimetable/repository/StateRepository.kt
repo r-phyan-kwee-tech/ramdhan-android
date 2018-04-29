@@ -20,7 +20,20 @@ class StateRepository @Inject constructor(
         return object : NetworkBoundResource<List<State>, List<State>>(appExecutors) {
             override fun shouldFetch(data: List<State>?) = data == null
 
-            var query = ""
+            var query = "{\n" +
+                    "  states(limit: $limit, page: $page, countryId: \"$countryId\") {\n" +
+                    "    data {\n" +
+                    "      id\n" +
+                    "      objectId\n" +
+                    "      nameMmUni\n" +
+                    "      nameMmZawgyi\n" +
+                    "      countryId\n" +
+                    "      createdDate\n" +
+                    "      updatedDate\n" +
+                    "    }\n" +
+                    "  }\n" +
+                    "}"
+
             override fun createCall() = stateSertice.getStateList(query)
 
             override fun loadFromDb(): LiveData<List<State>> {

@@ -9,7 +9,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
 import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.Country
+import com.marmutech.ramdantimetable.ramadantimetable.model.*
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import com.nhaarman.mockito_kotlin.never
@@ -48,8 +48,12 @@ class CountryRepositoryTest {
 
         val countries: List<Country> = listOf<Country>(mockCountry1, mockCountry2, mockCountry3)
 
-        val call = ApiUtil.successCall(countries)
-        Mockito.`when`(countryService!!.getCountryList("")).thenReturn(call)
+
+
+        val call = CountryResponse(data = Data(countries = Countries(data = countries),
+                days = Days(data = listOf(TestUtil.createTimtableDay(1,"1","1"))),states = States(listOf(TestUtil.createState("123456")))))
+
+        Mockito.`when`(countryService!!.getCountryList("")).thenReturn(ApiUtil.successCall(call))
 
         val observer = mock<Observer<Resource<List<Country>>>>()
 

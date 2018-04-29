@@ -9,7 +9,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.State
+import com.marmutech.ramdantimetable.ramadantimetable.model.*
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import com.nhaarman.mockito_kotlin.never
@@ -48,8 +48,14 @@ class StateRepositoryTest {
 
         val states: List<State> = listOf(mockState1, mockState2, mockState3)
 
-        val call = ApiUtil.successCall(states)
-        Mockito.`when`(stateService!!.getStateList("")).thenReturn(call)
+
+
+        val call = StateResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("Mynmar"))),
+                days = Days(data = listOf(TestUtil.createTimtableDay(1,"1","1"))),
+                states = States(data=states)))
+
+
+        Mockito.`when`(stateService!!.getStateList("")).thenReturn(ApiUtil.successCall(call))
 
         val observer = mock<Observer<Resource<List<State>>>>()
 
