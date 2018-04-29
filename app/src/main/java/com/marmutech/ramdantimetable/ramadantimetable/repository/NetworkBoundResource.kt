@@ -11,6 +11,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.api.ApiResponse
 import com.marmutech.ramdantimetable.ramadantimetable.api.ApiSuccessResponse
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 
+
 /**
  * A generic class that can provide a resource backed by both the sqlite database and the network.
  *
