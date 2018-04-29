@@ -27,3 +27,11 @@ abstract class RamdanDb : RoomDatabase() {
 
     abstract fun timetableDao(): TimeTableDao
 }
+
+fun offsetManager(limit: Int, page: Int): Int {
+    var p = page
+    if (p == 0) {
+        p = 1
+    }
+    return (p * limit) - limit
+}

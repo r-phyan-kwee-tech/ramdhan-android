@@ -9,16 +9,16 @@ import retrofit2.http.Query
 
 interface CountryService {
     @GET("api")
-    fun getCountryList(@Query("query") graphqlQuery: String): LiveData<List<Country>>
+    fun getCountryList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<List<Country>>>
 
 }
 
 interface StateService {
     @GET("api")
-    fun getStateList(@Query("query") graphqlQuery: String): LiveData<List<State>>
+    fun getStateList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<List<State>>>
 }
 
 interface TimeTableDayServie {
     @GET("api")
-    fun getTimetableList(@Query("query") graphqlQuery: String): LiveData<List<TimeTableDay>>
+    fun getTimetableList(@Query("query") graphqlQuery: String): LiveData<ApiResponse<List<TimeTableDay>>>
 }
