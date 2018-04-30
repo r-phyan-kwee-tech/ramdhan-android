@@ -10,6 +10,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.*
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.coroutines.experimental.coroutineContext
 
 @Singleton
 class TimeTableDayRepository @Inject constructor(
@@ -17,10 +18,10 @@ class TimeTableDayRepository @Inject constructor(
         private val timttableDao: TimeTableDao,
         private val countryService: TimeTableDayServie
 ) {
-    fun loadTimetableDayList(stateId: String, limit: Int, page: Int): LiveData<Resource<DayResponse>> {
-        return object : NetworkBoundResource<DayResponse, DayResponse>(appExecutors) {
+    fun loadTimetableDayList(stateId: String, limit: Int, page: Int): LiveData<Resource<List<TimeTableDay>>> {
+        return object : NetworkBoundResource<List<TimeTableDay>, DayResponse>(appExecutors) {
 
-            override fun shouldFetch(data: DayResponse?) = data == null
+            override fun shouldFetch(data: List<TimeTableDay>?): Boolean = data == null
 
             var query = "{\n" +
                     "  days(limit: $limit, page: $page, stateId: \"$stateId\") {\n" +
@@ -54,19 +55,12 @@ class TimeTableDayRepository @Inject constructor(
 
             override fun createCall() = countryService.getTimetableList(query)
 
-
-            override fun loadFromDb(): LiveData<DayResponse> {
-
-                return MutableLiveData<DayResponse>().apply {
-                    value = DayResponse(data = Data(
-                            days = Days(data = timttableDao.getDayByStateId(stateId, limit, offsetManager(limit, page)).value!!),
-                            countries = Countries(data = emptyList()),
-                            states = States(data = emptyList())
-                    ))
-                }
+            override fun loadFromDb(): LiveData<List<TimeTableDay>> {
+                return timttableDao.getDayByStateId(stateId = stateId,limit = limit,offset = offsetManager(limit, page))
             }
 
             override fun saveCallResult(item: DayResponse) {
+                println("RESULT SAVED----->")
                 timttableDao.bulkInsert(item.data.days.data)
             }
         }.asLiveData()
