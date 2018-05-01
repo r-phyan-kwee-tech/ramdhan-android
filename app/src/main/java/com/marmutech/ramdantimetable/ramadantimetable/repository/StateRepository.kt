@@ -17,9 +17,9 @@ class StateRepository @Inject constructor(
         private val stateDao: StateDao,
         private val stateSertice: StateService
 ) {
-    fun loadStateList(countryId: String, limit: Int, page: Int): LiveData<Resource<StateResponse>> {
-        return object : NetworkBoundResource<StateResponse, StateResponse>(appExecutors) {
-            override fun shouldFetch(data: StateResponse?) = data == null
+    fun loadStateList(countryId: String, limit: Int, page: Int): LiveData<Resource<List<State>>> {
+        return object : NetworkBoundResource<List<State>, StateResponse>(appExecutors) {
+            override fun shouldFetch(data: List<State>?): Boolean = data == null
 
             var query = "{\n" +
                     "  states(limit: $limit, page: $page, countryId: \"$countryId\") {\n" +
@@ -37,18 +37,9 @@ class StateRepository @Inject constructor(
 
             override fun createCall() = stateSertice.getStateList(query)
 
-            override fun loadFromDb(): LiveData<StateResponse> {
+            override fun loadFromDb(): LiveData<List<State>> {
 
-                println("AAAA")
-                println(stateDao)
-                println("AAAA")
-                return MutableLiveData<StateResponse>().apply {
-                    value = StateResponse(data = Data(
-                            days = Days(data = emptyList()),
-                            countries = Countries(data = emptyList()),
-                            states = States(data = stateDao.getStateByCountryId(countryId, limit, offsetManager(limit, page)).value!!)
-                    ))
-                }
+                return stateDao.getStateByCountryId(countryId, limit, offsetManager(limit, page))
 
             }
 
