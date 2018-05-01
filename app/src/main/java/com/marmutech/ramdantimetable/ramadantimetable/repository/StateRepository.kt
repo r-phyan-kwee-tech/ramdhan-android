@@ -1,12 +1,12 @@
 package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
-import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import com.marmutech.ramdantimetable.ramadantimetable.model.State
+import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -51,5 +51,35 @@ class StateRepository @Inject constructor(
         }.asLiveData()
     }
 
+    fun loadState(stateId:String): LiveData<Resource<State>> {
+        return object : NetworkBoundResource<State, StateResponse>(appExecutors) {
+            override fun shouldFetch(data: State?): Boolean = data == null
 
+            var query = "{\n" +
+                    "  state(stateId: \"$stateId\") {\n" +
+                    "    id\n" +
+                    "    objectId\n" +
+                    "    nameMmUni\n" +
+                    "    nameMmZawgyi\n" +
+                    "    countryId\n" +
+                    "    createdDate\n" +
+                    "    updatedDate\n" +
+                    "  }\n" +
+                    "}"
+
+            override fun createCall() = stateSertice.getState(query)
+
+            override fun loadFromDb(): LiveData<State> {
+
+                return stateDao.getStateById(stateId)
+
+            }
+
+            override fun saveCallResult(item: StateResponse) {
+                stateDao.insert(item.data.state)
+            }
+
+
+        }.asLiveData()
+    }
 }
