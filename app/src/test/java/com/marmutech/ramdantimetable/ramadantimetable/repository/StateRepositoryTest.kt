@@ -39,6 +39,18 @@ class StateRepositoryTest {
             "  }\n" +
             "}"
 
+    var detailQuery = "{\n" +
+            "  state(stateId: \"${123456789}\") {\n" +
+            "    id\n" +
+            "    objectId\n" +
+            "    nameMmUni\n" +
+            "    nameMmZawgyi\n" +
+            "    countryId\n" +
+            "    createdDate\n" +
+            "    updatedDate\n" +
+            "  }\n" +
+            "}"
+
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
@@ -50,7 +62,14 @@ class StateRepositoryTest {
     }
 
     @Test
-    fun goToNetwork() {
+    fun loadState() {
+        repo.loadState("12345678890")
+        verify(stateDao).getStateById("12345678890")
+    }
+
+
+    @Test
+    fun loadStateListFromNetwork() {
         val dbData = MutableLiveData<List<State>>()
         Mockito.`when`(stateDao!!.getStateByCountryId("12345678890", 100, offsetManager(100, 1))).thenReturn(dbData)
         val mockState1 = TestUtil.createState("12345678890")
@@ -62,11 +81,10 @@ class StateRepositoryTest {
 
         val call = StateResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("Mynmar"))),
                 days = Days(data = listOf(TestUtil.createTimtableDay(1, "1", "1"))),
-                states = States(data = states)))
+                states = States(data = states),
+                country = TestUtil.createCountry("a"), state = TestUtil.createState("1"), day = TestUtil.createTimtableDay(1, "1", "1")))
         Mockito.`when`(stateService!!.getStateList(query)).thenReturn(ApiUtil.successCall(call))
-//
         val observer = mock<Observer<Resource<List<State>>>>()
-//
         repo.loadStateList("12345678890", 100, offsetManager(100, 1)).observeForever(observer)
         verify(stateService, never()).getStateList(query)
         val updatedDbData = MutableLiveData<List<State>>()
@@ -75,8 +93,9 @@ class StateRepositoryTest {
         verify(stateService).getStateList(query)
     }
 
+
     @Test
-    fun goOffline() {
+    fun loadStatesOffline() {
         val dbData = MutableLiveData<List<State>>()
         val mockState1 = TestUtil.createState("12345678890")
         val mockState2 = TestUtil.createState("12345678890")
@@ -91,5 +110,41 @@ class StateRepositoryTest {
         verify(observer).onChanged(Resource.success(states))
     }
 
+    @Test
+    fun loadStateFromNetwork() {
+        val dbData = MutableLiveData<State>()
+        Mockito.`when`(stateDao!!.getStateById("123456789")).thenReturn(dbData)
+        val mockState1 = TestUtil.createState("12345678890")
+
+        val states: State = mockState1
+
+        val call = StateResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("Mynmar"))),
+                days = Days(data = listOf(TestUtil.createTimtableDay(1, "1", "1"))),
+                states = States(data = listOf(states)),
+                country = TestUtil.createCountry("a"), state = states, day = TestUtil.createTimtableDay(1, "1", "1")))
+        Mockito.`when`(stateService!!.getState(detailQuery)).thenReturn(ApiUtil.successCall(call))
+        val observer = mock<Observer<Resource<State>>>()
+        repo.loadState("123456789").observeForever(observer)
+        verify(stateService, never()).getState(detailQuery)
+        val updatedDbData = MutableLiveData<State>()
+        Mockito.`when`(stateDao!!.getStateById("123456789")).thenReturn(updatedDbData)
+        dbData.value = null
+        verify(stateService).getState(detailQuery)
+    }
+
+
+    @Test
+    fun loadStateOffline() {
+        val dbData = MutableLiveData<State>()
+        val mockState1 = TestUtil.createState("12345678890")
+        val states: State = mockState1
+
+        dbData.value = states
+        `when`(stateDao!!.getStateById("123456789")).thenReturn(dbData)
+        val observer = mock<Observer<Resource<State>>>()
+        repo.loadState("123456789").observeForever(observer)
+        verify(stateService, never()).getStateList(detailQuery)
+        verify(observer).onChanged(Resource.success(states))
+    }
 
 }

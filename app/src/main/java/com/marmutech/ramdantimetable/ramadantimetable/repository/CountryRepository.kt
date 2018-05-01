@@ -47,4 +47,32 @@ class CountryRepository @Inject constructor(
     }
 
 
+    fun loadCountry(countryId: String): LiveData<Resource<Country>> {
+        return object : NetworkBoundResource<Country, CountryResponse>(appExecutors) {
+            override fun shouldFetch(data: Country?): Boolean = data == null
+            var query = "{\n" +
+                    "  country(countryId: \"$countryId\") {\n" +
+                    "    id\n" +
+                    "    objectId\n" +
+                    "    name\n" +
+                    "    createdDate\n" +
+                    "    updatedDate\n" +
+                    "  }\n" +
+                    "}"
+
+            override fun createCall() = countryService.getCountry(query)
+
+            override fun loadFromDb(): LiveData<Country> {
+                return countryDao.getCountryById(countryId)
+
+            }
+
+            override fun saveCallResult(item: CountryResponse) {
+                countryDao.insert(item.data.country)
+            }
+
+        }.asLiveData()
+    }
+
+
 }

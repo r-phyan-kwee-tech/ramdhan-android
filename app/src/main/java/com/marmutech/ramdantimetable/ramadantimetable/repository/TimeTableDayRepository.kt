@@ -5,7 +5,8 @@ import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
-import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import com.marmutech.ramdantimetable.ramadantimetable.model.DayResponse
+import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -54,7 +55,7 @@ class TimeTableDayRepository @Inject constructor(
             override fun createCall() = countryService.getTimetableList(query)
 
             override fun loadFromDb(): LiveData<List<TimeTableDay>> {
-                return timttableDao.getDayByStateId(stateId = stateId,limit = limit,offset = offsetManager(limit, page))
+                return timttableDao.getDayByStateId(stateId = stateId, limit = limit, offset = offsetManager(limit, page))
             }
 
             override fun saveCallResult(item: DayResponse) {
@@ -64,5 +65,52 @@ class TimeTableDayRepository @Inject constructor(
         }.asLiveData()
     }
 
+    fun loadTimetableDay(dayId: String): LiveData<Resource<TimeTableDay>> {
+        return object : NetworkBoundResource<TimeTableDay, DayResponse>(appExecutors) {
+            override fun shouldFetch(data: TimeTableDay?): Boolean = data == null
+
+            var query = "{\n" +
+                    "  day(dayId: \"$dayId\") {\n" +
+                    "    id\n" +
+                    "    objectId\n" +
+                    "    day\n" +
+                    "    dayMm\n" +
+                    "    calendarDay\n" +
+                    "    hijariDay\n" +
+                    "    sehriTime\n" +
+                    "    iftariTime\n" +
+                    "    sehriTimeDesc\n" +
+                    "    iftariTimeDesc\n" +
+                    "    sehriTimeDescMmUni\n" +
+                    "    sehriTimeDescMmZawgyi\n" +
+                    "    iftariTimeDescMmZawgyi\n" +
+                    "    iftariTimeDescMmUni\n" +
+                    "    isKadir\n" +
+                    "    duaAr\n" +
+                    "    duaEn\n" +
+                    "    duaMmUni\n" +
+                    "    duaMmZawgyi\n" +
+                    "    countryId\n" +
+                    "    stateId\n" +
+                    "    createdDate\n" +
+                    "    updatedDate\n" +
+                    "  }\n" +
+                    "}"
+
+            override fun createCall() = countryService.getTimetable(query)
+
+            override fun loadFromDb(): LiveData<TimeTableDay> {
+
+                return timttableDao.getDayById(dayId)
+
+            }
+
+            override fun saveCallResult(item: DayResponse) {
+                timttableDao.insert(item.data.day)
+            }
+
+
+        }.asLiveData()
+    }
 
 }

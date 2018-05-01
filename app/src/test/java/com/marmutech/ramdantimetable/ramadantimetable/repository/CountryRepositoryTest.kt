@@ -38,6 +38,16 @@ class CountryRepositoryTest {
             "  }\n" +
             "}"
 
+    var detailQuery = "{\n" +
+            "  country(countryId: \"${123456}\") {\n" +
+            "    id\n" +
+            "    objectId\n" +
+            "    name\n" +
+            "    createdDate\n" +
+            "    updatedDate\n" +
+            "  }\n" +
+            "}"
+
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
@@ -49,7 +59,48 @@ class CountryRepositoryTest {
     }
 
     @Test
-    fun goToNetwork() {
+    fun loadCountry() {
+        repo.loadCountry("123456")
+        verify(countryDao).getCountryById("123456")
+    }
+
+
+    @Test
+    fun loadCountryFromNetwork() {
+        val dbData = MutableLiveData<Country>()
+        Mockito.`when`(countryDao!!.getCountryById("123456")).thenReturn(dbData)
+        val mockCountry1 = TestUtil.createCountry("Myanmar")
+
+        val countries = mockCountry1
+        val call = CountryResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("demo"))),
+                days = Days(data = listOf(TestUtil.createTimtableDay(1, "1", "1"))), states = States(listOf(TestUtil.createState("123456"))),
+                country = mockCountry1, state = TestUtil.createState("1"), day = TestUtil.createTimtableDay(1, "1", "1")))
+        Mockito.`when`(countryService!!.getCountry(detailQuery)).thenReturn(ApiUtil.successCall(call))
+        val observer = mock<Observer<Resource<Country>>>()
+        repo.loadCountry("123456").observeForever(observer)
+        verify(countryService, never()).getCountry(detailQuery)
+        val updatedDbData = MutableLiveData<Country>()
+        Mockito.`when`(countryDao!!.getCountryById("123456")).thenReturn(updatedDbData)
+        dbData.value = null
+        verify(countryService).getCountry(detailQuery)
+    }
+
+    @Test
+    fun loadCountryOffline() {
+        val dbData = MutableLiveData<Country>()
+        val mockCountry1 = TestUtil.createCountry("Myanmar")
+        val country: Country = mockCountry1
+
+        dbData.value = country
+        `when`(countryDao!!.getCountryById("123456")).thenReturn(dbData)
+        val observer = mock<Observer<Resource<Country>>>()
+        repo.loadCountry("123456").observeForever(observer)
+        verify(countryService, never()).getCountryList(detailQuery)
+        verify(observer).onChanged(Resource.success(country))
+    }
+
+    @Test
+    fun loadCountryListFromNetwork() {
         val dbData = MutableLiveData<List<Country>>()
         Mockito.`when`(countryDao!!.getCountryList(100, offsetManager(100, 1))).thenReturn(dbData)
         val mockCountry1 = TestUtil.createCountry("Myanmar")
@@ -57,7 +108,8 @@ class CountryRepositoryTest {
         val mockCountry3 = TestUtil.createCountry("Malaysia")
         val countries: List<Country> = listOf<Country>(mockCountry1, mockCountry2, mockCountry3)
         val call = CountryResponse(data = Data(countries = Countries(data = countries),
-                days = Days(data = listOf(TestUtil.createTimtableDay(1, "1", "1"))), states = States(listOf(TestUtil.createState("123456")))))
+                days = Days(data = listOf(TestUtil.createTimtableDay(1, "1", "1"))), states = States(listOf(TestUtil.createState("123456"))),
+                country = TestUtil.createCountry("a"), state = TestUtil.createState("1"), day = TestUtil.createTimtableDay(1, "1", "1")))
         Mockito.`when`(countryService!!.getCountryList(query)).thenReturn(ApiUtil.successCall(call))
         val observer = mock<Observer<Resource<List<Country>>>>()
         repo.loadCountryList(100, offsetManager(100, 1)).observeForever(observer)
@@ -66,10 +118,12 @@ class CountryRepositoryTest {
         Mockito.`when`(countryDao!!.getCountryList(100, offsetManager(100, 1))).thenReturn(updatedDbData)
         dbData.value = null
         verify(countryService).getCountryList(query)
+
+
     }
 
     @Test
-    fun goOffline() {
+    fun loadCountryListOffline() {
         val dbData = MutableLiveData<List<Country>>()
         val mockCountry1 = TestUtil.createCountry("Myanmar")
         val mockCountry2 = TestUtil.createCountry("Singapore")
