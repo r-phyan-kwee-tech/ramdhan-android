@@ -110,7 +110,7 @@ class TimeTableDayRepositoryTest {
 
         val call = DayResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("demo"))),
                 days = Days(data = timetableDays), states = States(listOf(TestUtil.createState("123456"))),
-                country = TestUtil.createCountry("a"),state = TestUtil.createState("1"),day = TestUtil.createTimtableDay(1,"1","1")))
+                country = TestUtil.createCountry("a"), state = TestUtil.createState("1"), day = TestUtil.createTimtableDay(1, "1", "1")))
 
         `when`(timetableDayService!!.getTimetableList(query)).thenReturn(ApiUtil.successCall(call))
         val observer = mock<Observer<Resource<List<TimeTableDay>>>>()
@@ -151,8 +151,8 @@ class TimeTableDayRepositoryTest {
         val timetableDays: TimeTableDay = mockCountry1
 
         val call = DayResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("demo"))),
-                days = Days(data = listOf(TestUtil.createTimtableDay(1,"123","123456"))), states = States(listOf(TestUtil.createState("123456"))),
-                country = TestUtil.createCountry("a"),state = TestUtil.createState("1"),
+                days = Days(data = listOf(TestUtil.createTimtableDay(1, "123", "123456"))), states = States(listOf(TestUtil.createState("123456"))),
+                country = TestUtil.createCountry("a"), state = TestUtil.createState("1"),
                 day = timetableDays))
 
         `when`(timetableDayService!!.getTimetable(detailQuery)).thenReturn(ApiUtil.successCall(call))

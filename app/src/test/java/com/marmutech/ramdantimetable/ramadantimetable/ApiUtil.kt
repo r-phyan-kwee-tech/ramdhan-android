@@ -12,7 +12,7 @@ object ApiUtil {
         value = ApiResponse.create(response)
     } as LiveData<ApiResponse<T>>
 
-    fun <T:Any> toLiveData(data:T) = MutableLiveData<T>().apply {
-        value =data
-    }as LiveData<T>
+    fun <T : Any> toLiveData(data: T) = MutableLiveData<T>().apply {
+        value = data
+    } as LiveData<T>
 }

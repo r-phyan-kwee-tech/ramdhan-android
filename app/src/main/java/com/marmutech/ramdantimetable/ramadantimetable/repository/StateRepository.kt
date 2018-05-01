@@ -51,7 +51,7 @@ class StateRepository @Inject constructor(
         }.asLiveData()
     }
 
-    fun loadState(stateId:String): LiveData<Resource<State>> {
+    fun loadState(stateId: String): LiveData<Resource<State>> {
         return object : NetworkBoundResource<State, StateResponse>(appExecutors) {
             override fun shouldFetch(data: State?): Boolean = data == null
 
