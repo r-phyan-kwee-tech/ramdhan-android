@@ -15,6 +15,9 @@ data class DayResponse(
 
 data class Data(
         val countries: Countries,
+        val country: Country,
+        val state: State,
+        val day: TimeTableDay,
         val states: States,
         val days: Days
 )
@@ -31,6 +34,8 @@ data class Countries(
 data class States(
         val data: List<State>
 )
+
+
 
 
 

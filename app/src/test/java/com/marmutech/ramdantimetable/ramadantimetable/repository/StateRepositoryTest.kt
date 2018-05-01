@@ -62,7 +62,8 @@ class StateRepositoryTest {
 
         val call = StateResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("Mynmar"))),
                 days = Days(data = listOf(TestUtil.createTimtableDay(1, "1", "1"))),
-                states = States(data = states)))
+                states = States(data = states),
+                country = TestUtil.createCountry("a"), state = TestUtil.createState("1"), day = TestUtil.createTimtableDay(1, "1", "1")))
         Mockito.`when`(stateService!!.getStateList(query)).thenReturn(ApiUtil.successCall(call))
 //
         val observer = mock<Observer<Resource<List<State>>>>()

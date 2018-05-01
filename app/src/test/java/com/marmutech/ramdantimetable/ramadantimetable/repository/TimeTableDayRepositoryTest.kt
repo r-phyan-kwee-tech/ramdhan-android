@@ -75,7 +75,8 @@ class TimeTableDayRepositoryTest {
         val timetableDays: List<TimeTableDay> = listOf(mockCountry1, mockCountry2, mockCountry3)
 
         val call = DayResponse(data = Data(countries = Countries(data = listOf(TestUtil.createCountry("demo"))),
-                days = Days(data = timetableDays), states = States(listOf(TestUtil.createState("123456")))))
+                days = Days(data = timetableDays), states = States(listOf(TestUtil.createState("123456"))),
+                country = TestUtil.createCountry("a"),state = TestUtil.createState("1"),day = TestUtil.createTimtableDay(1,"1","1")))
 
         `when`(timetableDayService!!.getTimetableList(query)).thenReturn(ApiUtil.successCall(call))
         val observer = mock<Observer<Resource<List<TimeTableDay>>>>()
