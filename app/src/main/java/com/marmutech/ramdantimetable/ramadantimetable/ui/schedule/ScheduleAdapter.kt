@@ -17,16 +17,17 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         var binding: RowScheduleListBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.row_schedule_list, parent, false)
-        binding.callback=clickCallBack
+        binding.callback = clickCallBack
         return ScheduleViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return if (mScheduleList == null) 0 else mScheduleList?.size as Int
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        holder.mBinding?.day = mScheduleList?.get(position)
+        holder.mBinding?.executePendingBindings()
     }
 
     fun setScheduleList(scheduleList: List<TimeTableDay>?) {
