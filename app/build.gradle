@@ -43,6 +43,7 @@ dependencies {
     implementation 'com.android.support:design:' + rootProject.supportLibVersion
     //LifeCycle
     implementation "android.arch.lifecycle:runtime:" + rootProject.archComponentVersion
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
     kapt "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
     implementation "android.arch.lifecycle:common-java8:" + rootProject.archComponentVersion

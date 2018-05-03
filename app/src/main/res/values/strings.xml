@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Ramadan Timetable</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
+
+Sed eget lobortis nisl. Donec consequat aliquet laoreet. In feugiat porttitor faucibus. Praesent faucibus libero vitae orci consectetur, sed bibendum leo eleifend. Proin sed justo nec leo tempus commodo. Maecenas ac lorem ut dui gravida tristique ac id turpis. Duis lacinia, enim vel maximus varius, lectus enim faucibus mauris, a iaculis ante dolor vel odio. Nam et augue erat.
+
+Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cursus felis. Maecenas porttitor, enim eu tempor vestibulum, ante massa fringilla purus, non sollicitudin felis nisi vel velit. Phasellus velit justo, imperdiet sit amet efficitur ut, vehicula nec purus. Duis sed hendrerit metus, eu dignissim nisi. Cras posuere lorem mollis, finibus magna ac, posuere augue. Vivamus vel orci molestie, auctor elit ac, cursus est. Quisque cursus libero eu pulvinar lacinia. Cras purus enim, condimentum nec aliquam vitae, feugiat eget nisl. Sed iaculis lacus non lorem ultricies egestas. Curabitur sed felis nunc.</string>
 </resources>
