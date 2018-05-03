@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ramadan Timetable</string>
+    <string name="title_activity_schedule_list_acitivity">Schedule</string>
+    <string name="action_settings">Settings</string>
 </resources>

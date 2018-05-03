@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_day_schedule_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Day 99" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/cg_schedule_column"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_start_time_header_schedule_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_end_time_header_schedule_row"
+                app:layout_constraintEnd_toStartOf="@+id/tv_end_time_header_schedule_row"
+                app:layout_constraintStart_toStartOf="@+id/cg_schedule_column"
+                tools:text="ဝါချည်ချိန်" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_start_time_schedule_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_end_time_schedule_row"
+                app:layout_constraintStart_toStartOf="@+id/cg_schedule_column"
+                app:layout_constraintTop_toBottomOf="@+id/tv_start_time_header_schedule_row"
+                tools:text="@tools:sample/date/hhmm" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_end_time_header_schedule_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="ဝါဖြေချိန်" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_end_time_schedule_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_end_time_header_schedule_row"
+                tools:text="@tools:sample/date/hhmm"
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_start_time_schedule_row"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>
