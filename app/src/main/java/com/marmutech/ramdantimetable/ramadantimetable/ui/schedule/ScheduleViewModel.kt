@@ -1,21 +1,22 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
-import android.arch.paging.PagedList
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.repository.TimeTableDayRepository
+import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 
-class ScheduleViewModel : ViewModel() {
-    val daysList: LiveData<List<TimeTableDay>>
-    get() {
-        return daysList
-    }
+class ScheduleViewModel(application: Application, timeRepo: TimeTableDayRepository) : AndroidViewModel(application) {
+
+    var daysList: LiveData<Resource<List<TimeTableDay>>>
+        get() {
+            return daysList
+        }
 
     init {
-        daysList=
+        daysList = timeRepo.loadTimetableDayList()
     }
-
-
 
 
 }

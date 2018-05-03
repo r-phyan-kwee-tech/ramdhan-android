@@ -3,7 +3,6 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -11,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import kotlinx.android.synthetic.main.fragment_schedule_list_activity.*
 
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_schedule_list_activity.*
  */
 class ScheduleListActivityFragment : Fragment() {
 
-    private var binding: ViewDataBinding? = null
+    private var binding: FragmentScheduleListActivityBinding? = null
     private var scheduleAdapter: ScheduleAdapter? = null
 
     private var viewModel: ScheduleViewModel? = null

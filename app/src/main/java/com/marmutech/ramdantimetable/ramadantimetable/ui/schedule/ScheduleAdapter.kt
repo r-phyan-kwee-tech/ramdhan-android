@@ -1,17 +1,24 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
+import android.databinding.DataBindingUtil
 import android.support.v7.util.DiffUtil
 import android.support.v7.util.DiffUtil.calculateDiff
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.databinding.RowScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 
 class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
     internal var mScheduleList: List<out TimeTableDay>? = null
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        var binding: RowScheduleListBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.row_schedule_list, parent, false)
+        binding.callback=clickCallBack
+        return ScheduleViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +36,8 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
         } else {
             var result: DiffUtil.DiffResult = calculateDiff(object : DiffUtil.Callback() {
                 override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    var mLocalScheduleList = mScheduleList
+                    return mLocalScheduleList?.get(oldItemPosition)?.id == scheduleList?.get(newItemPosition)?.id
                 }
 
                 override fun getOldListSize(): Int {
@@ -41,12 +49,17 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
                     return scheduleList?.size as Int
                 }
 
-                override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-                    return super.getChangePayload(oldItemPosition, newItemPosition)
-                }
-
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    var mLocalScheduleList = mScheduleList
+
+                    var oldObj: TimeTableDay = mLocalScheduleList?.get(oldItemPosition) as TimeTableDay
+
+                    var newObj: TimeTableDay = scheduleList?.get(newItemPosition) as TimeTableDay
+
+                    return oldObj.countryId == newObj.countryId
+                            && oldObj.day == newObj.day
+
+
                 }
             })
         }
