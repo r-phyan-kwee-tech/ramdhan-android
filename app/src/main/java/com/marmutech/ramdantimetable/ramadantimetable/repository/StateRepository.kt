@@ -19,7 +19,7 @@ class StateRepository @Inject constructor(
 ) {
     fun loadStateList(countryId: String, limit: Int, page: Int): LiveData<Resource<List<State>>> {
         return object : NetworkBoundResource<List<State>, StateResponse>(appExecutors) {
-            override fun shouldFetch(data: List<State>?): Boolean = data == null
+            override fun shouldFetch(data: List<State>?): Boolean = data!!.isEmpty()
 
             var query = "{\n" +
                     "  states(limit: $limit, page: $page, countryId: \"$countryId\") {\n" +

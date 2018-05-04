@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
+import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.RamdanTimtableApp
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
@@ -53,9 +54,16 @@ object AppInjector {
     }
 
     private fun handleActivity(activity: Activity) {
+
         if (activity is HasSupportFragmentInjector) {
             AndroidInjection.inject(activity)
         }
+
+        if (activity is AppCompatActivity) {
+            AndroidInjection.inject(activity)
+        }
+
+
         if (activity is FragmentActivity) {
             activity.supportFragmentManager
                     .registerFragmentLifecycleCallbacks(

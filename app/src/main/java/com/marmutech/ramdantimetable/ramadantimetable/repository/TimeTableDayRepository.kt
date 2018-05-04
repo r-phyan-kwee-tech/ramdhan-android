@@ -1,8 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import android.arch.lifecycle.LiveData
-import android.arch.paging.DataSource
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
+import com.marmutech.ramdantimetable.ramadantimetable.api.ApiResponse
 import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
@@ -21,7 +21,7 @@ class TimeTableDayRepository @Inject constructor(
     fun loadTimetableDayList(stateId: String, limit: Int, page: Int): LiveData<Resource<List<TimeTableDay>>> {
         return object : NetworkBoundResource<List<TimeTableDay>, DayResponse>(appExecutors) {
 
-            override fun shouldFetch(data: List<TimeTableDay>?): Boolean = data == null
+            override fun shouldFetch(data: List<TimeTableDay>?): Boolean = data!!.isEmpty()
 
             var query = "{\n" +
                     "  days(limit: $limit, page: $page, stateId: \"$stateId\") {\n" +
@@ -53,9 +53,12 @@ class TimeTableDayRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = countryService.getTimetableList(query)
+            override fun createCall(): LiveData<ApiResponse<DayResponse>> {
+                return countryService.getTimetableList(query)
+            }
 
-            override fun loadFromDb(): LiveData<List<TimeTableDay>>{
+
+            override fun loadFromDb(): LiveData<List<TimeTableDay>> {
                 return timttableDao.getDayByStateId(stateId = stateId, limit = limit, offset = offsetManager(limit, page))
             }
 
@@ -98,7 +101,9 @@ class TimeTableDayRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = countryService.getTimetable(query)
+            override fun createCall(): LiveData<ApiResponse<DayResponse>> {
+                return countryService.getTimetable(query)
+            }
 
             override fun loadFromDb(): LiveData<TimeTableDay> {
 
