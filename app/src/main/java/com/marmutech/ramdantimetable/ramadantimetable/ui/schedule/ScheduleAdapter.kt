@@ -12,7 +12,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 
 class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
-    internal var mScheduleList: List<out TimeTableDay>? = null
+    internal var mScheduleList: List<out TimeTableDay>? = listOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
