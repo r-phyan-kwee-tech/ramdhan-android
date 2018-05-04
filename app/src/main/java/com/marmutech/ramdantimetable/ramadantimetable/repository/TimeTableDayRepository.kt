@@ -1,6 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import android.arch.lifecycle.LiveData
+import android.arch.paging.DataSource
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
@@ -54,7 +55,7 @@ class TimeTableDayRepository @Inject constructor(
 
             override fun createCall() = countryService.getTimetableList(query)
 
-            override fun loadFromDb(): LiveData<List<TimeTableDay>> {
+            override fun loadFromDb(): LiveData<List<TimeTableDay>>{
                 return timttableDao.getDayByStateId(stateId = stateId, limit = limit, offset = offsetManager(limit, page))
             }
 

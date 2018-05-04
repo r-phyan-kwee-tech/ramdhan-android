@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="scheduleViewModel"
+            type="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel"/>
+
+    </data>
+
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ui.schedule.ScheduleListActivityFragment"
+        tools:showIn="@layout/activity_schedule_list_activity">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_schedule_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/row_schedule_list" />
+
+    </FrameLayout>
+
+</layout>
