@@ -17,7 +17,7 @@ class ScheduleViewModel(application: Application, timeRepo: TimeTableDayReposito
         }
 
     init {
-        userPrefUtil=application.
+        //userPrefUtil=application.getUserPref()
         daysList = timeRepo.loadTimetableDayList(stateId = "c4e237869fc04b3e8cc7a79185a743b7",limit = 50,page = 1)
     }
 
