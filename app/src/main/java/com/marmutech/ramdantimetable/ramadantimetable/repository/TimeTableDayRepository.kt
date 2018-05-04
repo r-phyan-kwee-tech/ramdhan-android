@@ -21,7 +21,7 @@ class TimeTableDayRepository @Inject constructor(
     fun loadTimetableDayList(stateId: String, limit: Int, page: Int): LiveData<Resource<List<TimeTableDay>>> {
         return object : NetworkBoundResource<List<TimeTableDay>, DayResponse>(appExecutors) {
 
-            override fun shouldFetch(data: List<TimeTableDay>?): Boolean = data!!.isEmpty()
+            override fun shouldFetch(data: List<TimeTableDay>?): Boolean = data == null || data.isEmpty()
 
             var query = "{\n" +
                     "  days(limit: $limit, page: $page, stateId: \"$stateId\") {\n" +

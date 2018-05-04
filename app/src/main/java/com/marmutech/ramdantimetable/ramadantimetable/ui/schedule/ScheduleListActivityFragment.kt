@@ -44,13 +44,9 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
         scheduleViewModel.loadTimetableDayList("0b60dd4d4a7841808c94764e716e29af", 10, 1)
 
-
         scheduleViewModel.daysList.observe(this, Observer { timetableListResource ->
             //TODO bind data from repo here
-
             Timber.e("TimeTable List", timetableListResource?.data)
-
-
         })
 
         return binding?.root
