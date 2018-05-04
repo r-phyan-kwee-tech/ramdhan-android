@@ -13,6 +13,8 @@ import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFa
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -22,7 +24,11 @@ class AppModule {
     @Singleton
     @Provides
     fun provideCountryService(): CountryService {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder().addInterceptor(logging).build()
         return Retrofit.Builder()
+                .client(client)
                 .baseUrl("https://ramdan-api.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
@@ -33,7 +39,11 @@ class AppModule {
     @Singleton
     @Provides
     fun provideStateService(): StateService {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder().addInterceptor(logging).build()
         return Retrofit.Builder()
+                .client(client)
                 .baseUrl("https://ramdan-api.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
@@ -44,7 +54,11 @@ class AppModule {
     @Singleton
     @Provides
     fun provideTimetableDayService(): TimeTableDayServie {
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder().addInterceptor(logging).build()
         return Retrofit.Builder()
+                .client(client)
                 .baseUrl("https://ramdan-api.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
@@ -82,7 +96,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideSharePreference(app: Application): UserPrefUtil{
+    fun provideSharePreference(app: Application): UserPrefUtil {
         return UserPrefUtil.getInstance(app)
     }
 }

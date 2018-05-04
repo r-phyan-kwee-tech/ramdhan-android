@@ -19,7 +19,7 @@ class CountryRepository @Inject constructor(
 ) {
     fun loadCountryList(limit: Int, page: Int): LiveData<Resource<List<Country>>> {
         return object : NetworkBoundResource<List<Country>, CountryResponse>(appExecutors) {
-            override fun shouldFetch(data: List<Country>?): Boolean = data == null
+            override fun shouldFetch(data: List<Country>?): Boolean = data!!.isEmpty()
             var query = "{\n" +
                     "  countries(limit: $limit, page: $page) {\n" +
                     "    data {\n" +

@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
+import timber.log.Timber
 import javax.inject.Inject
 
 class DetailActivity : AppCompatActivity() {
@@ -51,12 +52,13 @@ class DetailActivity : AppCompatActivity() {
         //ViewModel Class Declaration
         detailViewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
 
-        detailViewModel.loadDay("")
+        detailViewModel.loadDay("0ad22a7865a54b4dbd5bf35a1a81f7ac")
 
 
         detailViewModel.timeTableDay.observe(this, Observer { dayResource ->
             //TODO bind data from repo here
-            dayResource?.data
+            print(dayResource?.data)
+            Timber.d("DAY_RESPONSE", dayResource?.data)
 
 
         })

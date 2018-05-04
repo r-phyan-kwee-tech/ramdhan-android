@@ -13,7 +13,9 @@ import javax.inject.Singleton
         modules = [
             AndroidInjectionModule::class,
             AppModule::class,
-            DetailActivityModule::class
+            DetailActivityModule::class,
+            ScheduleListActivityModule::class
+
         ]
 )
 interface AppComponent {

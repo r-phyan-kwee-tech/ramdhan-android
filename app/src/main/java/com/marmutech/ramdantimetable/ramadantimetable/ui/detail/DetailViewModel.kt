@@ -16,11 +16,11 @@ class DetailViewModel
     private val _dayId = MutableLiveData<String>()
 
 
-    val timeTableDay: LiveData<Resource<TimeTableDay>> = Transformations.switchMap(_dayId) { login ->
-        if (login == null) {
+    val timeTableDay: LiveData<Resource<TimeTableDay>> = Transformations.switchMap(_dayId) { dayId ->
+        if (dayId == null) {
             AbsentLiveData.create()
         } else {
-            timeTableDayRepository.loadTimetableDay(login)
+            timeTableDayRepository.loadTimetableDay(dayId)
         }
     }
 
