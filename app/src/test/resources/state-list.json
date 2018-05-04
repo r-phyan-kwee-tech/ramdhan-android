@@ -1,0 +1,134 @@
+{
+  "data": {
+    "states": {
+      "data": [
+        {
+          "id": "U3RhdGU6YjY5NWI2MmI0ZmE0NDQ5Y2EyOGY0NDNiYjg0NTIxODM=",
+          "objectId": "b695b62b4fa4449ca28f443bb8452183",
+          "nameMmUni": "ဧရာဝတီတိုင်း",
+          "nameMmZawgyi": "ဧရာဝတီတိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6ZDY2NTQ2ZWY5NTY1NDkxMmE4Yjc4NmYwNzYyYzhmYWI=",
+          "objectId": "d66546ef95654912a8b786f0762c8fab",
+          "nameMmUni": "ရှမ်းပြည်နယ်",
+          "nameMmZawgyi": "ရွမ္းျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6NmYzMDNlNjMzNTQ4NDliNmI5ZmFjM2ZiNWMzZGE3M2E=",
+          "objectId": "6f303e63354849b6b9fac3fb5c3da73a",
+          "nameMmUni": "ရန်ကုန်တိုင်း",
+          "nameMmZawgyi": "ရန္ကုန္တိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6MTI5ZTFlNGZmYzFlNGU3NGE3OGZkZTc4ODVlYTg2MDg=",
+          "objectId": "129e1e4ffc1e4e74a78fde7885ea8608",
+          "nameMmUni": "ရခိုင်ပြည်နယ်",
+          "nameMmZawgyi": "ရခိုင္ျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6MTVmYWQ0YjgwZTRiNDMzN2FkNjk4YzBlNGIxMjgwMTk=",
+          "objectId": "15fad4b80e4b4337ad698c0e4b128019",
+          "nameMmUni": "မွန်ပြည်နယ်",
+          "nameMmZawgyi": "မြန္ျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6ZDVmNTg1NTE0MTI1NGRkOTg1YjAzYjE2MWQxMjk5YmY=",
+          "objectId": "d5f5855141254dd985b03b161d1299bf",
+          "nameMmUni": "မန္တလေးတိုင်း",
+          "nameMmZawgyi": "မႏၱေလးတိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6NmVjN2FlZTg5MmVkNDIzNGEzNDNmYTZlNDljMjI2NTM=",
+          "objectId": "6ec7aee892ed4234a343fa6e49c22653",
+          "nameMmUni": "မကွေးတိုင်း",
+          "nameMmZawgyi": "မေကြးတိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6NDFiZjQzYTljYWEyNDJmMmIyZWU0YzI3NmE1Mzk4NzQ=",
+          "objectId": "41bf43a9caa242f2b2ee4c276a539874",
+          "nameMmUni": "ပဲခူးတိုင်း",
+          "nameMmZawgyi": "ပဲခူးတိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6OTMxMDAyNzlmNDI1NDg5ZWE4MTRiOTgxNWI1ZmMzMjY=",
+          "objectId": "93100279f425489ea814b9815b5fc326",
+          "nameMmUni": "တင်္နသာရီတိုင်း",
+          "nameMmZawgyi": "တနၤသာရီတိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6YWJmZDJlMTM1ZTFlNDM0NWJlNTVhMTY3YmU3NzUxNzY=",
+          "objectId": "abfd2e135e1e4345be55a167be775176",
+          "nameMmUni": "စစ်ကိုင်းတိုင်း",
+          "nameMmZawgyi": "စစ္ကိုင္းတိုင္း",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6Zjk4Yzc1OWQwYmRjNGNiZTkwN2ZkNWY3MmQ4ZDg3ODM=",
+          "objectId": "f98c759d0bdc4cbe907fd5f72d8d8783",
+          "nameMmUni": "ချင်းပြည်နယ်",
+          "nameMmZawgyi": "ခ်င္းျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6NDM0MWRkOWM1MDQ3NDY3NGFjMmVmZjEwNDNmYTQxM2I=",
+          "objectId": "4341dd9c50474674ac2eff1043fa413b",
+          "nameMmUni": "ကရင်ပြည်နယ်",
+          "nameMmZawgyi": "ကရင္ျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6ZjA3ZWJiM2RiYTMzNDMyYjhkZTQxMWNiOTVhOGJhYzk=",
+          "objectId": "f07ebb3dba33432b8de411cb95a8bac9",
+          "nameMmUni": "ကယားပြည်နယ်",
+          "nameMmZawgyi": "ကယားျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        },
+        {
+          "id": "U3RhdGU6M2FmNjIwOTM1YTg3NGRlN2I1NTFkODRlYTcyYTMwNWM=",
+          "objectId": "3af620935a874de7b551d84ea72a305c",
+          "nameMmUni": "ကချင်ပြည်နယ်",
+          "nameMmZawgyi": "ကခ်င္ျပည္နယ္",
+          "countryId": "c3f945bc7ebb4214bba3e8cdcc00b6e9",
+          "createdDate": 1524739893,
+          "updatedDate": 1524739893
+        }
+      ]
+    }
+  }
+}
