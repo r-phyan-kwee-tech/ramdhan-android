@@ -10,6 +10,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.db.RamdanDb
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFactory
+import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -77,5 +78,11 @@ class AppModule {
     @Provides
     fun provideTimeTableDayDao(db: RamdanDb): TimeTableDao {
         return db.timetableDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSharePreference(app: Application): UserPrefUtil{
+        return UserPrefUtil.getInstance(app)
     }
 }
