@@ -66,6 +66,7 @@ dependencies {
     //Support Library DI
     implementation 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
     annotationProcessor 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
+    kapt 'com.google.dagger:dagger-android-processor:'+rootProject.daggerVersion
     //Data Binding
     annotationProcessor 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
     kapt 'com.android.databinding:compiler:' + rootProject.dataBindingVersion

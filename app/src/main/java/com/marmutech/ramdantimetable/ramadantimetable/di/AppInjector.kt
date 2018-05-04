@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentManager
 import com.marmutech.ramdantimetable.ramadantimetable.RamdanTimtableApp
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
-import dagger.android.support.HasSupportFragmentInjector
 
 /**
  * Helper class to automatically inject fragments if they implement [Injectable].
@@ -53,9 +52,9 @@ object AppInjector {
     }
 
     private fun handleActivity(activity: Activity) {
-        if (activity is HasSupportFragmentInjector) {
-            AndroidInjection.inject(activity)
-        }
+//        if (activity is HasSupportFragmentInjector) {
+        AndroidInjection.inject(activity)
+//        }
         if (activity is FragmentActivity) {
             activity.supportFragmentManager
                     .registerFragmentLifecycleCallbacks(
