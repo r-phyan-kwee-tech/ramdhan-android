@@ -1,5 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.R.id.rv_schedule_list
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
@@ -45,7 +47,9 @@ class ScheduleListActivityFragment : Fragment() {
 
     private val scheduleClickCallBack: ScheduleClickCallBack = object : ScheduleClickCallBack {
         override fun onClick(timeTableDay: TimeTableDay) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                (activity as ScheduleListActivity).goToDetail(timeTableDay)
+            }
         }
 
     }
