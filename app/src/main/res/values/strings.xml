@@ -4,6 +4,9 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name ="select_font">Please Select your visible font</string>
+    <string name ="zg_myanmar">ျမန္မာ</string>
+    <string name ="uni_myanmar">မြန်မာ</string>
     <string name="hello_blank_fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
 
 Sed eget lobortis nisl. Donec consequat aliquet laoreet. In feugiat porttitor faucibus. Praesent faucibus libero vitae orci consectetur, sed bibendum leo eleifend. Proin sed justo nec leo tempus commodo. Maecenas ac lorem ut dui gravida tristique ac id turpis. Duis lacinia, enim vel maximus varius, lectus enim faucibus mauris, a iaculis ante dolor vel odio. Nam et augue erat.
