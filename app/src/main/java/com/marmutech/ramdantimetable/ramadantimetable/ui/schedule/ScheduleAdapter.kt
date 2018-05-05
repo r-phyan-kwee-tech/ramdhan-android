@@ -46,9 +46,7 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
                     return if (mLocalScheduleList != null) mLocalScheduleList.size else 0
                 }
 
-                override fun getNewListSize(): Int {
-                    return scheduleList?.size as Int
-                }
+                override fun getNewListSize()=  scheduleList?.size ?: 0
 
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                     var mLocalScheduleList = mScheduleList
