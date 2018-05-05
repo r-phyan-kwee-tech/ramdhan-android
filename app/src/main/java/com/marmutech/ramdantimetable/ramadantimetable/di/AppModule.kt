@@ -97,6 +97,6 @@ class AppModule {
     @Singleton
     @Provides
     fun provideSharePreference(app: Application): UserPrefUtil {
-        return UserPrefUtil.getInstance(app)
+        return UserPrefUtil(app)
     }
 }

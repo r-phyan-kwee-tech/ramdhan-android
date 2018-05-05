@@ -14,7 +14,8 @@ import javax.inject.Singleton
             AndroidInjectionModule::class,
             AppModule::class,
             DetailActivityModule::class,
-            ScheduleListActivityModule::class
+            ScheduleListActivityModule::class,
+            SplashActivityModule::class
 
         ]
 )
