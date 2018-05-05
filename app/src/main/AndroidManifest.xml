@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.marmutech.ramdantimetable.ramadantimetable">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".RamdanTimtableApp"
         android:allowBackup="true"
@@ -12,9 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.MainActivity">
-
-        </activity>
+        <activity android:name=".ui.MainActivity"></activity>
         <activity
             android:name=".ui.schedule.ScheduleListActivity"
             android:label="@string/title_activity_schedule_list_acitivity">
@@ -24,11 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.detail.DetailActivity">
+        <activity android:name=".ui.detail.DetailActivity"></activity>
+        <activity android:name=".ui.splash.SplashActivity">
 
         </activity>
-
     </application>
 
 </manifest>
