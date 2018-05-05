@@ -14,11 +14,15 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TV_DEFAULT_LARGE" parent="android:Widget.TextView">
+    <style name="TV_DEFAULT_MASSIVE_LARGE" parent="android:Widget.TextView">
 
         <item name="android:textSize">@dimen/text_size_massive_large</item>
     </style>
-    
+
+    <style name="TV_DEFAULT_LARGE" parent="android:Widget.TextView">
+
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
     <!--<style name="MainTheme" parent="Theme.AppCompat.Light">-->
         <!--<item name="colorPrimary">@color/colorGrey50</item>-->
         <!--<item name="colorPrimaryDark">@color/colorGrey600</item>-->

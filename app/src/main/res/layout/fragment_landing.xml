@@ -8,7 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        style="@style/TV_DEFAULT_LARGE"
+        style="@style/TV_DEFAULT_MASSIVE_LARGE"
         android:gravity="center"
         android:textColor="@color/white"
         android:layout_width="match_parent"

@@ -4,9 +4,16 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name ="select_font">Please Select your visible font</string>
-    <string name ="zg_myanmar">ျမန္မာ</string>
-    <string name ="uni_myanmar">မြန်မာ</string>
+    <string name="select_font">Please Select your visible font</string>
+    <string name="zg_myanmar">ျမန္မာ</string>
+    <string name="uni_myanmar">မြန်မာ</string>
+
+    <string name="zg_country_mm">နိုင္ငံ</string>
+    <string name="uni_country_mm">နိုင်ငံံ</string>
+
+    <string name="zg_state_mm">တိုင္း \ ျပည္နယ္</string>
+    <string name="uni_state_mm">တိုင်း \ ပြည်နယ်</string>
+
     <string name="uni_country_select">ယခုလက်ရှိရောက်နေတဲ့ နိုင်ငံနဲ့ ပြည်နယ်ကိုရွေးပေးပါ</string>
 
     <string name="zg_country_select">ယခုလက္ရွိေရာက္ေနတဲ့ နိုင္ငံနဲ႔ ျပည္နယ္ကိုေရြးေပးပါ</string>

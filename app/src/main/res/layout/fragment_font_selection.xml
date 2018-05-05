@@ -14,7 +14,7 @@
         android:paddingRight="@dimen/default_padding_large">
 
         <ImageView
-            style="@style/TV_DEFAULT_LARGE"
+            style="@style/TV_DEFAULT_MASSIVE_LARGE"
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/tvZawgyi"
-                style="@style/TV_DEFAULT_LARGE"
+                style="@style/TV_DEFAULT_MASSIVE_LARGE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -53,7 +53,7 @@
 
             <TextView
                 android:id="@+id/tvUnicode"
-                style="@style/TV_DEFAULT_LARGE"
+                style="@style/TV_DEFAULT_MASSIVE_LARGE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
