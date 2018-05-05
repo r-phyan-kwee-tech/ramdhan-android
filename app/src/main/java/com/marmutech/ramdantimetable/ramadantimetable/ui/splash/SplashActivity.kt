@@ -6,17 +6,13 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.adapter.SplashScreenPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import com.viewpagerindicator.CirclePageIndicator
-import javax.inject.Inject
-import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
 import dagger.android.support.HasSupportFragmentInjector
-import java.lang.reflect.AccessibleObject.setAccessible
 import java.lang.reflect.Field
+import javax.inject.Inject
 
 
 class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector {

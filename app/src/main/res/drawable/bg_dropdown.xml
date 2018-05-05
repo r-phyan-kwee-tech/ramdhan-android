@@ -11,10 +11,7 @@
                         android:color="@color/white" />
 
                     <corners android:radius="3dp" />
-
                     <solid android:color="@android:color/transparent"></solid>
-
-
                     <padding
                         android:bottom="5.0dip"
                         android:left="5.0dip"
@@ -24,12 +21,12 @@
             </item>
 
 
-            <!--<item>-->
-                <!--<bitmap-->
-                    <!--android:gravity="center_vertical|right"-->
-                    <!--android:src="@drawable/ic_keyboard_arrow_down_black_24dp" />-->
+            <item>
+                <bitmap
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/ic_down_arrow" />
 
-            <!--</item>-->
+            </item>
 
 
         </layer-list>

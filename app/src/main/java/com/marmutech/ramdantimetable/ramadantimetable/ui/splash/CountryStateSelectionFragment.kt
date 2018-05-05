@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.R
-
-import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
@@ -32,13 +30,12 @@ class CountryStateSelectionFragment : Fragment(), Injectable {
     var demoList: List<String> = listOf("a", "b", "c", "d", "e", "f")
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         var v = inflater.inflate(R.layout.fragment_country_selection, container, false)
-        val adapter = ArrayAdapter(this.context, android.R.layout.simple_spinner_item, demoList)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = ArrayAdapter(this.context, R.layout.row_spinner_item, demoList)
+        adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
         countrySpinner = v.findViewById(R.id.countrySpinner)
 
         stateSpinner = v.findViewById(R.id.stateSpinner)
