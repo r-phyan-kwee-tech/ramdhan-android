@@ -16,7 +16,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentSchedu
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
-import kotlinx.android.synthetic.main.fragment_schedule_list_activity.*
 import javax.inject.Inject
 
 
@@ -43,8 +42,8 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     private fun setUpRecycler() {
         scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
-        rv_schedule_list.layoutManager = LinearLayoutManager(context)
-        rv_schedule_list.adapter = scheduleAdapter
+        binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)
+        binding?.rvScheduleList?.adapter = scheduleAdapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
