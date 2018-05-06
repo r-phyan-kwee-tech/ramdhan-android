@@ -1,6 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.AppCompatSpinner
@@ -12,6 +14,8 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
+import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +32,13 @@ class CountryStateSelectionFragment : Fragment(), Injectable {
     var countryList: List<Country> = emptyList()
     var stateList: List<State> = emptyList()
     var demoList: List<String> = listOf("a", "b", "c", "d", "e", "f")
+    @Inject
+    lateinit var prefUtil: UserPrefUtil
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var splashViewModel: SplashViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,6 +46,12 @@ class CountryStateSelectionFragment : Fragment(), Injectable {
         var v = inflater.inflate(R.layout.fragment_country_selection, container, false)
         val adapter = ArrayAdapter(this.context, R.layout.row_spinner_item, demoList)
         adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
+
+        splashViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
+
+
+        splashViewModel.loadAvaliableCountries(50, 1)
+
         countrySpinner = v.findViewById(R.id.countrySpinner)
 
         stateSpinner = v.findViewById(R.id.stateSpinner)
