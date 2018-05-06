@@ -50,6 +50,12 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        if (userPref.isSplashFinished()) {
+            val intent: Intent = Intent(this, ScheduleListActivity::class.java)
+            startActivity(intent)
+
+            finish()
+        }
         introViewPager = findViewById(R.id.help_viewpager)
         pageIndicator = findViewById(R.id.help_viewpager_indicator)
         tvNext = findViewById(R.id.help_tv_next)
@@ -71,6 +77,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         userPref.getStateId()
 
         changePagerScroller()
+        introViewPager?.addOnPageChangeListener(this)
 
         Log.e("PREF", userPref.getStateId())
     }
@@ -82,6 +89,8 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         if (tv.tag as Int == 111) {
             val intent: Intent = Intent(this, ScheduleListActivity::class.java)
             startActivity(intent)
+            userPref.setSplashFinished(true)
+            finish()
         } else {
 
             introViewPager?.setCurrentItem(tv.tag as Int, true)
@@ -119,6 +128,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
             3 -> {
                 tvNext?.background = null
                 tvNext?.text = "Finish"
+                tvNext?.setTextColor(resources.getColor(R.color.white))
                 tvNext?.tag = 111
                 tvPrev?.visibility = VISIBLE
                 tvPrev?.tag = 2
@@ -128,14 +138,10 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onPageScrollStateChanged(state: Int) {
-        pagerButtonUIUpdate(state)
-
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-        pagerButtonUIUpdate(position)
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
