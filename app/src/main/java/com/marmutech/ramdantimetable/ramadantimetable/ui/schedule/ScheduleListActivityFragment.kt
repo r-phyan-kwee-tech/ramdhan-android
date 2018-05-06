@@ -16,6 +16,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentSchedu
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -66,7 +67,17 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     private fun subscribeUi(viewModel: ScheduleViewModel) {
         viewModel.loadTimetableDayList("0b60dd4d4a7841808c94764e716e29af", 10, 1)
-        viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t -> scheduleAdapter?.setScheduleList(t?.data) })
+        viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
+            Timber.d("dayList obersve " + t?.data)
+            if(t?.data !=null){
+                binding?.isLoading=false
+                scheduleAdapter?.setScheduleList(t.data)
+            }else{
+                binding?.isLoading=true
+            }
+            binding?.executePendingBindings()
+
+        })
 
     }
 }
