@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityDetailBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
 import timber.log.Timber
 import javax.inject.Inject
@@ -31,6 +32,7 @@ class DetailActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
     var collapsingToolbar: CollapsingToolbarLayout? = null
 
+    var binding:ActivityDetailBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
         collapsingToolbar = findViewById(R.id.collapsing_toolbar)
         tabLayout = findViewById(R.id.tabs)
         viewPager = findViewById(R.id.viewpager)
-        pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf("ဒိုအာ", "Dua", "دُعَاء\u200E"))
+        pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf("ဒိုအာ", "EN", "دُعَاء\u200E"))
         viewPager?.adapter = pageAdapter
         tabLayout?.setupWithViewPager(viewPager)
         collapsingToolbar?.setExpandedTitleColor(resources.getColor(android.R.color.transparent))

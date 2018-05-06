@@ -18,17 +18,18 @@
         <activity android:name=".ui.MainActivity"></activity>
         <activity
             android:name=".ui.schedule.ScheduleListActivity"
-            android:label="@string/title_activity_schedule_list_acitivity">
+            android:label="@string/title_activity_schedule_list_acitivity"></activity>
+        <activity android:name=".ui.detail.DetailActivity">
 
-        </activity>
-        <activity android:name=".ui.detail.DetailActivity"></activity>
-        <activity android:name=".ui.splash.SplashActivity"
-            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.splash.SplashActivity">
+
         </activity>
     </application>
 
