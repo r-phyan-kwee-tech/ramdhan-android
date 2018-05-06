@@ -26,5 +26,8 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="start_time">Sehri</string>
     <string name="end_time">Iftari</string>
 
+    <string name="no_connection_mm_uni">အင်တာနက်ချိတ်ဆက် မှု မရှိသောကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
+    <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
+
     <string name="str_day">Day %s</string>
 </resources>

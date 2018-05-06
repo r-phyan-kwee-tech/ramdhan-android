@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.marmutech.ramdantimetable.ramadantimetable">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -21,7 +22,8 @@
 
         </activity>
         <activity android:name=".ui.detail.DetailActivity"></activity>
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name=".ui.splash.SplashActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

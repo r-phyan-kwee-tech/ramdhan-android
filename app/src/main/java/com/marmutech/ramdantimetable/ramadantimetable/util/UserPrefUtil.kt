@@ -56,7 +56,7 @@ class UserPrefUtil(app: Application) {
     /***
      * default will return  zawgyi if you want to enable unicode then setFontTrue
      */
-    fun getFont():Boolean {
+    fun getFont(): Boolean {
         return mSharedPreference.getBoolean(PREF_FONT, false)
     }
 
