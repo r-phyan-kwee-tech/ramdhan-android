@@ -39,7 +39,6 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
     var stateSpinner: AppCompatSpinner? = null
     var countryList: List<Country> = emptyList()
     var stateList: List<State> = emptyList()
-    var demoList: List<String> = listOf("a", "b", "c", "d", "e", "f")
     @Inject
     lateinit var prefUtil: UserPrefUtil
 
@@ -51,7 +50,6 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
     private var binding: FragmentCountrySelectionBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         //TODO ProperDataBinding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_country_selection, container, false)
 
@@ -65,7 +63,6 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
         countrySpinner?.onItemSelectedListener = this
         stateSpinner?.onItemSelectedListener = this
 
-//        stateSpinner?.adapter = adapter
         return binding?.root
     }
 
@@ -91,12 +88,10 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
         splashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { t ->
             Timber.d("dayList obersve " + t?.data)
             if (t?.data != null && !t?.data.isEmpty()) {
-                var stateNameList: List<String> = t?.data.map { t ->
+                var stateNameList: List<String> = t.data.map { t ->
                     if (prefUtil.getFont()) {
                         t.nameMmUni
-                    } else {
-                        t.nameMmZawgyi
-                    }
+                    } else t.nameMmZawgyi
                 }
                 stateList = t?.data
                 val adapter = ArrayAdapter(this.context, R.layout.row_spinner_item, stateNameList)
