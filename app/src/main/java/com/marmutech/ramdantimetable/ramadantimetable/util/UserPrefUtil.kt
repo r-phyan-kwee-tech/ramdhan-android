@@ -9,6 +9,7 @@ class UserPrefUtil(app: Application) {
     private val PREF_STATE_ID = "pref_state_id"
     private val PREF_STATE_NAME = "pref_state_name"
     private val PREF_FONT = "pref_font"
+    private val PREF_COUNTRY_ID = "pref_country_id"
 
     private lateinit var mSharedPreference: SharedPreferences
     private lateinit var mApplication: Application
@@ -32,6 +33,15 @@ class UserPrefUtil(app: Application) {
 
     fun saveStateId(idState: String) {
         mSharedPreference.edit().putString(PREF_STATE_ID, idState).apply()
+    }
+
+
+    fun saveCountryId(idState: String) {
+        mSharedPreference.edit().putString(PREF_COUNTRY_ID, idState).apply()
+    }
+
+    fun getCountryId(): String {
+        return mSharedPreference.getString(PREF_COUNTRY_ID, "")
     }
 
     fun saveStateName(nameState: String) {

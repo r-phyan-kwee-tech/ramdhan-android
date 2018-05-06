@@ -59,6 +59,7 @@ class FontSelectionFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         var splashViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
 
         if (commonUtil.isNetworkConnected()) {
