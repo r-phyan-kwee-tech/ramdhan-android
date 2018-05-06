@@ -9,6 +9,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.adapter.SplashScreenPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import com.viewpagerindicator.CirclePageIndicator
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import java.lang.reflect.Field

@@ -8,6 +8,7 @@ class UserPrefUtil(app: Application) {
 
     private val PREF_STATE_ID = "pref_state_id"
     private val PREF_STATE_NAME = "pref_state_name"
+    private val PREF_FONT = "pref_font"
 
     private lateinit var mSharedPreference: SharedPreferences
     private lateinit var mApplication: Application
@@ -43,6 +44,20 @@ class UserPrefUtil(app: Application) {
 
     fun getStateName(): String {
         return mSharedPreference.getString(PREF_STATE_NAME, "")
+    }
+
+    /***
+     * default will return  zawgyi if you want to enable unicode then setFontTrue
+     */
+    fun setFont(isUnicode: Boolean) {
+        mSharedPreference.edit().putBoolean(PREF_FONT, isUnicode).apply()
+    }
+
+    /***
+     * default will return  zawgyi if you want to enable unicode then setFontTrue
+     */
+    fun getFont():Boolean {
+        return mSharedPreference.getBoolean(PREF_FONT, false)
     }
 
 
