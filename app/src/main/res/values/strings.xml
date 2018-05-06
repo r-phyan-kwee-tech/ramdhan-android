@@ -4,6 +4,19 @@
     <string name="action_settings" translatable="false">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="select_font">Please Select your visible font</string>
+    <string name="zg_myanmar">ျမန္မာ</string>
+    <string name="uni_myanmar">မြန်မာ</string>
+
+    <string name="zg_country_mm">နိုင္ငံ</string>
+    <string name="uni_country_mm">နိုင်ငံံ</string>
+
+    <string name="zg_state_mm">တိုင္း \ ျပည္နယ္</string>
+    <string name="uni_state_mm">တိုင်း \ ပြည်နယ်</string>
+
+    <string name="uni_country_select">ယခုလက်ရှိရောက်နေတဲ့ နိုင်ငံနဲ့ ပြည်နယ်ကိုရွေးပေးပါ</string>
+
+    <string name="zg_country_select">ယခုလက္ရွိေရာက္ေနတဲ့ နိုင္ငံနဲ႔ ျပည္နယ္ကိုေရြးေပးပါ</string>
     <string name="hello_blank_fragment" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
 
 Sed eget lobortis nisl. Donec consequat aliquet laoreet. In feugiat porttitor faucibus. Praesent faucibus libero vitae orci consectetur, sed bibendum leo eleifend. Proin sed justo nec leo tempus commodo. Maecenas ac lorem ut dui gravida tristique ac id turpis. Duis lacinia, enim vel maximus varius, lectus enim faucibus mauris, a iaculis ante dolor vel odio. Nam et augue erat.
@@ -12,6 +25,9 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
 
     <string name="start_time">Sehri</string>
     <string name="end_time">Iftari</string>
+
+    <string name="no_connection_mm_uni">အင်တာနက်ချိတ်ဆက် မှု မရှိသောကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
+    <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
 
     <string name="str_day">Day %s</string>
 </resources>

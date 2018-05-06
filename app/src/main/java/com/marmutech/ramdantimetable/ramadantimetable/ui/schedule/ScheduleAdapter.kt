@@ -22,11 +22,11 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
         return ScheduleViewHolder(binding)
     }
 
-    override fun getItemCount() =  if (mScheduleList != null) mScheduleList?.size as Int else 0
+    override fun getItemCount() = if (mScheduleList != null) mScheduleList?.size as Int else 0
 
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        Timber.d("schedule item "+ mScheduleList?.get(position))
+        Timber.d("schedule item " + mScheduleList?.get(position))
         holder.mBinding?.dayObj = mScheduleList?.get(position)
         holder.mBinding?.executePendingBindings()
     }
@@ -47,7 +47,7 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
                     return if (mLocalScheduleList != null) mLocalScheduleList.size else 0
                 }
 
-                override fun getNewListSize()=  scheduleList?.size ?: 0
+                override fun getNewListSize() = scheduleList?.size ?: 0
 
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                     var mLocalScheduleList = mScheduleList
@@ -62,7 +62,7 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
 
                 }
             })
-            mScheduleList=scheduleList
+            mScheduleList = scheduleList
             result.dispatchUpdatesTo(this)
         }
     }
