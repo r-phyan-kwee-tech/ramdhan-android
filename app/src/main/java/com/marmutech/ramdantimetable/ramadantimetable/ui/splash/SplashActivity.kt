@@ -114,7 +114,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
                 tvNext?.background = resources.getDrawable(R.drawable.ic_right_arrow)
                 tvNext?.visibility = VISIBLE
                 tvPrev?.visibility = VISIBLE
-                tvPrev?.tag =1
+                tvPrev?.tag = 1
             }
             3 -> {
                 tvNext?.background = null
