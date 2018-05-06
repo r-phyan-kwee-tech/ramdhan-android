@@ -7,6 +7,6 @@ class ScheduleViewHolder(binding: RowScheduleListBinding) : RecyclerView.ViewHol
     var mBinding: RowScheduleListBinding? = null
 
     init {
-        mBinding = binding
+        this.mBinding = binding
     }
 }

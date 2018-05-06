@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.RowScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import timber.log.Timber
 
 class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.Adapter<ScheduleViewHolder>() {
 
@@ -21,12 +22,12 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
         return ScheduleViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return if (mScheduleList == null) 0 else mScheduleList?.size as Int
-    }
+    override fun getItemCount() =  if (mScheduleList != null) mScheduleList?.size as Int else 0
+
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        holder.mBinding?.day = mScheduleList?.get(position)
+        Timber.d("schedule item "+ mScheduleList?.get(position))
+        holder.mBinding?.dayObj = mScheduleList?.get(position)
         holder.mBinding?.executePendingBindings()
     }
 
@@ -46,9 +47,7 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
                     return if (mLocalScheduleList != null) mLocalScheduleList.size else 0
                 }
 
-                override fun getNewListSize(): Int {
-                    return scheduleList?.size as Int
-                }
+                override fun getNewListSize()=  scheduleList?.size ?: 0
 
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                     var mLocalScheduleList = mScheduleList
@@ -63,6 +62,8 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.A
 
                 }
             })
+            mScheduleList=scheduleList
+            result.dispatchUpdatesTo(this)
         }
     }
 
