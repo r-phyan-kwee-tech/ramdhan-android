@@ -8,17 +8,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityDetailBinding
-import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+
+    override fun supportFragmentInjector() = dispatchingAndroidInjector
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -45,17 +52,15 @@ class DetailActivity : AppCompatActivity() {
         toolbar?.setTitleTextColor(resources.getColor(R.color.colorAccent))
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         collapsingToolbar = binding?.collapsingToolbar
         tabLayout = binding?.tabs
         viewPager = binding?.viewpager
-        pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf("ဒိုအာ", "EN", "دُعَاء\u200E"))
-        viewPager?.adapter = pageAdapter
-        tabLayout?.setupWithViewPager(viewPager)
+
         collapsingToolbar?.setExpandedTitleColor(resources.getColor(android.R.color.transparent))
 
 
         //Fetching data
-
 
 
         //ViewModel Class Declaration
@@ -72,8 +77,11 @@ class DetailActivity : AppCompatActivity() {
             //TODO bind data from repo here
             if (dayResource?.data != null) {
                 binding?.timetable = dayResource?.data
+                supportActionBar?.title = String.format(resources.getString(R.string.str_day), dayResource?.data.day)
+                pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf(this.resources.getString(R.string.dua_mm_uni), "EN", "دُعَاء\u200E"), dayResource?.data)
+                viewPager?.adapter = pageAdapter
+                tabLayout?.setupWithViewPager(viewPager)
             }
-
 
         })
     }

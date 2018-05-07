@@ -84,6 +84,10 @@ dependencies {
     //PagingLib
     implementation "android.arch.paging:runtime:1.0.0-rc1"
 
+    implementation('org.rabbit-converter.rabbit:rabbit:0.0.3') {
+        exclude group: 'org.json', module: 'json'
+    }
+
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.10.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
