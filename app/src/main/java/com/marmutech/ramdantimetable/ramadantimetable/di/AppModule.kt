@@ -99,4 +99,5 @@ class AppModule {
     fun provideSharePreference(app: Application): UserPrefUtil {
         return UserPrefUtil(app)
     }
+
 }

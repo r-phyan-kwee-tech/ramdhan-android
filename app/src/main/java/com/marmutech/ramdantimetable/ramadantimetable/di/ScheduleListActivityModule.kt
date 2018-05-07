@@ -7,6 +7,6 @@ import dagger.android.ContributesAndroidInjector
 @Suppress("unused")
 @Module
 abstract class ScheduleListActivityModule {
-    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
+    @ContributesAndroidInjector(modules = [ScheduleListFragmentModule::class])
     abstract fun contributeScheduleListActivity(): ScheduleListActivity
 }

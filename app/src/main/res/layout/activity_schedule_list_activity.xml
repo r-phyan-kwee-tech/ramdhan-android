@@ -19,13 +19,13 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/fl_schedule_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </FrameLayout>
-    <!--<include layout="@layout/content_schedule_list_activity" />-->
 
 </android.support.design.widget.CoordinatorLayout>

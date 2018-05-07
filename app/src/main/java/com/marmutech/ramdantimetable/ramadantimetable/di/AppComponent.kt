@@ -15,8 +15,8 @@ import javax.inject.Singleton
             AppModule::class,
             DetailActivityModule::class,
             ScheduleListActivityModule::class,
-            SplashActivityModule::class
-
+            SplashActivityModule::class,
+            SettingActivityBuilderModule::class
         ]
 )
 interface AppComponent {

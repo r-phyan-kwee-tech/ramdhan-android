@@ -60,7 +60,6 @@ class DetailActivity : AppCompatActivity() {
             print(dayResource?.data)
             Timber.d("DAY_RESPONSE", dayResource?.data)
 
-
         })
     }
 
