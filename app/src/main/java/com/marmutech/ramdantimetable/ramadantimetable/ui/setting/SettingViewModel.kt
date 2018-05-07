@@ -1,7 +1,9 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.ViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import javax.inject.Inject
 
-class SettingViewModel(application: Application):AndroidViewModel(application){
+class SettingViewModel @Inject constructor(userPrefUtil: UserPrefUtil) : ViewModel() {
+
 }
