@@ -44,7 +44,7 @@ class DetailActivity : AppCompatActivity() {
         toolbar = binding?.toolbar
         toolbar?.setTitleTextColor(resources.getColor(R.color.colorAccent))
         setSupportActionBar(toolbar)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         collapsingToolbar = binding?.collapsingToolbar
         tabLayout = binding?.tabs
         viewPager = binding?.viewpager
@@ -55,16 +55,17 @@ class DetailActivity : AppCompatActivity() {
 
 
         //Fetching data
-        if (intent.data != null) {
-            var data: Uri = intent.data
-            dayId = data!!.getQueryParameter("dayId")
-        }
+
 
 
         //ViewModel Class Declaration
         detailViewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
 
-        detailViewModel.loadDay("0ad22a7865a54b4dbd5bf35a1a81f7ac")
+        if (intent.data != null) {
+            var data: Uri = intent.data
+            dayId = data!!.getQueryParameter("dayId")
+            detailViewModel.loadDay(dayId)
+        }
 
         binding?.isUnicode = prefUtil.getFont()
         detailViewModel.timeTableDay.observe(this, Observer { dayResource ->
