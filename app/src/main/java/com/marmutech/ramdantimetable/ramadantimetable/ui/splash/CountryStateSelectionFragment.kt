@@ -106,7 +106,7 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         when (p0?.id) {
             R.id.countrySpinner -> {
-                prefUtil.saveCountryId(countryList.get(p2).objectId)
+                prefUtil.saveLocationId(countryList.get(p2).objectId)
                 updateStateSpinner(countryList.get(p2).objectId)
             }
             R.id.stateSpinner -> {

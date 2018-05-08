@@ -31,8 +31,6 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
     @Inject
     lateinit var prefUtil: UserPrefUtil
 
-    private lateinit var scheduleViewModel: ScheduleViewModel
-
     private var binding: FragmentScheduleListActivityBinding? = null
     private var scheduleAdapter: ScheduleAdapter? = null
 
@@ -45,11 +43,10 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
         return binding?.root
     }
 
-    private fun setUpRecycler() {
-        scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
-        binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)
-        binding?.rvScheduleList?.adapter = scheduleAdapter
-    }
+   /* override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }*/
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -58,6 +55,21 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
         subscribeUi(viewModel)
 
+    }
+
+    /*override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.men_schedule_list_fragment, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return super.onOptionsItemSelected(item)
+    }*/
+
+    private fun setUpRecycler() {
+        scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
+        binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)
+        binding?.rvScheduleList?.adapter = scheduleAdapter
     }
 
     private val scheduleClickCallBack: ScheduleClickCallBack = object : ScheduleClickCallBack {
@@ -84,4 +96,5 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
         })
 
     }
+
 }

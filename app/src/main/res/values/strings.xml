@@ -49,4 +49,19 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
 
     <string name="str_day">Day %s</string>
+    <string name="str_zaw_gyi_fonts">Zawgyi fonts</string>
+    <string name="str_select_country">Select country</string>
+    <string name="title_activity_settings_delete">Settings</string>
+
+    <string name="title_activity_setting">Settings</string>
+    <string name="str_enablie_zaw_gyi_fonts">Enable Zawgyi fonts</string>
+    <string name="str_select_location">Select Location</string>
+    <string name="str_select_state">Select State</string>
+    <string name="str_choose_location">Choose Location</string>
+    <string name="str_choose_state">Choose State</string>
+    <string name="str_select_location_state">Select location and state</string>
+    <string name="info">Info</string>
+    <string name="str_fonts">Support fonts</string>
+    <string name="str_credits">Credits</string>
+    <string name="str_open_source_libraries">Open source libraries</string>
 </resources>

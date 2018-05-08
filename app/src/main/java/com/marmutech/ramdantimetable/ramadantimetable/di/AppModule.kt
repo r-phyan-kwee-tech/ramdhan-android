@@ -101,7 +101,6 @@ class AppModule {
         return UserPrefUtil(app)
     }
 
-
     @Singleton
     @Provides
     fun provideCommonUtil(app: Application): CommonUtil {

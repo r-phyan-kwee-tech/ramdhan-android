@@ -82,7 +82,6 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 viewPager?.adapter = pageAdapter
                 tabLayout?.setupWithViewPager(viewPager)
             }
-
         })
     }
 

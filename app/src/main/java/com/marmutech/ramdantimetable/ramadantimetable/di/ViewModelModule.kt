@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.SplashViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.viewmodel.RamdanTimeTableViewModelFactory
 import dagger.Binds
@@ -31,6 +32,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ScheduleViewModel::class)
     abstract fun bindScheduleListViewModel(scheduleViewModel: ScheduleViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SettingViewModel::class)
+    abstract fun bindSettingViewModel(settingViewModel: SettingViewModel):ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: RamdanTimeTableViewModelFactory): ViewModelProvider.Factory

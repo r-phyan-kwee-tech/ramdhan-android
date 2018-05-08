@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.schedule.ScheduleListActivity">
+    tools:context=".ui.setting.SettingActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/tool_bar_setting"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -20,12 +20,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <!--<include layout="@layout/content_setting" />-->
+
     <FrameLayout
-        android:id="@+id/fl_schedule_container"
+        android:id="@+id/fl_setting_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

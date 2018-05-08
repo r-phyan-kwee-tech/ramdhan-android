@@ -1,25 +1,46 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
+    <!--Light Theme-->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+
+    <!--Dark Theme-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+
     <style name="myDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowNoTitle">true</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TV_DEFAULT_MASSIVE_LARGE" parent="android:Widget.TextView">
 
@@ -30,19 +51,5 @@
 
         <item name="android:textSize">@dimen/text_size_large</item>
     </style>
-
-    <!--<style name="MainTheme" parent="Theme.AppCompat.Light">-->
-    <!--<item name="colorPrimary">@color/colorGrey50</item>-->
-    <!--<item name="colorPrimaryDark">@color/colorGrey600</item>-->
-    <!--<item name="colorAccent">@color/colorYellow700</item>-->
-    <!--</style>-->
-
-    <!--<style name="MainTheme.NoActionBar">-->
-    <!--<item name="windowActionBar">false</item>-->
-
-    <!--</style>-->
-
-    <!--<style name="MainTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light"/>-->
-    <!--<style name="MainTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>-->
 
 </resources>
