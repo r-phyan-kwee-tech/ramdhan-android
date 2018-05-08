@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.R.id.tool_bar_setting
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -11,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
 import javax.inject.Inject
 
 class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
+    private val TAG_COUNTRY_SELECT_FRAG="tag_country"
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return dispatchingAndroidInjector
     }
@@ -32,10 +35,10 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
     }
 
-    fun showLocationSelectBottomSheet(){
-
-    }
-    fun showStateSelectBottomSheet(){
-
+    fun showLocationSelectFrag(){
+        this.supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_setting_container, CountryStateSelectionFragment())
+                .addToBackStack(TAG_COUNTRY_SELECT_FRAG)
+                .commit()
     }
 }

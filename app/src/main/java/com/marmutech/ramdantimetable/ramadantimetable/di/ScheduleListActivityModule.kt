@@ -1,5 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.di
 
+import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.InfoBottomSheetFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -9,4 +10,8 @@ import dagger.android.ContributesAndroidInjector
 abstract class ScheduleListActivityModule {
     @ContributesAndroidInjector(modules = [ScheduleListFragmentModule::class])
     abstract fun contributeScheduleListActivity(): ScheduleListActivity
+
+
+    @ContributesAndroidInjector
+    abstract fun contributInfoBottomSheetFragment(): InfoBottomSheetFragment
 }

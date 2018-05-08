@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.R.id.ll_location_layout
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import kotlinx.android.synthetic.main.fragment_setting.*
@@ -29,7 +30,6 @@ class SettingFragment : Fragment(), Injectable, View.OnClickListener {
         super.onActivityCreated(savedInstanceState)
 
         ll_location_layout.setOnClickListener(this)
-        ll_state_layout.setOnClickListener(this)
 
         val viewModel: SettingViewModel = ViewModelProviders.of(this, viewModelFactory).get(SettingViewModel::class.java)
         subscribeUi(viewModel)
@@ -41,8 +41,7 @@ class SettingFragment : Fragment(), Injectable, View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.ll_location_layout -> (activity as SettingActivity).showLocationSelectBottomSheet()
-            R.id.ll_state_layout -> (activity as SettingActivity).showStateSelectBottomSheet()
+            R.id.ll_location_layout -> (activity as SettingActivity).showLocationSelectFrag()
         }
     }
 }

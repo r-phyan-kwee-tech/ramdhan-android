@@ -48,4 +48,8 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="str_choose_location">Choose Location</string>
     <string name="str_choose_state">Choose State</string>
     <string name="str_select_location_state">Select location and state</string>
+    <string name="info">Info</string>
+    <string name="str_fonts">Support fonts</string>
+    <string name="str_credits">Credits</string>
+    <string name="str_open_source_libraries">Open source libraries</string>
 </resources>
