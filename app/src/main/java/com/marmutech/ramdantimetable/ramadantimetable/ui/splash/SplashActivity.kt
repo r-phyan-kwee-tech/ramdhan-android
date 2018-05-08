@@ -43,6 +43,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
     var tvNext: TextView? = null
     var tvPrev: TextView? = null
+    var tvFinish: TextView? = null
 
     //TODO proper DataBinding  has to apply
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -60,6 +61,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         pageIndicator = findViewById(R.id.help_viewpager_indicator)
         tvNext = findViewById(R.id.help_tv_next)
         tvPrev = findViewById(R.id.help_tv_back)
+        tvFinish = findViewById(R.id.tvFinish)
         tvPrev?.visibility = GONE
         pagerButtonUIUpdate(0)
 
@@ -92,9 +94,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
             userPref.setSplashFinished(true)
             finish()
         } else {
-
             introViewPager?.setCurrentItem(tv.tag as Int, true)
-            pagerButtonUIUpdate(tv.tag as Int)
 
         }
 
@@ -105,10 +105,12 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
     fun pagerButtonUIUpdate(position: Int) {
         when (position) {
             0 -> {
+                tvFinish?.visibility = GONE
                 tvNext?.visibility = VISIBLE
                 tvNext?.background = resources.getDrawable(R.drawable.ic_right_arrow)
                 tvNext?.tag = 1
                 tvPrev?.visibility = GONE
+
 
             }
             1 -> {
@@ -116,23 +118,20 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
                 tvNext?.background = resources.getDrawable(R.drawable.ic_right_arrow)
                 tvNext?.visibility = VISIBLE
                 tvPrev?.visibility = VISIBLE
+                tvFinish?.visibility = GONE
                 tvPrev?.tag = 0
             }
             2 -> {
-                tvNext?.tag = 3
-                tvNext?.background = resources.getDrawable(R.drawable.ic_right_arrow)
-                tvNext?.visibility = VISIBLE
-                tvPrev?.visibility = VISIBLE
-                tvPrev?.tag = 1
-            }
-            3 -> {
-                tvNext?.background = null
-                tvNext?.text = "Finish"
-                tvNext?.setTextColor(resources.getColor(R.color.white))
+
+                tvFinish?.visibility = VISIBLE
+                tvNext?.visibility = GONE
                 tvNext?.tag = 111
                 tvPrev?.visibility = VISIBLE
-                tvPrev?.tag = 2
+                tvPrev?.tag = 1
+
+
             }
+
         }
     }
 
