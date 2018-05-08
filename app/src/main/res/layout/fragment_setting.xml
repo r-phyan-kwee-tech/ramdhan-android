@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_zawgyi_support_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/str_enablie_zaw_gyi_fonts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/sc_zawgyi_support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_zawgyi_support_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/v_divider_one"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorGrey300"
+        app:layout_constraintTop_toBottomOf="@id/tv_zawgyi_support_header" />
+
+    <LinearLayout
+        android:id="@+id/ll_location_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_divider_one">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_select_location_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_select_location" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_select_location_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_choose_location"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_select_location_header" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/v_divider_two"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorGrey300"
+        app:layout_constraintTop_toBottomOf="@id/ll_location_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_state_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_divider_two">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_select_state_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_select_state" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_select_state_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/str_choose_state"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

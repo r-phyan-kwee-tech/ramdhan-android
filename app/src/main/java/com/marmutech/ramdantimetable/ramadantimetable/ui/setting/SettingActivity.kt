@@ -31,4 +31,11 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     .commitAllowingStateLoss()
         }
     }
+
+    fun showLocationSelectBottomSheet(){
+
+    }
+    fun showStateSelectBottomSheet(){
+
+    }
 }

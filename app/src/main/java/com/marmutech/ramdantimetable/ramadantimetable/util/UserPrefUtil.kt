@@ -8,6 +8,8 @@ class UserPrefUtil(app: Application) {
 
     private val PREF_STATE_ID = "pref_state_id"
     private val PREF_STATE_NAME = "pref_state_name"
+    private val PREF_LOCATION_ID = "pref_location_id"
+    private val PREF_LOCATION_NAME = "pref_location_name"
 
     private lateinit var mSharedPreference: SharedPreferences
     private lateinit var mApplication: Application
@@ -37,12 +39,28 @@ class UserPrefUtil(app: Application) {
         mSharedPreference.edit().putString(PREF_STATE_NAME, nameState).apply()
     }
 
+    fun saveLocationId(idLocation: String) {
+        mSharedPreference.edit().putString(PREF_LOCATION_ID, idLocation).apply()
+    }
+
+    fun saveLoactionName(nameLocation: String) {
+        mSharedPreference.edit().putString(PREF_LOCATION_NAME, nameLocation).apply()
+    }
+
     fun getStateId(): String {
         return mSharedPreference.getString(PREF_STATE_ID, "")
     }
 
     fun getStateName(): String {
         return mSharedPreference.getString(PREF_STATE_NAME, "")
+    }
+
+    fun getLocationId(): String {
+        return mSharedPreference.getString(PREF_LOCATION_ID, "")
+    }
+
+    fun getLocationName(): String {
+        return mSharedPreference.getString(PREF_LOCATION_NAME, "")
     }
 
 

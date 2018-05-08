@@ -90,4 +90,9 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_setting">Settings</string>
+    <string name="str_enablie_zaw_gyi_fonts">Enable Zawgyi fonts</string>
+    <string name="str_select_location">Select Location</string>
+    <string name="str_select_state">Select State</string>
+    <string name="str_choose_location">Choose Location</string>
+    <string name="str_choose_state">Choose State</string>
 </resources>
