@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.SplashViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.viewmodel.RamdanTimeTableViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -15,6 +16,12 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class ViewModelModule {
     //TODO  Declare View Models According to your needs
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SplashViewModel::class)
+    abstract fun bindSplashViewModel(detailViewModel: SplashViewModel): ViewModel
 
     @Binds
     @IntoMap

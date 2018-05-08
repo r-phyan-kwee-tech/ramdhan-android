@@ -4,6 +4,19 @@
     <string name="action_settings" translatable="false">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="select_font">Please Select your visible font</string>
+    <string name="zg_myanmar">ျမန္မာ</string>
+    <string name="uni_myanmar">မြန်မာ</string>
+
+    <string name="zg_country_mm">နိုင္ငံ</string>
+    <string name="uni_country_mm">နိုင်ငံံ</string>
+
+    <string name="zg_state_mm">တိုင္း \ ျပည္နယ္</string>
+    <string name="uni_state_mm">တိုင်း \ ပြည်နယ်</string>
+
+    <string name="uni_country_select">ယခုလက်ရှိရောက်နေတဲ့ နိုင်ငံနဲ့ ပြည်နယ်ကိုရွေးပေးပါ</string>
+
+    <string name="zg_country_select">ယခုလက္ရွိေရာက္ေနတဲ့ နိုင္ငံနဲ႔ ျပည္နယ္ကိုေရြးေပးပါ</string>
     <string name="hello_blank_fragment" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
 
 Sed eget lobortis nisl. Donec consequat aliquet laoreet. In feugiat porttitor faucibus. Praesent faucibus libero vitae orci consectetur, sed bibendum leo eleifend. Proin sed justo nec leo tempus commodo. Maecenas ac lorem ut dui gravida tristique ac id turpis. Duis lacinia, enim vel maximus varius, lectus enim faucibus mauris, a iaculis ante dolor vel odio. Nam et augue erat.
@@ -12,87 +25,27 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
 
     <string name="start_time">Sehri</string>
     <string name="end_time">Iftari</string>
+    <string name="dua_mm_zawgyi">ဒိုအာ</string>
+    <string name="dua_mm_uni">ဒိုအာ</string>
+
+    <string name="dua_title_mm_uni">ယနေ့ ဖတ်ရမည့်ဒိုအာ</string>
+    <string name="dua_title_mm_zawgyi">ယေန႔ ဖတ္ရမည့္ဒိုအာ</string>
+    <string name="dua_title_en">Today Dua to ask for</string>
+    <string name="dua_title_ar">اليوم دعاء أن تطلب</string>
+
+    <string name="no_connection_mm_uni">အင်တာနက်ချိတ်ဆက် မှု မရှိသောကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
+    <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
 
     <string name="str_day">Day %s</string>
     <string name="str_zaw_gyi_fonts">Zawgyi fonts</string>
     <string name="str_select_country">Select country</string>
     <string name="title_activity_settings_delete">Settings</string>
 
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_setting">Settings</string>
     <string name="str_enablie_zaw_gyi_fonts">Enable Zawgyi fonts</string>
     <string name="str_select_location">Select Location</string>
     <string name="str_select_state">Select State</string>
     <string name="str_choose_location">Choose Location</string>
     <string name="str_choose_state">Choose State</string>
+    <string name="str_select_location_state">Select location and state</string>
 </resources>

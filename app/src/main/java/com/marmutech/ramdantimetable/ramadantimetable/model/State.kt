@@ -20,4 +20,7 @@ data class State(
         val createdDate: Int,
         @ColumnInfo(name = "updatedDate")
         val updatedDate: Int
-)
+
+) {
+    override fun toString(): String = nameMmUni
+}

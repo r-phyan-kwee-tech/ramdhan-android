@@ -17,4 +17,6 @@ data class Country(
         val createdDate: Int,
         @ColumnInfo(name = "updatedDate")
         val updatedDate: Int
-)
+) {
+    override fun toString(): String = name
+}
