@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.R.id.*
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
+import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
+import kotlinx.android.synthetic.main.fragment_info_bottom_sheet.*
 
 class InfoBottomSheetFragment : BottomSheetDialogFragment(), Injectable, View.OnClickListener {
 
     companion object {
-        val TAG:String="tag_info_bottom_sheet"
+        val TAG: String = "tag_info_bottom_sheet"
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -22,10 +25,23 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment(), Injectable, View.On
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        ll_choose_location.setOnClickListener(this)
+        ll_font_support.setOnClickListener(this)
+        ll_credits.setOnClickListener(this)
+        ll_open_source_libraries.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (v?.id) {
+            R.id.ll_choose_location -> showInfoFragments(SettingActivity.FLAG_CHOOSE_LOCATION)
+            R.id.ll_font_support -> showInfoFragments(SettingActivity.FLAG_FONT_SUPPORT)
+            R.id.ll_credits -> showInfoFragments(SettingActivity.FLAG_CREDITS)
+            R.id.ll_open_source_libraries -> showInfoFragments(SettingActivity.FLAG_OPEN_SOURCE)
+        }
+    }
+
+    private fun showInfoFragments(targetFlags: String) {
+        (activity as ScheduleListActivity).lunchInfoActivity(targetFlags)
     }
 }

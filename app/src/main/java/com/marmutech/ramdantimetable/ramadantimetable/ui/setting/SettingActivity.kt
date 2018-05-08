@@ -14,6 +14,14 @@ import javax.inject.Inject
 
 class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private val TAG_COUNTRY_SELECT_FRAG="tag_country"
+
+    companion object {
+        val  KEY_TARGET_FLAG:String="key_target_flag"
+        val FLAG_CHOOSE_LOCATION="flag_choose_loaction"
+        val FLAG_FONT_SUPPORT="flag_font_support"
+        val FLAG_CREDITS="flag_credits"
+        val FLAG_OPEN_SOURCE="flag_open_source"
+    }
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return dispatchingAndroidInjector
     }

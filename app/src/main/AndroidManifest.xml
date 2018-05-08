@@ -20,11 +20,6 @@
             android:name=".ui.schedule.ScheduleListActivity"
             android:label="@string/title_activity_schedule_list_acitivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.detail.DetailActivity">
             <meta-data
@@ -43,6 +38,11 @@
         </activity>
 
         <activity android:name=".ui.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
