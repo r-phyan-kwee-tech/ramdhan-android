@@ -12,6 +12,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.R.string.*
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentDuaInfoBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
