@@ -16,7 +16,7 @@ class SplashScreenPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         when (position) {
             0 -> return LandingFragment()
             1 -> return FontSelectionFragment()
-            2 -> return CountryStateSelectionFragment.newInstance()
+            2 -> return CountryStateSelectionFragment()
         }
         return null
 
