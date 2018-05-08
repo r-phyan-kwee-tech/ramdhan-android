@@ -7,11 +7,12 @@ import android.support.annotation.RequiresApi
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.AppCompatTextView
+import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import android.widget.TextView
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
@@ -41,8 +42,8 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
     var pageIndicator: CirclePageIndicator? = null
     var screenSlidePagerAdapter: SplashScreenPagerAdapter? = null
 
-    var tvNext: TextView? = null
-    var tvPrev: TextView? = null
+    var tvNext: ImageView? = null
+    var tvPrev: ImageView? = null
     var tvFinish: TextView? = null
 
     //TODO proper DataBinding  has to apply
@@ -51,6 +52,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        imageViewPrelolipop()
         if (userPref.isSplashFinished()) {
             val intent: Intent = Intent(this, ScheduleListActivity::class.java)
             startActivity(intent)
@@ -85,17 +87,25 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         Log.e("PREF", userPref.getStateId())
     }
 
+    @RequiresApi
+    fun imageViewPrelolipop() {
+        if (Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
+
+
+    }
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onClick(p0: View?) {
 
-        var tv: AppCompatTextView = p0 as AppCompatTextView
-        if (tv.tag as Int == 111) {
+        if (p0?.tag as Int == 111) {
             val intent: Intent = Intent(this, ScheduleListActivity::class.java)
             startActivity(intent)
             userPref.setSplashFinished(true)
             finish()
         } else {
-            introViewPager?.setCurrentItem(tv.tag as Int, true)
+            introViewPager?.setCurrentItem(p0?.tag as Int, true)
 
         }
 
@@ -108,7 +118,6 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
             0 -> {
                 tvFinish?.visibility = GONE
                 tvNext?.visibility = VISIBLE
-                tvNext?.background = resources.getDrawable(R.drawable.ic_right_arrow)
                 tvNext?.tag = 1
                 tvPrev?.visibility = GONE
 
@@ -116,7 +125,6 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
             }
             1 -> {
                 tvNext?.tag = 2
-                tvNext?.background = resources.getDrawable(R.drawable.ic_right_arrow)
                 tvNext?.visibility = VISIBLE
                 tvPrev?.visibility = VISIBLE
                 tvFinish?.visibility = GONE

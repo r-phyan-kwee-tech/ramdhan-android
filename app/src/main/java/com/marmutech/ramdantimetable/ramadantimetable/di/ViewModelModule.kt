@@ -36,7 +36,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(SettingViewModel::class)
-    abstract fun bindSettingViewModel(settingViewModel: SettingViewModel):ViewModel
+    abstract fun bindSettingViewModel(settingViewModel: SettingViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: RamdanTimeTableViewModelFactory): ViewModelProvider.Factory

@@ -7,9 +7,9 @@ import dagger.android.ContributesAndroidInjector
 
 @Suppress("unused")
 @Module
-abstract class SettingFragmentBuilderModule{
+abstract class SettingFragmentBuilderModule {
     @ContributesAndroidInjector
-    abstract  fun  contributeSettingFragment():SettingFragment
+    abstract fun contributeSettingFragment(): SettingFragment
 
     @ContributesAndroidInjector
     abstract fun contributeCountryStateSelectionFragment(): CountryStateSelectionFragment
