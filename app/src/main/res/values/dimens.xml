@@ -28,7 +28,6 @@
     <dimen name="text_size_massive_large">32sp</dimen>
 
 
-
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="size_fab">48dp</dimen>
