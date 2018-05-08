@@ -33,6 +33,18 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="dua_title_en">Today Dua to ask for</string>
     <string name="dua_title_ar">اليوم دعاء أن تطلب</string>
 
+    <string name="dua_sehri_mm_title_uni">ဝါချည်ဒိုအာ</string>
+    <string name="dua_sehri_mm_title_zg">ဝါခ်ည္ဒိုအာ</string>
+
+    <string name="dua_iftari_mm_title_uni">ဝါဖြေဒိုအာ</string>
+    <string name="dua_iftari_mm_title_zg">ဝါေျဖဒိုအာ</string>
+
+    <string name="dua_sehri_mm_uni">နဝိုင်း သိုအန် အစူးမာကဒန် မင်န် ရှိုင်ရန် ရမ်ဇမ်</string>
+    <string name="dua_sehri_mm_zg">နဝိုင္း သိုအန္ အစူးမာကဒန္ မင္န္ ရွိုင္ရန္ ရမ္ဇမ္</string>
+
+    <string name="dua_iftari_mm_uni">အလာဟ်ဟွန်းမာ လကာဆွန်းသို ဝဘေကာ အာ့မန်းသို ဝါ့အလဟ် ရစ်ဇ်တေကာ အပ်ဖ်တရ်သို</string>
+    <string name="dua_iftari_mm_zg">အလာဟ္ဟြန္းမာ လကာဆြန္းသို ဝေဘကာ အာ့မန္းသို ဝါ့အလဟ္ ရစ္ဇ္ေတကာ အပ္ဖ္တရ္သို</string>
+
     <string name="no_connection_mm_uni">အင်တာနက်ချိတ်ဆက် မှု မရှိသောကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
     <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
 

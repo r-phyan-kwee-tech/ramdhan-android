@@ -29,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
 
-                android:paddingBottom="@dimen/default_padding_medium"
-                android:paddingTop="@dimen/default_padding_medium">
+                android:paddingTop="@dimen/default_padding_medium"
+                android:paddingBottom="@dimen/default_padding_medium">
 
                 <TextView
                     android:id="@+id/tvZawgyi"

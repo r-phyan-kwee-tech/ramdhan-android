@@ -21,8 +21,9 @@
             </item>
 
 
-            <item android:gravity="center_vertical|right"
-                android:drawable="@drawable/ic_down_arrow">
+            <item
+                android:drawable="@drawable/ic_down_arrow"
+                android:gravity="center_vertical|right">
 
 
             </item>
