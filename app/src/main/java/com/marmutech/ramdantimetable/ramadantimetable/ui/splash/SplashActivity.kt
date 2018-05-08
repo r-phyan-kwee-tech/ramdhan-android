@@ -74,6 +74,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
         tvPrev?.setOnClickListener(this)
         tvNext?.setOnClickListener(this)
+        tvFinish?.setOnClickListener(this)
 
         pageIndicator?.strokeWidth = 2F
         userPref.getStateId()
@@ -125,7 +126,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
                 tvFinish?.visibility = VISIBLE
                 tvNext?.visibility = GONE
-                tvNext?.tag = 111
+                tvFinish?.tag = 111
                 tvPrev?.visibility = VISIBLE
                 tvPrev?.tag = 1
 
