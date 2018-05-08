@@ -16,14 +16,13 @@ class SplashScreenPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         when (position) {
             0 -> return LandingFragment()
             1 -> return FontSelectionFragment()
-            2 -> return CountryStateSelectionFragment()
-            3 -> return CompleteFragment()
+            2 -> return CountryStateSelectionFragment.newInstance()
         }
         return null
 
     }
 
     override fun getCount(): Int {
-        return 4
+        return 3
     }
 }

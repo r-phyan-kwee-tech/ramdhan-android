@@ -78,6 +78,7 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
                 val adapter = ArrayAdapter(this.context, R.layout.row_spinner_item, t?.data)
                 adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
                 countrySpinner?.adapter = adapter
+                countrySpinner?.setSelection(0)
             }
 
         })
