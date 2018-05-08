@@ -15,6 +15,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import timber.log.Timber
 import javax.inject.Inject
@@ -26,6 +27,9 @@ import javax.inject.Inject
 class ScheduleListActivityFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var prefUtil: UserPrefUtil
 
     private lateinit var scheduleViewModel: ScheduleViewModel
 
@@ -66,7 +70,7 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
     }
 
     private fun subscribeUi(viewModel: ScheduleViewModel) {
-        viewModel.loadTimetableDayList("0b60dd4d4a7841808c94764e716e29af", 30, 1)
+        viewModel.loadTimetableDayList(prefUtil.getStateId(), 30, 1)
         viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
             Timber.d("dayList obersve " + t?.data)
             if (t?.data != null) {
