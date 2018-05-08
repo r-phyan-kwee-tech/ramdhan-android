@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.AppCompatTextView
+    <!--<android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_zawgyi_support_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,32 +78,32 @@
         android:background="@color/colorGrey300"
         app:layout_constraintTop_toBottomOf="@id/ll_location_layout" />
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/ll_state_layout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:orientation="vertical"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@id/v_divider_two">-->
+    &lt;!&ndash;<LinearLayout&ndash;&gt;
+        &lt;!&ndash;android:id="@+id/ll_state_layout"&ndash;&gt;
+        &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+        &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+        &lt;!&ndash;android:layout_marginEnd="8dp"&ndash;&gt;
+        &lt;!&ndash;android:layout_marginStart="8dp"&ndash;&gt;
+        &lt;!&ndash;android:layout_marginTop="8dp"&ndash;&gt;
+        &lt;!&ndash;android:orientation="vertical"&ndash;&gt;
+        &lt;!&ndash;app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;
+        &lt;!&ndash;app:layout_constraintStart_toStartOf="parent"&ndash;&gt;
+        &lt;!&ndash;app:layout_constraintTop_toBottomOf="@id/v_divider_two">&ndash;&gt;
 
-        <!--<android.support.v7.widget.AppCompatTextView-->
-            <!--android:id="@+id/tv_select_state_header"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/str_select_state" />-->
+        &lt;!&ndash;<android.support.v7.widget.AppCompatTextView&ndash;&gt;
+            &lt;!&ndash;android:id="@+id/tv_select_state_header"&ndash;&gt;
+            &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+            &lt;!&ndash;android:text="@string/str_select_state" />&ndash;&gt;
 
-        <!--<android.support.v7.widget.AppCompatTextView-->
-            <!--android:id="@+id/tv_select_state_summary"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/str_choose_state"-->
-            <!--android:textSize="12sp" />-->
+        &lt;!&ndash;<android.support.v7.widget.AppCompatTextView&ndash;&gt;
+            &lt;!&ndash;android:id="@+id/tv_select_state_summary"&ndash;&gt;
+            &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+            &lt;!&ndash;android:text="@string/str_choose_state"&ndash;&gt;
+            &lt;!&ndash;android:textSize="12sp" />&ndash;&gt;
 
-    <!--</LinearLayout>-->
-
+    &lt;!&ndash;</LinearLayout>&ndash;&gt;
+-->
 
 </android.support.constraint.ConstraintLayout>

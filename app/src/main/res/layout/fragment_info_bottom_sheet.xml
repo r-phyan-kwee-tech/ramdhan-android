@@ -11,6 +11,7 @@
     instead of nested layouts -->
 
     <LinearLayout
+        android:id="@+id/ll_choose_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -39,6 +40,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_font_support"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -67,6 +69,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_credits"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -95,6 +98,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_open_source_libraries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
