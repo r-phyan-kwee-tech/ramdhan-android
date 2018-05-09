@@ -2,6 +2,8 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
 import android.os.Bundle
 import android.support.annotation.NonNull
+
+
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
@@ -14,17 +16,16 @@ import kotlinx.android.synthetic.main.activity_setting.*
 import javax.inject.Inject
 
 class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
-    private val TAG_COUNTRY_SELECT_FRAG="tag_country"
-
-    private lateinit var targetFragment:Fragment
+    private val TAG_COUNTRY_SELECT_FRAG = "tag_country"
 
     companion object {
-        val  KEY_TARGET_FLAG:String="key_target_flag"
-        val FLAG_CHOOSE_LOCATION="flag_choose_loaction"
-        val FLAG_FONT_SUPPORT="flag_font_support"
-        val FLAG_CREDITS="flag_credits"
-        val FLAG_OPEN_SOURCE="flag_open_source"
+        val KEY_TARGET_FLAG: String = "key_target_flag"
+        val FLAG_CHOOSE_LOCATION = "flag_choose_loaction"
+        val FLAG_FONT_SUPPORT = "flag_font_support"
+        val FLAG_CREDITS = "flag_credits"
+        val FLAG_OPEN_SOURCE = "flag_open_source"
     }
+
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return dispatchingAndroidInjector
     }
@@ -41,14 +42,16 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         @NonNull var currentFlag=intent.extras.getString(KEY_TARGET_FLAG)
 
+        var targetFragment:Fragment?=null
+
         when(currentFlag){
             FLAG_CHOOSE_LOCATION-> targetFragment= CountryStateSelectionFragment()
-            FLAG_FONT_SUPPORT->targetFragment=FontSelectionFragment()
+            FLAG_FONT_SUPPORT->targetFragment= FontSelectionFragment()
             FLAG_CREDITS-> /*add credit fragment*/ return
             FLAG_OPEN_SOURCE -> /*add opensource fragment*/ return
         }
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && targetFragment!=null) {
             lunchFragmentsDyanamic(targetFragment)
         }
     }
@@ -57,12 +60,5 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
         this.supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_setting_container, targetFragment)
                 .commitAllowingStateLoss()
-    }
-
-    fun showLocationSelectFrag(){
-        this.supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_setting_container, CountryStateSelectionFragment())
-                .addToBackStack(TAG_COUNTRY_SELECT_FRAG)
-                .commit()
     }
 }

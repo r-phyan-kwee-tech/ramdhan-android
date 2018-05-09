@@ -46,8 +46,8 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-         super.onOptionsItemSelected(item)
-        when(item?.itemId){
+        super.onOptionsItemSelected(item)
+        when (item?.itemId) {
             R.id.action_info -> lunchInfoBottomSheet()
         }
 
@@ -66,14 +66,14 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
         startActivity(intent)
     }*/
 
-    private fun lunchInfoBottomSheet(){
-        val bottomSheetFragment= InfoBottomSheetFragment()
-        bottomSheetFragment.show(supportFragmentManager,InfoBottomSheetFragment.TAG)
+    private fun lunchInfoBottomSheet() {
+        val bottomSheetFragment = InfoBottomSheetFragment()
+        bottomSheetFragment.show(supportFragmentManager, InfoBottomSheetFragment.TAG)
     }
 
-    fun lunchInfoActivity(targetFlag:String){
-        val intent=Intent(this,SettingActivity::class.java)
-        intent.putExtra(SettingActivity.KEY_TARGET_FLAG,targetFlag)
+    fun lunchInfoActivity(targetFlag: String) {
+        val intent = Intent(this, SettingActivity::class.java)
+        intent.putExtra(SettingActivity.KEY_TARGET_FLAG, targetFlag)
         startActivity(intent)
     }
 

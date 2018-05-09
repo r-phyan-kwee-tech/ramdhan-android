@@ -23,7 +23,9 @@
 
             <item
                 android:drawable="@drawable/ic_down_arrow"
-                android:gravity="center_vertical|right">
+                android:width="20dp"
+                android:height="20dp"
+                android:gravity="right">
 
 
             </item>

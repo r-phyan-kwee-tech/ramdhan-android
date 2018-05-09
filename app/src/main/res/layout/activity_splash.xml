@@ -34,28 +34,28 @@
             android:layout_alignParentBottom="true">
 
 
-            <TextView
+            <ImageView
                 android:id="@+id/help_tv_back"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_left_arrow"
+                app:srcCompat="@drawable/ic_left_arrow"
                 android:paddingTop="16dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                 />
 
-            <TextView
+            <ImageView
                 android:id="@+id/help_tv_next"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_right_arrow"
-                android:padding="16dp"
+                app:srcCompat="@drawable/ic_right_arrow"
+
                 android:paddingTop="16dp"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                />
             <TextView
                 android:id="@+id/tvFinish"
                 android:layout_width="wrap_content"
@@ -63,8 +63,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:text="Finish"
-
-                android:padding="16dp"
                 android:paddingTop="16dp"
                 android:textColor="@color/white"
                 android:textSize="18sp" />

@@ -16,11 +16,11 @@
             android:paddingRight="@dimen/default_padding_large">
 
             <ImageView
-                style="@style/TV_DEFAULT_MASSIVE_LARGE"
+                android:id="@+id/text_font_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_major"
-                android:src="@drawable/font_select"
+                app:srcCompat="@drawable/ic_font_select"
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -46,7 +46,6 @@
 
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/swChangeType"
-
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="right"
