@@ -26,8 +26,6 @@ import java.lang.reflect.Field
 import javax.inject.Inject
 
 
-
-
 class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPager.OnPageChangeListener, View.OnClickListener {
 
 
@@ -171,8 +169,6 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         }
 
     }
-
-
 
 
 }

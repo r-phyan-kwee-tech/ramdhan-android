@@ -58,6 +58,7 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
         subscribeUi(viewModel)
     }
+
     private fun setUpRecycler() {
         scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
         binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)

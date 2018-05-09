@@ -1,6 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.di
 
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.*
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LandingFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

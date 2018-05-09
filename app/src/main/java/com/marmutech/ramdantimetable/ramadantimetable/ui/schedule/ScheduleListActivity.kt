@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.marmutech.ramdantimetable.ramadantimetable.R
-import com.marmutech.ramdantimetable.ramadantimetable.R.id.toolbar
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity

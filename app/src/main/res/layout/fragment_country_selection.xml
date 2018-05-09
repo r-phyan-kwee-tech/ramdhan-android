@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="isUnicode"
+            type="Boolean" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,10 +25,9 @@
             <TextView
                 style="@style/TV_DEFAULT_MASSIVE_LARGE"
                 android:layout_width="match_parent"
-                fontPath="fonts/myanmar3.ttf"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_minor"
-                android:text="@string/uni_country_select"
+                android:text="@{isUnicode?@string/uni_country_select:@string/zg_country_select}"
                 android:textColor="@color/white" />
 
             <android.support.v7.widget.CardView
@@ -45,8 +51,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="2"
-                        fontPath="fonts/myanmar3.ttf"
-                        android:text="@string/uni_country_mm"
+
+                        android:text="@{isUnicode?@string/uni_country_mm:@string/zg_country_mm}"
                         android:textColor="@color/colorYellow700" />
 
                     <android.support.v7.widget.AppCompatSpinner
@@ -81,8 +87,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="2"
-                        fontPath="fonts/myanmar3.ttf"
-                        android:text="@string/uni_state_mm"
+
+
+                        android:text="@{isUnicode?@string/uni_state_mm:@string/zg_state_mm}"
                         android:textColor="@color/colorYellow700"
 
                         />

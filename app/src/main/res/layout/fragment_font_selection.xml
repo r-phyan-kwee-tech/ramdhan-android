@@ -20,8 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_major"
-                app:srcCompat="@drawable/ic_font_select"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                app:srcCompat="@drawable/ic_font_select" />
 
             <LinearLayout
                 android:id="@+id/profile_item_container"
@@ -29,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
 
-                android:paddingTop="@dimen/default_padding_medium"
-                android:paddingBottom="@dimen/default_padding_medium">
+                android:paddingBottom="@dimen/default_padding_medium"
+                android:paddingTop="@dimen/default_padding_medium">
 
                 <TextView
                     android:id="@+id/tvZawgyi"
@@ -40,7 +40,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="5"
                     android:gravity="center"
-                    fontPath="fonts/myanmar3.ttf"
+
                     android:text="@string/zg_myanmar"
                     android:textColor="@color/white" />
 
@@ -54,7 +54,7 @@
 
                 <TextView
                     android:id="@+id/tvUnicode"
-                    fontPath="fonts/myanmar3.ttf"
+
                     style="@style/TV_DEFAULT_MASSIVE_LARGE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

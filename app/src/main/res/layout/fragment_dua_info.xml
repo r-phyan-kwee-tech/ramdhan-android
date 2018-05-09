@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/card_margin"
                     android:gravity="center"
-                    fontPath="fonts/myanmar3.ttf"
+
                     android:text="@{duaTitle}"
                     android:textColor="@color/black800" />
 
@@ -61,7 +61,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:padding="@dimen/card_margin"
-                            fontPath="fonts/myanmar3.ttf"
+
                             android:text="@{duaDetail}"
                             android:textColor="@color/black800" />
                     </android.support.v7.widget.CardView>

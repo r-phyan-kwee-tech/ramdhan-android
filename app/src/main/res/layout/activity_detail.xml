@@ -95,7 +95,7 @@
 
                             <TextView
                                 android:id="@+id/tvdescSehri"
-                                fontPath="fonts/myanmar3.ttf"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -135,7 +135,7 @@
 
                             <TextView
                                 android:id="@+id/tvdescIftari"
-                                fontPath="fonts/myanmar3.ttf"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -173,14 +173,14 @@
                         android:orientation="vertical">
 
                         <TextView
-                            fontPath="fonts/myanmar3.ttf"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{isUnicode?@string/dua_sehri_mm_title_uni:@string/dua_sehri_mm_title_zg}"
                             android:textColor="@color/colorYellow700" />
 
                         <TextView
-                            fontPath="fonts/myanmar3.ttf"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing_micro"
@@ -196,14 +196,14 @@
                         android:orientation="vertical">
 
                         <TextView
-                            fontPath="fonts/myanmar3.ttf"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{isUnicode?@string/dua_iftari_mm_title_uni:@string/dua_iftari_mm_title_zg}"
                             android:textColor="@color/colorYellow700" />
 
                         <TextView
-                            fontPath="fonts/myanmar3.ttf"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing_micro"

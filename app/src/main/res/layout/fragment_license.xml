@@ -8,11 +8,11 @@
         android:background="@android:color/black"
         tools:context=".ui.splash.CompleteFragment">
 
-     <WebView
-         android:id="@+id/wvLicense"
-         android:layout_width="match_parent"
+        <WebView
+            android:id="@+id/wvLicense"
+            android:layout_width="match_parent"
 
-         android:layout_height="match_parent"></WebView>
+            android:layout_height="match_parent"></WebView>
 
     </FrameLayout>
 </layout>

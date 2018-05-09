@@ -13,9 +13,9 @@
     <FrameLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black1000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".ui.schedule.ScheduleListActivityFragment"
-        android:background="@color/black1000"
         tools:showIn="@layout/activity_schedule_list_activity">
 
         <android.support.v7.widget.RecyclerView
