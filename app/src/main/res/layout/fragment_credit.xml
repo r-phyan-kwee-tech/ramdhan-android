@@ -11,7 +11,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black1000">
 
         <android.support.constraint.Guideline
             android:id="@+id/cgl_divider"
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/app_name"
+            android:textColor="@color/colorYellow700"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
@@ -51,6 +53,7 @@
             android:padding="@dimen/spacing_micro"
             android:text="@{String.format(@string/str_version, String.valueOf(versionNumber))}"
             android:textAlignment="center"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
@@ -63,6 +66,7 @@
             android:padding="@dimen/spacing_major"
             android:text="@string/str_mubarak"
             android:textAlignment="center"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tvVersion" />
@@ -73,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:text="@string/str_special_thanks"
+            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
@@ -83,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aung Myo Lwin"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_special_thanks" />
@@ -92,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Win Htaik Aung"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_aung_myo_lwin" />
@@ -101,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Khin Thin Zar (Translation) "
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_win_htaik_aung" />
@@ -109,7 +117,8 @@
             android:id="@+id/tv_made_with_love"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Made With Love"
+            android:text="\n\nMade With Love\n"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_khin_thin_zar" />
@@ -120,6 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text=" Develop By R Phyan Kwees"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/tv_repo_android"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider" />
