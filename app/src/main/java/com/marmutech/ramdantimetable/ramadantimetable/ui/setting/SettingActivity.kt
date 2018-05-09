@@ -1,9 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
+
 import android.os.Bundle
 import android.support.annotation.NonNull
-
-
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
@@ -40,18 +39,18 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        @NonNull var currentFlag=intent.extras.getString(KEY_TARGET_FLAG)
+        @NonNull var currentFlag = intent.extras.getString(KEY_TARGET_FLAG)
 
-        var targetFragment:Fragment?=null
+        var targetFragment: Fragment? = null
 
-        when(currentFlag){
-            FLAG_CHOOSE_LOCATION-> targetFragment= CountryStateSelectionFragment()
-            FLAG_FONT_SUPPORT->targetFragment= FontSelectionFragment()
-            FLAG_CREDITS-> /*add credit fragment*/ return
+        when (currentFlag) {
+            FLAG_CHOOSE_LOCATION -> targetFragment = CountryStateSelectionFragment()
+            FLAG_FONT_SUPPORT -> targetFragment = FontSelectionFragment()
+            FLAG_CREDITS -> targetFragment = CreditFragment()
             FLAG_OPEN_SOURCE -> /*add opensource fragment*/ return
         }
 
-        if (savedInstanceState == null && targetFragment!=null) {
+        if (savedInstanceState == null && targetFragment != null) {
             lunchFragmentsDyanamic(targetFragment)
         }
     }
