@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -47,7 +48,7 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
             FLAG_CHOOSE_LOCATION -> targetFragment = CountryStateSelectionFragment()
             FLAG_FONT_SUPPORT -> targetFragment = FontSelectionFragment()
             FLAG_CREDITS -> targetFragment = CreditFragment()
-            FLAG_OPEN_SOURCE -> /*add opensource fragment*/ return
+            FLAG_OPEN_SOURCE -> LicenseFragment()
         }
 
         if (savedInstanceState == null && targetFragment != null) {
