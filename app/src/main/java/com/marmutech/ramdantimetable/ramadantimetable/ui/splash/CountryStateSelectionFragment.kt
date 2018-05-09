@@ -63,6 +63,9 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
         countrySpinner?.onItemSelectedListener = this
         stateSpinner?.onItemSelectedListener = this
 
+        countrySpinner?.background = this.resources.getDrawable(R.drawable.bg_dropdown)
+        stateSpinner?.background = this.resources.getDrawable(R.drawable.bg_dropdown)
+
         return binding?.root
     }
 

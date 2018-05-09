@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.marmutech.ramdantimetable.ramadantimetable.R
-import com.marmutech.ramdantimetable.ramadantimetable.R.id.toolbar
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
@@ -46,8 +45,8 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-         super.onOptionsItemSelected(item)
-        when(item?.itemId){
+        super.onOptionsItemSelected(item)
+        when (item?.itemId) {
             R.id.action_info -> lunchInfoBottomSheet()
         }
 
@@ -66,14 +65,14 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
         startActivity(intent)
     }*/
 
-    private fun lunchInfoBottomSheet(){
-        val bottomSheetFragment= InfoBottomSheetFragment()
-        bottomSheetFragment.show(supportFragmentManager,InfoBottomSheetFragment.TAG)
+    private fun lunchInfoBottomSheet() {
+        val bottomSheetFragment = InfoBottomSheetFragment()
+        bottomSheetFragment.show(supportFragmentManager, InfoBottomSheetFragment.TAG)
     }
 
-    fun lunchInfoActivity(targetFlag:String){
-        val intent=Intent(this,SettingActivity::class.java)
-        intent.putExtra(SettingActivity.KEY_TARGET_FLAG,targetFlag)
+    fun lunchInfoActivity(targetFlag: String) {
+        val intent = Intent(this, SettingActivity::class.java)
+        intent.putExtra(SettingActivity.KEY_TARGET_FLAG, targetFlag)
         startActivity(intent)
     }
 
