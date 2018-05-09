@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentLicenseBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
@@ -28,7 +27,7 @@ class LicenseFragment : Fragment(), Injectable {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_license, container, false)
-        var wvLicense = binding?.wvLicense
+        val wvLicense = binding?.wvLicense
         wvLicense!!.loadUrl("file:///android_asset/licenses.html")
         return binding?.root
     }
