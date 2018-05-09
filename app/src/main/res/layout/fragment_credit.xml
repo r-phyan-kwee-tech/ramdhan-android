@@ -57,43 +57,33 @@
         app:layout_constraintTop_toBottomOf="@id/tv_mubarak" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_khin_thin_zar"
+        android:id="@+id/tv_aung_myo_lwin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ma Khin Thin Zar"
-        android:textStyle="bold"
+        android:text="Aung Myo Lwin"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_special_thanks" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_khin_thin_zar_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="thinzar19@gmail.com"
-        app:layout_constraintEnd_toStartOf="@id/cgl_divider"
-        app:layout_constraintStart_toEndOf="@id/cgl_divider"
-        app:layout_constraintTop_toBottomOf="@id/tv_khin_thin_zar" />
-
-    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_win_htaik_aung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="And Ko Win Htaik Aung "
-        android:textStyle="bold"
+        android:text="Win Htaik Aung"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
-        app:layout_constraintTop_toBottomOf="@id/tv_khin_thin_zar_email" />
-
+        app:layout_constraintTop_toBottomOf="@id/tv_aung_myo_lwin" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_api_text"
+        android:id="@+id/tv_khin_thin_zar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="For Backend API"
+        android:text="Khin Thin Zar (Translation) "
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_win_htaik_aung" />
+
+
 
 
     <android.support.v7.widget.AppCompatTextView
