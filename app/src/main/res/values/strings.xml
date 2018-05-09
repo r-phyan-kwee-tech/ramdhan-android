@@ -64,4 +64,7 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="str_fonts">Support fonts</string>
     <string name="str_credits">Credits</string>
     <string name="str_open_source_libraries">Open source libraries</string>
+    <string name="str_mubarak">With the beginning of Ramadan, may your home be filled with the atmosphere of love and mirth. May your life be as wonderful as you are throughout the year. Ramadan Mubarak!</string>
+    <string name="app_name_2018">Ranmadan Timetable 2018</string>
+    <string name="str_special_thanks">With special thanks to</string>
 </resources>
