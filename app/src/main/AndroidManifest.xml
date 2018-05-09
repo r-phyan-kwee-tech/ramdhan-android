@@ -15,12 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.MainActivity" />
         <activity
             android:name=".ui.schedule.ScheduleListActivity"
             android:label="@string/title_activity_schedule_list_acitivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ui.detail.DetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -8,6 +8,10 @@
         <variable
             name="isLoading"
             type="boolean" />
+
+        <variable
+            name="isEid"
+            type="boolean" />
     </data>
 
     <FrameLayout xmlns:tools="http://schemas.android.com/tools"
@@ -32,6 +36,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:visibleGone="@{isLoading}" />
+
+        <TextView
+            android:id="@+id/tv_eid_wish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="MAY YOU BE GUIDED BY\n
+YOUR FAITH IN ALLAH\n
+SHINE IN HIS DIVINE BLESSINGS!\n
+EID MUBARAK"
+            android:textColor="@color/white"
+            app:visibleGone="@{isEid}" />
 
     </FrameLayout>
 

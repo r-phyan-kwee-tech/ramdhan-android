@@ -75,14 +75,20 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
     }
 
     private fun subscribeUi(viewModel: ScheduleViewModel) {
+        binding?.isLoading = true
         viewModel.loadTimetableDayList(prefUtil.getStateId(), 30, 1)
         viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
             Timber.d("dayList obersve " + t?.data)
             if (t?.data != null) {
+
                 binding?.isLoading = false
+                binding?.isEid = false
                 scheduleAdapter?.setScheduleList(t.data)
             } else {
                 binding?.isLoading = true
+                binding?.isEid = false
+
+
             }
             binding?.executePendingBindings()
 

@@ -51,6 +51,8 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
 
     <string name="str_day">Day %s</string>
     <string name="str_version">Version %s</string>
+    <string name="str_schedule_uni"> %s အချိန်စာရင်း</string>
+    <string name="str_schedule_zg"> %s အခ်ိန္စာရင္း</string>
     <string name="str_zaw_gyi_fonts">Zawgyi fonts</string>
     <string name="str_select_country">Select country</string>
     <string name="title_activity_settings_delete">Settings</string>

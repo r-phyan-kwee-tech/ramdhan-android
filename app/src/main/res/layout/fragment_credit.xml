@@ -36,12 +36,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/app_name_2018"
+            android:text="@string/app_name"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/iv_ic_launcher" />
+
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tvVersion"
             android:layout_width="wrap_content"
@@ -53,6 +54,7 @@
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
+
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_mubarak"
             android:layout_width="wrap_content"
@@ -103,13 +105,21 @@
             app:layout_constraintStart_toEndOf="@id/cgl_divider"
             app:layout_constraintTop_toBottomOf="@id/tv_win_htaik_aung" />
 
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_made_with_love"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Made With Love"
+            app:layout_constraintEnd_toStartOf="@id/cgl_divider"
+            app:layout_constraintStart_toEndOf="@id/cgl_divider"
+            app:layout_constraintTop_toBottomOf="@id/tv_khin_thin_zar" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_organization"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text=" Develop By R Phyan Kwee Tech"
+            android:text=" Develop By R Phyan Kwees"
             app:layout_constraintBottom_toTopOf="@id/tv_repo_android"
             app:layout_constraintEnd_toStartOf="@id/cgl_divider"
             app:layout_constraintStart_toEndOf="@id/cgl_divider" />

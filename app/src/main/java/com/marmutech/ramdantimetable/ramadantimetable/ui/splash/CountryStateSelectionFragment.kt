@@ -114,6 +114,7 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
             }
             R.id.stateSpinner -> {
                 prefUtil.saveStateId(stateList.get(p2).objectId)
+                prefUtil.saveStateName(stateList.get(p2).nameMmUni)
             }
         }
     }

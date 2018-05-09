@@ -11,13 +11,18 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
+import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*
+import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
 
 class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
+    @Inject
+    lateinit var prefUtil: UserPrefUtil
+
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return dispatchingAndroidInjector
     }
@@ -30,12 +35,30 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setContentView(R.layout.activity_schedule_list_activity)
         setSupportActionBar(toolbar)
 
+        if (prefUtil.getFont()) {
+            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_uni), prefUtil.getStateName())
+        } else {
+            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
+        }
+
         if (savedInstanceState == null) {
             this.supportFragmentManager.beginTransaction()
                     .replace(R.id.fl_schedule_container, ScheduleListActivityFragment())
                     .commitAllowingStateLoss()
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (prefUtil.getFont()) {
+            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_uni), prefUtil.getStateName())
+        } else {
+            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
+        }
+        this.supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_schedule_container, ScheduleListActivityFragment())
+                .commitAllowingStateLoss()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

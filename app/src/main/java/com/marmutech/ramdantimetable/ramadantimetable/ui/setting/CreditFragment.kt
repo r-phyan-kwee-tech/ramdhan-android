@@ -13,13 +13,12 @@ import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCredit
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 
 
-
 class CreditFragment : Fragment(), Injectable {
-    var binding:FragmentCreditBinding?= null
+    var binding: FragmentCreditBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_credit,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_credit, container, false)
 
-        return  binding?.root
+        return binding?.root
     }
 
     override fun onStart() {
