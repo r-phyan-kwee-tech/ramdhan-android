@@ -18,6 +18,7 @@
             <TextView
                 style="@style/TV_DEFAULT_MASSIVE_LARGE"
                 android:layout_width="match_parent"
+                fontPath="fonts/myanmar3.ttf"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_minor"
                 android:text="@string/uni_country_select"
@@ -26,6 +27,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
+
                 android:layout_margin="@dimen/spacing_minor"
                 android:elevation="@dimen/spacing_minor"
                 app:cardBackgroundColor="@color/black800"
@@ -43,13 +45,14 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="2"
+                        fontPath="fonts/myanmar3.ttf"
                         android:text="@string/uni_country_mm"
                         android:textColor="@color/colorYellow700" />
 
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/countrySpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center" />
@@ -59,7 +62,7 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_minor"
                 android:elevation="@dimen/spacing_minor"
                 android:padding="@dimen/spacing_minor"
@@ -78,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="2"
+                        fontPath="fonts/myanmar3.ttf"
                         android:text="@string/uni_state_mm"
                         android:textColor="@color/colorYellow700"
 
@@ -86,7 +90,7 @@
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/stateSpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
 

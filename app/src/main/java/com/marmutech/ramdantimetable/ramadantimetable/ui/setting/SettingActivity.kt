@@ -1,6 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
 
+import android.content.Context
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
@@ -12,6 +13,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_setting.*
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 import javax.inject.Inject
 
 class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -59,5 +61,9 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
         this.supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_setting_container, targetFragment)
                 .commitAllowingStateLoss()
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
 }

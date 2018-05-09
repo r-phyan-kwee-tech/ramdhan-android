@@ -88,6 +88,8 @@ dependencies {
     //PagingLib
     implementation "android.arch.paging:runtime:1.0.0-rc1"
 
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+
     implementation('org.rabbit-converter.rabbit:rabbit:0.0.3') {
         exclude group: 'org.json', module: 'json'
     }

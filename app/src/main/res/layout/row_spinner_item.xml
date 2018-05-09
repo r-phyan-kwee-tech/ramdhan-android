@@ -9,5 +9,6 @@
     android:gravity="center"
     android:singleLine="true"
     android:text="a"
+    fontPath="fonts/myanmar3.ttf"
     android:textAlignment="inherit"
     android:textColor="@color/white" />

@@ -40,7 +40,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="5"
                     android:gravity="center"
-
+                    fontPath="fonts/myanmar3.ttf"
                     android:text="@string/zg_myanmar"
                     android:textColor="@color/white" />
 
@@ -54,6 +54,7 @@
 
                 <TextView
                     android:id="@+id/tvUnicode"
+                    fontPath="fonts/myanmar3.ttf"
                     style="@style/TV_DEFAULT_MASSIVE_LARGE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

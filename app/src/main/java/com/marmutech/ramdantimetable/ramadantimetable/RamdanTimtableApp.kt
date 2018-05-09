@@ -2,11 +2,13 @@ package com.marmutech.ramdantimetable.ramadantimetable
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import com.marmutech.ramdantimetable.ramadantimetable.di.AppInjector
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import timber.log.Timber
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 import javax.inject.Inject
 
 class RamdanTimtableApp : Application(), HasActivityInjector {
@@ -23,5 +25,9 @@ class RamdanTimtableApp : Application(), HasActivityInjector {
 
     override fun activityInjector(): AndroidInjector<Activity> {
         return dispatchingAndroidInjector
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
 }

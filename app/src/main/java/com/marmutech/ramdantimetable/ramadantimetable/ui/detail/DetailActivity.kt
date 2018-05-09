@@ -3,6 +3,7 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.detail
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
@@ -18,7 +19,11 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPag
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 import javax.inject.Inject
+
+
 
 class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
@@ -46,6 +51,11 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        CalligraphyConfig.initDefault(CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/zawdecode_normal_volt.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
         toolbar = binding?.toolbar
@@ -81,8 +91,13 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf(this.resources.getString(R.string.dua_mm_uni), "EN", "دُعَاء\u200E"), dayResource?.data)
                 viewPager?.adapter = pageAdapter
                 tabLayout?.setupWithViewPager(viewPager)
+
             }
         })
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
 
 

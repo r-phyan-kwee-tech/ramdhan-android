@@ -95,6 +95,7 @@
 
                             <TextView
                                 android:id="@+id/tvdescSehri"
+                                fontPath="fonts/myanmar3.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -134,6 +135,7 @@
 
                             <TextView
                                 android:id="@+id/tvdescIftari"
+                                fontPath="fonts/myanmar3.ttf"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -165,18 +167,20 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_minor"
                         android:layout_marginLeft="@dimen/spacing_major"
                         android:layout_marginTop="@dimen/spacing_minor"
-                        android:layout_marginBottom="@dimen/spacing_minor"
                         android:orientation="vertical">
 
                         <TextView
+                            fontPath="fonts/myanmar3.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{isUnicode?@string/dua_sehri_mm_title_uni:@string/dua_sehri_mm_title_zg}"
                             android:textColor="@color/colorYellow700" />
 
                         <TextView
+                            fontPath="fonts/myanmar3.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing_micro"
@@ -187,17 +191,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_major"
                         android:layout_marginBottom="@dimen/spacing_minor"
+                        android:layout_marginLeft="@dimen/spacing_major"
                         android:orientation="vertical">
 
                         <TextView
+                            fontPath="fonts/myanmar3.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{isUnicode?@string/dua_iftari_mm_title_uni:@string/dua_iftari_mm_title_zg}"
                             android:textColor="@color/colorYellow700" />
 
                         <TextView
+                            fontPath="fonts/myanmar3.ttf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing_micro"

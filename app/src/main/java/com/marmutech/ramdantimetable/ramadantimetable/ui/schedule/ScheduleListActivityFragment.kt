@@ -51,6 +51,13 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
         subscribeUi(viewModel)
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
+
+        subscribeUi(viewModel)
+    }
     private fun setUpRecycler() {
         scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
         binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)
