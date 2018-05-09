@@ -21,16 +21,6 @@
             </item>
 
 
-            <item
-                android:drawable="@drawable/ic_down_arrow"
-                android:width="20dp"
-                android:height="20dp"
-                android:gravity="right">
-
-
-            </item>
-
-
         </layer-list>
 
 

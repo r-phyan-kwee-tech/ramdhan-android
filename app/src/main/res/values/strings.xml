@@ -11,9 +11,10 @@
     <string name="zg_country_mm">နိုင္ငံ</string>
     <string name="uni_country_mm">နိုင်ငံံ</string>
 
-    <string name="zg_state_mm">တိုင္း \ ျပည္နယ္</string>
-    <string name="uni_state_mm">တိုင်း \ ပြည်နယ်</string>
-
+    <string name="zg_state_mm">တိုင္း / ျပည္နယ္</string>
+    <string name="uni_state_mm">တိုင်း / ပြည်နယ်</string>
+    <string name="uni_font">fonts/myanmar3.ttf</string>
+    <string name="zg_font">fonts/zawgyi.ttf</string>
     <string name="uni_country_select">ယခုလက်ရှိရောက်နေတဲ့ နိုင်ငံနဲ့ ပြည်နယ်ကိုရွေးပေးပါ</string>
 
     <string name="zg_country_select">ယခုလက္ရွိေရာက္ေနတဲ့ နိုင္ငံနဲ႔ ျပည္နယ္ကိုေရြးေပးပါ</string>
@@ -26,7 +27,7 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="start_time">Sehri</string>
     <string name="end_time">Iftari</string>
     <string name="dua_mm_zawgyi">ဒိုအာ</string>
-    <string name="dua_mm_uni">ဒိုအာ</string>
+    <string name="dua_mm_uni">Dua (mm)</string>
 
     <string name="dua_title_mm_uni">ယနေ့ ဖတ်ရမည့်ဒိုအာ</string>
     <string name="dua_title_mm_zawgyi">ယေန႔ ဖတ္ရမည့္ဒိုအာ</string>
@@ -57,13 +58,13 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="str_enablie_zaw_gyi_fonts">Enable Zawgyi fonts</string>
     <string name="str_select_location">Select Location</string>
     <string name="str_select_state">Select State</string>
-    <string name="str_choose_location">Choose Location</string>
+    <string name="str_choose_location">Change Location</string>
     <string name="str_choose_state">Choose State</string>
     <string name="str_select_location_state">Select location and state</string>
     <string name="info">Info</string>
-    <string name="str_fonts">Support fonts</string>
+    <string name="str_fonts">Font Settings</string>
     <string name="str_credits">Credits</string>
-    <string name="str_open_source_libraries">Open source libraries</string>
+    <string name="str_open_source_libraries">Licenses</string>
     <string name="str_mubarak">With the beginning of Ramadan, may your home be filled with the atmosphere of love and mirth. May your life be as wonderful as you are throughout the year. Ramadan Mubarak!</string>
     <string name="app_name_2018">Ranmadan Timetable 2018</string>
     <string name="str_special_thanks">With special thanks to</string>

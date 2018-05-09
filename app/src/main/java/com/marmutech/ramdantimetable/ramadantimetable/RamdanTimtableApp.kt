@@ -24,4 +24,5 @@ class RamdanTimtableApp : Application(), HasActivityInjector {
     override fun activityInjector(): AndroidInjector<Activity> {
         return dispatchingAndroidInjector
     }
+
 }

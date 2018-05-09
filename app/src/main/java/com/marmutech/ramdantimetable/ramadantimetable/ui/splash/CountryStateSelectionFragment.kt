@@ -72,7 +72,7 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
     override fun onStart() {
         super.onStart()
         var splashViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
-
+        binding?.isUnicode = prefUtil.getFont()
         splashViewModel.loadAvaliableCountries(50, 1)
         splashViewModel.countryList.observe(this, Observer<Resource<List<Country>>> { t ->
             Timber.d("dayList obersve " + t?.data)

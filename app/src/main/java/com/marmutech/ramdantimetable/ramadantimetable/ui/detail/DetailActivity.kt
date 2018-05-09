@@ -20,6 +20,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
+
 class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject
@@ -45,6 +46,7 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
@@ -81,9 +83,9 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf(this.resources.getString(R.string.dua_mm_uni), "EN", "دُعَاء\u200E"), dayResource?.data)
                 viewPager?.adapter = pageAdapter
                 tabLayout?.setupWithViewPager(viewPager)
+
             }
         })
     }
-
 
 }

@@ -169,4 +169,6 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
         }
 
     }
+
+
 }

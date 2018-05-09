@@ -26,14 +26,14 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginStart="92dp"
-        android:layout_marginLeft="92dp"
-        android:layout_marginTop="108dp"
         android:layout_marginEnd="92dp"
+        android:layout_marginLeft="92dp"
         android:layout_marginRight="92dp"
-        app:srcCompat="@drawable/ic_mosque"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_mosque" />
 
 </android.support.constraint.ConstraintLayout>

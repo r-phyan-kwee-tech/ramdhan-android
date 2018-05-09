@@ -20,10 +20,10 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     companion object {
         val KEY_TARGET_FLAG: String = "key_target_flag"
-        val FLAG_CHOOSE_LOCATION = "flag_choose_loaction"
-        val FLAG_FONT_SUPPORT = "flag_font_support"
-        val FLAG_CREDITS = "flag_credits"
-        val FLAG_OPEN_SOURCE = "flag_open_source"
+        val FLAG_CHOOSE_LOCATION = "Change Location"
+        val FLAG_FONT_SUPPORT = "Font Settings"
+        val FLAG_CREDITS = "Credits"
+        val FLAG_OPEN_SOURCE = "Licenses"
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
@@ -48,8 +48,9 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
             FLAG_CHOOSE_LOCATION -> targetFragment = CountryStateSelectionFragment()
             FLAG_FONT_SUPPORT -> targetFragment = FontSelectionFragment()
             FLAG_CREDITS -> targetFragment = CreditFragment()
-            FLAG_OPEN_SOURCE -> LicenseFragment()
+            FLAG_OPEN_SOURCE -> targetFragment = LicenseFragment()
         }
+        supportActionBar?.title = intent.extras.getString(KEY_TARGET_FLAG)
 
         if (savedInstanceState == null && targetFragment != null) {
             lunchFragmentsDyanamic(targetFragment)
@@ -61,4 +62,5 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 .replace(R.id.fl_setting_container, targetFragment)
                 .commitAllowingStateLoss()
     }
+
 }
