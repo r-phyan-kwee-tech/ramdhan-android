@@ -5,6 +5,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
 
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -22,4 +23,7 @@ abstract class SettingFragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun contributeCreditFragment(): CreditFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeLicenseFragment(): LicenseFragment
 }
