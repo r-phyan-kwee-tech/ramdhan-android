@@ -1,11 +1,12 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
 import android.os.Bundle
+import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
-import com.marmutech.ramdantimetable.ramadantimetable.R.id.tool_bar_setting
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -14,6 +15,8 @@ import javax.inject.Inject
 
 class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private val TAG_COUNTRY_SELECT_FRAG="tag_country"
+
+    private lateinit var targetFragment:Fragment
 
     companion object {
         val  KEY_TARGET_FLAG:String="key_target_flag"
@@ -36,11 +39,24 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        if (savedInstanceState == null) {
-            this.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_setting_container, SettingFragment())
-                    .commitAllowingStateLoss()
+        @NonNull var currentFlag=intent.extras.getString(KEY_TARGET_FLAG)
+
+        when(currentFlag){
+            FLAG_CHOOSE_LOCATION-> targetFragment= CountryStateSelectionFragment()
+            FLAG_FONT_SUPPORT->targetFragment=FontSelectionFragment()
+            FLAG_CREDITS-> /*add credit fragment*/ return
+            FLAG_OPEN_SOURCE -> /*add opensource fragment*/ return
         }
+
+        if (savedInstanceState == null) {
+            lunchFragmentsDyanamic(targetFragment)
+        }
+    }
+
+    private fun lunchFragmentsDyanamic(targetFragment: Fragment) {
+        this.supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_setting_container, targetFragment)
+                .commitAllowingStateLoss()
     }
 
     fun showLocationSelectFrag(){
