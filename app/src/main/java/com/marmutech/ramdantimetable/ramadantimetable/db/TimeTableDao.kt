@@ -15,7 +15,7 @@ interface TimeTableDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun bulkInsert(timetableDays: List<TimeTableDay>)
 
-    @Query("""SELECT * FROM day WHERE stateId=:stateId limit :limit offset :offset """)
+    @Query("SELECT * FROM day WHERE day.calendarDay BETWEEN (SELECT strftime('%Y/%m/%d', 'now') ) AND (SELECT strftime('%Y/%m/%d',date('now','+365 days'))) AND stateId=:stateId  limit :limit offset :offset ")
     fun getDayByStateId(stateId: String, limit: Int, offset: Int): LiveData<List<TimeTableDay>>
 
     @Query("""SELECT * FROM day WHERE objectId=:objectId""")

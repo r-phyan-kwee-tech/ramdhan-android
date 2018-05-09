@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LandingFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
 
 
 class SplashScreenPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
