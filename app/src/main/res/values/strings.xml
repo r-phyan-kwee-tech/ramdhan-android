@@ -50,6 +50,7 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
 
     <string name="str_day">Day %s</string>
+    <string name="str_version">Version %s</string>
     <string name="str_zaw_gyi_fonts">Zawgyi fonts</string>
     <string name="str_select_country">Select country</string>
     <string name="title_activity_settings_delete">Settings</string>
