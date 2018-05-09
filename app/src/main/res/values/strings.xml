@@ -58,13 +58,13 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="str_enablie_zaw_gyi_fonts">Enable Zawgyi fonts</string>
     <string name="str_select_location">Select Location</string>
     <string name="str_select_state">Select State</string>
-    <string name="str_choose_location">Choose Location</string>
+    <string name="str_choose_location">Change Location</string>
     <string name="str_choose_state">Choose State</string>
     <string name="str_select_location_state">Select location and state</string>
     <string name="info">Info</string>
-    <string name="str_fonts">Support fonts</string>
+    <string name="str_fonts">Font Settings</string>
     <string name="str_credits">Credits</string>
-    <string name="str_open_source_libraries">Open source libraries</string>
+    <string name="str_open_source_libraries">Licenses</string>
     <string name="str_mubarak">With the beginning of Ramadan, may your home be filled with the atmosphere of love and mirth. May your life be as wonderful as you are throughout the year. Ramadan Mubarak!</string>
     <string name="app_name_2018">Ranmadan Timetable 2018</string>
     <string name="str_special_thanks">With special thanks to</string>
