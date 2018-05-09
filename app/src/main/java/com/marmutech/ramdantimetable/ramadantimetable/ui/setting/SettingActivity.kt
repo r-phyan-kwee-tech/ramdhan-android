@@ -1,10 +1,13 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
+
 import android.os.Bundle
+import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -36,17 +39,25 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        if (savedInstanceState == null) {
-            this.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_setting_container, SettingFragment())
-                    .commitAllowingStateLoss()
+        @NonNull var currentFlag = intent.extras.getString(KEY_TARGET_FLAG)
+
+        var targetFragment: Fragment? = null
+
+        when (currentFlag) {
+            FLAG_CHOOSE_LOCATION -> targetFragment = CountryStateSelectionFragment()
+            FLAG_FONT_SUPPORT -> targetFragment = FontSelectionFragment()
+            FLAG_CREDITS -> targetFragment = CreditFragment()
+            FLAG_OPEN_SOURCE -> /*add opensource fragment*/ return
+        }
+
+        if (savedInstanceState == null && targetFragment != null) {
+            lunchFragmentsDyanamic(targetFragment)
         }
     }
 
-    fun showLocationSelectFrag() {
+    private fun lunchFragmentsDyanamic(targetFragment: Fragment) {
         this.supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_setting_container, CountryStateSelectionFragment())
-                .addToBackStack(TAG_COUNTRY_SELECT_FRAG)
-                .commit()
+                .replace(R.id.fl_setting_container, targetFragment)
+                .commitAllowingStateLoss()
     }
 }
