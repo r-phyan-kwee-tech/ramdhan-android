@@ -8,6 +8,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var prefUtil: UserPrefUtil
+    var i: Int = 0
 
     private var binding: FragmentScheduleListActivityBinding? = null
     private var scheduleAdapter: ScheduleAdapter? = null
@@ -54,6 +56,7 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     override fun onResume() {
         super.onResume()
+        i = 0
         val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
 
         subscribeUi(viewModel)
@@ -76,14 +79,28 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     private fun subscribeUi(viewModel: ScheduleViewModel) {
         binding?.isLoading = true
+        binding?.isListVisible = false
         viewModel.loadTimetableDayList(prefUtil.getStateId(), 30, 1)
+
         viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
             Timber.d("dayList obersve " + t?.data)
             if (t?.data != null) {
+                i++
+                if (!t?.data.isEmpty()) {
+                    binding?.isLoading = false
+                    binding?.isListVisible = true
+                    binding?.isEid = false
+                    scheduleAdapter?.setScheduleList(t.data)
+                }
 
-                binding?.isLoading = false
-                binding?.isEid = false
-                scheduleAdapter?.setScheduleList(t.data)
+                if (i == 4 && t.data.isEmpty()) {
+                    binding?.isLoading = false
+                    binding?.isListVisible = false
+                    binding?.isEid = true
+                }
+                Log.e("FETCH_COUNT", i.toString())
+                Log.e("DATA_COUNT", t.data.size.toString())
+
             } else {
                 binding?.isLoading = true
                 binding?.isEid = false

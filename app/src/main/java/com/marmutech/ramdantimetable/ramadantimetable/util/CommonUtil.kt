@@ -1,5 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.util
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.DialogInterface
@@ -45,9 +46,13 @@ class CommonUtil(app: Application) {
             context.startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
             dialogInterface.dismiss()
 
+
         })
         dialog.setCancelable(false)
-        dialog.setPositiveButton("Cancel", DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() })
+        dialog.setPositiveButton("Cancel", DialogInterface.OnClickListener { dialogInterface, i ->
+            dialogInterface.dismiss()
+            (context as Activity).finish()
+        })
 
         return dialog
 

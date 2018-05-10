@@ -46,8 +46,10 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="dua_iftari_mm_uni">အလာဟ်ဟွန်းမာ လကာဆွန်းသို ဝဘေကာ အာ့မန်းသို ဝါ့အလဟ် ရစ်ဇ်တေကာ အပ်ဖ်တရ်သို</string>
     <string name="dua_iftari_mm_zg">အလာဟ္ဟြန္းမာ လကာဆြန္းသို ဝေဘကာ အာ့မန္းသို ဝါ့အလဟ္ ရစ္ဇ္ေတကာ အပ္ဖ္တရ္သို</string>
 
-    <string name="no_connection_mm_uni">အင်တာနက်ချိတ်ဆက် မှု မရှိသောကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
-    <string name="no_connection_mm_zg">အင္တာနက္ခ်ိတ္ဆက္ မွု မရွိေသာေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
+    <string name="no_connection_mm_uni">အချိန်စာရင်းများရယူဖို့ အင်တာနက်လိုပါတယ် \n
+ထို့ကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
+    <string name="no_connection_mm_zg">အခ်ိန္စာရင္းမ်ားရယူဖို႔ အင္တာနက္လိုပါတယ္ \n
+ထို႔ေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
 
     <string name="str_day">Day %s</string>
     <string name="str_version">Version %s</string>
@@ -68,6 +70,7 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="str_fonts">Font Settings</string>
     <string name="str_credits">Credits</string>
     <string name="str_open_source_libraries">Licenses</string>
+    <string name="str_eid_mubarak_short">We wish you to a \nHappy Eid Mubarak!</string>
     <string name="str_mubarak">With the beginning of Ramadan, may your home be filled with the atmosphere of love and mirth. May your life be as wonderful as you are throughout the year. Ramadan Mubarak!</string>
     <string name="app_name_2018">Ranmadan Timetable 2018</string>
     <string name="str_special_thanks">With special thanks to</string>
