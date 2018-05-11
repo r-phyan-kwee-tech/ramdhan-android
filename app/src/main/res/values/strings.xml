@@ -1,12 +1,77 @@
 <resources>
-    <string name="app_name">Ramadan Timetable</string>
-    <string name="title_activity_schedule_list_acitivity">Schedule</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">Ramadan Timetable</string>
+    <string name="title_activity_schedule_list_acitivity" translatable="false">Schedule</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
+    <string name="select_font">Please Select your visible font</string>
+    <string name="zg_myanmar">ျမန္မာ</string>
+    <string name="uni_myanmar">မြန်မာ</string>
+
+    <string name="zg_country_mm">နိုင္ငံ</string>
+    <string name="uni_country_mm">နိုင်ငံံ</string>
+
+    <string name="zg_state_mm">တိုင္း / ျပည္နယ္</string>
+    <string name="uni_state_mm">တိုင်း / ပြည်နယ်</string>
+    <string name="uni_font">fonts/myanmar3.ttf</string>
+    <string name="zg_font">fonts/zawgyi.ttf</string>
+    <string name="uni_country_select">ယခုလက်ရှိရောက်နေတဲ့ နိုင်ငံနဲ့ ပြည်နယ်ကိုရွေးပေးပါ</string>
+
+    <string name="zg_country_select">ယခုလက္ရွိေရာက္ေနတဲ့ နိုင္ငံနဲ႔ ျပည္နယ္ကိုေရြးေပးပါ</string>
+    <string name="hello_blank_fragment" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
 
 Sed eget lobortis nisl. Donec consequat aliquet laoreet. In feugiat porttitor faucibus. Praesent faucibus libero vitae orci consectetur, sed bibendum leo eleifend. Proin sed justo nec leo tempus commodo. Maecenas ac lorem ut dui gravida tristique ac id turpis. Duis lacinia, enim vel maximus varius, lectus enim faucibus mauris, a iaculis ante dolor vel odio. Nam et augue erat.
 
 Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cursus felis. Maecenas porttitor, enim eu tempor vestibulum, ante massa fringilla purus, non sollicitudin felis nisi vel velit. Phasellus velit justo, imperdiet sit amet efficitur ut, vehicula nec purus. Duis sed hendrerit metus, eu dignissim nisi. Cras posuere lorem mollis, finibus magna ac, posuere augue. Vivamus vel orci molestie, auctor elit ac, cursus est. Quisque cursus libero eu pulvinar lacinia. Cras purus enim, condimentum nec aliquam vitae, feugiat eget nisl. Sed iaculis lacus non lorem ultricies egestas. Curabitur sed felis nunc.</string>
+
+    <string name="start_time">Sehri</string>
+    <string name="end_time">Iftari</string>
+    <string name="dua_mm_zawgyi">ဒိုအာ</string>
+    <string name="dua_mm_uni">Dua (mm)</string>
+
+    <string name="dua_title_mm_uni">ယနေ့ ဖတ်ရမည့်ဒိုအာ</string>
+    <string name="dua_title_mm_zawgyi">ယေန႔ ဖတ္ရမည့္ဒိုအာ</string>
+    <string name="dua_title_en">Today Dua to ask for</string>
+    <string name="dua_title_ar">اليوم دعاء أن تطلب</string>
+
+    <string name="dua_sehri_mm_title_uni">ဝါချည်ဒိုအာ</string>
+    <string name="dua_sehri_mm_title_zg">ဝါခ်ည္ဒိုအာ</string>
+
+    <string name="dua_iftari_mm_title_uni">ဝါဖြေဒိုအာ</string>
+    <string name="dua_iftari_mm_title_zg">ဝါေျဖဒိုအာ</string>
+
+    <string name="dua_sehri_mm_uni">နဝိုင်း သိုအန် အစူးမာကဒန် မင်န် ရှိုင်ရန် ရမ်ဇမ်</string>
+    <string name="dua_sehri_mm_zg">နဝိုင္း သိုအန္ အစူးမာကဒန္ မင္န္ ရွိုင္ရန္ ရမ္ဇမ္</string>
+
+    <string name="dua_iftari_mm_uni">အလာဟ်ဟွန်းမာ လကာဆွန်းသို ဝဘေကာ အာ့မန်းသို ဝါ့အလဟ် ရစ်ဇ်တေကာ အပ်ဖ်တရ်သို</string>
+    <string name="dua_iftari_mm_zg">အလာဟ္ဟြန္းမာ လကာဆြန္းသို ဝေဘကာ အာ့မန္းသို ဝါ့အလဟ္ ရစ္ဇ္ေတကာ အပ္ဖ္တရ္သို</string>
+
+    <string name="no_connection_mm_uni">အချိန်စာရင်းများရယူဖို့ အင်တာနက်လိုပါတယ် \n
+ထို့ကြောင့် သင့်Setting မှ Wifi သို့ Mobile Data ကိုဖွင့်ပြီးမှထပ်မံကြိုးစားကြည့်ပါ။</string>
+    <string name="no_connection_mm_zg">အခ်ိန္စာရင္းမ်ားရယူဖို႔ အင္တာနက္လိုပါတယ္ \n
+ထို႔ေၾကာင့္ သင့္Setting မွ Wifi သို႔ Mobile Data ကိုဖြင့္ၿပီးမွထပ္မံႀကိဳးစားၾကည့္ပါ။</string>
+
+    <string name="str_day">Day %s</string>
+    <string name="str_version">Version %s</string>
+    <string name="str_schedule_uni"> %s အချိန်စာရင်း</string>
+    <string name="str_schedule_zg"> %s အခ်ိန္စာရင္း</string>
+    <string name="str_zaw_gyi_fonts">Zawgyi fonts</string>
+    <string name="str_select_country">Select country</string>
+    <string name="title_activity_settings_delete">Settings</string>
+
+    <string name="title_activity_setting">Settings</string>
+    <string name="str_enablie_zaw_gyi_fonts">Enable Zawgyi fonts</string>
+    <string name="str_select_location">Select Location</string>
+    <string name="str_select_state">Select State</string>
+    <string name="str_choose_location">Change Location</string>
+    <string name="str_choose_state">Choose State</string>
+    <string name="str_select_location_state">Select location and state</string>
+    <string name="info">Info</string>
+    <string name="str_fonts">Font Settings</string>
+    <string name="str_credits">Credits</string>
+    <string name="str_open_source_libraries">Licenses</string>
+    <string name="str_eid_mubarak_short">We wish you to a \nHappy Eid Mubarak!</string>
+    <string name="str_mubarak">With the beginning of Ramadan, may your home be filled with the atmosphere of love and mirth. May your life be as wonderful as you are throughout the year. Ramadan Mubarak!</string>
+    <string name="app_name_2018">Ranmadan Timetable 2018</string>
+    <string name="str_special_thanks">With special thanks to</string>
 </resources>

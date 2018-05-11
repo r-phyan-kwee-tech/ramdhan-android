@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/colorGrey50</color>
-    <color name="colorPrimaryDark">@color/colorGrey600</color>
+    <color name="colorPrimary">@color/black800</color>
+    <color name="colorPrimaryDark">@color/black1000</color>
     <color name="colorAccent">@color/colorYellow700</color>
 
     <color name="colorYellow600">#FDD835</color>
-    <color name="colorYellow700">#FBC02D</color>
+    <color name="colorYellow700">#ffb300</color>
 
     <color name="colorGrey50">#FAFAFA</color>
     <color name="colorGrey100">#F5F5F5</color>
+    <color name="colorGrey300">#E0E0E0</color>
     <color name="colorGrey600">#757575</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="black800">#232323</color>
+
+    <color name="black1000">#161616</color>
+
 
 </resources>

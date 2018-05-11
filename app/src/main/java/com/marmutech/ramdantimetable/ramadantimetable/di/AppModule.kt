@@ -9,6 +9,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.RamdanDb
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
+import com.marmutech.ramdantimetable.ramadantimetable.util.CommonUtil
 import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFactory
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.Module
@@ -97,6 +98,12 @@ class AppModule {
     @Singleton
     @Provides
     fun provideSharePreference(app: Application): UserPrefUtil {
-        return UserPrefUtil.getInstance(app)
+        return UserPrefUtil(app)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCommonUtil(app: Application): CommonUtil {
+        return CommonUtil(app)
     }
 }

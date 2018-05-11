@@ -7,6 +7,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +16,11 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import timber.log.Timber
 import javax.inject.Inject
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -25,7 +29,9 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var scheduleViewModel: ScheduleViewModel
+    @Inject
+    lateinit var prefUtil: UserPrefUtil
+    var i: Int = 0
 
     private var binding: FragmentScheduleListActivityBinding? = null
     private var scheduleAdapter: ScheduleAdapter? = null
@@ -34,24 +40,7 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_schedule_list_activity, container, false)
 
-//        scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
-//        rv_schedule_list.layoutManager = LinearLayoutManager(context)
-//        rv_schedule_list.adapter = scheduleAdapter
-
-
-        /*View model*/
-        scheduleViewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
-
-        scheduleViewModel.loadTimetableDayList("0b60dd4d4a7841808c94764e716e29af", 10, 1)
-
-
-        scheduleViewModel.daysList.observe(this, Observer { timetableListResource ->
-            //TODO bind data from repo here
-
-            Timber.e("TimeTable List", timetableListResource?.data)
-
-
-        })
+        setUpRecycler()
 
         return binding?.root
     }
@@ -59,10 +48,24 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
 
         subscribeUi(viewModel)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        i = 0
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
+
+        subscribeUi(viewModel)
+    }
+
+    private fun setUpRecycler() {
+        scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
+        binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)
+        binding?.rvScheduleList?.adapter = scheduleAdapter
     }
 
     private val scheduleClickCallBack: ScheduleClickCallBack = object : ScheduleClickCallBack {
@@ -75,7 +78,39 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
     }
 
     private fun subscribeUi(viewModel: ScheduleViewModel) {
-        viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t -> scheduleAdapter?.setScheduleList(t?.data) })
+        binding?.isLoading = true
+        binding?.isListVisible = false
+        viewModel.loadTimetableDayList(prefUtil.getStateId(), 30, 1)
+
+        viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
+            Timber.d("dayList obersve " + t?.data)
+            if (t?.data != null) {
+                i++
+                if (!t?.data.isEmpty()) {
+                    binding?.isLoading = false
+                    binding?.isListVisible = true
+                    binding?.isEid = false
+                    scheduleAdapter?.setScheduleList(t.data)
+                }
+
+                if (i == 4 && t.data.isEmpty()) {
+                    binding?.isLoading = false
+                    binding?.isListVisible = false
+                    binding?.isEid = true
+                }
+                Log.e("FETCH_COUNT", i.toString())
+                Log.e("DATA_COUNT", t.data.size.toString())
+
+            } else {
+                binding?.isLoading = true
+                binding?.isEid = false
+
+
+            }
+            binding?.executePendingBindings()
+
+        })
 
     }
+
 }

@@ -23,6 +23,6 @@ import dagger.android.ContributesAndroidInjector
 @Suppress("unused")
 @Module
 abstract class DetailActivityModule {
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [DetailFragmentBuilderModule::class])
     abstract fun contributeDetailActivity(): DetailActivity
 }

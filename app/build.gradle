@@ -6,6 +6,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.cookpad.android.licensetools'
+
+apply plugin: 'io.fabric'
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -19,6 +23,7 @@ android {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -41,10 +46,14 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:' + rootProject.supportLibVersion
     implementation 'com.android.support:support-v4:' + rootProject.supportLibVersion
     implementation 'com.android.support:design:' + rootProject.supportLibVersion
-    implementation 'com.android.support:cardview-v7:' +rootProject.supportLibVersion
+    implementation 'com.android.support:cardview-v7:' + rootProject.supportLibVersion
+    implementation 'com.android.support:preference-v7:' + rootProject.supportLibVersion
+    implementation 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
+
     //LifeCycle
     implementation "android.arch.lifecycle:runtime:" + rootProject.archComponentVersion
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
     annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
     kapt "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
     implementation "android.arch.lifecycle:common-java8:" + rootProject.archComponentVersion
@@ -67,7 +76,7 @@ dependencies {
     //Support Library DI
     implementation 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
     annotationProcessor 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
-    kapt 'com.google.dagger:dagger-android-processor:'+rootProject.daggerVersion
+    kapt 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
     //Data Binding
     annotationProcessor 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
     kapt 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
@@ -81,6 +90,10 @@ dependencies {
     //PagingLib
     implementation "android.arch.paging:runtime:1.0.0-rc1"
 
+    implementation('org.rabbit-converter.rabbit:rabbit:0.0.3') {
+        exclude group: 'org.json', module: 'json'
+    }
+
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.10.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
@@ -91,4 +104,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.jakewharton.timber:timber:4.7.0'
 
+    implementation 'com.google.firebase:firebase-core:12.0.1'
+
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.1'
+
 }
+apply plugin: 'com.google.gms.google-services'

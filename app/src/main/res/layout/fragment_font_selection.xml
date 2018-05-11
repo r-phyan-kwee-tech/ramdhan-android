@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black1000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/default_padding_large"
+            android:paddingRight="@dimen/default_padding_large">
+
+            <ImageView
+                android:id="@+id/text_font_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_major"
+                android:textColor="@color/white"
+                app:srcCompat="@drawable/ic_font_select" />
+
+            <LinearLayout
+                android:id="@+id/profile_item_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:paddingTop="@dimen/default_padding_medium"
+                android:paddingBottom="@dimen/default_padding_medium">
+
+                <TextView
+                    android:id="@+id/tvZawgyi"
+                    style="@style/TV_DEFAULT_MASSIVE_LARGE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:gravity="center"
+
+                    android:text="@string/zg_myanmar"
+                    android:textColor="@color/white" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/swChangeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    app:switchMinWidth="@dimen/fab_custom_margin"
+                    app:trackTint="@color/colorGrey600" />
+
+                <TextView
+                    android:id="@+id/tvUnicode"
+
+                    style="@style/TV_DEFAULT_MASSIVE_LARGE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="@string/uni_myanmar"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </FrameLayout>
+</layout>

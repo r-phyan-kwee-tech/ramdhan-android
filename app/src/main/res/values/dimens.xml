@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="spacing_minute">0.5dp</dimen>
+    <dimen name="spacing_one">1dp</dimen>
+    <dimen name="spacing_zero">0dp</dimen>
+    <dimen name="spacing_nano">2dp</dimen>
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="spacing_extra_micro">6dp</dimen>
+    <dimen name="spacing_minor">8dp</dimen>
+    <dimen name="spacing_not_so_major">12dp</dimen>
+    <dimen name="spacing_major">16dp</dimen>
+    <dimen name="spacing_not_so_massive">18dp</dimen>
+    <dimen name="spacing_massive">24dp</dimen>
+    <dimen name="standard_touch_target_size">48dp</dimen>
+    <dimen name="map_padding">64dp</dimen>
+    <dimen name="text_size_nano">11sp</dimen>
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_small_extra">16sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_medium_extra">20sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_large_extra">24sp</dimen>
+
+    <dimen name="text_size_massive_large">32sp</dimen>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="size_fab">48dp</dimen>
+    <dimen name="home_card">46dp</dimen>
+    <dimen name="item_offset">1dp</dimen>
+    <!-- detail -->
+    <dimen name="detail_title_text_size">32sp</dimen>
+    <dimen name="detail_body_text_size">22sp</dimen>
+    <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25
+    </item>
+
+    <dimen name="fab_press_translation_z">6dp</dimen>
+
+    <dimen name="fab_custom_margin">64dp</dimen>
+
+    <dimen name="default_padding_small">4dp</dimen>
+    <dimen name="default_padding_medium">8dp</dimen>
+    <dimen name="default_padding_large">16dp</dimen>
+    <dimen name="toolbar_elevation">6dp</dimen>
+    <dimen name="fab_elevation">8dp</dimen>
+    <dimen name="appbarlayout_height">192dp</dimen>
+    <dimen name="collapsingtoolbar_expanded_title_margin_bottom">32dp</dimen>
+    <dimen name="collapsingtoolbar_expanded_title_margin_end">64dp</dimen>
+    <dimen name="collapsingtoolbar_expanded_title_margin_start">48dp</dimen>
+
+    <dimen name="textsize_medium">18sp</dimen>
+    <dimen name="textsize_small">16sp</dimen>
+
+
     <dimen name="detail_backdrop_height">256dp</dimen>
     <dimen name="card_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
