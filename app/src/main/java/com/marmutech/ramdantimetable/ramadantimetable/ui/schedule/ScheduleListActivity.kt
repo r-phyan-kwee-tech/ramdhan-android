@@ -18,6 +18,10 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*
 import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
+import com.crashlytics.android.answers.ContentViewEvent
+import com.crashlytics.android.answers.Answers
+
+
 
 class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject
@@ -34,6 +38,11 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_list_activity)
         setSupportActionBar(toolbar)
+
+       //Fabric Answer
+        Answers.getInstance().logContentView(ContentViewEvent()
+                .putCustomAttribute("Choose State", prefUtil.getStateName()))
+
 
         if (prefUtil.getFont()) {
             supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_uni), prefUtil.getStateName())
