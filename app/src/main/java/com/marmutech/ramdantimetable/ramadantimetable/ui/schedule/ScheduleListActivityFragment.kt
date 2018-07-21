@@ -79,7 +79,6 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     private fun subscribeUi(viewModel: ScheduleViewModel) {
         binding?.isLoading = true
-        binding?.isListVisible = false
         viewModel.loadTimetableDayList(prefUtil.getStateId(), 30, 1)
 
         viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
