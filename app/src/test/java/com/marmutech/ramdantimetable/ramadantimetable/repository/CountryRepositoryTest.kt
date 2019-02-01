@@ -1,8 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.repository
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
 import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService

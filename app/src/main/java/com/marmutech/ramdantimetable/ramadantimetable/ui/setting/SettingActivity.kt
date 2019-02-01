@@ -2,9 +2,8 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
 
 import android.os.Bundle
-import android.support.annotation.NonNull
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
@@ -26,12 +25,12 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val FLAG_OPEN_SOURCE = "Licenses"
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
         return dispatchingAndroidInjector
     }
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +41,7 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         @NonNull var currentFlag = intent.extras.getString(KEY_TARGET_FLAG)
 
-        var targetFragment: Fragment? = null
+        var targetFragment: androidx.fragment.app.Fragment? = null
 
         when (currentFlag) {
             FLAG_CHOOSE_LOCATION -> targetFragment = CountryStateSelectionFragment()
@@ -57,7 +56,7 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
     }
 
-    private fun lunchFragmentsDyanamic(targetFragment: Fragment) {
+    private fun lunchFragmentsDyanamic(targetFragment: androidx.fragment.app.Fragment) {
         this.supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_setting_container, targetFragment)
                 .commitAllowingStateLoss()

@@ -11,14 +11,14 @@ apply plugin: 'com.cookpad.android.licensetools'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.marmutech.ramdantimetable.ramadantimetable"
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -34,33 +34,34 @@ android {
     dataBinding {
         enabled = true
     }
-    kapt {
-        generateStubs = true
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
-    implementation 'com.android.support:recyclerview-v7:' + rootProject.supportLibVersion
-    implementation 'com.android.support:support-v4:' + rootProject.supportLibVersion
-    implementation 'com.android.support:design:' + rootProject.supportLibVersion
-    implementation 'com.android.support:cardview-v7:' + rootProject.supportLibVersion
-    implementation 'com.android.support:preference-v7:' + rootProject.supportLibVersion
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompatVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
     implementation 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
 
     //LifeCycle
-    implementation "android.arch.lifecycle:runtime:" + rootProject.archComponentVersion
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:support-vector-drawable:27.1.1'
-    annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
-    kapt "android.arch.lifecycle:compiler:" + rootProject.archComponentVersion
-    implementation "android.arch.lifecycle:common-java8:" + rootProject.archComponentVersion
-    //LiveData
-    implementation "android.arch.lifecycle:extensions:" + rootProject.archComponentVersion
-    implementation "android.arch.lifecycle:reactivestreams:" + rootProject.archComponentVersion
-    // ReactiveStreams support for LiveData
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle_version"
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycle_version"
+    // optional - ReactiveStreams support for LiveData
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$rootProject.lifecycle_version"
+
+    //Room
+    implementation "androidx.room:room-runtime:$rootProject.room_version"
+    kapt "androidx.room:room-compiler:$rootProject.room_version" // use kapt for Kotlin
+    // optional - RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$rootProject.room_version"
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$rootProject.room_version"
+
+    //PagingLib
+    implementation 'androidx.paging:paging-runtime:2.1.0'
+
     //Rx
     implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.rxJavaVersion
     implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.rxAndroidVersion
@@ -77,31 +78,23 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
     annotationProcessor 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
     kapt 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
-    //Data Binding
-    annotationProcessor 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
-    kapt 'com.android.databinding:compiler:' + rootProject.dataBindingVersion
-    //Room
-    annotationProcessor "android.arch.persistence.room:compiler:$arch_room_version"
-    kapt "android.arch.persistence.room:compiler:$arch_room_version"
-    // RxJava support for Room (use 1.1.0-beta3 for latest beta)
-    implementation "android.arch.persistence.room:rxjava2:$arch_room_version"
-    // Test helpers for Room
-    testImplementation "android.arch.persistence.room:testing:$arch_room_version"
-    //PagingLib
-    implementation "android.arch.paging:runtime:1.0.0-rc1"
 
     implementation('org.rabbit-converter.rabbit:rabbit:0.0.3') {
         exclude group: 'org.json', module: 'json'
     }
 
+    // Local unit tests
+    testImplementation "junit:junit:$rootProject.junitVersion"
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.10.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    testImplementation 'junit:junit:4.12'
     testImplementation 'com.nhaarman:mockito-kotlin:1.1.0'
-    testImplementation 'android.arch.core:core-testing:1.1.1'
-    androidTestImplementation 'android.arch.core:core-testing:1.1.1'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    // Instrumentation tests
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
     implementation 'com.jakewharton.timber:timber:4.7.0'
 
     implementation 'com.google.firebase:firebase-core:12.0.1'

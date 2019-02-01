@@ -1,7 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
 import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
 import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie

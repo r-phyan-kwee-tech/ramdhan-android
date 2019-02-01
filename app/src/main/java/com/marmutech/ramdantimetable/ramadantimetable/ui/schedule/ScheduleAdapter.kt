@@ -1,17 +1,16 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
-import android.databinding.DataBindingUtil
-import android.support.v7.util.DiffUtil
-import android.support.v7.util.DiffUtil.calculateDiff
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DiffUtil.calculateDiff
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.RowScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import timber.log.Timber
 
-class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : androidx.recyclerview.widget.RecyclerView.Adapter<ScheduleViewHolder>() {
 
     internal var mScheduleList: List<out TimeTableDay>? = listOf()
 

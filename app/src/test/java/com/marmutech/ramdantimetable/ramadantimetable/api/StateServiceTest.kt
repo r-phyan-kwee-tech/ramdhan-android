@@ -1,6 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.api
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
 import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFactory
 import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataTestUtil.getValue

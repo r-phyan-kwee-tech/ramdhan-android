@@ -2,12 +2,12 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCreditBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable

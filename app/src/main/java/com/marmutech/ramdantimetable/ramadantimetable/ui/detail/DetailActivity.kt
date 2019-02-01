@@ -1,17 +1,15 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.detail
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.CollapsingToolbarLayout
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.tabs.TabLayout
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityDetailBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
@@ -24,7 +22,7 @@ import javax.inject.Inject
 class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
 
@@ -38,7 +36,7 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     var tabLayout: TabLayout? = null
     var pageAdapter: ViewPagerAdapter? = null
-    var viewPager: ViewPager? = null
+    var viewPager: androidx.viewpager.widget.ViewPager? = null
     var toolbar: Toolbar? = null
     var collapsingToolbar: CollapsingToolbarLayout? = null
 

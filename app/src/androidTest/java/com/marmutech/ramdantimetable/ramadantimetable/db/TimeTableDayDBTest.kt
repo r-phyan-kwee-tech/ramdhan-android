@@ -1,6 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.db
 
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.runner.AndroidJUnit4
 import com.marmutech.ramdantimetable.ramadantimetable.LiveDataTestUtil.getValue
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
 import org.hamcrest.CoreMatchers

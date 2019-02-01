@@ -1,6 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.api
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.marmutech.ramdantimetable.ramadantimetable.model.CountryResponse
 import com.marmutech.ramdantimetable.ramadantimetable.model.DayResponse
 import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse

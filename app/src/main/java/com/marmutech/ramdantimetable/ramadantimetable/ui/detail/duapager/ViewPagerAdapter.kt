@@ -1,13 +1,9 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.app.FragmentTransaction
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 
-class ViewPagerAdapter(internal var fragManager: FragmentManager, internal var mtitles: Array<String>, timeTableDay: TimeTableDay) : FragmentPagerAdapter(fragManager) {
-    internal var ft: FragmentTransaction
+class ViewPagerAdapter(internal var fragManager: androidx.fragment.app.FragmentManager, internal var mtitles: Array<String>, timeTableDay: TimeTableDay) : androidx.fragment.app.FragmentPagerAdapter(fragManager) {
+    internal var ft: androidx.fragment.app.FragmentTransaction
     internal lateinit var _timetableDay: TimeTableDay
 
     init {
@@ -15,7 +11,7 @@ class ViewPagerAdapter(internal var fragManager: FragmentManager, internal var m
         this._timetableDay = timeTableDay
     }
 
-    override fun getItem(position: Int): Fragment? {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment? {
         // getItem is called to instantiate the fragment for the given page.
         when (position) {
             0 -> return DuaInfoFragment.newInstance("mm", _timetableDay.duaMmUni)

@@ -3,17 +3,16 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.viewpager.widget.ViewPager
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity
@@ -30,7 +29,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     @Inject
     lateinit var userPref: UserPrefUtil
@@ -38,7 +37,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
 
-    var introViewPager: ViewPager? = null
+    var introViewPager: androidx.viewpager.widget.ViewPager? = null
     var pageIndicator: CirclePageIndicator? = null
     var screenSlidePagerAdapter: SplashScreenPagerAdapter? = null
 
@@ -160,7 +159,7 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
     private fun changePagerScroller() {
         try {
             var mScroller: Field? = null
-            mScroller = ViewPager::class.java.getDeclaredField("mScroller")
+            mScroller = androidx.viewpager.widget.ViewPager::class.java.getDeclaredField("mScroller")
             mScroller.isAccessible = true
             val scroller = ViewPagerScroller(introViewPager!!.context)
             mScroller!!.set(introViewPager, scroller)

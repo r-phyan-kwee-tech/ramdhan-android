@@ -1,6 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.util
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.marmutech.ramdantimetable.ramadantimetable.api.ApiResponse
 import retrofit2.CallAdapter
 import retrofit2.CallAdapter.Factory

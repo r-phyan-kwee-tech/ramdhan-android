@@ -1,9 +1,9 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.detail
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.repository.TimeTableDayRepository
 import com.marmutech.ramdantimetable.ramadantimetable.util.AbsentLiveData

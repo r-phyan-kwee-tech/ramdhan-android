@@ -26,7 +26,7 @@
         tools:context=".ui.schedule.ScheduleListActivityFragment"
         tools:showIn="@layout/activity_schedule_list_activity">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_schedule_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

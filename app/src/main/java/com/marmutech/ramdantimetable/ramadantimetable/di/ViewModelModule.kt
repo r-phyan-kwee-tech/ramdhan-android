@@ -1,7 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.di
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel

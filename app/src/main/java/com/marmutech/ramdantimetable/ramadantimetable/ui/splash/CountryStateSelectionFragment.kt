@@ -1,18 +1,18 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.AppCompatSpinner
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.widget.AppCompatSpinner
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCountrySelectionBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
@@ -63,8 +63,8 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
         countrySpinner?.onItemSelectedListener = this
         stateSpinner?.onItemSelectedListener = this
 
-        countrySpinner?.background = this.resources.getDrawable(R.drawable.bg_dropdown)
-        stateSpinner?.background = this.resources.getDrawable(R.drawable.bg_dropdown)
+        countrySpinner?.setBackgroundDrawable(this.resources.getDrawable(R.drawable.bg_dropdown))
+        stateSpinner?.setBackgroundDrawable(this.resources.getDrawable(R.drawable.bg_dropdown))
 
         return binding?.root
     }

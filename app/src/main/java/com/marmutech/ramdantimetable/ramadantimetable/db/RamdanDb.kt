@@ -1,7 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay

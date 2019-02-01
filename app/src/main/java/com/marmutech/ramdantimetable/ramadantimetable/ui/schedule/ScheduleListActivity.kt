@@ -3,10 +3,11 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.crashlytics.android.answers.Answers
+import com.crashlytics.android.answers.ContentViewEvent
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
@@ -18,21 +19,18 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*
 import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
-import com.crashlytics.android.answers.ContentViewEvent
-import com.crashlytics.android.answers.Answers
-
 
 
 class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject
     lateinit var prefUtil: UserPrefUtil
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
         return dispatchingAndroidInjector
     }
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

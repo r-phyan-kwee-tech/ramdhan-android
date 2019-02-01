@@ -44,7 +44,7 @@
                     android:text="@string/zg_myanmar"
                     android:textColor="@color/white" />
 
-                <android.support.v7.widget.SwitchCompat
+                <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/swChangeType"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

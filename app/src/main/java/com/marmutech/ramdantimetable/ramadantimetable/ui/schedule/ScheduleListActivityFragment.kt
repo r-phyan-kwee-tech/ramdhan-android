@@ -1,17 +1,15 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
@@ -25,7 +23,7 @@ import javax.inject.Inject
 /**
  * A placeholder fragment containing a simple view.
  */
-class ScheduleListActivityFragment : Fragment(), Injectable {
+class ScheduleListActivityFragment : androidx.fragment.app.Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -64,7 +62,7 @@ class ScheduleListActivityFragment : Fragment(), Injectable {
 
     private fun setUpRecycler() {
         scheduleAdapter = ScheduleAdapter(scheduleClickCallBack)
-        binding?.rvScheduleList?.layoutManager = LinearLayoutManager(context)
+        binding?.rvScheduleList?.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         binding?.rvScheduleList?.adapter = scheduleAdapter
     }
 
