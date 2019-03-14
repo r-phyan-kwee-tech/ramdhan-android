@@ -8,5 +8,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /*btn_test.setOnClickListener {
+            throw RuntimeException("it's just test")
+        }*/
     }
 }
