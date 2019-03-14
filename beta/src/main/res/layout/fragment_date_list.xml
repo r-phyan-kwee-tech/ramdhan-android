@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DateListFragment">
+
+    <!--  <androidx.coordinatorlayout.widget.CoordinatorLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">-->
+
+    <!-- <com.google.android.material.appbar.AppBarLayout
+         android:layout_width="match_parent"
+         android:layout_height="?actionBarSize">
+
+         <androidx.appcompat.widget.Toolbar
+             android:layout_width="match_parent"
+             android:layout_height="?actionBarSize" />
+     </com.google.android.material.appbar.AppBarLayout>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="hello blank list fragment" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+</FrameLayout>
