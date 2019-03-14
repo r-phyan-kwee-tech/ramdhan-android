@@ -11,15 +11,10 @@ apply plugin: 'com.cookpad.android.licensetools'
 apply plugin: 'io.fabric'
 
 android {
-    signingConfigs {
-        config {
-        }
-    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.marmutech.ramdantimetable.ramadantimetable"
         minSdkVersion 15
-        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -34,44 +29,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        /*beta {
-            debuggable true
-            applicationIdSuffix '.beta'
-            versionNameSuffix '(β)'
-        }*/
-    }
-
-    flavorDimensions "mode"
-
-    productFlavors {
-        beta {
-            dimension "mode"
-            minSdkVersion 21
-            applicationIdSuffix '.beta'
-            versionNameSuffix '-(β)'
-        }
-        stable {
-            dimension "mode"
-
-        }
     }
 
     dataBinding {
         enabled = true
-    }
-    sourceSets {
-        beta {
-            manifest.srcFile 'src/beta/AndroidManifest.xml'
-            java.srcDirs = ['src/beta/java']
-            res.srcDirs = ['src/beta/res']
-            assets.srcDirs = ['src/beta/assets']
-        }
-        stable {
-            manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src/main/java']
-            res.srcDirs = ['src/main/res']
-            assets.srcDirs = ['src/main/assets']
-        }
     }
 }
 
@@ -87,7 +48,6 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle_version"
     implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycle_version"
 
     // optional - ReactiveStreams support for LiveData
@@ -125,7 +85,6 @@ dependencies {
 
     //Support Library DI
     implementation 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
-    annotationProcessor 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
     kapt 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
     implementation('org.rabbit-converter.rabbit:rabbit:0.0.3') {
         exclude group: 'org.json', module: 'json'
