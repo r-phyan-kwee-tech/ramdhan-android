@@ -92,12 +92,18 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
         splashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { stateData ->
             Timber.d("dayList obersve  ${stateData?.data}")
             if (stateData?.data != null && stateData.data.isNotEmpty()) {
-                val stateNameList: List<String> = stateData.data.map { t ->
+                val stateNameList = stateData.data.map { t ->
                     if (prefUtil.getFont()) {
                         t.nameMmUni
                     } else t.nameMmZawgyi
                 }.sorted()
-                stateList = stateData.data
+                stateList = stateData.data.sortedBy {
+                    if (prefUtil.getFont()) {
+                        it.nameMmUni
+                    } else {
+                        it.nameMmZawgyi
+                    }
+                }
                 val adapter = ArrayAdapter(context, R.layout.row_spinner_item, stateNameList)
                 adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
                 stateSpinner?.adapter = adapter
