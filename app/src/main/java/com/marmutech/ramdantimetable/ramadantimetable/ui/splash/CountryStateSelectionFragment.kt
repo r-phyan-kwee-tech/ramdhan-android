@@ -88,17 +88,17 @@ class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItem
     }
 
     fun updateStateSpinner(countryId: String) {
-        splashViewModel.loadAvailableStates(countryId, 50, 1)
-        splashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { t ->
-            Timber.d("dayList obersve " + t?.data)
-            if (t?.data != null && !t?.data.isEmpty()) {
-                var stateNameList: List<String> = t.data.map { t ->
+        splashViewModel.loadAvailableStates(countryId, 900, 1)
+        splashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { stateData ->
+            Timber.d("dayList obersve  ${stateData?.data}")
+            if (stateData?.data != null && stateData.data.isNotEmpty()) {
+                val stateNameList: List<String> = stateData.data.map { t ->
                     if (prefUtil.getFont()) {
                         t.nameMmUni
                     } else t.nameMmZawgyi
-                }
-                stateList = t?.data
-                val adapter = ArrayAdapter(this.context, R.layout.row_spinner_item, stateNameList)
+                }.sorted()
+                stateList = stateData.data
+                val adapter = ArrayAdapter(context, R.layout.row_spinner_item, stateNameList)
                 adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
                 stateSpinner?.adapter = adapter
             }
