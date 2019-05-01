@@ -68,7 +68,7 @@ class FontSelectionFragment : Fragment(), Injectable {
                 Timber.d("dayList obersve " + t?.data)
                 if (t?.data != null && !t?.data.isEmpty()) {
 
-                    splashViewModel.loadAvailableStates(t?.data.first().objectId, 20, 1)
+                    splashViewModel.loadAvailableStates(t?.data.first().objectId, 1000, 1)
                     splashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { t ->
                         if (t?.data != null) {
                             // TODO prefetch data complete
