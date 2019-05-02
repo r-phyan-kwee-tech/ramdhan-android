@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -22,12 +21,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import timber.log.Timber
 import javax.inject.Inject
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -53,7 +46,7 @@ class FontSelectionFragment : Fragment(), Injectable {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_font_selection, container, false)
         fontSwitch = binding?.swChangeType
         fontSwitch?.isChecked = prefUtil.getFont()
-        fontSwitch?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked -> prefUtil.setFont(isChecked) })
+        fontSwitch?.setOnCheckedChangeListener { _, isChecked -> prefUtil.setFont(isChecked) }
         return binding?.root
     }
 
