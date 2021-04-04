@@ -15,10 +15,9 @@ import javax.inject.Singleton
             AndroidSupportInjectionModule::class,
             AndroidInjectionModule::class,
             AppModule::class,
-            DetailActivityModule::class,
-            ScheduleListActivityModule::class,
-            SplashActivityModule::class,
-            SettingActivityBuilderModule::class
+            ViewModelModule::class,
+            ActivityModule::class,
+            FragmentModule::class
         ]
 )
 interface AppComponent : AndroidInjector<RamdanTimtableApp> {
