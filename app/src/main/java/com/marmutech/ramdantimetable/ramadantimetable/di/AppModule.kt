@@ -22,6 +22,7 @@ import javax.inject.Singleton
 
 @Module(includes = [ViewModelModule::class])
 class AppModule {
+
     @Singleton
     @Provides
     fun provideCountryService(): CountryService {

@@ -14,17 +14,15 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityDetailBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
 
-class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
+class DetailActivity : AppCompatActivity(), HasAndroidInjector {
 
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
-
-    override fun supportFragmentInjector() = dispatchingAndroidInjector
+    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -85,5 +83,7 @@ class DetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
             }
         })
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
 }

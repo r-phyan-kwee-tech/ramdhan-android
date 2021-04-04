@@ -18,7 +18,7 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment(), Injectable, View.On
         val TAG: String = "tag_info_bottom_sheet"
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         AndroidSupportInjection.inject(this)
 

@@ -15,19 +15,18 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*
 import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
 
 
-class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
+class ScheduleListActivity : AppCompatActivity(), HasAndroidInjector {
     @Inject
     lateinit var prefUtil: UserPrefUtil
 
-    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
-        return dispatchingAndroidInjector
-    }
+    @Inject
+    lateinit var androidInjector : DispatchingAndroidInjector<Any>
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
@@ -89,12 +88,6 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
         startActivity(intent)
     }
 
-    /*private fun lunchSettingActivity() {
-        //we will replace with start activity for result later
-        val intent= Intent(this,SettingActivity::class.java)
-        startActivity(intent)
-    }*/
-
     private fun lunchInfoBottomSheet() {
         val bottomSheetFragment = InfoBottomSheetFragment()
         bottomSheetFragment.show(supportFragmentManager, InfoBottomSheetFragment.TAG)
@@ -105,5 +98,7 @@ class ScheduleListActivity : AppCompatActivity(), HasSupportFragmentInjector {
         intent.putExtra(SettingActivity.KEY_TARGET_FLAG, targetFlag)
         startActivity(intent)
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
 }

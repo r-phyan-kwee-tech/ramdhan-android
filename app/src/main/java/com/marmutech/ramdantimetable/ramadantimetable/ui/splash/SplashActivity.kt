@@ -19,23 +19,21 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListAc
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.adapter.SplashScreenPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.viewpagerindicator.CirclePageIndicator
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import java.lang.reflect.Field
 import javax.inject.Inject
 
 
-class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPager.OnPageChangeListener, View.OnClickListener {
+class SplashActivity : AppCompatActivity(), HasAndroidInjector, ViewPager.OnPageChangeListener, View.OnClickListener {
 
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
     lateinit var userPref: UserPrefUtil
-
-
-    override fun supportFragmentInjector() = dispatchingAndroidInjector
 
     var introViewPager: androidx.viewpager.widget.ViewPager? = null
     var pageIndicator: CirclePageIndicator? = null
@@ -169,5 +167,6 @@ class SplashActivity : AppCompatActivity(), HasSupportFragmentInjector, ViewPage
 
     }
 
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
 }

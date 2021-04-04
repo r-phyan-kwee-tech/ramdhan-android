@@ -1,21 +1,16 @@
 package com.marmutech.ramdantimetable.ramadantimetable
 
-import android.app.Activity
-import android.app.Application
 import com.crashlytics.android.Crashlytics
-import com.marmutech.ramdantimetable.ramadantimetable.di.AppInjector
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import timber.log.Timber
-import javax.inject.Inject
 import com.crashlytics.android.core.CrashlyticsCore
+import com.marmutech.ramdantimetable.ramadantimetable.di.AppInjector
+import com.marmutech.ramdantimetable.ramadantimetable.di.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import io.fabric.sdk.android.Fabric
+import timber.log.Timber
 
 
-class RamdanTimtableApp : Application(), HasActivityInjector {
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+class RamdanTimtableApp : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -26,15 +21,16 @@ class RamdanTimtableApp : Application(), HasActivityInjector {
         configureCrashReporting()
     }
 
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> = DaggerAppComponent
+            .builder()
+            .application(this)
+            .build()
+
     private fun configureCrashReporting() {
         val crashlyticsCore = CrashlyticsCore.Builder()
                 .disabled(BuildConfig.DEBUG)
                 .build()
         Fabric.with(this, Crashlytics())
-    }
-
-    override fun activityInjector(): AndroidInjector<Activity> {
-        return dispatchingAndroidInjector
     }
 
 }

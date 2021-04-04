@@ -1,6 +1,6 @@
 object Versions {
     const val kotlinVersion = "1.3.72"
-    const val gradleAndroidVersion = "4.0.1"
+    const val gradleAndroidVersion = "4.1.2"
     const val licenseToolsVersion = "1.2.0"
     const val fabricVersion = "1.28.0"
     const val googleServiceVersion = "4.3.3"
@@ -21,7 +21,7 @@ object Versions {
 
     const val rxAndroidVersion = "2.0.2"
 
-    const val daggerVersion = "2.16"
+    const val daggerVersion = "2.33"
     const val retrofitVersion = "2.3.0"
     const val okHttpLoggerVersion = "3.10.0"
     const val viewPagerIndicatorVersion = "2.4.1.1@aar"

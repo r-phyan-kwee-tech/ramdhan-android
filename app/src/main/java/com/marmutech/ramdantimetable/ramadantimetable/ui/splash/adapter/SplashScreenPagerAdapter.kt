@@ -8,15 +8,14 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LandingFragment
 
 class SplashScreenPagerAdapter(fm: androidx.fragment.app.FragmentManager) : FragmentPagerAdapter(fm) {
 
-    override fun getItem(position: Int): androidx.fragment.app.Fragment? {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment {
 
         when (position) {
             0 -> return LandingFragment()
             1 -> return FontSelectionFragment()
             2 -> return CountryStateSelectionFragment()
+            else -> throw IllegalStateException("now page found for $position!")
         }
-        return null
-
     }
 
     override fun getCount(): Int {

@@ -10,11 +10,11 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFra
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_setting.*
 import javax.inject.Inject
 
-class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
+class SettingActivity : AppCompatActivity(), HasAndroidInjector {
     private val TAG_COUNTRY_SELECT_FRAG = "tag_country"
 
     companion object {
@@ -25,9 +25,8 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val FLAG_OPEN_SOURCE = "Licenses"
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
-        return dispatchingAndroidInjector
-    }
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
@@ -61,5 +60,7 @@ class SettingActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 .replace(R.id.fl_setting_container, targetFragment)
                 .commitAllowingStateLoss()
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
 }

@@ -11,14 +11,14 @@ class ViewPagerAdapter(internal var fragManager: androidx.fragment.app.FragmentM
         this._timetableDay = timeTableDay
     }
 
-    override fun getItem(position: Int): androidx.fragment.app.Fragment? {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment {
         // getItem is called to instantiate the fragment for the given page.
         when (position) {
             0 -> return DuaInfoFragment.newInstance("mm", _timetableDay.duaMmUni)
             1 -> return DuaInfoFragment.newInstance("en", _timetableDay.duaEn)
             2 -> return DuaInfoFragment.newInstance("ar", _timetableDay.duaAr)
+            else -> throw IllegalArgumentException("no language found!")
         }
-        return null
 
     }
 
