@@ -12,8 +12,8 @@ object Libs {
     const val viewPagerIndicator = "fr.avianey.com.viewpagerindicator:library:${Versions.viewPagerIndicatorVersion}"
 
     //lifecycle
-    //todo separate livedata and vm
-    const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
+    const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
     const val liveDataRxSupport = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.lifecycleVersion}"
 
     //room

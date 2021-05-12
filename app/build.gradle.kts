@@ -39,7 +39,8 @@ android {
         implementation(Libs.material)
         implementation(Libs.viewPagerIndicator)
 
-        implementation(Libs.lifeCycle)
+        implementation(Libs.viewModel)
+        implementation(Libs.liveData)
         implementation(Libs.liveDataRxSupport)
 
         implementation(Libs.room)

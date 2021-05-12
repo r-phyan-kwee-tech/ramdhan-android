@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
@@ -54,7 +53,7 @@ class ScheduleListActivityFragment : CoreFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+        val viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ScheduleViewModel::class.java)
 
         subscribeUi(viewModel)
@@ -63,7 +62,7 @@ class ScheduleListActivityFragment : CoreFragment() {
     override fun onResume() {
         super.onResume()
         i = 0
-        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+        val viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ScheduleViewModel::class.java)
 
         subscribeUi(viewModel)
@@ -88,7 +87,7 @@ class ScheduleListActivityFragment : CoreFragment() {
         binding?.isLoading = true
         viewModel.loadTimetableDayList(prefUtil.getStateId(), 30, 1)
 
-        viewModel.daysList.observe(this, Observer<Resource<List<TimeTableDay>>> { t ->
+        viewModel.daysList.observe(viewLifecycleOwner, Observer<Resource<List<TimeTableDay>>> { t ->
             Timber.d("dayList obersve " + t?.data)
             if (t?.data != null) {
                 i++

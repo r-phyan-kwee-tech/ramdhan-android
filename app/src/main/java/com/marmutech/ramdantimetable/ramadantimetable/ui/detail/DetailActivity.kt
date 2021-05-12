@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.marmutech.ramdantimetable.ramadantimetable.R
@@ -57,7 +56,7 @@ class DetailActivity : CoreActivity() {
 
 
         //ViewModel Class Declaration
-        detailViewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailViewModel::class.java)
+        detailViewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
 
         if (intent.data != null) {
             var data: Uri = intent.data

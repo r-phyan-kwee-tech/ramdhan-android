@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCountrySelectionBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
@@ -54,7 +53,7 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         //TODO ProperDataBinding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_country_selection, container, false)
 
-        splashViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
+        splashViewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
 
 
 
@@ -72,7 +71,10 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
 
     override fun onStart() {
         super.onStart()
-        var splashViewModel = ViewModelProviders.of(this, viewModelFactory).get(SplashViewModel::class.java)
+        var splashViewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        ).get(SplashViewModel::class.java)
         binding?.isUnicode = prefUtil.getFont()
         splashViewModel.loadAvaliableCountries(50, 1)
         splashViewModel.countryList.observe(this, Observer<Resource<List<Country>>> { t ->

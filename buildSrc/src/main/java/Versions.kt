@@ -30,7 +30,7 @@ object Versions {
     const val materialVersion = "1.0.0"
 
     //jet pack
-    const val lifecycleVersion = "2.0.0"
+    const val lifecycleVersion = "2.1.0"
 
     const val roomVersion = "2.1.0-alpha01"
 
