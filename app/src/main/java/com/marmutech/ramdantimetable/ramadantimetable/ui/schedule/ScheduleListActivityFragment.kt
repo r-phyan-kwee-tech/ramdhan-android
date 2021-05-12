@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
-import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import timber.log.Timber
@@ -23,7 +23,8 @@ import javax.inject.Inject
 /**
  * A placeholder fragment containing a simple view.
  */
-class ScheduleListActivityFragment : androidx.fragment.app.Fragment(), Injectable {
+class ScheduleListActivityFragment : CoreFragment() {
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -34,28 +35,36 @@ class ScheduleListActivityFragment : androidx.fragment.app.Fragment(), Injectabl
     private var binding: FragmentScheduleListActivityBinding? = null
     private var scheduleAdapter: ScheduleAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_schedule_list_activity, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_schedule_list_activity,
+            container,
+            false
+        )
 
         setUpRecycler()
 
         return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(ScheduleViewModel::class.java)
 
         subscribeUi(viewModel)
-
     }
 
     override fun onResume() {
         super.onResume()
         i = 0
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory)
+            .get(ScheduleViewModel::class.java)
 
         subscribeUi(viewModel)
     }

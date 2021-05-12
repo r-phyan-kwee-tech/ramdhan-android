@@ -3,18 +3,16 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.setting
 
 import android.os.Bundle
 import androidx.annotation.NonNull
-import androidx.appcompat.app.AppCompatActivity
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_setting.*
 import javax.inject.Inject
 
-class SettingActivity : AppCompatActivity(), HasAndroidInjector {
+class SettingActivity : CoreActivity() {
     private val TAG_COUNTRY_SELECT_FRAG = "tag_country"
 
     companion object {
@@ -24,9 +22,6 @@ class SettingActivity : AppCompatActivity(), HasAndroidInjector {
         val FLAG_CREDITS = "Credits"
         val FLAG_OPEN_SOURCE = "Licenses"
     }
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
@@ -60,7 +55,5 @@ class SettingActivity : AppCompatActivity(), HasAndroidInjector {
                 .replace(R.id.fl_setting_container, targetFragment)
                 .commitAllowingStateLoss()
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
 }

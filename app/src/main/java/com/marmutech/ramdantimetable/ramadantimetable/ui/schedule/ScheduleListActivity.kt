@@ -5,40 +5,33 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import com.crashlytics.android.answers.Answers
 import com.crashlytics.android.answers.ContentViewEvent
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*
 import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
 
 
-class ScheduleListActivity : AppCompatActivity(), HasAndroidInjector {
+class ScheduleListActivity : CoreActivity() {
     @Inject
     lateinit var prefUtil: UserPrefUtil
-
-    @Inject
-    lateinit var androidInjector : DispatchingAndroidInjector<Any>
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_list_activity)
         setSupportActionBar(toolbar)
 
-       //Fabric Answer
-        Answers.getInstance().logContentView(ContentViewEvent()
-                .putCustomAttribute("Choose State", prefUtil.getStateName()))
+        //Fabric Answer
+        Answers.getInstance().logContentView(
+            ContentViewEvent()
+                .putCustomAttribute("Choose State", prefUtil.getStateName())
+        )
 
 
         if (prefUtil.getFont()) {
@@ -98,7 +91,5 @@ class ScheduleListActivity : AppCompatActivity(), HasAndroidInjector {
         intent.putExtra(SettingActivity.KEY_TARGET_FLAG, targetFlag)
         startActivity(intent)
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
 }

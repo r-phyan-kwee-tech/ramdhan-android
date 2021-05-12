@@ -13,9 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentFontSelectionBinding
-import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.CommonUtil
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
@@ -26,14 +26,16 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class FontSelectionFragment : Fragment(), Injectable {
+class FontSelectionFragment : CoreFragment() {
 
     //TODO Proper Databindg has to apply
 
     @Inject
     lateinit var prefUtil: UserPrefUtil
+
     @Inject
     lateinit var commonUtil: CommonUtil
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 

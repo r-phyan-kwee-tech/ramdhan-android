@@ -15,9 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCountrySelectionBinding
-import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import timber.log.Timber
@@ -32,13 +32,14 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class CountryStateSelectionFragment : Fragment(), Injectable, AdapterView.OnItemSelectedListener {
+class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelectedListener {
 
 
     var countrySpinner: AppCompatSpinner? = null
     var stateSpinner: AppCompatSpinner? = null
     var countryList: List<Country> = emptyList()
     var stateList: List<State> = emptyList()
+
     @Inject
     lateinit var prefUtil: UserPrefUtil
 

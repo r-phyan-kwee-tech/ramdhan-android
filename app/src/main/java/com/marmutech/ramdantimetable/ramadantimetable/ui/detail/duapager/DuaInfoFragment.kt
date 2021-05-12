@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.R.string.*
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentDuaInfoBinding
-import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
@@ -24,7 +24,7 @@ private const val DUA = "dua"
  * A simple [Fragment] subclass.
  *
  */
-class DuaInfoFragment : Fragment(), Injectable {
+class DuaInfoFragment : CoreFragment() {
     private var lang: String? = null
     private var dua: String? = null
 

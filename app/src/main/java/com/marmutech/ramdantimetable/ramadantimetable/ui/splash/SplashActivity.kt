@@ -10,32 +10,25 @@ import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager.widget.ViewPager
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.adapter.SplashScreenPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.viewpagerindicator.CirclePageIndicator
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
 import java.lang.reflect.Field
 import javax.inject.Inject
 
 
-class SplashActivity : AppCompatActivity(), HasAndroidInjector, ViewPager.OnPageChangeListener, View.OnClickListener {
-
-
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnClickListener {
 
     @Inject
     lateinit var userPref: UserPrefUtil
 
-    var introViewPager: androidx.viewpager.widget.ViewPager? = null
+    var introViewPager: ViewPager? = null
     var pageIndicator: CirclePageIndicator? = null
     var screenSlidePagerAdapter: SplashScreenPagerAdapter? = null
 
@@ -48,7 +41,6 @@ class SplashActivity : AppCompatActivity(), HasAndroidInjector, ViewPager.OnPage
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
         imageViewPrelolipop()
         if (userPref.isSplashFinished()) {
             val intent: Intent = Intent(this, ScheduleListActivity::class.java)
@@ -157,7 +149,7 @@ class SplashActivity : AppCompatActivity(), HasAndroidInjector, ViewPager.OnPage
     private fun changePagerScroller() {
         try {
             var mScroller: Field? = null
-            mScroller = androidx.viewpager.widget.ViewPager::class.java.getDeclaredField("mScroller")
+            mScroller = ViewPager::class.java.getDeclaredField("mScroller")
             mScroller.isAccessible = true
             val scroller = ViewPagerScroller(introViewPager!!.context)
             mScroller!!.set(introViewPager, scroller)
@@ -166,7 +158,4 @@ class SplashActivity : AppCompatActivity(), HasAndroidInjector, ViewPager.OnPage
         }
 
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
-
 }

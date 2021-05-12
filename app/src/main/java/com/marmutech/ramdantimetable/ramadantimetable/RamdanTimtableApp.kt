@@ -2,7 +2,6 @@ package com.marmutech.ramdantimetable.ramadantimetable
 
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
-import com.marmutech.ramdantimetable.ramadantimetable.di.AppInjector
 import com.marmutech.ramdantimetable.ramadantimetable.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
@@ -17,7 +16,7 @@ class RamdanTimtableApp : DaggerApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-        AppInjector.init(this)
+
         configureCrashReporting()
     }
 

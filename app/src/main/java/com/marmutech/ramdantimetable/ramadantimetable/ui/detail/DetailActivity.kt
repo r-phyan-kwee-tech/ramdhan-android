@@ -2,7 +2,6 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.detail
 
 import android.net.Uri
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -12,17 +11,13 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityDetailBinding
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
 
-class DetailActivity : AppCompatActivity(), HasAndroidInjector {
-
-    @Inject lateinit var androidInjector : DispatchingAndroidInjector<Any>
+class DetailActivity : CoreActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -83,7 +78,4 @@ class DetailActivity : AppCompatActivity(), HasAndroidInjector {
             }
         })
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = androidInjector
-
 }

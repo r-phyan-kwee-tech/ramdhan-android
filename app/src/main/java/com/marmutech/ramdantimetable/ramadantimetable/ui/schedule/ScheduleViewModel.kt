@@ -11,7 +11,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import javax.inject.Inject
 
-//class ScheduleViewModel(application: Application, timeRepo: TimeTableDayRepository) : AndroidViewModel(application) {
 class ScheduleViewModel @Inject constructor(timeRepo: TimeTableDayRepository) : ViewModel() {
 
     private lateinit var userPrefUtil: UserPrefUtil

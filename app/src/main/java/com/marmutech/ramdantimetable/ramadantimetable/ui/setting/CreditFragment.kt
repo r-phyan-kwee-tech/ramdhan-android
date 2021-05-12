@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCreditBinding
-import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 
 
-class CreditFragment : Fragment(), Injectable {
+class CreditFragment : CoreFragment() {
     var binding: FragmentCreditBinding? = null
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_credit, container, false)
 
         return binding?.root
@@ -23,7 +26,7 @@ class CreditFragment : Fragment(), Injectable {
 
     override fun onStart() {
         super.onStart()
-        binding?.versionNumber = getAppVersion(this.context!!)
+        binding?.versionNumber = getAppVersion(requireContext())
     }
 
     /**
