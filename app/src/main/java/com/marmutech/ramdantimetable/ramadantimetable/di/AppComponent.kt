@@ -19,12 +19,9 @@ import javax.inject.Singleton
         ]
 )
 interface AppComponent : AndroidInjector<RamdanTimtableApp> {
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun application(application: Application): Builder
-
-        fun build(): AppComponent
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance application: Application): AppComponent
     }
 
     override fun inject(ramdanTimtableApp: RamdanTimtableApp)

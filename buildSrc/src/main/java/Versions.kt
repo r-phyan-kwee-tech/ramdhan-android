@@ -21,7 +21,7 @@ object Versions {
 
     const val rxAndroidVersion = "2.0.2"
 
-    const val daggerVersion = "2.33"
+    const val daggerVersion = "2.35.1"
     const val retrofitVersion = "2.3.0"
     const val okHttpLoggerVersion = "3.10.0"
     const val viewPagerIndicatorVersion = "2.4.1.1@aar"

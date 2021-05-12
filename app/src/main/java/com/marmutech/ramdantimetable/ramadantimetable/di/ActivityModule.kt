@@ -9,15 +9,19 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityModule {
+    @ActivityScope
     @ContributesAndroidInjector
     internal abstract fun provideListActivity():ScheduleListActivity
 
+    @ActivityScope
     @ContributesAndroidInjector
     internal abstract fun provideDetailActivity():DetailActivity
 
+    @ActivityScope
     @ContributesAndroidInjector
     internal abstract fun provideSettingActivity():SettingActivity
 
+    @ActivityScope
     @ContributesAndroidInjector
     internal abstract fun provideSplashActivity():SplashActivity
 }

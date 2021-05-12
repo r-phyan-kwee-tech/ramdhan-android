@@ -15,30 +15,39 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class FragmentModule {
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideScheduleFragment(): ScheduleListActivityFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideDuaInfoFragment():DuaInfoFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideSettingFragment():SettingFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideInfoBottomSheetFragment():InfoBottomSheetFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideCreditFragment():CreditFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideLandingFragment():LandingFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideLicenseFragment():LicenseFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideFontSelectionFragment():FontSelectionFragment
 
+    @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideCountrySelectionFragment():CountryStateSelectionFragment
 }
