@@ -2,7 +2,7 @@ package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import androidx.lifecycle.LiveData
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
-import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
+import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
@@ -13,9 +13,9 @@ import javax.inject.Singleton
 
 @Singleton
 class CountryRepository @Inject constructor(
-        private val appExecutors: AppExecutors,
-        private val countryDao: CountryDao,
-        private val countryService: CountryService
+    private val appExecutors: AppExecutors,
+    private val countryDao: CountryDao,
+    private val apiService: ApiService
 ) {
     fun loadCountryList(limit: Int, page: Int): LiveData<Resource<List<Country>>> {
         return object : NetworkBoundResource<List<Country>, CountryResponse>(appExecutors) {
@@ -32,7 +32,7 @@ class CountryRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = countryService.getCountryList(query)
+            override fun createCall() = apiService.getCountryList(query)
 
             override fun loadFromDb(): LiveData<List<Country>> {
                 return countryDao.getCountryList(limit, offsetManager(limit, page))
@@ -60,7 +60,7 @@ class CountryRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = countryService.getCountry(query)
+            override fun createCall() = apiService.getCountry(query)
 
             override fun loadFromDb(): LiveData<Country> {
                 return countryDao.getCountryById(countryId)

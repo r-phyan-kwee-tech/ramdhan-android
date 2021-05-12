@@ -2,7 +2,7 @@ package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import androidx.lifecycle.LiveData
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
-import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
+import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
@@ -13,9 +13,9 @@ import javax.inject.Singleton
 
 @Singleton
 class StateRepository @Inject constructor(
-        private val appExecutors: AppExecutors,
-        private val stateDao: StateDao,
-        private val stateSertice: StateService
+    private val appExecutors: AppExecutors,
+    private val stateDao: StateDao,
+    private val apiService: ApiService
 ) {
     fun loadStateList(countryId: String, limit: Int, page: Int): LiveData<Resource<List<State>>> {
         return object : NetworkBoundResource<List<State>, StateResponse>(appExecutors) {
@@ -35,7 +35,7 @@ class StateRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = stateSertice.getStateList(query)
+            override fun createCall() = apiService.getStateList(query)
 
             override fun loadFromDb(): LiveData<List<State>> {
 
@@ -67,7 +67,7 @@ class StateRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = stateSertice.getState(query)
+            override fun createCall() = apiService.getState(query)
 
             override fun loadFromDb(): LiveData<State> {
 

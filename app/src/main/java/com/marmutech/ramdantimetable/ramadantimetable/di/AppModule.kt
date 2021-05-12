@@ -2,9 +2,7 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import android.app.Application
 import androidx.room.Room
-import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
-import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
-import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie
+import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.RamdanDb
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
@@ -25,49 +23,18 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideCountryService(): CountryService {
+    fun provideApiService(): ApiService {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder().addInterceptor(logging).build()
         return Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://ramdan-api.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(CountryService::class.java)
+            .client(client)
+            .baseUrl("https://ramdan-api.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .build()
+            .create(ApiService::class.java)
     }
-
-    @Singleton
-    @Provides
-    fun provideStateService(): StateService {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(logging).build()
-        return Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://ramdan-api.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(StateService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideTimetableDayService(): TimeTableDayServie {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(logging).build()
-        return Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://ramdan-api.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(TimeTableDayServie::class.java)
-    }
-
 
     @Singleton
     @Provides
