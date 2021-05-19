@@ -25,7 +25,7 @@ class CountryServiceTest {
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var service: CountryService
+    private lateinit var service: ApiService
 
     private lateinit var mockWebServer: MockWebServer
 
@@ -34,11 +34,11 @@ class CountryServiceTest {
     fun createService() {
         mockWebServer = MockWebServer()
         service = Retrofit.Builder()
-                .baseUrl(mockWebServer.url("/"))
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(CountryService::class.java)
+            .baseUrl(mockWebServer.url("/"))
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .build()
+            .create(ApiService::class.java)
     }
 
     @After

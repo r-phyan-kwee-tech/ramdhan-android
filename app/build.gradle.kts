@@ -38,6 +38,7 @@ android {
     dependencies {
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
         implementation(Libs.kotlinLib)
+        implementation(Libs.kotlinCoroutine)
         implementation(Libs.appCompat)
         implementation(Libs.material)
         implementation(Libs.viewPagerIndicator)
@@ -67,6 +68,7 @@ android {
         testImplementation(Libs.junit)
         testImplementation(Libs.mockWebServer)
         testImplementation(Libs.mockitoKotlin1)
+        testImplementation(Libs.mockitoKotlin)
         testImplementation(Libs.archCoreTesting)
         testImplementation(Libs.testRunner)
         testImplementation(Libs.espresso)

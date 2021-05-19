@@ -2,6 +2,7 @@ object Libs {
     const val gradleAndroid = "com.android.tools.build:gradle:${Versions.gradleAndroidVersion}"
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
+    const val kotlinCoroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
     const val licenseTools = "com.cookpad.android.licensetools:license-tools-plugin:${Versions.licenseToolsVersion}"
     const val fabric = "io.fabric.tools:gradle:${Versions.fabricVersion}"
     const val googleService = "com.google.gms:google-services:${Versions.googleServiceVersion}"
@@ -44,7 +45,7 @@ object Libs {
 
     //todo migrate to 2
     const val mockitoKotlin1 = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin1Version}"
-    const val mockitoKotlin2 = ""
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlinVersion}"
     const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCoreTestingVersion}"
     const val testRunner = "androidx.test:runner:${Versions.testRunnerVersion}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoVersion}"

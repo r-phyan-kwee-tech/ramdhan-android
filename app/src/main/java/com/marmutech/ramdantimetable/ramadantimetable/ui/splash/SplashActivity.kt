@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager.widget.ViewPager
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivitySplashBinding
@@ -63,7 +62,6 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
         Log.e("PREF", userPref.getStateId())
     }
 
-    @RequiresApi
     fun imageViewPrelolipop() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
@@ -72,7 +70,6 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onClick(p0: View?) {
 
         if (p0?.tag as Int == 111) {

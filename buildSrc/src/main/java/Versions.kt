@@ -41,7 +41,7 @@ object Versions {
     const val espressoVersion = "3.1.1"
     const val mockWebServerVersion = "3.10.0"
     const val mockitoKotlin1Version = "1.1.0"
-    const val mockitoKotlin2Version = ""
+    const val mockitoKotlinVersion = "3.2.0"
     const val archCoreTestingVersion = "2.0.0"
 
     //firebase

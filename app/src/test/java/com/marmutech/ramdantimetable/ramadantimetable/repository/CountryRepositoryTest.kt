@@ -5,11 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
-import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
+import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import com.marmutech.ramdantimetable.ramadantimetable.model.Countries
+import com.marmutech.ramdantimetable.ramadantimetable.model.Country
+import com.marmutech.ramdantimetable.ramadantimetable.model.CountryResponse
+import com.marmutech.ramdantimetable.ramadantimetable.model.Data
+import com.marmutech.ramdantimetable.ramadantimetable.model.Days
+import com.marmutech.ramdantimetable.ramadantimetable.model.States
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import com.nhaarman.mockito_kotlin.verify
@@ -18,12 +23,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mockito
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.never
 
 @RunWith(JUnit4::class)
 class CountryRepositoryTest {
     private val countryDao = mock(CountryDao::class.java)
-    private val countryService = mock(CountryService::class.java)
+    private val countryService = mock(ApiService::class.java)
     private val repo = CountryRepository(InstantAppExecutors(), countryDao, countryService)
 
     var query = "{\n" +
