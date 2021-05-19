@@ -62,5 +62,5 @@ object Libs {
 
     const val rabbit = "org.rabbit-converter.rabbit:rabbit:${Versions.rabbitVersion}"
 
-
+    const val multiDex = "androidx.multidex:multidex:${Versions.multiDexVersion}"
 }

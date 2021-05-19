@@ -50,4 +50,6 @@ object Versions {
     const val crashlyticsVersion = "2.9.1"
 
     const val rabbitVersion = "0.0.3"
+
+    const val multiDexVersion = "2.0.1"
 }

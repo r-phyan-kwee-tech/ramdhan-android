@@ -20,6 +20,7 @@ android {
             targetCompatibility = JavaVersion.VERSION_1_8
         }
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -79,5 +80,7 @@ android {
         implementation(Libs.rabbit) {
             exclude(group = "org.json", module = "json")
         }
+
+        implementation(Libs.multiDex)
     }
 }
