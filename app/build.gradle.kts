@@ -4,7 +4,6 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("com.cookpad.android.licensetools")
-    id("io.fabric")
     id("com.google.gms.google-services")
 }
 
@@ -76,7 +75,6 @@ android {
         implementation(Libs.constraintLayout)
         implementation(Libs.timber)
         implementation(Libs.firebaseCore)
-        implementation(Libs.crashlytic)
 
         implementation(Libs.rabbit) {
             exclude(group = "org.json", module = "json")
