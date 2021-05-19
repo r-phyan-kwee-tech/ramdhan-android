@@ -1,6 +1,6 @@
 object Libs {
     const val gradleAndroid = "com.android.tools.build:gradle:${Versions.gradleAndroidVersion}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
+    const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
     const val licenseTools = "com.cookpad.android.licensetools:license-tools-plugin:${Versions.licenseToolsVersion}"
     const val fabric = "io.fabric.tools:gradle:${Versions.fabricVersion}"

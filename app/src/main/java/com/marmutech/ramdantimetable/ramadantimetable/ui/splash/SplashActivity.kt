@@ -7,18 +7,15 @@ import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager.widget.ViewPager
-import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivitySplashBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.adapter.SplashScreenPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import com.viewpagerindicator.CirclePageIndicator
 import java.lang.reflect.Field
 import javax.inject.Inject
 
@@ -28,50 +25,40 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
     @Inject
     lateinit var userPref: UserPrefUtil
 
-    var introViewPager: ViewPager? = null
-    var pageIndicator: CirclePageIndicator? = null
     var screenSlidePagerAdapter: SplashScreenPagerAdapter? = null
 
-    var tvNext: ImageView? = null
-    var tvPrev: ImageView? = null
-    var tvFinish: TextView? = null
+    private lateinit var binding: ActivitySplashBinding
 
-    //TODO proper DataBinding  has to apply
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         imageViewPrelolipop()
         if (userPref.isSplashFinished()) {
-            val intent: Intent = Intent(this, ScheduleListActivity::class.java)
+            val intent = Intent(this, ScheduleListActivity::class.java)
             startActivity(intent)
 
             finish()
         }
-        introViewPager = findViewById(R.id.help_viewpager)
-        pageIndicator = findViewById(R.id.help_viewpager_indicator)
-        tvNext = findViewById(R.id.help_tv_next)
-        tvPrev = findViewById(R.id.help_tv_back)
-        tvFinish = findViewById(R.id.tvFinish)
-        tvPrev?.visibility = GONE
+        binding.helpTvBack.visibility = GONE
         pagerButtonUIUpdate(0)
 
         screenSlidePagerAdapter = SplashScreenPagerAdapter(supportFragmentManager)
 
 
-        introViewPager?.adapter = screenSlidePagerAdapter
-        pageIndicator?.setViewPager(introViewPager)
+        binding.helpViewpager.adapter = screenSlidePagerAdapter
+        binding.helpViewpagerIndicator.setViewPager(binding.helpViewpager)
 
 
-        tvPrev?.setOnClickListener(this)
-        tvNext?.setOnClickListener(this)
-        tvFinish?.setOnClickListener(this)
+        binding.helpTvBack.setOnClickListener(this)
+        binding.helpTvNext.setOnClickListener(this)
+        binding.tvFinish.setOnClickListener(this)
 
-        pageIndicator?.strokeWidth = 2F
+        binding.helpViewpagerIndicator.strokeWidth = 2F
         userPref.getStateId()
 
         changePagerScroller()
-        introViewPager?.addOnPageChangeListener(this)
+        binding.helpViewpager.addOnPageChangeListener(this)
 
         Log.e("PREF", userPref.getStateId())
     }
@@ -94,54 +81,49 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
             userPref.setSplashFinished(true)
             finish()
         } else {
-            introViewPager?.setCurrentItem(p0?.tag as Int, true)
+            binding.helpViewpager.setCurrentItem(p0.tag as Int, true)
 
         }
 
     }
 
-
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-    fun pagerButtonUIUpdate(position: Int) {
+    private fun pagerButtonUIUpdate(position: Int) {
         when (position) {
             0 -> {
-                tvFinish?.visibility = GONE
-                tvNext?.visibility = VISIBLE
-                tvNext?.tag = 1
-                tvPrev?.visibility = GONE
-
-
+                binding.apply {
+                    tvFinish.visibility = GONE
+                    helpTvNext.visibility = VISIBLE
+                    helpTvNext.tag = 1
+                    helpTvBack.visibility = GONE
+                }
             }
             1 -> {
-                tvNext?.tag = 2
-                tvNext?.visibility = VISIBLE
-                tvPrev?.visibility = VISIBLE
-                tvFinish?.visibility = GONE
-                tvPrev?.tag = 0
+                binding.apply {
+                    helpTvNext.tag = 2
+                    helpTvNext.visibility = VISIBLE
+                    helpTvBack.visibility = VISIBLE
+                    tvFinish.visibility = GONE
+                    helpTvBack.tag = 0
+                }
             }
             2 -> {
-
-                tvFinish?.visibility = VISIBLE
-                tvNext?.visibility = GONE
-                tvFinish?.tag = 111
-                tvPrev?.visibility = VISIBLE
-                tvPrev?.tag = 1
-
-
+                binding.apply {
+                    tvFinish.visibility = VISIBLE
+                    helpTvNext.visibility = GONE
+                    tvFinish.tag = 111
+                    helpTvBack.visibility = VISIBLE
+                    helpTvBack.tag = 1
+                }
             }
-
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onPageScrollStateChanged(state: Int) {
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onPageSelected(position: Int) {
         pagerButtonUIUpdate(position)
     }
@@ -151,8 +133,8 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
             var mScroller: Field? = null
             mScroller = ViewPager::class.java.getDeclaredField("mScroller")
             mScroller.isAccessible = true
-            val scroller = ViewPagerScroller(introViewPager!!.context)
-            mScroller!!.set(introViewPager, scroller)
+            val scroller = ViewPagerScroller(this)
+            mScroller!!.set(binding.helpViewpager, scroller)
         } catch (e: Exception) {
             Log.e("TAG", "error of change scroller ", e)
         }

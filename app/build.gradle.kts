@@ -22,13 +22,16 @@ android {
         }
         vectorDrawables.useSupportLibrary = true
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFile(getDefaultProguardFile("proguard-android.txt"))
         }
     }
+
     buildFeatures {
+        viewBinding = true
         dataBinding = true
     }
 

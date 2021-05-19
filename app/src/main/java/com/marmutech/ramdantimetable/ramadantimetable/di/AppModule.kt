@@ -29,7 +29,7 @@ class AppModule {
         val client = OkHttpClient.Builder().addInterceptor(logging).build()
         return Retrofit.Builder()
             .client(client)
-            .baseUrl("https://ramdan-api.herokuapp.com/")
+            .baseUrl("https://ramdan-api-mm.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
