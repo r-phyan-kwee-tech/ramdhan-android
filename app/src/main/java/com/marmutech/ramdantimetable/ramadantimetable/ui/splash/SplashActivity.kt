@@ -65,7 +65,7 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
 
     @RequiresApi
     fun imageViewPrelolipop() {
-        if (Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
 
