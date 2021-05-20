@@ -45,7 +45,7 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var splashViewModel: SplashViewModel
+    private lateinit var legacySplashViewModel: LegacySplashViewModel
 
     private var binding: FragmentCountrySelectionBinding? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +53,10 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         //TODO ProperDataBinding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_country_selection, container, false)
 
-        splashViewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
+        legacySplashViewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        ).get(LegacySplashViewModel::class.java)
 
 
 
@@ -74,7 +77,7 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         var splashViewModel = ViewModelProvider(
             this,
             viewModelFactory
-        ).get(SplashViewModel::class.java)
+        ).get(LegacySplashViewModel::class.java)
         binding?.isUnicode = prefUtil.getFont()
         splashViewModel.loadAvaliableCountries(50, 1)
         splashViewModel.countryList.observe(this, Observer<Resource<List<Country>>> { t ->
@@ -91,8 +94,8 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
     }
 
     fun updateStateSpinner(countryId: String) {
-        splashViewModel.loadAvailableStates(countryId, 900, 1)
-        splashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { stateData ->
+        legacySplashViewModel.loadAvailableStates(countryId, 900, 1)
+        legacySplashViewModel.stateList.observe(this, Observer<Resource<List<State>>> { stateData ->
             Timber.d("dayList obersve  ${stateData?.data}")
             if (stateData?.data != null && stateData.data.isNotEmpty()) {
                 val stateNameList = stateData.data.map { t ->

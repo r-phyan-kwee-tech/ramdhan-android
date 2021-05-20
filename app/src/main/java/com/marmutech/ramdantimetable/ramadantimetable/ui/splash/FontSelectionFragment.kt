@@ -21,7 +21,7 @@ class FontSelectionFragment : CoreFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var splashViewModel: SplashViewModel
+    private lateinit var legacySplashViewModel: LegacySplashViewModel
     private lateinit var vm: FontSelectionViewModel
 
     private var binding: FragmentFontSelectionBinding? = null
@@ -41,7 +41,10 @@ class FontSelectionFragment : CoreFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        splashViewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
+        legacySplashViewModel = ViewModelProvider(
+            this,
+            viewModelFactory
+        ).get(LegacySplashViewModel::class.java)
         vm = ViewModelProvider(this, viewModelFactory)[FontSelectionViewModel::class.java]
 
         observeData()
