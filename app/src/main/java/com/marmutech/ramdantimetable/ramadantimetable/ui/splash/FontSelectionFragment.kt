@@ -35,7 +35,7 @@ class FontSelectionFragment : CoreFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var splashViewModel: SplashViewModel
-
+    private lateinit var vm: FontSelectionViewModel
 
     private var binding: FragmentFontSelectionBinding? = null
     private var fontSwitch: SwitchCompat? = null
@@ -45,20 +45,27 @@ class FontSelectionFragment : CoreFragment() {
     ): View? {
         binding = FragmentFontSelectionBinding.inflate(inflater, container, false)
         fontSwitch = binding?.swChangeType
-        fontSwitch?.isChecked = prefUtil.getFont()
-        fontSwitch?.setOnCheckedChangeListener { _, isChecked -> prefUtil.setFont(isChecked) }
+
+        fontSwitch?.setOnCheckedChangeListener { _, isChecked -> vm.setEnableUnicode(isChecked) }
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         splashViewModel = ViewModelProvider(this, viewModelFactory).get(SplashViewModel::class.java)
+        vm = ViewModelProvider(this, viewModelFactory)[FontSelectionViewModel::class.java]
+
+        observeData()
+
         if (commonUtil.isNetworkConnected()) {
             splashViewModel.loadAvaliableCountries(50, 1)
-            observeData()
+
         } else {
             commonUtil.getConnectionDialog(prefUtil.getFont(), requireContext()).show()
         }
+
+        vm.onViewCreated()
     }
 
     private fun observeData() {
@@ -76,6 +83,10 @@ class FontSelectionFragment : CoreFragment() {
             if (t?.data != null) {
                 // TODO prefetch data complete
             }
+        })
+
+        vm.isEnableUnicode.observe(viewLifecycleOwner, Observer {
+            fontSwitch?.isChecked = it
         })
     }
 }

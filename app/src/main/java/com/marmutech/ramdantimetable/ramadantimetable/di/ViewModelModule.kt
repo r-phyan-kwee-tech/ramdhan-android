@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.SplashViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.viewmodel.RamdanTimeTableViewModelFactory
 import dagger.Binds
@@ -15,8 +16,6 @@ import dagger.multibindings.IntoMap
 @Suppress("unused")
 @Module
 abstract class ViewModelModule {
-    //TODO  Declare View Models According to your needs
-
 
     @Binds
     @IntoMap
@@ -37,6 +36,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingViewModel::class)
     abstract fun bindSettingViewModel(settingViewModel: SettingViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FontSelectionViewModel::class)
+    abstract fun bindFontSelectionViewModel(fontSelectionViewModel: FontSelectionViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: RamdanTimeTableViewModelFactory): ViewModelProvider.Factory

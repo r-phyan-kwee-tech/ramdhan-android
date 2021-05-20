@@ -5,7 +5,9 @@ import com.marmutech.ramdantimetable.ramadantimetable.repository.UserSettingRepo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetIsEnableUnicode @Inject constructor(private val userSettingRepository: UserSettingRepository) :
-    FlowUseCase<Unit, Boolean> {
-    override suspend fun execute(t: Unit): Flow<Boolean> = userSettingRepository.getIsEnableUnicode()
+class SetIsEnableUnicodeUseCase @Inject constructor(private val userSettingRepository: UserSettingRepository) :
+    FlowUseCase<Boolean, Boolean> {
+    override suspend fun execute(t: Boolean): Flow<Boolean> = userSettingRepository.setIsEnableUnicode(
+        t
+    )
 }
