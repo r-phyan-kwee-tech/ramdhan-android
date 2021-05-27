@@ -41,7 +41,7 @@ class LegacyCountryRepository @Inject constructor(
             }
 
             override fun saveCallResult(item: CountryResponse) {
-                legacyCountryDao.bulkInsert(item.data.countries.data)
+                legacyCountryDao.bulkInsert(item.data.countries!!.data)
             }
 
         }.asLiveData()
@@ -69,7 +69,7 @@ class LegacyCountryRepository @Inject constructor(
             }
 
             override fun saveCallResult(item: CountryResponse) {
-                legacyCountryDao.insert(item.data.country)
+                legacyCountryDao.insert(item.data!!.country!!)
             }
 
         }.asLiveData()

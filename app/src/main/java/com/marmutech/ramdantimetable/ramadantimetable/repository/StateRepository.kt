@@ -48,7 +48,7 @@ class StateRepository @Inject constructor(
             }
 
             override fun saveCallResult(item: StateResponse) {
-                legacyStateDao.bulkInsert(item.data.states.data)
+                legacyStateDao.bulkInsert(item.data.states!!.data)
             }
 
 
@@ -80,7 +80,7 @@ class StateRepository @Inject constructor(
             }
 
             override fun saveCallResult(item: StateResponse) {
-                legacyStateDao.insert(item.data.state)
+                legacyStateDao.insert(item.data.state!!)
             }
 
 

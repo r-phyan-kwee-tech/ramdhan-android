@@ -59,25 +59,29 @@ class TimeTableRepositoryImpl @Inject constructor(
                 Timber.d("emit cacheStateList")
                 emit(cacheStateList)
             } else {
+                Timber.d("in first else")
                 loadStateListWithCacheProcess(countryId)
             }
         } else {
+            Timber.d("in else")
             loadStateListWithCacheProcess(countryId)
         }
     }
 
     override suspend fun loadNetWorkCountry(): Flow<List<Country>> = flow {
         val respond = apiService.getCountryList(countryListQuery()).body()!!
-        emit(mapCountryResponseToCountries(respond))
+        Timber.d("country response $respond")
+        emit(mapCountryResponseToCountries(respond)!!)
     }
 
     override suspend fun loadNetWorkState(countryId: String): Flow<List<State>> = flow {
         val respond = apiService.getStateList(stateListQuery(countryId)).body()!!
-        emit(mapStateResponseToStates(respond))
+        emit(mapStateResponseToStates(respond)!!)
     }
 
     private suspend fun loadStateListWithCacheProcess(countryId: String) = flow {
-        stateDao.getStateByCountryId(_cacheCountryId).collect {
+        Timber.d("loadStateListWithCacheProcess")
+        stateDao.getStateByCountryId(countryId).collect {
             if (it.isNotEmpty()) {
                 _cacheStateList = it
                 emit(cacheStateList)
@@ -93,9 +97,9 @@ class TimeTableRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun mapCountryResponseToCountries(countryResponse: CountryResponse) = countryResponse.data.countries.data
+    private fun mapCountryResponseToCountries(countryResponse: CountryResponse) = countryResponse.data.countries?.data
 
-    private fun mapStateResponseToStates(stateResponse: StateResponse) = stateResponse.data.states.data
+    private fun mapStateResponseToStates(stateResponse: StateResponse) = stateResponse.data.states?.data
 
 
     companion object {

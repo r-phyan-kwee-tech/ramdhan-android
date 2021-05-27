@@ -1,8 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -24,14 +24,16 @@ class UserSettingRepositoryTest {
         repo = UserSettingRepositoryImpl(userPrefUtil)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun setUnicodeEnableTest() = runBlocking {
-        val result = repo.getIsEnableUnicode().single()
+    fun setUnicodeEnableTest() = runBlockingTest {
+        val result = repo.getIsEnableUnicode()
         assertEquals(true, result)
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun getUnicodeEnableTest() = runBlocking {
+    fun getUnicodeEnableTest() = runBlockingTest {
         val result = repo.setIsEnableUnicode(enableUnicode)
         assertEquals(enableUnicode, enableUnicode)
     }

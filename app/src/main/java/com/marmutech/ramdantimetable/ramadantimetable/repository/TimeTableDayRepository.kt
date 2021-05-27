@@ -64,7 +64,7 @@ class TimeTableDayRepository @Inject constructor(
 
             override fun saveCallResult(item: DayResponse) {
                 println("RESULT SAVED----->")
-                timttableDao.bulkInsert(item.data.days.data)
+                timttableDao.bulkInsert(item.data.days!!.data)
             }
         }.asLiveData()
     }
@@ -112,7 +112,7 @@ class TimeTableDayRepository @Inject constructor(
             }
 
             override fun saveCallResult(item: DayResponse) {
-                timttableDao.insert(item.data.day)
+                timttableDao.insert(item.data.day!!)
             }
 
 

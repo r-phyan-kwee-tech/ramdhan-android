@@ -12,6 +12,6 @@ class GetCountryListUseCase @Inject constructor(
     private val timeTableRepository: TimeTableRepo
 ) : FlowUseCase<Unit, List<Country>> {
     override suspend fun execute(param: Unit): Flow<List<Country>> {
-        return timeTableRepository.loadNetWorkCountry().flowOn(Dispatchers.IO)
+        return timeTableRepository.loadCountryList().flowOn(Dispatchers.IO)
     }
 }
