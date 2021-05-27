@@ -3,6 +3,7 @@ object Libs {
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
     const val kotlinCoroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+    const val kotlinCoroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0"
     const val licenseTools = "com.cookpad.android.licensetools:license-tools-plugin:${Versions.licenseToolsVersion}"
     const val fabric = "io.fabric.tools:gradle:${Versions.fabricVersion}"
     const val googleService = "com.google.gms:google-services:${Versions.googleServiceVersion}"
@@ -18,7 +19,7 @@ object Libs {
     const val liveDataRxSupport = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.lifecycleVersion}"
 
     //room
-    const val room = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val room = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomProcessor = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val roomRxSupport = "androidx.room:room-rxjava2:${Versions.roomVersion}"
     const val roomTesting = "androidx.room:room-testing:${Versions.roomVersion}"

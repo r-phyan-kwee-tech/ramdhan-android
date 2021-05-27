@@ -25,7 +25,7 @@ class GithubServiceTest {
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var service: ApiService
+    private lateinit var serviceLegacy: LegacyApiService
 
     private lateinit var mockWebServer: MockWebServer
 
@@ -33,12 +33,12 @@ class GithubServiceTest {
     @Before
     fun createService() {
         mockWebServer = MockWebServer()
-        service = Retrofit.Builder()
+        serviceLegacy = Retrofit.Builder()
             .baseUrl(mockWebServer.url("/"))
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
-            .create(ApiService::class.java)
+            .create(LegacyApiService::class.java)
     }
 
     @After
@@ -49,7 +49,7 @@ class GithubServiceTest {
     @Test
     fun getTimeTable() {
         enqueueResponse("time-table-day.json")
-        val yigit = (getValue(service.getTimetable("")) as ApiSuccessResponse).body
+        val yigit = (getValue(serviceLegacy.getTimetable("")) as ApiSuccessResponse).body
 
         val request = mockWebServer.takeRequest()
         assertThat(request.path, `is`("/api?query="))
@@ -60,7 +60,7 @@ class GithubServiceTest {
     @Test
     fun getTimeTableList() {
         enqueueResponse("time-table-day-list.json")
-        val yigit = (getValue(service.getTimetableList("")) as ApiSuccessResponse).body
+        val yigit = (getValue(serviceLegacy.getTimetableList("")) as ApiSuccessResponse).body
 
         val request = mockWebServer.takeRequest()
         assertThat(request.path, `is`("/api?query="))

@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
-import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
-import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
+import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
+import com.marmutech.ramdantimetable.ramadantimetable.db.LegacyCountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
 import com.marmutech.ramdantimetable.ramadantimetable.model.Countries
@@ -28,20 +28,20 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.never
 
 @RunWith(JUnit4::class)
-class CountryRepositoryTest {
-    private val countryDao = mock(CountryDao::class.java)
-    private val countryService = mock(ApiService::class.java)
-    private val repo = CountryRepository(InstantAppExecutors(), countryDao, countryService)
+class LegacyTimeTableRepositoryTest {
+    private val countryDao = mock(LegacyCountryDao::class.java)
+    private val countryService = mock(LegacyApiService::class.java)
+    private val repo = LegacyCountryRepository(InstantAppExecutors(), countryDao, countryService)
 
     var query = "{\n" +
-            "  countries(limit: 100, page: ${offsetManager(100, 1)}) {\n" +
-            "    data {\n" +
-            "      id\n" +
-            "      objectId\n" +
-            "      name\n" +
-            "      createdDate\n" +
-            "      updatedDate\n" +
-            "    }\n" +
+        "  countries(limit: 100, page: ${offsetManager(100, 1)}) {\n" +
+        "    data {\n" +
+        "      id\n" +
+        "      objectId\n" +
+        "      name\n" +
+        "      createdDate\n" +
+        "      updatedDate\n" +
+        "    }\n" +
             "  }\n" +
             "}"
 

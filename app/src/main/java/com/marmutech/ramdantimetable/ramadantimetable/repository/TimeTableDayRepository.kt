@@ -3,7 +3,7 @@ package com.marmutech.ramdantimetable.ramadantimetable.repository
 import androidx.lifecycle.LiveData
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.api.ApiResponse
-import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
+import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.model.DayResponse
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 class TimeTableDayRepository @Inject constructor(
     private val appExecutors: AppExecutors,
     private val timttableDao: TimeTableDao,
-    private val apiService: ApiService
+    private val legacyApiService: LegacyApiService
 ) {
     fun loadTimetableDayList(stateId: String, limit: Int, page: Int): LiveData<Resource<List<TimeTableDay>>> {
         return object : NetworkBoundResource<List<TimeTableDay>, DayResponse>(appExecutors) {
@@ -54,7 +54,7 @@ class TimeTableDayRepository @Inject constructor(
                     "}"
 
             override fun createCall(): LiveData<ApiResponse<DayResponse>> {
-                return apiService.getTimetableList(query)
+                return legacyApiService.getTimetableList(query)
             }
 
 
@@ -102,7 +102,7 @@ class TimeTableDayRepository @Inject constructor(
                     "}"
 
             override fun createCall(): LiveData<ApiResponse<DayResponse>> {
-                return apiService.getTimetable(query)
+                return legacyApiService.getTimetable(query)
             }
 
             override fun loadFromDb(): LiveData<TimeTableDay> {

@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LegacySplashViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.SplashViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.viewmodel.RamdanTimeTableViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -20,7 +20,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(LegacySplashViewModel::class)
-    abstract fun bindSplashViewModel(detailViewModelLegacy: LegacySplashViewModel): ViewModel
+    abstract fun bindLegacySplashViewModel(detailViewModelLegacy: LegacySplashViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -39,8 +39,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(FontSelectionViewModel::class)
-    abstract fun bindFontSelectionViewModel(fontSelectionViewModel: FontSelectionViewModel): ViewModel
+    @ViewModelKey(SplashViewModel::class)
+    abstract fun bindSplashViewModel(splashViewModel: SplashViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: RamdanTimeTableViewModelFactory): ViewModelProvider.Factory

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
-import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
+import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
@@ -29,7 +29,7 @@ import org.mockito.Mockito.verify
 @RunWith(JUnit4::class)
 class TimeTableDayRepositoryTest {
     private val timetableDao = mock(TimeTableDao::class.java)
-    private val timetableDayService = mock(ApiService::class.java)
+    private val timetableDayService = mock(LegacyApiService::class.java)
     private val repo = TimeTableDayRepository(
         InstantAppExecutors(),
         timetableDao,

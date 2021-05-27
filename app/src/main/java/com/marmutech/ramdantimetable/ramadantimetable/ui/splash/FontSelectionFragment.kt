@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SwitchCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentFontSelectionBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
@@ -21,8 +20,9 @@ class FontSelectionFragment : CoreFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var legacySplashViewModel: LegacySplashViewModel
-    private lateinit var vm: FontSelectionViewModel
+    private val splashViewModel by lazy {
+        ViewModelProvider(requireActivity(), viewModelFactory)[SplashViewModel::class.java]
+    }
 
     private var binding: FragmentFontSelectionBinding? = null
     private var fontSwitch: SwitchCompat? = null
@@ -34,27 +34,25 @@ class FontSelectionFragment : CoreFragment() {
         binding = FragmentFontSelectionBinding.inflate(inflater, container, false)
         fontSwitch = binding?.swChangeType
 
-        fontSwitch?.setOnCheckedChangeListener { _, isChecked -> vm.setEnableUnicode(isChecked) }
+        fontSwitch?.setOnCheckedChangeListener { _, isChecked ->
+            splashViewModel.setEnableUnicode(
+                isChecked
+            )
+        }
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        legacySplashViewModel = ViewModelProvider(
-            this,
-            viewModelFactory
-        ).get(LegacySplashViewModel::class.java)
-        vm = ViewModelProvider(this, viewModelFactory)[FontSelectionViewModel::class.java]
-
         observeData()
-
-        vm.onViewCreated()
+        splashViewModel.onViewCreated()
     }
 
     private fun observeData() {
-        vm.isEnableUnicode.observe(viewLifecycleOwner, Observer {
-            fontSwitch?.isChecked = it
+        splashViewModel.fontSelectionUiModel.observe(viewLifecycleOwner, { uiModel ->
+            uiModel?.let {
+                fontSwitch?.isChecked = it.isUnicodeEnable
+            }
         })
     }
 }

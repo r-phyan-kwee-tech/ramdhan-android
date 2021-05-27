@@ -6,7 +6,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
-import com.marmutech.ramdantimetable.ramadantimetable.repository.CountryRepository
+import com.marmutech.ramdantimetable.ramadantimetable.repository.LegacyCountryRepository
 import com.marmutech.ramdantimetable.ramadantimetable.repository.StateRepository
 import com.marmutech.ramdantimetable.ramadantimetable.util.AbsentLiveData
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @Deprecated("consider to use SplashViewModel")
 class LegacySplashViewModel @Inject constructor(
-    countryRepo: CountryRepository,
+    legacyCountryRepo: LegacyCountryRepository,
     stateRepo: StateRepository
 ) : ViewModel() {
 
@@ -25,7 +25,7 @@ class LegacySplashViewModel @Inject constructor(
 
     var countryList: LiveData<Resource<List<Country>>> = Transformations.switchMap(_countryParam) { input ->
         input.ifExists { limit, page ->
-            countryRepo.loadCountryList(limit, page)
+            legacyCountryRepo.loadCountryList(limit, page)
         }
     }
 

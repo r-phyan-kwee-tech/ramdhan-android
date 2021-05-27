@@ -22,6 +22,9 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 
     buildTypes {
         getByName("release") {
@@ -39,6 +42,7 @@ android {
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
         implementation(Libs.kotlinLib)
         implementation(Libs.kotlinCoroutine)
+        testImplementation(Libs.kotlinCoroutineTest)
         implementation(Libs.appCompat)
         implementation(Libs.material)
         implementation(Libs.viewPagerIndicator)
