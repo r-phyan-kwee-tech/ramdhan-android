@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CountryDao {
 
-    @Query("""SELECT * FROM country limit :limit offset :offset """)
-    fun getCountryList(limit: Int, offset: Int): Flow<List<Country>>
+    @Query("""SELECT * FROM country """)
+    fun getCountryList(): Flow<List<Country>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun bulkInsert(countries: List<Country>)

@@ -10,7 +10,9 @@ import javax.inject.Inject
 
 class GetStateListBySelectedCountryUseCase @Inject constructor(private val timeTableRepo: TimeTableRepo) :
     FlowUseCase<String, List<State>> {
-    override suspend fun execute(param: String): Flow<List<State>> = timeTableRepo.loadStateList(
-        param
-    ).flowOn(Dispatchers.IO)
+    override suspend fun execute(param: String): Flow<List<State>> {
+        return timeTableRepo.loadStateList(
+            param
+        ).flowOn(Dispatchers.IO)
+    }
 }

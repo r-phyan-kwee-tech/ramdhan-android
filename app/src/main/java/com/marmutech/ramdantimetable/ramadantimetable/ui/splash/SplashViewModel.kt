@@ -74,22 +74,29 @@ class SplashViewModel @Inject constructor(
             flowOf(getSelectedCountryIdUseCase.execute(Unit))
         ) { countries, savedCountryId ->
             val selectedCountriesId = savedCountryId ?: getVeryFirstCountryId(countries)!!
-            _selectedCountryId.value = selectedCountriesId
             countries to selectedCountriesId
         }.mapLatest {
             val state = getStateListBySelectedCountryUseCase.execute(it.second).single()
             it.first to state
         }.collect {
-            _countriesSelectionUiModel.value = CountrySelectionUiModel(it.first, it.second)
+            _countriesSelectionUiModel.value = CountrySelectionUiModel(
+                getNameFromCountry(it.first),
+                getNameFromState(it.second)
+            )
         }
     }
 
     private fun getVeryFirstCountryId(countries: List<Country>): String? = countries.getOrNull(0)?.objectId
+
+    private fun getNameFromCountry(countries: List<Country>): List<String> = countries.map { it.name }
+
+    //todo fix to one unifine name
+    private fun getNameFromState(state: List<State>): List<String> = state.map { it.nameMmUni }
 }
 
 data class CountrySelectionUiModel(
-    val countries: List<Country>,
-    val states: List<State>
+    val countries: List<String>,
+    val states: List<String>
 )
 
 data class FontSelectionUiModel(

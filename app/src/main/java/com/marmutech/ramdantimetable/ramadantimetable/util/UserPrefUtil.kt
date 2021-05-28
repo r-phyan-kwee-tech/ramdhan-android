@@ -69,8 +69,8 @@ class UserPrefUtil @Inject constructor(app: Application) {
         return mSharedPreference.getString(PREF_STATE_NAME, "")
     }
 
-    fun getLocationId(): String {
-        return mSharedPreference.getString(PREF_LOCATION_ID, "")
+    fun getLocationId(): String? {
+        return mSharedPreference.getString(PREF_LOCATION_ID, null)
     }
 
     fun getLocationName(): String {

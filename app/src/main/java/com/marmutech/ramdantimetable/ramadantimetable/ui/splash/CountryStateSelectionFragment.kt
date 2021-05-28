@@ -17,7 +17,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import timber.log.Timber
 import javax.inject.Inject
 
 class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelectedListener {
@@ -86,16 +85,16 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        when (p0?.id) {
-            R.id.countrySpinner -> {
-                splashViewModel.setSelectedCountryId(countryList[p2].objectId)
-                updateStateSpinner(countryList.get(p2).objectId)
-            }
-            R.id.stateSpinner -> {
-                prefUtil.saveStateId(localStateList.get(p2).objectId)
-                prefUtil.saveStateName(localStateList.get(p2).nameMmUni)
-            }
-        }
+//        when (p0?.id) {
+//            R.id.countrySpinner -> {
+//                splashViewModel.setSelectedCountryId(countryList[p2].objectId)
+//                updateStateSpinner(countryList.get(p2).objectId)
+//            }
+//            R.id.stateSpinner -> {
+//                prefUtil.saveStateId(localStateList.get(p2).objectId)
+//                prefUtil.saveStateName(localStateList.get(p2).nameMmUni)
+//            }
+//        }
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -106,35 +105,21 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         splashViewModel.countrySelectionUiModel.asLiveData()
             .observe(viewLifecycleOwner, { uiModel ->
                 uiModel?.let {
-                    Timber.d("countries size ${it.countries.size} state size ${it.states.size}")
                     showCountryDataInSpinner(it.countries)
                     showStateDataInSpinner(it.states)
                 }
             })
     }
 
-    private fun showCountryDataInSpinner(countries: List<Country>) {
-        countryList = countries
+    private fun showCountryDataInSpinner(countries: List<String>) {
         val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, countries)
         adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
         countrySpinner?.adapter = adapter
         countrySpinner?.setSelection(0)
     }
 
-    private fun showStateDataInSpinner(stateList: List<State>) {
-        val stateNameList = stateList.map { t ->
-            if (prefUtil.getFont()) {
-                t.nameMmUni
-            } else t.nameMmZawgyi
-        }.sorted()
-        localStateList = stateList.sortedBy {
-            if (prefUtil.getFont()) {
-                it.nameMmUni
-            } else {
-                it.nameMmZawgyi
-            }
-        }
-        val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, stateNameList)
+    private fun showStateDataInSpinner(stateList: List<String>) {
+        val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, stateList)
         adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
         stateSpinner?.adapter = adapter
     }
