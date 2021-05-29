@@ -11,8 +11,9 @@ import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelecte
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryNameUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.GetIsEnableUnicodeUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.SetIsEnableUnicodeUseCase
+import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetSelectedStateIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetStateListBySelectedCountryUseCase
-import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedIdStateUseCase
+import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedStateIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedStateNameUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
@@ -34,7 +35,8 @@ class SplashViewModel @Inject constructor(
     private val getIsEnableUnicodeUseCase: GetIsEnableUnicodeUseCase,
     private val saveSelectedCountryIdUseCase: SaveSelectedCountryIdUseCase,
     private val getSelectedCountryIdUseCase: GetSelectedCountryIdUseCase,
-    private val saveSelectedIdStateUseCase: SaveSelectedIdStateUseCase,
+    private val saveSelectedStateIdUseCase: SaveSelectedStateIdUseCase,
+    private val getSelectedIdStateUseCase: GetSelectedStateIdUseCase,
     private val saveSelectedStateNameUseCase: SaveSelectedStateNameUseCase,
     private val saveSelectedCountryNameUseCase: SaveSelectedCountryNameUseCase,
     private val getCountryListUseCase: GetCountryListUseCase,
@@ -69,13 +71,6 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-    fun setSelectedCountryId(id: String) {
-        viewModelScope.launch(dispatcher) {
-            //_selectedCountryId.value = id
-            saveSelectedCountryIdUseCase.execute(id)
-        }
-    }
-
     private suspend fun initCountrySelectionUiModel() {
         combine(
             getCountryListUseCase.execute(Unit),
@@ -87,12 +82,7 @@ class SplashViewModel @Inject constructor(
             val state = getStateListBySelectedCountryUseCase.execute(it.second).single()
             it.first to state
         }.collect {
-            saveCountryListInVM(it.first)
-            saveStateListInVM(it.second)
-            _countriesSelectionUiModel.value = CountrySelectionUiModel(
-                getNameFromCountry(it.first),
-                getNameFromState(it.second)
-            )
+            handleCountryAndStateData(it.first, it.second)
         }
     }
 
@@ -103,7 +93,7 @@ class SplashViewModel @Inject constructor(
                     ?: return@launch
                 saveSelectedCountryIdUseCase.execute(countryIdAndStateName.first)
                 saveSelectedCountryNameUseCase.execute(countryIdAndStateName.second)
-                Timber.d("country data saved")
+                Timber.d("banner: country data saved")
             }
         }
     }
@@ -113,10 +103,29 @@ class SplashViewModel @Inject constructor(
             _stateList.value?.let {
                 val stateIdAndStateName = getStateIdAndNameFromStateByPosition(it, position)
                     ?: return@launch
-                saveSelectedIdStateUseCase.execute(stateIdAndStateName.first)
+                saveSelectedStateIdUseCase.execute(stateIdAndStateName.first)
                 saveSelectedStateNameUseCase.execute(stateIdAndStateName.second)
-                Timber.d("state data saved")
+                Timber.d("banner: state data saved")
             }
+        }
+    }
+
+    private fun handleCountryAndStateData(countries: List<Country>, states: List<State>) {
+        viewModelScope.launch {
+            saveCountryListInVM(countries)
+            saveStateListInVM(states)
+            Timber.d("banner: _selectedCountryId.value ${getSelectedCountryIdUseCase.execute(Unit)}")
+            Timber.d("banner: _selectedStateId.value ${getSelectedIdStateUseCase.execute(Unit)}")
+            _countriesSelectionUiModel.value = CountrySelectionUiModel(
+                CountryListUiModel(
+                    getNameFromCountry(countries),
+                    getCountrySelectedIndex(countries, getSelectedCountryIdUseCase.execute(Unit))
+                ),
+                StateListUiModel(
+                    getNameFromState(states),
+                    getStateSelectedIndex(states, getSelectedIdStateUseCase.execute(Unit))
+                )
+            )
         }
     }
 
@@ -148,11 +157,37 @@ class SplashViewModel @Inject constructor(
     private fun saveStateListInVM(state: List<State>) {
         _stateList.value = state
     }
+
+    private fun getCountrySelectedIndex(countries: List<Country>, savedId: String?): Int {
+        if (savedId == null) return 0
+
+        return countries.indexOfFirst {
+            it.objectId == savedId
+        }
+    }
+
+    private fun getStateSelectedIndex(state: List<State>, savedId: String?): Int {
+        if (savedId == null) return 0
+
+        return state.indexOfFirst {
+            it.objectId == savedId
+        }
+    }
 }
 
 data class CountrySelectionUiModel(
+    val countryListUiModel: CountryListUiModel,
+    val stateListUiModel: StateListUiModel
+)
+
+data class CountryListUiModel(
     val countries: List<String>,
-    val states: List<String>
+    val selectedIndex: Int
+)
+
+data class StateListUiModel(
+    val states: List<String>,
+    val selectedIndex: Int
 )
 
 data class FontSelectionUiModel(

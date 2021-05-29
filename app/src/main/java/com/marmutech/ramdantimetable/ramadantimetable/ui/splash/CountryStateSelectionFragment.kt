@@ -17,6 +17,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
+import timber.log.Timber
 import javax.inject.Inject
 
 class CountryStateSelectionFragment : CoreFragment() {
@@ -102,24 +103,26 @@ class CountryStateSelectionFragment : CoreFragment() {
         splashViewModel.countrySelectionUiModel.asLiveData()
             .observe(viewLifecycleOwner, { uiModel ->
                 uiModel?.let {
-                    showCountryDataInSpinner(it.countries)
-                    showStateDataInSpinner(it.states)
+                    Timber.d("banner: county index: ${it.countryListUiModel.selectedIndex} and state index: ${it.stateListUiModel.selectedIndex}")
+                    showCountryDataInSpinner(it.countryListUiModel)
+                    showStateDataInSpinner(it.stateListUiModel)
                     attachSpinnerListener()
                 }
             })
     }
 
-    private fun showCountryDataInSpinner(countries: List<String>) {
-        val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, countries)
+    private fun showCountryDataInSpinner(uiModel: CountryListUiModel) {
+        val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, uiModel.countries)
         adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
         countrySpinner?.adapter = adapter
-        countrySpinner?.setSelection(0)
+        countrySpinner?.setSelection(uiModel.selectedIndex)
     }
 
-    private fun showStateDataInSpinner(stateList: List<String>) {
-        val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, stateList)
+    private fun showStateDataInSpinner(uiModel: StateListUiModel) {
+        val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, uiModel.states)
         adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
         stateSpinner?.adapter = adapter
+        stateSpinner?.setSelection(uiModel.selectedIndex)
     }
 
     private fun attachSpinnerListener() {
