@@ -58,8 +58,6 @@ class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnCl
 
         changePagerScroller()
         binding.helpViewpager.addOnPageChangeListener(this)
-
-        Log.e("PREF", userPref.getStateId())
     }
 
     fun imageViewPrelolipop() {

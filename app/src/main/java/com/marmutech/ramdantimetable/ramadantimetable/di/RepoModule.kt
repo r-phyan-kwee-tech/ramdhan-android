@@ -26,7 +26,12 @@ class RepoModule {
     fun provideCountryRepo(
         countryDao: CountryDao,
         apiService: ApiService,
-        userPrefUtil: UserPrefUtil,
+        userSettingRepository: UserSettingRepository,
         stateDao: StateDao
-    ): TimeTableRepo = TimeTableRepositoryImpl(countryDao, apiService, userPrefUtil, stateDao)
+    ): TimeTableRepo = TimeTableRepositoryImpl(
+        countryDao,
+        apiService,
+        userSettingRepository,
+        stateDao
+    )
 }

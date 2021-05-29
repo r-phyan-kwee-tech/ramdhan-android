@@ -8,9 +8,12 @@ import com.marmutech.ramdantimetable.ramadantimetable.di.MainCoroutineDispatcher
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetCountryListUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetSelectedCountryIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryIdUseCase
+import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryNameUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.GetIsEnableUnicodeUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.SetIsEnableUnicodeUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetStateListBySelectedCountryUseCase
+import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedIdStateUseCase
+import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedStateNameUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import kotlinx.coroutines.CoroutineDispatcher
@@ -22,6 +25,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
@@ -30,6 +34,9 @@ class SplashViewModel @Inject constructor(
     private val getIsEnableUnicodeUseCase: GetIsEnableUnicodeUseCase,
     private val saveSelectedCountryIdUseCase: SaveSelectedCountryIdUseCase,
     private val getSelectedCountryIdUseCase: GetSelectedCountryIdUseCase,
+    private val saveSelectedIdStateUseCase: SaveSelectedIdStateUseCase,
+    private val saveSelectedStateNameUseCase: SaveSelectedStateNameUseCase,
+    private val saveSelectedCountryNameUseCase: SaveSelectedCountryNameUseCase,
     private val getCountryListUseCase: GetCountryListUseCase,
     private val getStateListBySelectedCountryUseCase: GetStateListBySelectedCountryUseCase
 ) : ViewModel() {
@@ -40,7 +47,8 @@ class SplashViewModel @Inject constructor(
     private val _fontSelectionUiModel = MutableStateFlow<FontSelectionUiModel?>(null)
     val fontSelectionUiModel: LiveData<FontSelectionUiModel?> get() = _fontSelectionUiModel.asLiveData()
 
-    private val _selectedCountryId = MutableStateFlow<String?>(null)
+    private val _stateList: MutableStateFlow<List<State>?> = MutableStateFlow(null)
+    private val _countryList: MutableStateFlow<List<Country>?> = MutableStateFlow(null)
 
     fun onViewCreated() {
         viewModelScope.launch(dispatcher) {
@@ -79,10 +87,36 @@ class SplashViewModel @Inject constructor(
             val state = getStateListBySelectedCountryUseCase.execute(it.second).single()
             it.first to state
         }.collect {
+            saveCountryListInVM(it.first)
+            saveStateListInVM(it.second)
             _countriesSelectionUiModel.value = CountrySelectionUiModel(
                 getNameFromCountry(it.first),
                 getNameFromState(it.second)
             )
+        }
+    }
+
+    fun onCountrySelected(position: Int) {
+        viewModelScope.launch {
+            _countryList.value?.let {
+                val countryIdAndStateName = getCountryIdAndNameFromCountryByPosition(it, position)
+                    ?: return@launch
+                saveSelectedCountryIdUseCase.execute(countryIdAndStateName.first)
+                saveSelectedCountryNameUseCase.execute(countryIdAndStateName.second)
+                Timber.d("country data saved")
+            }
+        }
+    }
+
+    fun onStateSelected(position: Int) {
+        viewModelScope.launch {
+            _stateList.value?.let {
+                val stateIdAndStateName = getStateIdAndNameFromStateByPosition(it, position)
+                    ?: return@launch
+                saveSelectedIdStateUseCase.execute(stateIdAndStateName.first)
+                saveSelectedStateNameUseCase.execute(stateIdAndStateName.second)
+                Timber.d("state data saved")
+            }
         }
     }
 
@@ -92,6 +126,28 @@ class SplashViewModel @Inject constructor(
 
     //todo fix to one unifine name
     private fun getNameFromState(state: List<State>): List<String> = state.map { it.nameMmUni }
+
+    private fun getStateIdAndNameFromStateByPosition(
+        state: List<State>,
+        position: Int
+    ) = state.getOrNull(position)?.run {
+        this.objectId to this.nameMmUni
+    }
+
+    private fun getCountryIdAndNameFromCountryByPosition(
+        country: List<Country>,
+        position: Int
+    ) = country.getOrNull(position)?.run {
+        this.objectId to this.name
+    }
+
+    private fun saveCountryListInVM(country: List<Country>) {
+        _countryList.value = country
+    }
+
+    private fun saveStateListInVM(state: List<State>) {
+        _stateList.value = state
+    }
 }
 
 data class CountrySelectionUiModel(

@@ -19,7 +19,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import javax.inject.Inject
 
-class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelectedListener {
+class CountryStateSelectionFragment : CoreFragment() {
 
     var countrySpinner: AppCompatSpinner? = null
     var stateSpinner: AppCompatSpinner? = null
@@ -60,9 +60,6 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         countrySpinner = binding?.countrySpinner
         stateSpinner = binding?.stateSpinner
 
-        countrySpinner?.onItemSelectedListener = this
-        stateSpinner?.onItemSelectedListener = this
-
         countrySpinner?.setBackgroundDrawable(this.resources.getDrawable(R.drawable.bg_dropdown))
         stateSpinner?.setBackgroundDrawable(this.resources.getDrawable(R.drawable.bg_dropdown))
 
@@ -84,22 +81,22 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         //legacySplashViewModel.loadAvailableStates(countryId, 900, 1)
     }
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//        when (p0?.id) {
-//            R.id.countrySpinner -> {
-//                splashViewModel.setSelectedCountryId(countryList[p2].objectId)
-//                updateStateSpinner(countryList.get(p2).objectId)
-//            }
-//            R.id.stateSpinner -> {
-//                prefUtil.saveStateId(localStateList.get(p2).objectId)
-//                prefUtil.saveStateName(localStateList.get(p2).nameMmUni)
-//            }
-//        }
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+////        when (p0?.id) {
+////            R.id.countrySpinner -> {
+////                splashViewModel.setSelectedCountryId(countryList[p2].objectId)
+////                updateStateSpinner(countryList.get(p2).objectId)
+////            }
+////            R.id.stateSpinner -> {
+////                prefUtil.saveStateId(localStateList.get(p2).objectId)
+////                prefUtil.saveStateName(localStateList.get(p2).nameMmUni)
+////            }
+////        }
+//    }
+//
+//    override fun onNothingSelected(p0: AdapterView<*>?) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
     private fun observeData() {
         splashViewModel.countrySelectionUiModel.asLiveData()
@@ -107,6 +104,7 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
                 uiModel?.let {
                     showCountryDataInSpinner(it.countries)
                     showStateDataInSpinner(it.states)
+                    attachSpinnerListener()
                 }
             })
     }
@@ -122,5 +120,32 @@ class CountryStateSelectionFragment : CoreFragment(), AdapterView.OnItemSelected
         val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, stateList)
         adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
         stateSpinner?.adapter = adapter
+    }
+
+    private fun attachSpinnerListener() {
+        countrySpinner?.onItemSelectedListener = countrySelectionListener
+        stateSpinner?.onItemSelectedListener = stateSelectionListener
+    }
+
+    private val countrySelectionListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            splashViewModel.onCountrySelected(position)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+            TODO("Not yet implemented")
+        }
+
+    }
+
+    private val stateSelectionListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            splashViewModel.onStateSelected(position)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+            TODO("Not yet implemented")
+        }
+
     }
 }

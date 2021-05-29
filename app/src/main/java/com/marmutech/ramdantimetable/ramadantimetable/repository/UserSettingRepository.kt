@@ -10,9 +10,21 @@ class UserSettingRepositoryImpl @Inject constructor(private val userPrefUtil: Us
 
     override suspend fun getIsEnableUnicode(): Boolean = userPrefUtil.getFont()
 
+    override suspend fun getSelectedCountryName(): String? = userPrefUtil.getLocationName()
+
+    override suspend fun saveSelectedCountryName(name: String) = userPrefUtil.saveLoactionName(name)
+
     override suspend fun getSelectedCountryId(): String? = userPrefUtil.getLocationId()
 
     override suspend fun saveSelectedCountryId(id: String) = userPrefUtil.saveLocationId(id)
+
+    override suspend fun getSelectedStateName(): String? = userPrefUtil.getStateName()
+
+    override suspend fun saveSelectedStateName(name: String) = userPrefUtil.saveStateName(name)
+
+    override suspend fun getSelectedStateId(): String? = userPrefUtil.getStateId()
+
+    override suspend fun saveSelectedStateId(id: String) = userPrefUtil.saveStateId(id)
 
 }
 
@@ -20,6 +32,15 @@ interface UserSettingRepository {
     suspend fun setIsEnableUnicode(isEnable: Boolean)
     suspend fun getIsEnableUnicode(): Boolean
 
+    suspend fun getSelectedCountryName(): String?
+    suspend fun saveSelectedCountryName(name: String)
+
     suspend fun getSelectedCountryId(): String?
     suspend fun saveSelectedCountryId(id: String)
+
+    suspend fun getSelectedStateName(): String?
+    suspend fun saveSelectedStateName(name: String)
+
+    suspend fun getSelectedStateId(): String?
+    suspend fun saveSelectedStateId(id: String)
 }
