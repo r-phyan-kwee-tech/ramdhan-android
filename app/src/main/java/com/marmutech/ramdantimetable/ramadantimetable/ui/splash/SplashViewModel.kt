@@ -1,9 +1,11 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.di.MainCoroutineDispatcher
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetCountryListUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetSelectedCountryIdUseCase
@@ -124,7 +126,8 @@ class SplashViewModel @Inject constructor(
                 StateListUiModel(
                     getNameFromState(states),
                     getStateSelectedIndex(states, getSelectedIdStateUseCase.execute(Unit))
-                )
+                ),
+                mapSelectionText(getIsEnableUnicodeUseCase.execute(Unit))
             )
         }
     }
@@ -173,11 +176,20 @@ class SplashViewModel @Inject constructor(
             it.objectId == savedId
         }
     }
+
+    private suspend fun mapSelectionText(isEnableUnicode: Boolean): SelectionText {
+        return SelectionText(
+            if (isEnableUnicode) R.string.uni_country_select else R.string.zg_country_select,
+            if (isEnableUnicode) R.string.uni_country_mm else R.string.zg_country_mm,
+            if (isEnableUnicode) R.string.uni_state_mm else R.string.zg_state_mm
+        )
+    }
 }
 
 data class CountrySelectionUiModel(
     val countryListUiModel: CountryListUiModel,
-    val stateListUiModel: StateListUiModel
+    val stateListUiModel: StateListUiModel,
+    val selectionText: SelectionText
 )
 
 data class CountryListUiModel(
@@ -188,6 +200,12 @@ data class CountryListUiModel(
 data class StateListUiModel(
     val states: List<String>,
     val selectedIndex: Int
+)
+
+data class SelectionText(
+    @StringRes val selectionTitleText: Int,
+    @StringRes val selectionCountryText: Int,
+    @StringRes val selectionStateText: Int
 )
 
 data class FontSelectionUiModel(
