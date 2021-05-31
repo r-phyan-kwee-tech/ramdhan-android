@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.marmutech.ramdantimetable.ramadantimetable">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".RamdanTimtableApp"
         android:allowBackup="true"
@@ -19,7 +16,7 @@
         <activity
             android:name=".ui.schedule.ScheduleListActivity"
             android:label="@string/title_activity_schedule_list_acitivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ui.detail.DetailActivity">
             <meta-data
@@ -36,10 +33,11 @@
                 android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity" />
         </activity>
 
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name=".ui.splash.SplashActivity"></activity>
+
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -48,5 +46,9 @@
             android:name="io.fabric.ApiKey"
             android:value="7a85fd9090a00da6873253d83a257eb4040679ce" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
