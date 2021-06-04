@@ -25,6 +25,13 @@ class UserSettingRepositoryImpl @Inject constructor(private val userPrefUtil: Us
     override suspend fun getSelectedStateId(): String? = userPrefUtil.getStateId()
 
     override suspend fun saveSelectedStateId(id: String) = userPrefUtil.saveStateId(id)
+    override suspend fun getIsOnBoardingFinish(): Boolean {
+        return userPrefUtil.isSplashFinished()
+    }
+
+    override suspend fun saveIsOnBoardingFinish(value: Boolean) {
+        return userPrefUtil.setSplashFinished(value)
+    }
 
 }
 
@@ -43,4 +50,7 @@ interface UserSettingRepository {
 
     suspend fun getSelectedStateId(): String?
     suspend fun saveSelectedStateId(id: String)
+
+    suspend fun getIsOnBoardingFinish(): Boolean
+    suspend fun saveIsOnBoardingFinish(value: Boolean)
 }
