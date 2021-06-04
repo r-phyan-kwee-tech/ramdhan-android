@@ -1,9 +1,12 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityMainBinding
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.OnBoardingFragment
 import javax.inject.Inject
 
 class MainActivity : CoreActivity() {
@@ -34,13 +37,17 @@ class MainActivity : CoreActivity() {
         })
     }
 
-    private fun handleScreen(openScreen: ScreenType){
-        when(openScreen){
-            ScreenType.SplashScreen -> TODO()
+    private fun handleScreen(openScreen: ScreenType) {
+        when (openScreen) {
+            ScreenType.SplashScreen -> inflateFragment(OnBoardingFragment.newInstance())
             ScreenType.ListScreen -> TODO()
             ScreenType.Detail -> TODO()
             ScreenType.Screen -> TODO()
             ScreenType.SettingScreen -> TODO()
         }
+    }
+
+    private fun inflateFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.mainContainerView, fragment).commit()
     }
 }
