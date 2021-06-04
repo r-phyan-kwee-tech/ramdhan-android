@@ -19,7 +19,7 @@ import java.lang.reflect.Field
 import javax.inject.Inject
 
 
-class SplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnClickListener {
+class LegacySplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, View.OnClickListener {
 
     @Inject
     lateinit var userPref: UserPrefUtil

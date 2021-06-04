@@ -33,7 +33,7 @@
                 android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity" />
         </activity>
 
-        <activity android:name=".ui.splash.SplashActivity"></activity>
+        <activity android:name=".ui.splash.LegacySplashActivity"></activity>
 
         <activity android:name=".ui.MainActivity">
             <intent-filter>
