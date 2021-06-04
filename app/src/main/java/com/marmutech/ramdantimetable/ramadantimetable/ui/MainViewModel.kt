@@ -12,7 +12,6 @@ class MainViewModel @Inject constructor() : ViewModel() {
     val mainUiModel: LiveData<MainUiModel?> get() = _mainUiModel.asLiveData()
 
     fun onCreate() {
-        TODO("Not yet implemented")
     }
 }
 

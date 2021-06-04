@@ -5,6 +5,33 @@
     android:layout_height="match_parent"
     android:background="@color/colorGrey600">
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/help_viewpager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorGrey600"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/help_viewpager_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:scrollbarSize="20dp"
+        app:fillColor="@color/white"
+        android:layout_marginBottom="48dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:pageColor="#00000000"
+        app:radius="7dp"
+        app:strokeColor="@color/white" />
+
     <ImageView
         android:id="@+id/help_tv_back"
         android:layout_width="40dp"
@@ -35,32 +62,5 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/help_viewpager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorGrey600"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/help_viewpager_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:scrollbarSize="20dp"
-        app:fillColor="@color/white"
-        android:layout_marginBottom="48dp"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:pageColor="#00000000"
-        app:radius="7dp"
-        app:strokeColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
