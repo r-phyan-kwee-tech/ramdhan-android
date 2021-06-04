@@ -28,6 +28,7 @@ object Versions {
     const val timberVersion = "4.7.0"
     const val constraintLayoutVersion = "1.1.3"
     const val materialVersion = "1.0.0"
+    const val viewPager2Version = "1.0.0"
 
     //jet pack
     const val lifecycleVersion = "2.3.1"

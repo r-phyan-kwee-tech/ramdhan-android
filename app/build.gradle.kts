@@ -46,6 +46,7 @@ android {
         implementation(Libs.appCompat)
         implementation(Libs.material)
         implementation(Libs.viewPagerIndicator)
+        implementation(Libs.viewPager2)
 
         implementation(Libs.viewModel)
         implementation(Libs.liveData)
