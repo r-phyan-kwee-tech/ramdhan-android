@@ -15,7 +15,7 @@ object Versions {
     const val minSdkVersion = "15"
 
     //
-    const val appCompatVersion = "1.0.2"
+    const val appCompatVersion = "1.3.0"
 
     const val rxJavaVersion = "2.1.9"
 

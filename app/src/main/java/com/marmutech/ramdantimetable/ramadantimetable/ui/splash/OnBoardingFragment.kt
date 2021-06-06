@@ -1,11 +1,18 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Animatable2
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentOnBoardingBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import timber.log.Timber
@@ -19,6 +26,9 @@ class OnBoardingFragment : CoreFragment() {
 
     private var previousPagePosition = 0
 
+    private var forwardToTickAvd: AnimatedVectorDrawableCompat? = null
+    private var tickToForwardAvd: AnimatedVectorDrawableCompat? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,17 +37,30 @@ class OnBoardingFragment : CoreFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentOnBoardingBinding.inflate(inflater, container, false)
         prepareViewPager()
+        prepareAvd()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         attachPageListener()
+        attachClickListener()
     }
 
     override fun onDestroyView() {
         binding.viewPager.unregisterOnPageChangeCallback(onPageCallback)
         super.onDestroyView()
+    }
+
+    private fun prepareAvd() {
+        forwardToTickAvd = AnimatedVectorDrawableCompat.create(requireContext(),R.drawable.avd_arrow_forward_to_tick)
+        tickToForwardAvd = AnimatedVectorDrawableCompat.create(requireContext(), R.drawable.avd_tick_to_arrow_forward)
+
+        binding.fabNext.setImageDrawable(forwardToTickAvd)
+    }
+
+    private fun attachClickListener(){
+
     }
 
     private fun prepareViewPager() {
@@ -58,10 +81,14 @@ class OnBoardingFragment : CoreFragment() {
 
     private fun startNextToDoneAnime() {
         Timber.d("startNextToDoneAnime")
+        binding.fabNext.setImageDrawable(forwardToTickAvd)
+        (binding.fabNext.drawable as Animatable).start()
     }
 
     private fun startDoneToNextAnime() {
         Timber.d("startDoneToNextAnime")
+        binding.fabNext.setImageDrawable(tickToForwardAvd)
+        (binding.fabNext.drawable as Animatable).start()
     }
 
     override fun onDestroy() {
