@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:background="@color/black1000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.schedule.ScheduleListActivityFragment"
+        tools:context=".ui.schedule.LegacyListFragment"
         tools:showIn="@layout/activity_schedule_list_activity">
 
         <androidx.recyclerview.widget.RecyclerView

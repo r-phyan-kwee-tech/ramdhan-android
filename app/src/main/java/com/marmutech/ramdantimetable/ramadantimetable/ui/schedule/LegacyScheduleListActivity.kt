@@ -16,7 +16,7 @@ import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
 
 
-class ScheduleListActivity : CoreActivity() {
+class LegacyScheduleListActivity : CoreActivity() {
     @Inject
     lateinit var prefUtil: UserPrefUtil
 
@@ -33,7 +33,7 @@ class ScheduleListActivity : CoreActivity() {
 
         if (savedInstanceState == null) {
             this.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_schedule_container, ScheduleListActivityFragment())
+                    .replace(R.id.fl_schedule_container, LegacyListFragment())
                     .commitAllowingStateLoss()
         }
 
@@ -47,7 +47,7 @@ class ScheduleListActivity : CoreActivity() {
             supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
         }
         this.supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_schedule_container, ScheduleListActivityFragment())
+                .replace(R.id.fl_schedule_container, LegacyListFragment())
                 .commitAllowingStateLoss()
     }
 

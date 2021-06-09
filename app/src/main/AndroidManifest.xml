@@ -14,14 +14,14 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.schedule.ScheduleListActivity"
+            android:name=".ui.schedule.LegacyScheduleListActivity"
             android:label="@string/title_activity_schedule_list_acitivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ui.detail.DetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity" />
+                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity" />
         </activity>
 
         <activity
@@ -30,7 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity" />
+                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity" />
         </activity>
 
         <activity android:name=".ui.splash.LegacySplashActivity"></activity>

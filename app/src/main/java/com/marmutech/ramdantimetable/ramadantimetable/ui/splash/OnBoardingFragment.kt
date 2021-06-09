@@ -58,7 +58,9 @@ class OnBoardingFragment : CoreFragment() {
     }
 
     private fun attachClickListener() {
-
+        binding.fabNext.setOnClickListener {
+            
+        }
     }
 
     private fun prepareViewPager() {

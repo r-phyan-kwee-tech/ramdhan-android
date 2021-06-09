@@ -22,7 +22,7 @@ import javax.inject.Inject
 /**
  * A placeholder fragment containing a simple view.
  */
-class ScheduleListActivityFragment : CoreFragment() {
+class LegacyListFragment : CoreFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -77,7 +77,7 @@ class ScheduleListActivityFragment : CoreFragment() {
     private val scheduleClickCallBack: ScheduleClickCallBack = object : ScheduleClickCallBack {
         override fun onClick(timeTableDay: TimeTableDay) {
             if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
-                (activity as ScheduleListActivity).goToDetail(timeTableDay)
+                (activity as LegacyScheduleListActivity).goToDetail(timeTableDay)
             }
         }
 

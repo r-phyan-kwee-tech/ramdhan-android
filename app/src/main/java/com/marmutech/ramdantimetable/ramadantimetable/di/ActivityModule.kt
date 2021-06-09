@@ -2,7 +2,7 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import com.marmutech.ramdantimetable.ramadantimetable.ui.MainActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
-import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity
+import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LegacySplashActivity
 import dagger.Module
@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
     @ActivityScope
     @ContributesAndroidInjector
-    internal abstract fun provideListActivity(): ScheduleListActivity
+    internal abstract fun provideListActivity(): LegacyScheduleListActivity
 
     @ActivityScope
     @ContributesAndroidInjector

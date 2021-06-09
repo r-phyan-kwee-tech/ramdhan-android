@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivitySplashBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.common.ViewPagerScroller
-import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity
+import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.adapter.SplashScreenPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import java.lang.reflect.Field
@@ -34,7 +34,7 @@ class LegacySplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, Vie
         setContentView(binding.root)
         imageViewPrelolipop()
         if (userPref.isSplashFinished()) {
-            val intent = Intent(this, ScheduleListActivity::class.java)
+            val intent = Intent(this, LegacyScheduleListActivity::class.java)
             startActivity(intent)
 
             finish()
@@ -71,7 +71,7 @@ class LegacySplashActivity : CoreActivity(), ViewPager.OnPageChangeListener, Vie
     override fun onClick(p0: View?) {
 
         if (p0?.tag as Int == 111) {
-            val intent: Intent = Intent(this, ScheduleListActivity::class.java)
+            val intent: Intent = Intent(this, LegacyScheduleListActivity::class.java)
             startActivity(intent)
             userPref.setSplashFinished(true)
             finish()
