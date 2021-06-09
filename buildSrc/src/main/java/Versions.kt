@@ -27,7 +27,7 @@ object Versions {
     const val viewPagerIndicatorVersion = "2.4.1.1@aar"
     const val timberVersion = "4.7.0"
     const val constraintLayoutVersion = "1.1.3"
-    const val materialVersion = "1.0.0"
+    const val materialVersion = "1.3.0"
     const val viewPager2Version = "1.0.0"
 
     //jet pack
