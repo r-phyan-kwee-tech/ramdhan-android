@@ -33,7 +33,7 @@ class LegacyScheduleListActivity : CoreActivity() {
 
         if (savedInstanceState == null) {
             this.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_schedule_container, LegacyListFragment())
+                    .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
                     .commitAllowingStateLoss()
         }
 
@@ -47,7 +47,7 @@ class LegacyScheduleListActivity : CoreActivity() {
             supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
         }
         this.supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_schedule_container, LegacyListFragment())
+                .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
                 .commitAllowingStateLoss()
     }
 

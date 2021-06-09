@@ -1,6 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
 
+import android.content.Intent
 import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentOnBoardingBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity
 import timber.log.Timber
 
 class OnBoardingFragment : CoreFragment() {
@@ -59,7 +61,9 @@ class OnBoardingFragment : CoreFragment() {
 
     private fun attachClickListener() {
         binding.fabNext.setOnClickListener {
-            
+            activity?.let {
+                startActivity(Intent(requireContext(), LegacyScheduleListActivity::class.java))
+            }
         }
     }
 

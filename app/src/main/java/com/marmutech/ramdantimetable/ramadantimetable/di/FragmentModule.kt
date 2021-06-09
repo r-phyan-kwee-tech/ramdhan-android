@@ -2,14 +2,10 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.DuaInfoFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.InfoBottomSheetFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyListFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.CreditFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.FontSelectionFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LandingFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.OnBoardingFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -18,7 +14,7 @@ abstract class FragmentModule {
 
     @FragmentScope
     @ContributesAndroidInjector
-    internal abstract fun provideScheduleFragment(): LegacyListFragment
+    internal abstract fun provideScheduleFragment(): LegacyScheduleListFragment
 
     @FragmentScope
     @ContributesAndroidInjector

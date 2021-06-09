@@ -22,7 +22,7 @@ import javax.inject.Inject
 /**
  * A placeholder fragment containing a simple view.
  */
-class LegacyListFragment : CoreFragment() {
+class LegacyScheduleListFragment : CoreFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
