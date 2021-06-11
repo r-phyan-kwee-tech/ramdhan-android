@@ -53,7 +53,7 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment(),
     }
 
     private fun showInfoFragments(targetFlags: String) {
-        (activity as ScheduleListActivity).lunchInfoActivity(targetFlags)
+        (activity as LegacyScheduleListActivity).lunchInfoActivity(targetFlags)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector

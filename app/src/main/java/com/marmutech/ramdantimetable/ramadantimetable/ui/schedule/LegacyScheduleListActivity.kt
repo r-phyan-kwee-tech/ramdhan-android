@@ -5,8 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.crashlytics.android.answers.Answers
-import com.crashlytics.android.answers.ContentViewEvent
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
@@ -18,7 +16,7 @@ import org.rabbitconverter.rabbit.Rabbit
 import javax.inject.Inject
 
 
-class ScheduleListActivity : CoreActivity() {
+class LegacyScheduleListActivity : CoreActivity() {
     @Inject
     lateinit var prefUtil: UserPrefUtil
 
@@ -26,13 +24,6 @@ class ScheduleListActivity : CoreActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_list_activity)
         setSupportActionBar(toolbar)
-
-        //Fabric Answer
-        Answers.getInstance().logContentView(
-            ContentViewEvent()
-                .putCustomAttribute("Choose State", prefUtil.getStateName())
-        )
-
 
         if (prefUtil.getFont()) {
             supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_uni), prefUtil.getStateName())
@@ -42,7 +33,7 @@ class ScheduleListActivity : CoreActivity() {
 
         if (savedInstanceState == null) {
             this.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_schedule_container, ScheduleListActivityFragment())
+                    .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
                     .commitAllowingStateLoss()
         }
 
@@ -56,7 +47,7 @@ class ScheduleListActivity : CoreActivity() {
             supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
         }
         this.supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_schedule_container, ScheduleListActivityFragment())
+                .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
                 .commitAllowingStateLoss()
     }
 
@@ -91,5 +82,4 @@ class ScheduleListActivity : CoreActivity() {
         intent.putExtra(SettingActivity.KEY_TARGET_FLAG, targetFlag)
         startActivity(intent)
     }
-
 }

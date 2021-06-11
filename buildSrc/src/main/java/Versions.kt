@@ -1,6 +1,6 @@
 object Versions {
-    const val kotlinVersion = "1.3.72"
-    const val gradleAndroidVersion = "4.1.2"
+    const val kotlinVersion = "1.5.0"
+    const val gradleAndroidVersion = "4.2.1"
     const val licenseToolsVersion = "1.2.0"
     const val fabricVersion = "1.28.0"
     const val googleServiceVersion = "4.3.3"
@@ -15,24 +15,25 @@ object Versions {
     const val minSdkVersion = "15"
 
     //
-    const val appCompatVersion = "1.0.2"
+    const val appCompatVersion = "1.3.0"
 
     const val rxJavaVersion = "2.1.9"
 
     const val rxAndroidVersion = "2.0.2"
 
     const val daggerVersion = "2.35.1"
-    const val retrofitVersion = "2.3.0"
+    const val retrofitVersion = "2.9.0"
     const val okHttpLoggerVersion = "3.10.0"
     const val viewPagerIndicatorVersion = "2.4.1.1@aar"
     const val timberVersion = "4.7.0"
     const val constraintLayoutVersion = "1.1.3"
-    const val materialVersion = "1.0.0"
+    const val materialVersion = "1.3.0"
+    const val viewPager2Version = "1.0.0"
 
     //jet pack
-    const val lifecycleVersion = "2.1.0"
+    const val lifecycleVersion = "2.3.1"
 
-    const val roomVersion = "2.1.0-alpha01"
+    const val roomVersion = "2.3.0"
 
     //test
     const val junitVersion = "4.12"
@@ -41,8 +42,8 @@ object Versions {
     const val espressoVersion = "3.1.1"
     const val mockWebServerVersion = "3.10.0"
     const val mockitoKotlin1Version = "1.1.0"
-    const val mockitoKotlin2Version = ""
-    const val archCoreTestingVersion = "2.0.0"
+    const val mockitoKotlinVersion = "3.2.0"
+    const val archCoreTestingVersion = "2.1.0"
 
     //firebase
     const val firebaseCoreVersion = "12.0.1"
@@ -50,4 +51,6 @@ object Versions {
     const val crashlyticsVersion = "2.9.1"
 
     const val rabbitVersion = "0.0.3"
+
+    const val multiDexVersion = "2.0.1"
 }

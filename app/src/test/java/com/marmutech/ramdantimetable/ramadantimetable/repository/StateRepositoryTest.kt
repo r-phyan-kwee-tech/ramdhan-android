@@ -5,11 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
-import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
-import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
+import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
+import com.marmutech.ramdantimetable.ramadantimetable.db.LegacyStateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import com.marmutech.ramdantimetable.ramadantimetable.model.Countries
+import com.marmutech.ramdantimetable.ramadantimetable.model.Data
+import com.marmutech.ramdantimetable.ramadantimetable.model.Days
+import com.marmutech.ramdantimetable.ramadantimetable.model.State
+import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
+import com.marmutech.ramdantimetable.ramadantimetable.model.States
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import org.junit.Rule
@@ -17,22 +22,25 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mockito
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 
 @RunWith(JUnit4::class)
 class StateRepositoryTest {
-    private val stateDao = mock(StateDao::class.java)
-    private val stateService = mock(StateService::class.java)
+    private val stateDao = mock(LegacyStateDao::class.java)
+    private val stateService = mock(LegacyApiService::class.java)
     private val repo = StateRepository(InstantAppExecutors(), stateDao, stateService)
 
     var query = "{\n" +
-            "  states(limit: 100, page: ${offsetManager(100, 1)}, countryId: \"${12345678890}\") {\n" +
-            "    data {\n" +
-            "      id\n" +
-            "      objectId\n" +
-            "      nameMmUni\n" +
-            "      nameMmZawgyi\n" +
-            "      countryId\n" +
+        "  states(limit: 100, page: ${offsetManager(100, 1)}, countryId: \"${12345678890}\") {\n" +
+        "    data {\n" +
+        "      id\n" +
+        "      objectId\n" +
+        "      nameMmUni\n" +
+        "      nameMmZawgyi\n" +
+        "      countryId\n" +
             "      createdDate\n" +
             "      updatedDate\n" +
             "    }\n" +

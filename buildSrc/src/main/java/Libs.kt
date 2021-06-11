@@ -1,13 +1,16 @@
 object Libs {
     const val gradleAndroid = "com.android.tools.build:gradle:${Versions.gradleAndroidVersion}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
+    const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val kotlinLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlinVersion}"
+    const val kotlinCoroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+    const val kotlinCoroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0"
     const val licenseTools = "com.cookpad.android.licensetools:license-tools-plugin:${Versions.licenseToolsVersion}"
     const val fabric = "io.fabric.tools:gradle:${Versions.fabricVersion}"
     const val googleService = "com.google.gms:google-services:${Versions.googleServiceVersion}"
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
+    const val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2Version}"
 
     const val viewPagerIndicator = "fr.avianey.com.viewpagerindicator:library:${Versions.viewPagerIndicatorVersion}"
 
@@ -17,7 +20,7 @@ object Libs {
     const val liveDataRxSupport = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.lifecycleVersion}"
 
     //room
-    const val room = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val room = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomProcessor = "androidx.room:room-compiler:${Versions.roomVersion}"
     const val roomRxSupport = "androidx.room:room-rxjava2:${Versions.roomVersion}"
     const val roomTesting = "androidx.room:room-testing:${Versions.roomVersion}"
@@ -44,7 +47,7 @@ object Libs {
 
     //todo migrate to 2
     const val mockitoKotlin1 = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin1Version}"
-    const val mockitoKotlin2 = ""
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlinVersion}"
     const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCoreTestingVersion}"
     const val testRunner = "androidx.test:runner:${Versions.testRunnerVersion}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoVersion}"
@@ -61,5 +64,5 @@ object Libs {
 
     const val rabbit = "org.rabbit-converter.rabbit:rabbit:${Versions.rabbitVersion}"
 
-
+    const val multiDex = "androidx.multidex:multidex:${Versions.multiDexVersion}"
 }

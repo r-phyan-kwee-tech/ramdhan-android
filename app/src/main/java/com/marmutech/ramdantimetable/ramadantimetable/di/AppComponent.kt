@@ -10,13 +10,14 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-        modules = [
-            AndroidSupportInjectionModule::class,
-            AppModule::class,
-            ViewModelModule::class,
-            ActivityModule::class,
-            FragmentModule::class
-        ]
+    modules = [
+        AndroidSupportInjectionModule::class,
+        AppModule::class,
+        ViewModelModule::class,
+        ActivityModule::class,
+        FragmentModule::class,
+        RepoModule::class
+    ]
 )
 interface AppComponent : AndroidInjector<RamdanTimtableApp> {
     @Component.Factory

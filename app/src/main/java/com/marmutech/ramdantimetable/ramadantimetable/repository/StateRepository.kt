@@ -2,8 +2,8 @@ package com.marmutech.ramdantimetable.ramadantimetable.repository
 
 import androidx.lifecycle.LiveData
 import com.marmutech.ramdantimetable.ramadantimetable.AppExecutors
-import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
-import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
+import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
+import com.marmutech.ramdantimetable.ramadantimetable.db.LegacyStateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
@@ -14,8 +14,8 @@ import javax.inject.Singleton
 @Singleton
 class StateRepository @Inject constructor(
     private val appExecutors: AppExecutors,
-    private val stateDao: StateDao,
-    private val apiService: ApiService
+    private val legacyStateDao: LegacyStateDao,
+    private val legacyApiService: LegacyApiService
 ) {
     fun loadStateList(countryId: String, limit: Int, page: Int): LiveData<Resource<List<State>>> {
         return object : NetworkBoundResource<List<State>, StateResponse>(appExecutors) {
@@ -35,16 +35,20 @@ class StateRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = apiService.getStateList(query)
+            override fun createCall() = legacyApiService.getStateList(query)
 
             override fun loadFromDb(): LiveData<List<State>> {
 
-                return stateDao.getStateByCountryId(countryId, limit, offsetManager(limit, page))
+                return legacyStateDao.getStateByCountryId(
+                    countryId,
+                    limit,
+                    offsetManager(limit, page)
+                )
 
             }
 
             override fun saveCallResult(item: StateResponse) {
-                stateDao.bulkInsert(item.data.states.data)
+                legacyStateDao.bulkInsert(item.data.states!!.data)
             }
 
 
@@ -67,16 +71,16 @@ class StateRepository @Inject constructor(
                     "  }\n" +
                     "}"
 
-            override fun createCall() = apiService.getState(query)
+            override fun createCall() = legacyApiService.getState(query)
 
             override fun loadFromDb(): LiveData<State> {
 
-                return stateDao.getStateById(stateId)
+                return legacyStateDao.getStateById(stateId)
 
             }
 
             override fun saveCallResult(item: StateResponse) {
-                stateDao.insert(item.data.state)
+                legacyStateDao.insert(item.data.state!!)
             }
 
 

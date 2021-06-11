@@ -4,7 +4,6 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("com.cookpad.android.licensetools")
-    id("io.fabric")
     id("com.google.gms.google-services")
 }
 
@@ -21,23 +20,33 @@ android {
             targetCompatibility = JavaVersion.VERSION_1_8
         }
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
     }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFile(getDefaultProguardFile("proguard-android.txt"))
         }
     }
+
     buildFeatures {
+        viewBinding = true
         dataBinding = true
     }
 
     dependencies {
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
         implementation(Libs.kotlinLib)
+        implementation(Libs.kotlinCoroutine)
+        testImplementation(Libs.kotlinCoroutineTest)
         implementation(Libs.appCompat)
         implementation(Libs.material)
         implementation(Libs.viewPagerIndicator)
+        implementation(Libs.viewPager2)
 
         implementation(Libs.viewModel)
         implementation(Libs.liveData)
@@ -64,6 +73,7 @@ android {
         testImplementation(Libs.junit)
         testImplementation(Libs.mockWebServer)
         testImplementation(Libs.mockitoKotlin1)
+        testImplementation(Libs.mockitoKotlin)
         testImplementation(Libs.archCoreTesting)
         testImplementation(Libs.testRunner)
         testImplementation(Libs.espresso)
@@ -71,10 +81,11 @@ android {
         implementation(Libs.constraintLayout)
         implementation(Libs.timber)
         implementation(Libs.firebaseCore)
-        implementation(Libs.crashlytic)
 
         implementation(Libs.rabbit) {
             exclude(group = "org.json", module = "json")
         }
+
+        implementation(Libs.multiDex)
     }
 }

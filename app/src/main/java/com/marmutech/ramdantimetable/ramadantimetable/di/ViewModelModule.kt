@@ -2,9 +2,11 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.marmutech.ramdantimetable.ramadantimetable.ui.MainViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LegacySplashViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.SplashViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.viewmodel.RamdanTimeTableViewModelFactory
 import dagger.Binds
@@ -15,13 +17,11 @@ import dagger.multibindings.IntoMap
 @Suppress("unused")
 @Module
 abstract class ViewModelModule {
-    //TODO  Declare View Models According to your needs
-
 
     @Binds
     @IntoMap
-    @ViewModelKey(SplashViewModel::class)
-    abstract fun bindSplashViewModel(detailViewModel: SplashViewModel): ViewModel
+    @ViewModelKey(LegacySplashViewModel::class)
+    abstract fun bindLegacySplashViewModel(detailViewModelLegacy: LegacySplashViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -37,6 +37,16 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingViewModel::class)
     abstract fun bindSettingViewModel(settingViewModel: SettingViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SplashViewModel::class)
+    abstract fun bindSplashViewModel(splashViewModel: SplashViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: RamdanTimeTableViewModelFactory): ViewModelProvider.Factory

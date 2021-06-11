@@ -5,11 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
-import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
-import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
+import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
+import com.marmutech.ramdantimetable.ramadantimetable.db.LegacyCountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import com.marmutech.ramdantimetable.ramadantimetable.model.Countries
+import com.marmutech.ramdantimetable.ramadantimetable.model.Country
+import com.marmutech.ramdantimetable.ramadantimetable.model.CountryResponse
+import com.marmutech.ramdantimetable.ramadantimetable.model.Data
+import com.marmutech.ramdantimetable.ramadantimetable.model.Days
+import com.marmutech.ramdantimetable.ramadantimetable.model.States
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import com.nhaarman.mockito_kotlin.verify
@@ -18,23 +23,25 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mockito
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.never
 
 @RunWith(JUnit4::class)
-class CountryRepositoryTest {
-    private val countryDao = mock(CountryDao::class.java)
-    private val countryService = mock(CountryService::class.java)
-    private val repo = CountryRepository(InstantAppExecutors(), countryDao, countryService)
+class LegacyTimeTableRepositoryTest {
+    private val countryDao = mock(LegacyCountryDao::class.java)
+    private val countryService = mock(LegacyApiService::class.java)
+    private val repo = LegacyCountryRepository(InstantAppExecutors(), countryDao, countryService)
 
     var query = "{\n" +
-            "  countries(limit: 100, page: ${offsetManager(100, 1)}) {\n" +
-            "    data {\n" +
-            "      id\n" +
-            "      objectId\n" +
-            "      name\n" +
-            "      createdDate\n" +
-            "      updatedDate\n" +
-            "    }\n" +
+        "  countries(limit: 100, page: ${offsetManager(100, 1)}) {\n" +
+        "    data {\n" +
+        "      id\n" +
+        "      objectId\n" +
+        "      name\n" +
+        "      createdDate\n" +
+        "      updatedDate\n" +
+        "    }\n" +
             "  }\n" +
             "}"
 

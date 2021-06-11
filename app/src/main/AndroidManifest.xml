@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.marmutech.ramdantimetable.ramadantimetable">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".RamdanTimtableApp"
         android:allowBackup="true"
@@ -17,14 +14,14 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.schedule.ScheduleListActivity"
+            android:name=".ui.schedule.LegacyScheduleListActivity"
             android:label="@string/title_activity_schedule_list_acitivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ui.detail.DetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity" />
+                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity" />
         </activity>
 
         <activity
@@ -33,13 +30,15 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleListActivity" />
+                android:value="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity" />
         </activity>
 
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name=".ui.splash.LegacySplashActivity"></activity>
+
+        <activity android:name=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -48,5 +47,9 @@
             android:name="io.fabric.ApiKey"
             android:value="7a85fd9090a00da6873253d83a257eb4040679ce" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
