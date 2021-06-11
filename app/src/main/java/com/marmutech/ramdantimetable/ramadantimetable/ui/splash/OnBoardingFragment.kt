@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -16,6 +17,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentOnBoar
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity
 import timber.log.Timber
+import javax.inject.Inject
 
 class OnBoardingFragment : CoreFragment() {
 
@@ -28,6 +30,13 @@ class OnBoardingFragment : CoreFragment() {
 
     private var forwardToTickAvd: AnimatedVectorDrawableCompat? = null
     private var tickToForwardAvd: AnimatedVectorDrawableCompat? = null
+
+    @Inject
+    lateinit var vmFactory: ViewModelProvider.Factory
+
+    private val vm: SplashViewModel by lazy {
+        ViewModelProvider(requireActivity(), vmFactory)[SplashViewModel::class.java]
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -45,6 +54,7 @@ class OnBoardingFragment : CoreFragment() {
         super.onViewCreated(view, savedInstanceState)
         attachPageListener()
         attachClickListener()
+        observeData()
     }
 
     override fun onDestroyView() {
@@ -61,10 +71,34 @@ class OnBoardingFragment : CoreFragment() {
 
     private fun attachClickListener() {
         binding.fabNext.setOnClickListener {
-            activity?.let {
-                startActivity(Intent(requireContext(), LegacyScheduleListActivity::class.java))
-            }
+            vm.onNextClick()
         }
+        binding.backImageButton.setOnClickListener {
+            vm.onPrevClick()
+        }
+        binding.fabNext.setOnClickListener {
+            vm.onNextClick()
+        }
+    }
+
+    private fun observeData() {
+        vm.movePageByPosition.observe(viewLifecycleOwner, { position ->
+            position?.let {
+                binding.viewPager.currentItem = it
+            }
+        })
+        vm.onBoardUiModel.observe(viewLifecycleOwner, { uiModel ->
+            uiModel?.let {
+                binding.backImageButton.visibility = if (it.showPrevButton) View.VISIBLE else View.GONE
+            }
+        })
+        vm.openScheduleList.observe(viewLifecycleOwner, {
+            if (it) {
+                activity?.let {
+                    startActivity(Intent(requireContext(), LegacyScheduleListActivity::class.java))
+                }
+            }
+        })
     }
 
     private fun prepareViewPager() {
@@ -72,7 +106,7 @@ class OnBoardingFragment : CoreFragment() {
         onBoardAdapter = OnBoardAdapter(this, fragments)
         binding.viewPager.adapter = onBoardAdapter
         TabLayoutMediator(binding.indicatorTabLayout, binding.viewPager) { _, _ -> }.attach()
-
+        vm.setTotalPageCount(fragments.size)
     }
 
     private fun createOnBoardFragments(): List<Fragment> = listOf(
