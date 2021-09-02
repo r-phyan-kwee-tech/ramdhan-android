@@ -26,29 +26,41 @@ class LegacyScheduleListActivity : CoreActivity() {
         setSupportActionBar(toolbar)
 
         if (prefUtil.getFont()) {
-            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_uni), prefUtil.getStateName())
+            supportActionBar?.title = String.format(
+                resources.getString(R.string.str_schedule_uni),
+                prefUtil.getStateName()
+            )
         } else {
-            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
+            supportActionBar?.title = String.format(
+                resources.getString(R.string.str_schedule_zg),
+                Rabbit.uni2zg(prefUtil.getStateName())
+            )
         }
 
-        if (savedInstanceState == null) {
-            this.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
-                    .commitAllowingStateLoss()
-        }
+//        if (savedInstanceState == null) {
+//            this.supportFragmentManager.beginTransaction()
+//                    .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
+//                    .commitAllowingStateLoss()
+//        }
 
     }
 
     override fun onResume() {
         super.onResume()
         if (prefUtil.getFont()) {
-            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_uni), prefUtil.getStateName())
+            supportActionBar?.title = String.format(
+                resources.getString(R.string.str_schedule_uni),
+                prefUtil.getStateName()
+            )
         } else {
-            supportActionBar?.title = String.format(resources.getString(R.string.str_schedule_zg), Rabbit.uni2zg(prefUtil.getStateName()))
+            supportActionBar?.title = String.format(
+                resources.getString(R.string.str_schedule_zg),
+                Rabbit.uni2zg(prefUtil.getStateName())
+            )
         }
-        this.supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
-                .commitAllowingStateLoss()
+//        this.supportFragmentManager.beginTransaction()
+//                .replace(R.id.fl_schedule_container, LegacyScheduleListFragment())
+//                .commitAllowingStateLoss()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

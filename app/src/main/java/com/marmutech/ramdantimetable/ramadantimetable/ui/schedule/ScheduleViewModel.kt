@@ -2,54 +2,42 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.marmutech.ramdantimetable.ramadantimetable.domain.days.GetDaysListUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
-import com.marmutech.ramdantimetable.ramadantimetable.repository.TimeTableDayRepository
-import com.marmutech.ramdantimetable.ramadantimetable.util.AbsentLiveData
-import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ScheduleViewModel @Inject constructor(timeRepo: TimeTableDayRepository) : ViewModel() {
+class ScheduleViewModel @Inject constructor(
+    private val getDaysListUseCase: GetDaysListUseCase
+) :
+    ViewModel() {
 
-    private lateinit var userPrefUtil: UserPrefUtil
-    private val _repoId = MutableLiveData<StateListParam>()
+    private val _uiModel = MutableLiveData<ScheduleUiModel>()
+    val uiModel: LiveData<ScheduleUiModel> get() = _uiModel
 
-
-    var daysList: LiveData<Resource<List<TimeTableDay>>> = Transformations.switchMap(_repoId) { input ->
-        input.ifExists { stateId, limit, page ->
-            //userPrefUtil=application.getUserPref()
-            timeRepo.loadTimetableDayList(stateId, limit, page)
-        }
-    }
-
-
-//    init {
-//
-//        daysList = timeRepo.loadTimetableDayList(stateId = "c4e237869fc04b3e8cc7a79185a743b7", limit = 50, page = 1)
-//    }
-
-    /**
-     * Load Time Table Day List from Repo
-     */
-    fun loadTimetableDayList(stateId: String?, limit: Int, page: Int) {
-        val update = StateListParam(stateId, limit, page)
-        if (_repoId.value == update) {
-            return
-        }
-        _repoId.value = update
-    }
-
-    data class StateListParam(val stateId: String?, val limit: Int?, val page: Int?) {
-        fun <T> ifExists(f: (String, Int, Int) -> LiveData<T>): LiveData<T> {
-            return if (stateId.isNullOrBlank() || limit == null || page == null) {
-                AbsentLiveData.create()
-            } else {
-                f(stateId!!, limit, page)
+    fun onViewCreated() {
+        viewModelScope.launch {
+            getDaysListUseCase.execute(Unit).collect {
+                _uiModel.value = mapTimeTableDayList(it)
             }
         }
     }
 
+    private fun mapTimeTableDayList(list: List<TimeTableDay>): ScheduleUiModel {
+        val isEid = list.isEmpty()
+        return ScheduleUiModel(
+            loading = false,
+            isEid = isEid,
+            days = list
+        )
+    }
 
+    data class ScheduleUiModel(
+        val loading: Boolean,
+        val days: List<TimeTableDay>? = null,
+        val isEid: Boolean
+    )
 }

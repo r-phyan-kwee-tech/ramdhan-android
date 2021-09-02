@@ -44,6 +44,7 @@ android {
         implementation(Libs.kotlinCoroutine)
         testImplementation(Libs.kotlinCoroutineTest)
         implementation(Libs.appCompat)
+        implementation(Libs.fragmentKtx)
         implementation(Libs.material)
         implementation(Libs.viewPagerIndicator)
         implementation(Libs.viewPager2)
