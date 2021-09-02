@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <data>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <variable
-            name="isLoading"
-            type="boolean" />
-
-        <variable
-            name="isListVisible"
-            type="boolean" />
-
-        <variable
-            name="isEid"
-            type="boolean" />
-    </data>
-
-    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black1000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.schedule.LegacyScheduleListFragment"
         tools:showIn="@layout/activity_schedule_list_activity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_schedule_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:visibleGone="@{isListVisible}"
-
             tools:listitem="@layout/row_schedule_list" />
 
         <ProgressBar
             android:id="@+id/pb_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:visibleGone="@{isLoading}" />
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/tv_eid_wish"
@@ -50,8 +44,7 @@
             android:padding="@dimen/spacing_major"
             android:text="@string/str_eid_mubarak_short"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            app:visibleGone="@{isEid}" />
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -60,8 +53,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_marginBottom="110dp"
-            app:srcCompat="@drawable/ic_mosque"
-            app:visibleGone="@{isEid}" />
+            app:srcCompat="@drawable/ic_mosque" />
     </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</layout>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
@@ -57,10 +58,16 @@ class ScheduleFragment private constructor() : CoreFragment() {
         vm.uiModel.observe(viewLifecycleOwner, {
             bindLoading(it.loading)
             bindIsEid(it.isEid)
+            bindToolBarTitle(it.toolBarTitle)
             it.days?.let { days ->
                 bindListData(days)
             }
         })
+    }
+
+    private fun bindToolBarTitle(toolBarTitle: String) {
+        binding.toolBar.title =
+            if (toolBarTitle.isNotEmpty()) toolBarTitle else getString(R.string.app_name)
     }
 
     private fun bindLoading(loading: Boolean) {
