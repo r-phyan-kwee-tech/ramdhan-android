@@ -34,7 +34,6 @@ class MainActivity : CoreActivity() {
         vm.mainUiModel.observe(this, { uiModel ->
             Timber.d("observer screen is ${uiModel.openScreen}")
             handleScreen(uiModel.openScreen)
-
         })
     }
 
