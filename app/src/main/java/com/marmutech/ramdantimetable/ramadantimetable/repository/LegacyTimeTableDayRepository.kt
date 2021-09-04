@@ -13,15 +13,20 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class TimeTableDayRepository @Inject constructor(
+class LegacyTimeTableDayRepository @Inject constructor(
     private val appExecutors: AppExecutors,
     private val timttableDao: TimeTableDao,
     private val legacyApiService: LegacyApiService
 ) {
-    fun loadTimetableDayList(stateId: String, limit: Int, page: Int): LiveData<Resource<List<TimeTableDay>>> {
+    fun loadTimetableDayList(
+        stateId: String,
+        limit: Int,
+        page: Int
+    ): LiveData<Resource<List<TimeTableDay>>> {
         return object : NetworkBoundResource<List<TimeTableDay>, DayResponse>(appExecutors) {
 
-            override fun shouldFetch(data: List<TimeTableDay>?): Boolean = data == null || data.isEmpty()
+            override fun shouldFetch(data: List<TimeTableDay>?): Boolean =
+                data == null || data.isEmpty()
 
             var query = "{\n" +
                     "  days(limit: $limit, page: $page, stateId: \"$stateId\") {\n" +

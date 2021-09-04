@@ -1,7 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
 
-import android.content.Intent
 import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +14,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentOnBoardingBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity
+import com.marmutech.ramdantimetable.ramadantimetable.ui.MainViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.ScreenType
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -38,10 +38,14 @@ class OnBoardingFragment : CoreFragment() {
         ViewModelProvider(requireActivity(), vmFactory)[SplashViewModel::class.java]
     }
 
+    private val vmMain: MainViewModel by lazy {
+        ViewModelProvider(requireActivity(), vmFactory)[MainViewModel::class.java]
+    }
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentOnBoardingBinding.inflate(inflater, container, false)
@@ -71,13 +75,11 @@ class OnBoardingFragment : CoreFragment() {
 
     private fun attachClickListener() {
         binding.fabNext.setOnClickListener {
+            Timber.d("nav value ${vmMain.mainUiModel.value?.openScreen}")
             vm.onNextClick()
         }
         binding.backImageButton.setOnClickListener {
             vm.onPrevClick()
-        }
-        binding.fabNext.setOnClickListener {
-            vm.onNextClick()
         }
     }
 
@@ -94,9 +96,7 @@ class OnBoardingFragment : CoreFragment() {
         })
         vm.openScheduleList.observe(viewLifecycleOwner, {
             if (it) {
-                activity?.let {
-                    startActivity(Intent(requireContext(), LegacyScheduleListActivity::class.java))
-                }
+                vmMain.goTo(ScreenType.ListScreen)
             }
         })
     }

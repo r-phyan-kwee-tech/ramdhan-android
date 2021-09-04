@@ -3,15 +3,9 @@ package com.marmutech.ramdantimetable.ramadantimetable.repository
 import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
-import com.marmutech.ramdantimetable.ramadantimetable.model.Country
-import com.marmutech.ramdantimetable.ramadantimetable.model.CountryResponse
-import com.marmutech.ramdantimetable.ramadantimetable.model.State
-import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
+import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
+import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 //todo add sorting
@@ -20,7 +14,8 @@ class TimeTableRepositoryImpl @Inject constructor(
     private val countryDao: CountryDao,
     private val apiService: ApiService,
     private val userSettingRepository: UserSettingRepository,
-    private val stateDao: StateDao
+    private val stateDao: StateDao,
+    private val timeTableDao: TimeTableDao
 ) : TimeTableRepo {
 
     override suspend fun loadCountryList(): Flow<List<Country>> = flow {
@@ -52,6 +47,12 @@ class TimeTableRepositoryImpl @Inject constructor(
 
     }
 
+    override suspend fun loadDays(): Flow<List<TimeTableDay>> {
+        //todo if null user have to choose again
+        val userSelectedStateId = userSettingRepository.getSelectedStateId()!!
+        return timeTableDao.getDayByStateId(userSelectedStateId)
+    }
+
     private suspend fun loadStateListWithCacheProcess(countryId: String) = flow {
         stateDao.getStateByCountryId(countryId)
             .map {
@@ -74,9 +75,11 @@ class TimeTableRepositoryImpl @Inject constructor(
         return mapCountryResponseToCountries(respondBody)
     }
 
-    private fun mapCountryResponseToCountries(countryResponse: CountryResponse?) = countryResponse?.data?.countries?.data
+    private fun mapCountryResponseToCountries(countryResponse: CountryResponse?) =
+        countryResponse?.data?.countries?.data
 
-    private fun mapStateResponseToStates(stateResponse: StateResponse?) = stateResponse?.data?.states?.data
+    private fun mapStateResponseToStates(stateResponse: StateResponse?) =
+        stateResponse?.data?.states?.data
 
 
     companion object {
@@ -84,30 +87,30 @@ class TimeTableRepositoryImpl @Inject constructor(
         private const val page = 1
 
         private fun countryListQuery() = "{\n" +
-            "  countries(limit: $limit, page: $page) {\n" +
-            "    data {\n" +
-            "      id\n" +
-            "      objectId\n" +
-            "      name\n" +
-            "      createdDate\n" +
-            "      updatedDate\n" +
-            "    }\n" +
-            "  }\n" +
-            "}"
+                "  countries(limit: $limit, page: $page) {\n" +
+                "    data {\n" +
+                "      id\n" +
+                "      objectId\n" +
+                "      name\n" +
+                "      createdDate\n" +
+                "      updatedDate\n" +
+                "    }\n" +
+                "  }\n" +
+                "}"
 
         private fun stateListQuery(countryId: String) = "{\n" +
-            "  states(limit: $limit, page: $page, countryId: \"$countryId\") {\n" +
-            "    data {\n" +
-            "      id\n" +
-            "      objectId\n" +
-            "      nameMmUni\n" +
-            "      nameMmZawgyi\n" +
-            "      countryId\n" +
-            "      createdDate\n" +
-            "      updatedDate\n" +
-            "    }\n" +
-            "  }\n" +
-            "}"
+                "  states(limit: $limit, page: $page, countryId: \"$countryId\") {\n" +
+                "    data {\n" +
+                "      id\n" +
+                "      objectId\n" +
+                "      nameMmUni\n" +
+                "      nameMmZawgyi\n" +
+                "      countryId\n" +
+                "      createdDate\n" +
+                "      updatedDate\n" +
+                "    }\n" +
+                "  }\n" +
+                "}"
 
     }
 }
@@ -115,4 +118,5 @@ class TimeTableRepositoryImpl @Inject constructor(
 interface TimeTableRepo {
     suspend fun loadCountryList(): Flow<List<Country>>
     suspend fun loadStateList(countryId: String): Flow<List<State>>
+    suspend fun loadDays(): Flow<List<TimeTableDay>>
 }

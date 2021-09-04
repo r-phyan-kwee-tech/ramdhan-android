@@ -53,4 +53,6 @@ object Versions {
     const val rabbitVersion = "0.0.3"
 
     const val multiDexVersion = "2.0.1"
+
+    const val fragmentKtx = "1.3.6"
 }

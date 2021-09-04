@@ -10,13 +10,19 @@ import com.marmutech.ramdantimetable.ramadantimetable.databinding.RowScheduleLis
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import timber.log.Timber
 
-class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : androidx.recyclerview.widget.RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) :
+    androidx.recyclerview.widget.RecyclerView.Adapter<ScheduleViewHolder>() {
 
-    internal var mScheduleList: List<out TimeTableDay>? = listOf()
+    private var mScheduleList: List<out TimeTableDay>? = listOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        var binding: RowScheduleListBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.row_schedule_list, parent, false)
+        var binding: RowScheduleListBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.row_schedule_list,
+            parent,
+            false
+        )
         binding.callback = clickCallBack
         return ScheduleViewHolder(binding)
     }
@@ -38,7 +44,9 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : androidx.recyc
             var result: DiffUtil.DiffResult = calculateDiff(object : DiffUtil.Callback() {
                 override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
                     var mLocalScheduleList = mScheduleList
-                    return mLocalScheduleList?.get(oldItemPosition)?.id == scheduleList?.get(newItemPosition)?.id
+                    return mLocalScheduleList?.get(oldItemPosition)?.id == scheduleList?.get(
+                        newItemPosition
+                    )?.id
                 }
 
                 override fun getOldListSize(): Int {
@@ -48,10 +56,14 @@ class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) : androidx.recyc
 
                 override fun getNewListSize() = scheduleList?.size ?: 0
 
-                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                override fun areContentsTheSame(
+                    oldItemPosition: Int,
+                    newItemPosition: Int
+                ): Boolean {
                     var mLocalScheduleList = mScheduleList
 
-                    var oldObj: TimeTableDay = mLocalScheduleList?.get(oldItemPosition) as TimeTableDay
+                    var oldObj: TimeTableDay =
+                        mLocalScheduleList?.get(oldItemPosition) as TimeTableDay
 
                     var newObj: TimeTableDay = scheduleList?.get(newItemPosition) as TimeTableDay
 
