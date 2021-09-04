@@ -65,7 +65,7 @@ class LegacyScheduleListActivity : CoreActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.menu_schedule_list_acitivity, menu)
+        menuInflater.inflate(R.menu.menu_schedule_list, menu)
         return true
     }
 

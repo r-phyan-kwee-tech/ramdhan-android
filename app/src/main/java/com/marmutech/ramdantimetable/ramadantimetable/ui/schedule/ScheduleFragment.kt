@@ -8,9 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marmutech.ramdantimetable.ramadantimetable.R
-import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListActivityBinding
+import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
+import timber.log.Timber
 import javax.inject.Inject
 
 class ScheduleFragment private constructor() : CoreFragment() {
@@ -18,7 +19,7 @@ class ScheduleFragment private constructor() : CoreFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private var _binding: FragmentScheduleListActivityBinding? = null
+    private var _binding: FragmentScheduleListBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var scheduleAdapter: ScheduleAdapter
@@ -31,15 +32,33 @@ class ScheduleFragment private constructor() : CoreFragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        _binding = FragmentScheduleListActivityBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentScheduleListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpToolBar()
         prepareUi()
         observeUi()
+        attachViewListener()
         vm.onViewCreated()
+    }
+
+    private fun setUpToolBar() {
+        binding.toolBar.inflateMenu(R.menu.menu_schedule_list)
+    }
+
+    private fun attachViewListener() {
+        binding.toolBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_info -> {
+                    Timber.d("action_info click")
+                    return@setOnMenuItemClickListener true
+                }
+                else -> return@setOnMenuItemClickListener false
+            }
+        }
     }
 
     private fun prepareUi() {
