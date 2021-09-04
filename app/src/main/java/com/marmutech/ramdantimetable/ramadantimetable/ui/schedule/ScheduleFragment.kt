@@ -11,7 +11,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
-import timber.log.Timber
 import javax.inject.Inject
 
 class ScheduleFragment private constructor() : CoreFragment() {
@@ -53,7 +52,7 @@ class ScheduleFragment private constructor() : CoreFragment() {
         binding.toolBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_info -> {
-                    Timber.d("action_info click")
+                    infoSheet()
                     return@setOnMenuItemClickListener true
                 }
                 else -> return@setOnMenuItemClickListener false
@@ -123,6 +122,11 @@ class ScheduleFragment private constructor() : CoreFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun infoSheet() {
+        val bottomSheetFragment = InfoBottomSheetFragment()
+        bottomSheetFragment.show(parentFragmentManager, InfoBottomSheetFragment.TAG)
     }
 
     companion object {
