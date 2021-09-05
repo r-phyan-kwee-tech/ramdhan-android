@@ -1,10 +1,12 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityMainBinding
+import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.OnBoardingFragment
 import timber.log.Timber
@@ -17,9 +19,7 @@ class MainActivity : CoreActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val vm: MainViewModel by lazy {
-        ViewModelProvider(this, vmFactory).get(MainViewModel::class.java)
-    }
+    private val vm: MainViewModel by viewModels { vmFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +40,23 @@ class MainActivity : CoreActivity() {
     private fun handleScreen(openScreen: ScreenType) {
         Timber.d("please open this screen $openScreen")
         when (openScreen) {
-            ScreenType.SplashScreen -> inflateFragment(OnBoardingFragment.newInstance())
-            ScreenType.ListScreen -> inflateFragment(ScheduleFragment.newInstance())
-            ScreenType.Detail -> TODO()
-            ScreenType.Screen -> TODO()
-            ScreenType.SettingScreen -> TODO()
+            is ScreenType.SplashScreen -> inflateFragment(
+                OnBoardingFragment.newInstance(),
+                OnBoardingFragment.tag
+            )
+            is ScreenType.ListScreen -> inflateFragment(
+                ScheduleFragment.newInstance(),
+                ScheduleFragment.tag
+            )
+            is ScreenType.DetailScreen -> inflateFragment(
+                DetailViewFragment.newInstance(openScreen.detailParam),
+                DetailViewFragment.tag
+            )
         }
     }
 
-    private fun inflateFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.mainContainerView, fragment).commit()
+    private fun inflateFragment(fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().replace(R.id.mainContainerView, fragment)
+            .addToBackStack(tag).commit()
     }
 }

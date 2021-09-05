@@ -1,5 +1,6 @@
 package com.marmutech.ramdantimetable.ramadantimetable.di
 
+import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.DuaInfoFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.InfoBottomSheetFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleFragment
@@ -51,4 +52,8 @@ abstract class FragmentModule {
     @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideScheduleFragment(): ScheduleFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    internal abstract fun provideDetailViewFragment(): DetailViewFragment
 }

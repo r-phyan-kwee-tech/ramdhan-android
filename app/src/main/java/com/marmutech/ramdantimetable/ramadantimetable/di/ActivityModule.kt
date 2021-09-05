@@ -1,7 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import com.marmutech.ramdantimetable.ramadantimetable.ui.MainActivity
-import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
+import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.LegacyDetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.LegacyScheduleListActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LegacySplashActivity
@@ -16,7 +16,7 @@ abstract class ActivityModule {
 
     @ActivityScope
     @ContributesAndroidInjector
-    internal abstract fun provideDetailActivity(): DetailActivity
+    internal abstract fun provideDetailActivity(): LegacyDetailActivity
 
     @ActivityScope
     @ContributesAndroidInjector

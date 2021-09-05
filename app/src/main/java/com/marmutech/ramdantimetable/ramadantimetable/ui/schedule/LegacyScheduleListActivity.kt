@@ -8,7 +8,7 @@ import android.view.MenuItem
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
-import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailActivity
+import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.LegacyDetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*
@@ -79,7 +79,7 @@ class LegacyScheduleListActivity : CoreActivity() {
     }
 
     fun goToDetail(timeTableDay: TimeTableDay) {
-        val intent: Intent = Intent(this, DetailActivity::class.java)
+        val intent: Intent = Intent(this, LegacyDetailActivity::class.java)
         intent.data = Uri.parse("ramdan://timetable/detail?" + "dayId=" + timeTableDay.objectId)
         startActivity(intent)
     }

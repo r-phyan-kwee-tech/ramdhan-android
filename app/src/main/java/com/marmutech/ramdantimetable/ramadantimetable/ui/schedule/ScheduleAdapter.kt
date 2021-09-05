@@ -2,81 +2,68 @@ package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DiffUtil.calculateDiff
-import com.marmutech.ramdantimetable.ramadantimetable.R
+import androidx.recyclerview.widget.RecyclerView
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.RowScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
-import timber.log.Timber
 
-class ScheduleAdapter(var clickCallBack: ScheduleClickCallBack) :
-    androidx.recyclerview.widget.RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleAdapter(private var clickCallBack: ((TimeTableDay) -> Unit)) :
+    RecyclerView.Adapter<ScheduleViewHolder>() {
 
-    private var mScheduleList: List<out TimeTableDay>? = listOf()
+    private val mScheduleList = mutableListOf<TimeTableDay>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        var binding: RowScheduleListBinding = DataBindingUtil.inflate(
+        val binding: RowScheduleListBinding = RowScheduleListBinding.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.row_schedule_list,
             parent,
             false
         )
-        binding.callback = clickCallBack
-        return ScheduleViewHolder(binding)
+        return ScheduleViewHolder(binding, clickCallBack)
     }
 
-    override fun getItemCount() = if (mScheduleList != null) mScheduleList?.size as Int else 0
+    override fun getItemCount() = mScheduleList.size
 
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        Timber.d("schedule item " + mScheduleList?.get(position))
-        holder.mBinding?.dayObj = mScheduleList?.get(position)
-        holder.mBinding?.executePendingBindings()
+        holder.bind(mScheduleList[position])
     }
 
-    fun setScheduleList(scheduleList: List<TimeTableDay>?) {
-        if (mScheduleList == null) {
-            mScheduleList = scheduleList
-            notifyItemRangeInserted(0, scheduleList?.size as Int)
-        } else {
-            var result: DiffUtil.DiffResult = calculateDiff(object : DiffUtil.Callback() {
-                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                    var mLocalScheduleList = mScheduleList
-                    return mLocalScheduleList?.get(oldItemPosition)?.id == scheduleList?.get(
-                        newItemPosition
-                    )?.id
-                }
+    fun setScheduleList(scheduleList: List<TimeTableDay>) {
+        val result: DiffUtil.DiffResult = calculateDiff(object : DiffUtil.Callback() {
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+                val mLocalScheduleList = mScheduleList
+                return mLocalScheduleList.get(oldItemPosition).id == scheduleList.get(
+                    newItemPosition
+                ).id
+            }
 
-                override fun getOldListSize(): Int {
-                    var mLocalScheduleList = mScheduleList
-                    return if (mLocalScheduleList != null) mLocalScheduleList.size else 0
-                }
+            override fun getOldListSize(): Int {
+                val mLocalScheduleList = mScheduleList
+                return mLocalScheduleList.size
+            }
 
-                override fun getNewListSize() = scheduleList?.size ?: 0
+            override fun getNewListSize() = scheduleList.size
 
-                override fun areContentsTheSame(
-                    oldItemPosition: Int,
-                    newItemPosition: Int
-                ): Boolean {
-                    var mLocalScheduleList = mScheduleList
+            override fun areContentsTheSame(
+                oldItemPosition: Int,
+                newItemPosition: Int
+            ): Boolean {
+                val mLocalScheduleList = mScheduleList
 
-                    var oldObj: TimeTableDay =
-                        mLocalScheduleList?.get(oldItemPosition) as TimeTableDay
+                val oldObj: TimeTableDay =
+                    mLocalScheduleList[oldItemPosition]
 
-                    var newObj: TimeTableDay = scheduleList?.get(newItemPosition) as TimeTableDay
+                val newObj: TimeTableDay = scheduleList[newItemPosition]
 
-                    return oldObj.countryId == newObj.countryId
-                            && oldObj.day == newObj.day
+                return oldObj.countryId == newObj.countryId
+                        && oldObj.day == newObj.day
 
 
-                }
-            })
-            mScheduleList = scheduleList
-            result.dispatchUpdatesTo(this)
-        }
+            }
+        })
+        mScheduleList.addAll(scheduleList)
+        result.dispatchUpdatesTo(this)
     }
-
-
 }

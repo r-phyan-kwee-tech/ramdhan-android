@@ -9,21 +9,21 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.marmutech.ramdantimetable.ramadantimetable.R
-import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityDetailBinding
+import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentDetailViewBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import javax.inject.Inject
 
-
-class DetailActivity : CoreActivity() {
+@Deprecated("use DetailViewActivity")
+class LegacyDetailActivity : CoreActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
     lateinit var prefUtil: UserPrefUtil
-    private lateinit var detailViewModel: DetailViewModel
+    private lateinit var legacyDetailViewModel: LegacyDetailViewModel
     private var dayId: String? = null
 
     var tabLayout: TabLayout? = null
@@ -32,13 +32,13 @@ class DetailActivity : CoreActivity() {
     var toolbar: Toolbar? = null
     var collapsingToolbar: CollapsingToolbarLayout? = null
 
-    var binding: ActivityDetailBinding? = null
+    var binding: FragmentDetailViewBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
+        binding = DataBindingUtil.setContentView(this, R.layout.fragment_detail_view)
 
         toolbar = binding?.toolbar
         toolbar?.setTitleTextColor(resources.getColor(R.color.colorAccent))
@@ -56,21 +56,27 @@ class DetailActivity : CoreActivity() {
 
 
         //ViewModel Class Declaration
-        detailViewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
+        legacyDetailViewModel =
+            ViewModelProvider(this, viewModelFactory).get(LegacyDetailViewModel::class.java)
 
         if (intent.data != null) {
             var data: Uri = intent.data
-            dayId = data!!.getQueryParameter("dayId")
-            detailViewModel.loadDay(dayId)
+            dayId = data.getQueryParameter("dayId")
+            legacyDetailViewModel.loadDay(dayId)
         }
 
         binding?.isUnicode = prefUtil.getFont()
-        detailViewModel.timeTableDay.observe(this, Observer { dayResource ->
+        legacyDetailViewModel.timeTableDay.observe(this, Observer { dayResource ->
             //TODO bind data from repo here
             if (dayResource?.data != null) {
-                binding?.timetable = dayResource?.data
-                supportActionBar?.title = String.format(resources.getString(R.string.str_day), dayResource?.data.day)
-                pageAdapter = ViewPagerAdapter(supportFragmentManager, arrayOf(this.resources.getString(R.string.dua_mm_uni), "EN", "دُعَاء\u200E"), dayResource?.data)
+                binding?.timetable = dayResource.data
+                supportActionBar?.title =
+                    String.format(resources.getString(R.string.str_day), dayResource.data.day)
+                pageAdapter = ViewPagerAdapter(
+                    supportFragmentManager,
+                    arrayOf(this.resources.getString(R.string.dua_mm_uni), "EN", "دُعَاء\u200E"),
+                    dayResource.data
+                )
                 viewPager?.adapter = pageAdapter
                 tabLayout?.setupWithViewPager(viewPager)
 
