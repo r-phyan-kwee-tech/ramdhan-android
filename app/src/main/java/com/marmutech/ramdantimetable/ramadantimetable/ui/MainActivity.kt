@@ -46,7 +46,7 @@ class MainActivity : CoreActivity() {
             )
             is ScreenType.ListScreen -> inflateFragment(
                 ScheduleFragment.newInstance(),
-                ScheduleFragment.tag
+                ScheduleFragment.tag, true
             )
             is ScreenType.DetailScreen -> inflateFragment(
                 DetailViewFragment.newInstance(openScreen.detailParam),
@@ -55,8 +55,12 @@ class MainActivity : CoreActivity() {
         }
     }
 
-    private fun inflateFragment(fragment: Fragment, tag: String) {
-        supportFragmentManager.beginTransaction().replace(R.id.mainContainerView, fragment)
-            .addToBackStack(tag).commit()
+    private fun inflateFragment(fragment: Fragment, tag: String, isRootRoute: Boolean = false) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.mainContainerView, fragment)
+            .apply {
+                if (!isRootRoute) addToBackStack(tag)
+            }.commit()
     }
 }
