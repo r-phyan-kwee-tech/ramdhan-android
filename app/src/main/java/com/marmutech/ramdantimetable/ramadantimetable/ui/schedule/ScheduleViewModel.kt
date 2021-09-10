@@ -16,7 +16,7 @@ class ScheduleViewModel @Inject constructor(
     private val getSelectedStateNameUseCase: GetSelectedStateNameUseCase
 ) : ViewModel() {
 
-    private val _uiModel = MutableLiveData<ScheduleUiModel>()
+    private val _uiModel = MutableLiveData(ScheduleUiModel.initial())
     val uiModel: LiveData<ScheduleUiModel> get() = _uiModel
 
     fun onViewCreated() {
@@ -42,5 +42,11 @@ class ScheduleViewModel @Inject constructor(
         val days: List<TimeTableDay>? = null,
         val isEid: Boolean,
         val toolBarTitle: String = ""
-    )
+    ) {
+        companion object {
+            fun initial(): ScheduleUiModel {
+                return ScheduleUiModel(loading = true, isEid = false)
+            }
+        }
+    }
 }

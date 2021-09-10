@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.ui.MainActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -53,7 +54,7 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment(),
     }
 
     private fun showInfoFragments(targetFlags: String) {
-        (activity as LegacyScheduleListActivity).lunchInfoActivity(targetFlags)
+        (activity as MainActivity).lunchInfoActivity(targetFlags)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector

@@ -2,11 +2,6 @@
 <layout>
 
     <data>
-
-        <variable
-            name="callback"
-            type="com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleClickCallBack" />
-
         <variable
             name="dayObj"
             type="com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay" />
@@ -20,10 +15,10 @@
         android:background="@color/black1000">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/rowCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_minor"
-            android:onClick="@{()-> callback.onClick(dayObj)}"
             app:cardBackgroundColor="@color/black800"
             app:cardCornerRadius="4dp">
 

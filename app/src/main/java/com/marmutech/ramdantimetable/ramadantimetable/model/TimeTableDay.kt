@@ -1,13 +1,18 @@
 package com.marmutech.ramdantimetable.ramadantimetable.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
+import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "day", primaryKeys = ["objectId"], indices = [
-    Index("objectId"),
-    Index("countryId"),
-    Index("stateId")])
+@Parcelize
+@Entity(
+        tableName = "day", primaryKeys = ["objectId"], indices = [
+                Index("objectId"),
+                Index("countryId"),
+                Index("stateId")]
+)
 data class TimeTableDay(
 
         @ColumnInfo(name = "id")
@@ -56,4 +61,4 @@ data class TimeTableDay(
         val createdDate: Int,
         @ColumnInfo(name = "updatedDate")
         val updatedDate: Int
-)
+) : Parcelable

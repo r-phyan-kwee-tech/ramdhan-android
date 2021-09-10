@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -38,9 +39,7 @@ class OnBoardingFragment : CoreFragment() {
         ViewModelProvider(requireActivity(), vmFactory)[SplashViewModel::class.java]
     }
 
-    private val vmMain: MainViewModel by lazy {
-        ViewModelProvider(requireActivity(), vmFactory)[MainViewModel::class.java]
-    }
+    private val vmMain: MainViewModel by activityViewModels { vmFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,8 +66,14 @@ class OnBoardingFragment : CoreFragment() {
     }
 
     private fun prepareAvd() {
-        forwardToTickAvd = AnimatedVectorDrawableCompat.create(requireContext(), R.drawable.avd_arrow_forward_to_tick)
-        tickToForwardAvd = AnimatedVectorDrawableCompat.create(requireContext(), R.drawable.avd_tick_to_arrow_forward)
+        forwardToTickAvd = AnimatedVectorDrawableCompat.create(
+            requireContext(),
+            R.drawable.avd_arrow_forward_to_tick
+        )
+        tickToForwardAvd = AnimatedVectorDrawableCompat.create(
+            requireContext(),
+            R.drawable.avd_tick_to_arrow_forward
+        )
 
         binding.fabNext.setImageDrawable(forwardToTickAvd)
     }
@@ -91,7 +96,8 @@ class OnBoardingFragment : CoreFragment() {
         })
         vm.onBoardUiModel.observe(viewLifecycleOwner, { uiModel ->
             uiModel?.let {
-                binding.backImageButton.visibility = if (it.showPrevButton) View.VISIBLE else View.GONE
+                binding.backImageButton.visibility =
+                    if (it.showPrevButton) View.VISIBLE else View.GONE
             }
         })
         vm.openScheduleList.observe(viewLifecycleOwner, {
@@ -110,9 +116,9 @@ class OnBoardingFragment : CoreFragment() {
     }
 
     private fun createOnBoardFragments(): List<Fragment> = listOf(
-            LandingFragment(),
-            FontSelectionFragment(),
-            CountryStateSelectionFragment()
+        LandingFragment(),
+        FontSelectionFragment(),
+        CountryStateSelectionFragment()
     )
 
     private fun attachPageListener() {
@@ -148,6 +154,8 @@ class OnBoardingFragment : CoreFragment() {
     }
 
     companion object {
+        val tag = OnBoardingFragment::class.java.simpleName
+
         fun newInstance(): OnBoardingFragment {
             return OnBoardingFragment()
         }

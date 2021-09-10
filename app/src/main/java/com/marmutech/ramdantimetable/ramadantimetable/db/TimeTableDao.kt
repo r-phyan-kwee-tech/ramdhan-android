@@ -23,6 +23,9 @@ interface TimeTableDao {
     @Query("SELECT * FROM day WHERE day.calendarDay BETWEEN (SELECT strftime('%Y/%m/%d', 'now') ) AND (SELECT strftime('%Y/%m/%d',date('now','+365 days'))) AND stateId=:stateId")
     fun getDayByStateId(stateId: String): Flow<List<TimeTableDay>>
 
+    /*@Query("SELECT * FROM day WHERE  stateId=:stateId")
+    fun getDayByStateId(stateId: String): Flow<List<TimeTableDay>>*/
+
     @Query("""SELECT * FROM day WHERE objectId=:objectId""")
     fun getDayById(objectId: String): LiveData<TimeTableDay>
 }

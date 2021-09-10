@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,9 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.MainViewModel
+import com.marmutech.ramdantimetable.ramadantimetable.ui.ScreenType
+import timber.log.Timber
 import javax.inject.Inject
 
 class ScheduleFragment private constructor() : CoreFragment() {
@@ -24,6 +28,7 @@ class ScheduleFragment private constructor() : CoreFragment() {
     private lateinit var scheduleAdapter: ScheduleAdapter
 
     private val vm by viewModels<ScheduleViewModel> { viewModelFactory }
+    private val navigation by activityViewModels<MainViewModel> { viewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +57,7 @@ class ScheduleFragment private constructor() : CoreFragment() {
         binding.toolBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_info -> {
-                    infoSheet()
+                    openInfoSheet()
                     return@setOnMenuItemClickListener true
                 }
                 else -> return@setOnMenuItemClickListener false
@@ -61,11 +66,10 @@ class ScheduleFragment private constructor() : CoreFragment() {
     }
 
     private fun prepareUi() {
-        scheduleAdapter = ScheduleAdapter(object : ScheduleClickCallBack {
-            override fun onClick(timeTableDay: TimeTableDay) {
-
-            }
-        })
+        scheduleAdapter = ScheduleAdapter {
+            Timber.d("user click on this $it")
+            openDetailView(it)
+        }
         with(binding.rvScheduleList) {
             layoutManager = LinearLayoutManager(context)
             adapter = scheduleAdapter
@@ -124,12 +128,17 @@ class ScheduleFragment private constructor() : CoreFragment() {
         _binding = null
     }
 
-    private fun infoSheet() {
+    private fun openDetailView(timeTableDay: TimeTableDay) {
+        navigation.goTo(ScreenType.DetailScreen(timeTableDay))
+    }
+
+    private fun openInfoSheet() {
         val bottomSheetFragment = InfoBottomSheetFragment()
         bottomSheetFragment.show(parentFragmentManager, InfoBottomSheetFragment.TAG)
     }
 
     companion object {
+        val tag = ScheduleFragment::class.java.simpleName
         fun newInstance() = ScheduleFragment()
     }
 }
