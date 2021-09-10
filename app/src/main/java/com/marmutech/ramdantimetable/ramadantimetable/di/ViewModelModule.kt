@@ -3,7 +3,6 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.marmutech.ramdantimetable.ramadantimetable.ui.MainViewModel
-import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.LegacyDetailViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LegacySplashViewModel

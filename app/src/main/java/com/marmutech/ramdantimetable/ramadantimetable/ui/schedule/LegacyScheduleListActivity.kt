@@ -8,7 +8,6 @@ import android.view.MenuItem
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
-import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.LegacyDetailActivity
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import kotlinx.android.synthetic.main.activity_schedule_list_activity.*

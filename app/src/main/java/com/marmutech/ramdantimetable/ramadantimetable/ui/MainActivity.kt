@@ -9,7 +9,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityMainBi
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.OnBoardingFragment
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : CoreActivity() {
@@ -32,13 +31,11 @@ class MainActivity : CoreActivity() {
 
     private fun observeData() {
         vm.mainUiModel.observe(this, { uiModel ->
-            Timber.d("observer screen is ${uiModel.openScreen}")
             handleScreen(uiModel.openScreen)
         })
     }
 
     private fun handleScreen(openScreen: ScreenType) {
-        Timber.d("please open this screen $openScreen")
         when (openScreen) {
             is ScreenType.SplashScreen -> inflateFragment(
                 OnBoardingFragment.newInstance(),
