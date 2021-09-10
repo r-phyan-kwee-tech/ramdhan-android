@@ -26,7 +26,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(LegacyDetailViewModel::class)
-    abstract fun bindDetailViewModel(legacyDetailViewModel: LegacyDetailViewModel): ViewModel
+    abstract fun bindLegacyDetailViewModel(legacyDetailViewModel: LegacyDetailViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -47,6 +47,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    /*@Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    abstract fun bindDetailViewModel(detailViewModel: DetailViewModel): ViewModel*/
 
     @Binds
     abstract fun bindViewModelFactory(factory: RamdanTimeTableViewModelFactory): ViewModelProvider.Factory

@@ -1,24 +1,9 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.detail
 
-import android.net.Uri
-import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.tabs.TabLayout
-import com.marmutech.ramdantimetable.ramadantimetable.R
-import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentDetailViewBinding
-import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreActivity
-import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.ViewPagerAdapter
-import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import javax.inject.Inject
-
 @Deprecated("use DetailViewActivity")
-class LegacyDetailActivity : CoreActivity() {
+class LegacyDetailActivity /*: CoreActivity()*/ {
 
-    @Inject
+    /*@Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
@@ -38,7 +23,8 @@ class LegacyDetailActivity : CoreActivity() {
         super.onCreate(savedInstanceState)
 
 
-        binding = DataBindingUtil.setContentView(this, R.layout.fragment_detail_view)
+        binding = FragmentDetailViewBinding.inflate(layoutInflater)
+
 
         toolbar = binding?.toolbar
         toolbar?.setTitleTextColor(resources.getColor(R.color.colorAccent))
@@ -82,5 +68,5 @@ class LegacyDetailActivity : CoreActivity() {
 
             }
         })
-    }
+    }*/
 }
