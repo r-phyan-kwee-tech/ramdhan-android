@@ -2,9 +2,9 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.DuaInfoFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.InfoBottomSheetFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.CreditFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.InfoBottomSheetFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.*
 import dagger.Module

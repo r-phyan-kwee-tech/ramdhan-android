@@ -1,6 +1,5 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -9,7 +8,9 @@ import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.ActivityMainBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.DetailViewFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.SettingActivity
+import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.CreditFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.OnBoardingFragment
 import javax.inject.Inject
 
@@ -50,6 +51,9 @@ class MainActivity : CoreActivity() {
                 DetailViewFragment.newInstance(openScreen.detailParam),
                 DetailViewFragment.tag
             )
+            ScreenType.ChangeLocation -> inflateFragment(CountryStateSelectionFragment(), "tag")
+            ScreenType.CreditScreen -> inflateFragment(CreditFragment(), "tag")
+            ScreenType.LicenseScreen -> inflateFragment(LicenseFragment(), "tag")
         }
     }
 
@@ -60,12 +64,5 @@ class MainActivity : CoreActivity() {
             .apply {
                 if (!isRootRoute) addToBackStack(tag)
             }.commit()
-    }
-
-    //todo remove
-    fun lunchInfoActivity(targetFlags: String) {
-        val intent = Intent(this, SettingActivity::class.java)
-        intent.putExtra(SettingActivity.KEY_TARGET_FLAG, targetFlags)
-        startActivity(intent)
     }
 }

@@ -14,6 +14,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.MainViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.ScreenType
+import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.InfoBottomSheetFragment
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -133,8 +134,7 @@ class ScheduleFragment private constructor() : CoreFragment() {
     }
 
     private fun openInfoSheet() {
-        val bottomSheetFragment = InfoBottomSheetFragment()
-        bottomSheetFragment.show(parentFragmentManager, InfoBottomSheetFragment.TAG)
+        InfoBottomSheetFragment.openInfoSheetFragment(parentFragmentManager)
     }
 
     companion object {
