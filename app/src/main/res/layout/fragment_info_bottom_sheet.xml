@@ -1,129 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:layout_height="wrap_content">
 
-    <!-- NOTE: This list should be displayed in a list
-    instead of nested layouts -->
-
-    <LinearLayout
-        android:id="@+id/ll_choose_location"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuideLine"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/default_padding_medium"
-        android:paddingTop="8dp"
-        android:paddingRight="@dimen/default_padding_medium"
-        android:paddingBottom="8dp">
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="32dp"
-            android:tint="#737373"
-            app:srcCompat="@drawable/ic_my_location_black_24dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/str_choose_location"
-            android:textColor="#737373"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_font_support"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuideLine"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/default_padding_medium"
-        android:paddingTop="8dp"
-        android:paddingRight="@dimen/default_padding_medium"
-        android:paddingBottom="8dp">
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="32dp"
-            android:tint="#737373"
-            app:srcCompat="@drawable/ic_font_download_black_24dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/str_fonts"
-            android:textColor="#737373"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_credits"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvSetting"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/default_padding_medium"
-        android:paddingTop="8dp"
-        android:paddingRight="@dimen/default_padding_medium"
-        android:paddingBottom="8dp">
+        android:layout_marginTop="16dp"
+        android:text="@string/str_setting"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/startGuideLine"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Settings" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="32dp"
-            android:tint="#737373"
-            app:srcCompat="@drawable/ic_supervisor_account_black_24dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/str_credits"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+    <ImageView
+        android:id="@+id/ivLocation"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/startGuideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvSetting"
+        app:srcCompat="@drawable/ic_my_location_black_24dp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_open_source_libraries"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/default_padding_medium"
-        android:paddingTop="8dp"
-        android:paddingRight="@dimen/default_padding_medium"
-        android:paddingBottom="8dp">
+        android:layout_marginStart="8dp"
+        android:text="@string/str_choose_location"
+        android:textColor="#737373"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivLocation"
+        app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+        app:layout_constraintStart_toEndOf="@id/ivLocation"
+        app:layout_constraintTop_toTopOf="@id/ivLocation" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="32dp"
-            android:tint="#737373"
-            app:srcCompat="@drawable/ic_local_library_black_24dp" />
+    <ImageView
+        android:id="@+id/ivCredit"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/startGuideLine"
+        app:layout_constraintTop_toBottomOf="@id/ivLocation"
+        app:srcCompat="@drawable/ic_supervisor_account_black_24dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/str_open_source_libraries"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tvCredits"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:text="@string/str_credits"
+        android:textColor="#737373"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivCredit"
+        app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+        app:layout_constraintStart_toEndOf="@id/ivCredit"
+        app:layout_constraintTop_toTopOf="@id/ivCredit" />
 
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/ivLicense"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginVertical="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/startGuideLine"
+        app:layout_constraintTop_toBottomOf="@id/ivCredit"
+        app:srcCompat="@drawable/ic_local_library_black_24dp" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvLicense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:text="@string/str_open_source_libraries"
+        android:textColor="#737373"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLicense"
+        app:layout_constraintEnd_toEndOf="@id/endGuideLine"
+        app:layout_constraintStart_toEndOf="@id/ivLicense"
+        app:layout_constraintTop_toTopOf="@id/ivLicense" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

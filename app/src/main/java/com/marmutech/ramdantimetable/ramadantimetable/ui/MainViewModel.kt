@@ -46,7 +46,10 @@ data class MainUiModel(
 )
 
 sealed class ScreenType {
-    object SplashScreen : ScreenType()//, ListScreen, DetailScreen, SettingScreen
+    object SplashScreen : ScreenType()
     object ListScreen : ScreenType()
     data class DetailScreen(val detailParam: TimeTableDay) : ScreenType()
+    object CreditScreen : ScreenType()
+    object LicenseScreen : ScreenType()
+    object ChangeLocation : ScreenType()
 }
