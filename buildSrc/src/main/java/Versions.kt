@@ -5,9 +5,6 @@ object Versions {
     const val fabricVersion = "1.28.0"
     const val googleServiceVersion = "4.3.3"
 
-    //config
-    const val buildToolVersion = "25.0.0"
-
     const val targetSdkVersion = 28
     const val versionCode = 4
     const val versionName = "1.0.2"
@@ -24,6 +21,7 @@ object Versions {
     const val constraintLayoutVersion = "1.1.3"
     const val materialVersion = "1.3.0"
     const val viewPager2Version = "1.0.0"
+    const val coreKtxVersion = "1.6.0"
 
     //jet pack
     const val lifecycleVersion = "2.3.1"
