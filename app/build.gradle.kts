@@ -3,8 +3,8 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
-    id("com.cookpad.android.licensetools")
     id("com.google.gms.google-services")
+    id(Libs.licenseTools) version Versions.licenseToolsVersion
 }
 
 android {
