@@ -1,10 +1,10 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
     id(Libs.licenseTools) version Versions.licenseToolsVersion
+    kotlin("android")
 }
 
 android {
@@ -35,7 +35,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-        dataBinding = true
     }
 
     dependencies {

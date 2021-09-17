@@ -20,7 +20,11 @@ class ScheduleViewHolder(
 
     fun bind(timeTableDay: TimeTableDay) {
         this.timeTableDay = timeTableDay
-        binding.dayObj = timeTableDay
-        binding.executePendingBindings()
+        with(binding) {
+            tvDayScheduleRow.text =
+                root.context.getString(R.string.str_day, timeTableDay.day.toString())
+            tvStartTimeScheduleRow.text = timeTableDay.sehriTime
+            tvEndTimeScheduleRow.text = timeTableDay.iftariTime
+        }
     }
 }
