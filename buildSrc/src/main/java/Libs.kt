@@ -19,22 +19,14 @@ object Libs {
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
-    const val liveDataRxSupport =
-        "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.lifecycleVersion}"
 
     //room
     const val room = "androidx.room:room-ktx:${Versions.roomVersion}"
     const val roomProcessor = "androidx.room:room-compiler:${Versions.roomVersion}"
-    const val roomRxSupport = "androidx.room:room-rxjava2:${Versions.roomVersion}"
     const val roomTesting = "androidx.room:room-testing:${Versions.roomVersion}"
-
-    //rxjava
-    const val rxjava = "io.reactivex.rxjava2:rxjava:${Versions.rxJavaVersion}"
-    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroidVersion}"
 
     //retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
-    const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofitVersion}"
     const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
     const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpLoggerVersion}"
 

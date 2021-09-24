@@ -1,6 +1,7 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
 import androidx.recyclerview.widget.RecyclerView
+import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.RowScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
 

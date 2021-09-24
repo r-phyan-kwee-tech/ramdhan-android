@@ -12,14 +12,9 @@ object Versions {
     const val versionCode = 4
     const val versionName = "1.0.2"
     const val appId = "com.marmutech.ramdantimetable.ramadantimetable"
-    const val minSdkVersion = "15"
+    const val minSdkVersion = 15
 
-    //
     const val appCompatVersion = "1.3.0"
-
-    const val rxJavaVersion = "2.1.9"
-
-    const val rxAndroidVersion = "2.0.2"
 
     const val daggerVersion = "2.35.1"
     const val retrofitVersion = "2.9.0"
