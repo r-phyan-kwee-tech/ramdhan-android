@@ -5,16 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.marmutech.ramdantimetable.ramadantimetable.ApiUtil
 import com.marmutech.ramdantimetable.ramadantimetable.TestUtil
-import com.marmutech.ramdantimetable.ramadantimetable.api.LegacyApiService
-import com.marmutech.ramdantimetable.ramadantimetable.db.LegacyStateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.offsetManager
 import com.marmutech.ramdantimetable.ramadantimetable.mock
-import com.marmutech.ramdantimetable.ramadantimetable.model.Countries
-import com.marmutech.ramdantimetable.ramadantimetable.model.Data
-import com.marmutech.ramdantimetable.ramadantimetable.model.Days
-import com.marmutech.ramdantimetable.ramadantimetable.model.State
-import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
-import com.marmutech.ramdantimetable.ramadantimetable.model.States
+import com.marmutech.ramdantimetable.ramadantimetable.model.*
 import com.marmutech.ramdantimetable.ramadantimetable.util.InstantAppExecutors
 import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
 import org.junit.Rule
@@ -22,10 +15,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.never
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 
 @RunWith(JUnit4::class)
 class StateRepositoryTest {

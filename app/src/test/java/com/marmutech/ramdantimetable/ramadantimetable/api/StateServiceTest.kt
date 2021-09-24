@@ -2,7 +2,6 @@ package com.marmutech.ramdantimetable.ramadantimetable.api
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
-import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFactory
 import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataTestUtil.getValue
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
