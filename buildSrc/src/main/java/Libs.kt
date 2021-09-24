@@ -12,9 +12,6 @@ object Libs {
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
     const val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2Version}"
 
-    const val viewPagerIndicator =
-        "fr.avianey.com.viewpagerindicator:library:${Versions.viewPagerIndicatorVersion}"
-
     //lifecycle
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
