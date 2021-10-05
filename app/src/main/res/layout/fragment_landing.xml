@@ -7,9 +7,9 @@
     android:background="@color/black1000"
     tools:context=".ui.splash.LandingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!--todo: used @style/TV_DEFAULT_MASSIVE_LARGE-->
     <TextView
-        style="@style/TV_DEFAULT_MASSIVE_LARGE"
+        style="?attr/textAppearanceHeadline4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

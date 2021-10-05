@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:background="@color/black1000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_schedule_list_activity">
+        tools:showIn="@layout/activity_main">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_schedule_list"
@@ -35,9 +35,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
+        <!--todo: used @style/TV_DEFAULT_LARGE-->
         <TextView
             android:id="@+id/tv_eid_wish"
-            style="@style/TV_DEFAULT_LARGE"
+            style="?attr/textAppearanceBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

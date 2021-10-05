@@ -20,9 +20,10 @@
             android:layout_marginTop="@dimen/spacing_major"
             android:layout_marginBottom="@dimen/spacing_major">
 
+            <!--todo: used @style/TV_DEFAULT_LARGE-->
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDayScheduleRow"
-                style="@style/TV_DEFAULT_LARGE"
+                style="?attr/textAppearanceBody1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -108,5 +109,4 @@
                 tools:text="@tools:sample/date/hhmm" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 </FrameLayout>

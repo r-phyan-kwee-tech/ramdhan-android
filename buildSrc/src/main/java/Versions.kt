@@ -9,14 +9,12 @@ object Versions {
     const val versionCode = 4
     const val versionName = "1.0.2"
     const val appId = "com.marmutech.ramdantimetable.ramadantimetable"
-    const val minSdkVersion = 15
+    const val minSdkVersion = 16
 
     const val appCompatVersion = "1.3.0"
-
     const val daggerVersion = "2.35.1"
     const val retrofitVersion = "2.9.0"
     const val okHttpLoggerVersion = "3.10.0"
-    const val viewPagerIndicatorVersion = "2.4.1.1@aar"
     const val timberVersion = "4.7.0"
     const val constraintLayoutVersion = "1.1.3"
     const val materialVersion = "1.3.0"
@@ -47,5 +45,5 @@ object Versions {
 
     const val multiDexVersion = "2.0.1"
 
-    const val fragmentKtx = "1.3.6"
+    const val fragmentKtxVersion = "1.3.6"
 }

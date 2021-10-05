@@ -15,9 +15,10 @@
             android:orientation="vertical"
             android:padding="@dimen/card_margin">
 
+            <!--todo: used @style/TV_DEFAULT_LARGE-->
             <TextView
                 android:id="@+id/duaTitle"
-                style="@style/TV_DEFAULT_LARGE"
+                style="?attr/textAppearanceBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/card_margin"
@@ -38,9 +39,10 @@
 
                     app:cardCornerRadius="4dp">
 
+                    <!--todo: used @style/TV_DEFAULT_LARGE-->
                     <TextView
                         android:id="@+id/duaDetail"
-                        style="@style/TV_DEFAULT_LARGE"
+                        style="?attr/textAppearanceBody1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="@dimen/card_margin"
