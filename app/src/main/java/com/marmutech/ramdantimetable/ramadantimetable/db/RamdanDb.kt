@@ -20,11 +20,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
         exportSchema = false
 )
 abstract class RamdanDb : RoomDatabase() {
-
-    abstract fun legacyCountryDao(): LegacyCountryDao
-
-    abstract fun legacyStateDao(): LegacyStateDao
-
     abstract fun timetableDao(): TimeTableDao
 
     abstract fun countryDao(): CountryDao

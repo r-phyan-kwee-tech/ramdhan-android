@@ -17,25 +17,6 @@ class UserPrefUtil @Inject constructor(app: Application) {
     private val mSharedPreference: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(
         app.applicationContext
     )
-//    private lateinit var mApplication: Application
-
-//    companion object {
-//        private lateinit var userPrefUtil: UserPrefUtil
-//
-//        fun getInstance(app: Application): UserPrefUtil {
-//            if (userPrefUtil == null) {
-//                userPrefUtil = UserPrefUtil(app)
-//            }
-//            return userPrefUtil
-//        }
-//
-//    }
-
-//    init {
-//        mApplication = app
-//        mSharedPreference = PreferenceManager.getDefaultSharedPreferences(mApplication)
-//    }
-
 
     fun setSplashFinished(isFinished: Boolean) {
         mSharedPreference.edit().putBoolean(SPLASH_FINISH, isFinished).apply()

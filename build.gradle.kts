@@ -2,15 +2,13 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven("https://maven.fabric.io/public")
 
     }
     dependencies {
         classpath(Libs.gradleAndroid)
         classpath(Libs.kotlinGradle)
-        classpath("org.jetbrains.kotlin:kotlin-android-extensions:${Versions.kotlinVersion}")
-        classpath(Libs.licenseTools)
         classpath(Libs.googleService)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

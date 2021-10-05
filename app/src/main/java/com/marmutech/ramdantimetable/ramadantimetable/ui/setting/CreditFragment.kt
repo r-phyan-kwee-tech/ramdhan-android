@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCreditBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
@@ -22,13 +21,13 @@ class CreditFragment : CoreFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_credit, container, false)
+        _binding = FragmentCreditBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.versionNumber = getAppVersion(requireContext())
+        binding.tvVersion.text = getString(R.string.str_version, getAppVersion(requireContext()))
     }
 
     override fun onDestroyView() {

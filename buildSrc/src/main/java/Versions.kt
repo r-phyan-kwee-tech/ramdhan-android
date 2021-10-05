@@ -1,7 +1,7 @@
 object Versions {
-    const val kotlinVersion = "1.5.0"
-    const val gradleAndroidVersion = "4.2.1"
-    const val licenseToolsVersion = "1.2.0"
+    const val kotlinVersion = "1.5.30"
+    const val gradleAndroidVersion = "7.0.2"
+    const val licenseToolsVersion = "1.2.8"
     const val fabricVersion = "1.28.0"
     const val googleServiceVersion = "4.3.3"
 
@@ -12,14 +12,9 @@ object Versions {
     const val versionCode = 4
     const val versionName = "1.0.2"
     const val appId = "com.marmutech.ramdantimetable.ramadantimetable"
-    const val minSdkVersion = "15"
+    const val minSdkVersion = 15
 
-    //
     const val appCompatVersion = "1.3.0"
-
-    const val rxJavaVersion = "2.1.9"
-
-    const val rxAndroidVersion = "2.0.2"
 
     const val daggerVersion = "2.35.1"
     const val retrofitVersion = "2.9.0"
