@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black1000">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,15 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_major"
-            android:textColor="@color/white"
-            app:srcCompat="@drawable/ic_font_select" />
+            app:srcCompat="@drawable/ic_font_select"
+            app:tint="?attr/colorOnSurface" />
 
         <LinearLayout
             android:id="@+id/profile_item_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             android:paddingTop="@dimen/default_padding_medium"
             android:paddingBottom="@dimen/default_padding_medium">
 
@@ -39,17 +37,14 @@
                 android:layout_gravity="center"
                 android:layout_weight="5"
                 android:gravity="center"
+                android:text="@string/zg_myanmar" />
 
-                android:text="@string/zg_myanmar"
-                android:textColor="@color/white" />
-
-            <androidx.appcompat.widget.SwitchCompat
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/swChangeType"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
-                app:switchMinWidth="@dimen/fab_custom_margin"
-                app:trackTint="@color/colorGrey600" />
+                app:switchMinWidth="@dimen/fab_custom_margin" />
 
             <!--todo: used @style/TV_DEFAULT_MASSIVE_LARGE-->
             <TextView
@@ -60,8 +55,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="5"
                 android:gravity="center"
-                android:text="@string/uni_myanmar"
-                android:textColor="@color/white" />
+                android:text="@string/uni_myanmar" />
         </LinearLayout>
 
 

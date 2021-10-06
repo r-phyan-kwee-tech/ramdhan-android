@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black1000"
     android:orientation="vertical"
     android:padding="@dimen/spacing_major">
 
@@ -20,16 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_minor"
-            android:textColor="@color/white"
             tools:text="Hello" />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_margin="@dimen/spacing_minor"
-            android:elevation="@dimen/spacing_minor"
-            app:cardBackgroundColor="@color/black800"
-            app:cardCornerRadius="4dp">
+            app:cardCornerRadius="4dp"
+            app:cardElevation="@dimen/spacing_minor">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,16 +52,15 @@
                     android:gravity="center" />
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_minor"
-            android:elevation="@dimen/spacing_minor"
             android:padding="@dimen/spacing_minor"
-            app:cardBackgroundColor="@color/black800"
-            app:cardCornerRadius="4dp">
+            app:cardCornerRadius="4dp"
+            app:cardElevation="@dimen/spacing_minor">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,9 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-
                     android:gravity="center" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </FrameLayout>

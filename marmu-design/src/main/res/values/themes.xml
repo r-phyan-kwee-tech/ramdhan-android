@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MarMuDesignDayNigh" parent="Theme.MaterialComponents.DayNight"></style>
+    <style name="MarMuDesignDayNigh" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <!-- for status bar https://github.com/material-components/material-components-android/issues/468-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
 </resources>
