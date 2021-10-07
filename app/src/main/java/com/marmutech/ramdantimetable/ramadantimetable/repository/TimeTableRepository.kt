@@ -5,7 +5,9 @@ import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.model.*
+import com.marmutech.ramdantimetable.ramadantimetable.util.NetworkBoundResource
 import kotlinx.coroutines.flow.*
+import retrofit2.Response
 import javax.inject.Inject
 
 //todo add sorting
@@ -50,7 +52,22 @@ class TimeTableRepositoryImpl @Inject constructor(
     override suspend fun loadDays(): Flow<List<TimeTableDay>> {
         //todo if null user have to choose again
         val userSelectedStateId = userSettingRepository.getSelectedStateId()!!
-        return timeTableDao.getDayByStateId(userSelectedStateId)
+        return object : NetworkBoundResource<DayResponse, TimeTableDay, List<TimeTableDay>>() {
+            override suspend fun apiCallFlow(): Response<DayResponse> {
+                return apiService.getDayList(dayListQuery(userSelectedStateId))
+            }
+
+            override fun dbQueryFlow(): Flow<List<TimeTableDay>> =
+                timeTableDao.getDayByStateId(userSelectedStateId)
+
+            override fun dbInsertCall(data: List<TimeTableDay>) = timeTableDao.bulkInsert(data)
+
+            override fun mapDataFromApiToDb(apiData: DayResponse): List<TimeTableDay> =
+                apiData.data.days!!.data
+
+            override fun mapDBDataFromUiData(dbData: List<TimeTableDay>): List<TimeTableDay> =
+                dbData
+        }.execute()
     }
 
     private suspend fun loadStateListWithCacheProcess(countryId: String) = flow {
@@ -111,6 +128,36 @@ class TimeTableRepositoryImpl @Inject constructor(
                 "    }\n" +
                 "  }\n" +
                 "}"
+
+        private fun dayListQuery(stateId: String) = "{\n" +
+                "  days(limit: $limit, page: $page, stateId: \"$stateId\") {\n" +
+                "    data {\n" +
+                "      id\n" +
+                "    objectId\n" +
+                "    day\n" +
+                "    dayMm\n" +
+                "    calendarDay\n" +
+                "    hijariDay\n" +
+                "    sehriTime\n" +
+                "    iftariTime\n" +
+                "    sehriTimeDesc\n" +
+                "    iftariTimeDesc\n" +
+                "    sehriTimeDescMmUni\n" +
+                "    sehriTimeDescMmZawgyi\n" +
+                "    iftariTimeDescMmZawgyi\n" +
+                "    iftariTimeDescMmUni\n" +
+                "    isKadir\n" +
+                "    duaAr\n" +
+                "    duaEn\n" +
+                "    duaMmUni\n" +
+                "    duaMmZawgyi\n" +
+                "    countryId\n" +
+                "    stateId\n" +
+                "    createdDate\n" +
+                "    updatedDate\n" +
+                "    }\n" +
+                "  }\n" +
+                "}\n"
 
     }
 }

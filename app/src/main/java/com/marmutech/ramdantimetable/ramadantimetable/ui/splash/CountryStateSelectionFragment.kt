@@ -85,26 +85,17 @@ class CountryStateSelectionFragment : CoreFragment() {
     }
 
     private fun attachSpinnerListener() {
-        (binding.countryTextInputLayout.editText as? AutoCompleteTextView)?.onItemSelectedListener =
-            countrySelectionListener
-        (binding.stateTextInputLayout.editText as? AutoCompleteTextView)?.onItemSelectedListener =
-            stateSelectionListener
+        (binding.countryTextInputLayout.editText as? AutoCompleteTextView)?.setOnItemClickListener { parent, view, position, id ->
+            splashViewModel.onCountrySelected(position)
+        }
+        (binding.stateTextInputLayout.editText as? AutoCompleteTextView)?.setOnItemClickListener { parent, view, position, id ->
+            splashViewModel.onStateSelected(position)
+        }
     }
 
     private val countrySelectionListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             splashViewModel.onCountrySelected(position)
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {
-            TODO("Not yet implemented")
-        }
-
-    }
-
-    private val stateSelectionListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            splashViewModel.onStateSelected(position)
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {
