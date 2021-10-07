@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.marmutech.ramdantimetable.ramadantimetable.R
@@ -33,8 +34,8 @@ class CountryStateSelectionFragment : CoreFragment() {
     ): View {
         _binding = FragmentCountrySelectionBinding.inflate(layoutInflater, container, false)
 
-        binding.countrySpinner.setBackgroundResource(R.drawable.bg_dropdown)
-        binding.stateSpinner.setBackgroundResource(R.drawable.bg_dropdown)
+        //binding.countrySpinner.setBackgroundResource(R.drawable.bg_dropdown)
+        //binding.stateSpinner.setBackgroundResource(R.drawable.bg_dropdown)
 
         return binding.root
     }
@@ -65,27 +66,29 @@ class CountryStateSelectionFragment : CoreFragment() {
 
     private fun setTitleText(stringRes: SelectionText) {
         binding.selectionTitleTextView.setText(stringRes.selectionTitleText)
-        binding.countrySpinnerTitle.setText(stringRes.selectionCountryText)
-        binding.stateSpinnerTitle.setText(stringRes.selectionStateText)
+        binding.countryTextInputLayout.setHint(stringRes.selectionCountryText)
+        binding.stateTextInputLayout.setHint(stringRes.selectionStateText)
     }
 
     private fun showCountryDataInSpinner(uiModel: CountryListUiModel) {
         val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, uiModel.countries)
-        adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
-        binding.countrySpinner.adapter = adapter
-        binding.countrySpinner.setSelection(uiModel.selectedIndex)
+        //adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
+        (binding.countryTextInputLayout.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        //binding.countrySpinner.setSelection(uiModel.selectedIndex)
     }
 
     private fun showStateDataInSpinner(uiModel: StateListUiModel) {
         val adapter = ArrayAdapter(requireContext(), R.layout.row_spinner_item, uiModel.states)
-        adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
-        binding.stateSpinner.adapter = adapter
-        binding.stateSpinner.setSelection(uiModel.selectedIndex)
+        //adapter.setDropDownViewResource(R.layout.row_spinner_selected_item)
+        (binding.stateTextInputLayout.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        //binding.stateSpinner.setSelection(uiModel.selectedIndex)
     }
 
     private fun attachSpinnerListener() {
-        binding.countrySpinner.onItemSelectedListener = countrySelectionListener
-        binding.stateSpinner.onItemSelectedListener = stateSelectionListener
+        (binding.countryTextInputLayout.editText as? AutoCompleteTextView)?.onItemSelectedListener =
+            countrySelectionListener
+        (binding.stateTextInputLayout.editText as? AutoCompleteTextView)?.onItemSelectedListener =
+            stateSelectionListener
     }
 
     private val countrySelectionListener = object : AdapterView.OnItemSelectedListener {

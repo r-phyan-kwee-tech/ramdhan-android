@@ -1,91 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_major">
+    android:padding="16dp">
 
-    <LinearLayout
+    <!--todo: used @style/TV_DEFAULT_MASSIVE_LARGE-->
+    <TextView
+        android:id="@+id/selectionTitleTextView"
+        style="?attr/textAppearanceHeadline3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_minor"
+        tools:text="Hello" />
 
-        <!--todo: used @style/TV_DEFAULT_MASSIVE_LARGE-->
-        <TextView
-            android:id="@+id/selectionTitleTextView"
-            style="?attr/textAppearanceHeadline3"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/countryTextInputLayout"
+        style="@style/Widget.MarMuDesign.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp">
+
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_minor"
-            tools:text="Hello" />
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_margin="@dimen/spacing_minor"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="@dimen/spacing_minor">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/stateTextInputLayout"
+        style="@style/Widget.MarMuDesign.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="@dimen/spacing_minor">
-
-                <TextView
-                    android:id="@+id/countrySpinnerTitle"
-                    style="?attr/textAppearanceBody1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:textColor="@color/colorYellow700" />
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/countrySpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center" />
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
+        <AutoCompleteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_minor"
-            android:padding="@dimen/spacing_minor"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="@dimen/spacing_minor">
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="@dimen/spacing_minor">
+</LinearLayout>
 
-                <!--todo: used @style/TV_DEFAULT_LARGE-->
-                <TextView
-                    android:id="@+id/stateSpinnerTitle"
-                    style="?attr/textAppearanceBody1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:textColor="@color/colorYellow700" />
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/stateSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-</FrameLayout>
