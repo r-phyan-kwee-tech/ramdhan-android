@@ -12,14 +12,12 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolBar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@color/white" />
+            android:layout_height="wrap_content" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black1000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main">
 
@@ -44,8 +42,7 @@
             android:layout_gravity="center"
             android:padding="@dimen/spacing_major"
             android:text="@string/str_eid_mubarak_short"
-            android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/imageView"
