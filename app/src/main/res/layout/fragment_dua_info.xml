@@ -22,8 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/card_margin"
-                android:gravity="center"
-                android:textColor="@color/black800" />
+                android:gravity="center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,8 +42,7 @@
                         style="?attr/textAppearanceBody1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="@dimen/card_margin"
-                        android:textColor="@color/black800" />
+                        android:padding="@dimen/card_margin" />
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
