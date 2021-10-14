@@ -51,6 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="More Fonts..."
         android:padding="@dimen/spacing_major"
         android:text="@string/str_mubarak"
         android:textAlignment="center"
