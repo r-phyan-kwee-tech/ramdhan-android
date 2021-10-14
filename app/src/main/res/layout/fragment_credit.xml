@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black1000">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/cgl_divider"
@@ -12,7 +11,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/iv_ic_launcher"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -23,32 +22,31 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/app_name"
-        android:textColor="@color/colorYellow700"
+        android:textColor="?attr/colorSecondary"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/iv_ic_launcher" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tvVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:padding="@dimen/spacing_micro"
         android:textAlignment="center"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_mubarak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,75 +54,68 @@
         android:padding="@dimen/spacing_major"
         android:text="@string/str_mubarak"
         android:textAlignment="center"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tvVersion" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_special_thanks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:text="@string/str_special_thanks"
-        android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_mubarak" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_aung_myo_lwin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aung Myo Lwin"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_special_thanks" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_win_htaik_aung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Win Htaik Aung"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_aung_myo_lwin" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_khin_thin_zar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Khin Thin Zar (Translation) "
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_win_htaik_aung" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_made_with_love"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="\n\nMade With Love\n"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider"
         app:layout_constraintTop_toBottomOf="@id/tv_khin_thin_zar" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_organization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text=" Develop By R Phyan Kwees"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/tv_repo_android"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_repo_android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,7 +126,7 @@
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tv_repo_api"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,6 +136,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cgl_divider"
         app:layout_constraintStart_toEndOf="@id/cgl_divider" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
