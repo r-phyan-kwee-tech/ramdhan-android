@@ -15,6 +15,7 @@
         android:layout_margin="@dimen/spacing_minor"
         tools:text="Hello" />
 
+    <!--    todo round dropdown background-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/countryTextInputLayout"
         style="@style/Widget.MarMuDesign.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -29,6 +30,7 @@
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--    todo round dropdown background-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/stateTextInputLayout"
         style="@style/Widget.MarMuDesign.TextInputLayout.FilledBox.ExposedDropdownMenu"
