@@ -5,12 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/rowCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_minor"
-        app:cardCornerRadius="4dp">
+        android:layout_margin="@dimen/spacing_minor">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:layout_marginBottom="@dimen/spacing_major">
 
             <!--todo: used @style/TV_DEFAULT_LARGE-->
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tvDayScheduleRow"
                 style="?attr/textAppearanceBody1"
                 android:layout_width="wrap_content"
@@ -43,7 +42,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.3" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tv_start_time_header_schedule_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +58,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="ဝါချည်ချိန်" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tvStartTimeScheduleRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +74,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_start_time_header_schedule_row"
                 tools:text="@tools:sample/date/hhmm" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tv_end_time_header_schedule_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,7 +88,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="ဝါဖြေချိန်" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tvEndTimeScheduleRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,5 +101,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_end_time_header_schedule_row"
                 tools:text="@tools:sample/date/hhmm" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </FrameLayout>

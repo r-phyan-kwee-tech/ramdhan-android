@@ -1,6 +1,6 @@
 object Versions {
     const val kotlinVersion = "1.5.30"
-    const val gradleAndroidVersion = "7.0.2"
+    const val gradleAndroidVersion = "7.0.3"
     const val licenseToolsVersion = "1.2.8"
     const val fabricVersion = "1.28.0"
     const val googleServiceVersion = "4.3.3"

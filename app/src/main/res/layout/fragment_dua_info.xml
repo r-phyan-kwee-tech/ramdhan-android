@@ -30,14 +30,12 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/spacing_minor"
-                    android:elevation="@dimen/spacing_minor"
                     android:padding="@dimen/spacing_minor"
-
-                    app:cardCornerRadius="4dp">
+                    app:elevation="@dimen/spacing_minor">
 
                     <!--todo: used @style/TV_DEFAULT_LARGE-->
                     <TextView
@@ -47,7 +45,7 @@
                         android:layout_height="match_parent"
                         android:padding="@dimen/card_margin"
                         android:textColor="@color/black800" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

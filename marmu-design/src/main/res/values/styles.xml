@@ -4,5 +4,8 @@
     <style name="Widget.MarMuDesign.TextInputLayout.FilledBox.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="endIconTint">?attr/colorOnSecondary</item>
         <item name="hintTextColor">?attr/colorOnSecondary</item>
+        <item name="shapeAppearance">
+            @style/ShapeAppearance.MarMuDesign.SmallComponent
+        </item>
     </style>
 </resources>
