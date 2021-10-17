@@ -11,17 +11,16 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolBar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/white" />
+            app:menu="@menu/menu_schedule_list" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black1000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_schedule_list_activity">
+        tools:showIn="@layout/activity_main">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_schedule_list"
@@ -35,16 +34,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
+        <!--todo: used @style/TV_DEFAULT_LARGE-->
         <TextView
             android:id="@+id/tv_eid_wish"
-            style="@style/TV_DEFAULT_LARGE"
+            style="?attr/textAppearanceBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="@dimen/spacing_major"
             android:text="@string/str_eid_mubarak_short"
-            android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/imageView"

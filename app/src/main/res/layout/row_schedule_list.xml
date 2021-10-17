@@ -3,16 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/black1000">
+    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/rowCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_minor"
-        app:cardBackgroundColor="@color/black800"
-        app:cardCornerRadius="4dp">
+        android:layout_margin="@dimen/spacing_minor">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,9 +17,10 @@
             android:layout_marginTop="@dimen/spacing_major"
             android:layout_marginBottom="@dimen/spacing_major">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <!--todo: used @style/TV_DEFAULT_LARGE-->
+            <TextView
                 android:id="@+id/tvDayScheduleRow"
-                style="@style/TV_DEFAULT_LARGE"
+                style="?attr/textAppearanceBody1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -30,7 +28,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/colorYellow700"
+                android:textColor="?attr/colorSecondary"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +42,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.3" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tv_start_time_header_schedule_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,14 +52,13 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:text="@string/start_time"
-                android:textColor="@color/white"
                 app:layout_constraintBaseline_toBaselineOf="@id/tv_end_time_header_schedule_row"
                 app:layout_constraintEnd_toStartOf="@+id/tv_end_time_header_schedule_row"
                 app:layout_constraintStart_toStartOf="@+id/cg_schedule_column"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="ဝါချည်ချိန်" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tvStartTimeScheduleRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,14 +68,13 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="4dp"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvEndTimeScheduleRow"
                 app:layout_constraintStart_toStartOf="@+id/cg_schedule_column"
                 app:layout_constraintTop_toBottomOf="@+id/tv_start_time_header_schedule_row"
                 tools:text="@tools:sample/date/hhmm" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tv_end_time_header_schedule_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,13 +83,12 @@
                 android:layout_marginRight="16dp"
                 android:gravity="center"
                 android:text="@string/end_time"
-                android:textColor="@color/white"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="ဝါဖြေချိန်" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/tvEndTimeScheduleRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,12 +96,10 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="4dp"
-                android:textColor="@color/white"
                 app:layout_constraintBaseline_toBaselineOf="@id/tvStartTimeScheduleRow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_end_time_header_schedule_row"
                 tools:text="@tools:sample/date/hhmm" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
+    </com.google.android.material.card.MaterialCardView>
 </FrameLayout>

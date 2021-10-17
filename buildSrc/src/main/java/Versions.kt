@@ -1,29 +1,25 @@
 object Versions {
     const val kotlinVersion = "1.5.30"
-    const val gradleAndroidVersion = "7.0.2"
+    const val gradleAndroidVersion = "7.0.3"
     const val licenseToolsVersion = "1.2.8"
     const val fabricVersion = "1.28.0"
     const val googleServiceVersion = "4.3.3"
-
-    //config
-    const val buildToolVersion = "25.0.0"
 
     const val targetSdkVersion = 28
     const val versionCode = 4
     const val versionName = "1.0.2"
     const val appId = "com.marmutech.ramdantimetable.ramadantimetable"
-    const val minSdkVersion = 15
+    const val minSdkVersion = 16
 
     const val appCompatVersion = "1.3.0"
-
     const val daggerVersion = "2.35.1"
     const val retrofitVersion = "2.9.0"
     const val okHttpLoggerVersion = "3.10.0"
-    const val viewPagerIndicatorVersion = "2.4.1.1@aar"
     const val timberVersion = "4.7.0"
     const val constraintLayoutVersion = "1.1.3"
-    const val materialVersion = "1.3.0"
+    const val materialVersion = "1.4.0"
     const val viewPager2Version = "1.0.0"
+    const val coreKtxVersion = "1.6.0"
 
     //jet pack
     const val lifecycleVersion = "2.3.1"
@@ -49,5 +45,5 @@ object Versions {
 
     const val multiDexVersion = "2.0.1"
 
-    const val fragmentKtx = "1.3.6"
+    const val fragmentKtxVersion = "1.3.6"
 }

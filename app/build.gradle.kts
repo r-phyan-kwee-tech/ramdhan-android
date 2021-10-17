@@ -40,6 +40,7 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(mapOf("path" to ":marmu-design")))
     implementation(Libs.kotlinLib)
     implementation(Libs.kotlinCoroutine)
     testImplementation(Libs.kotlinCoroutineTest)
@@ -47,6 +48,7 @@ dependencies {
     implementation(Libs.fragmentKtx)
     implementation(Libs.material)
     implementation(Libs.viewPager2)
+    implementation(Libs.coreKtx)
 
     implementation(Libs.viewModel)
     implementation(Libs.liveData)

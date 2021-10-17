@@ -15,37 +15,35 @@
             android:orientation="vertical"
             android:padding="@dimen/card_margin">
 
+            <!--todo: used @style/TV_DEFAULT_LARGE-->
             <TextView
                 android:id="@+id/duaTitle"
-                style="@style/TV_DEFAULT_LARGE"
+                style="?attr/textAppearanceBody1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/card_margin"
-                android:gravity="center"
-                android:textColor="@color/black800" />
+                android:gravity="center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/spacing_minor"
-                    android:elevation="@dimen/spacing_minor"
                     android:padding="@dimen/spacing_minor"
+                    app:elevation="@dimen/spacing_minor">
 
-                    app:cardCornerRadius="4dp">
-
+                    <!--todo: used @style/TV_DEFAULT_LARGE-->
                     <TextView
                         android:id="@+id/duaDetail"
-                        style="@style/TV_DEFAULT_LARGE"
+                        style="?attr/textAppearanceBody1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="@dimen/card_margin"
-                        android:textColor="@color/black800" />
-                </androidx.cardview.widget.CardView>
+                        android:padding="@dimen/card_margin" />
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
