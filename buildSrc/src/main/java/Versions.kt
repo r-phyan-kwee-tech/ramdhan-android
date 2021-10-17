@@ -17,7 +17,7 @@ object Versions {
     const val okHttpLoggerVersion = "3.10.0"
     const val timberVersion = "4.7.0"
     const val constraintLayoutVersion = "1.1.3"
-    const val materialVersion = "1.3.0"
+    const val materialVersion = "1.4.0"
     const val viewPager2Version = "1.0.0"
     const val coreKtxVersion = "1.6.0"
 

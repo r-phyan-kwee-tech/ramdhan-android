@@ -43,15 +43,10 @@ class ScheduleFragment private constructor() : CoreFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpToolBar()
         prepareUi()
         observeUi()
         attachViewListener()
         vm.onViewCreated()
-    }
-
-    private fun setUpToolBar() {
-        binding.toolBar.inflateMenu(R.menu.menu_schedule_list)
     }
 
     private fun attachViewListener() {
