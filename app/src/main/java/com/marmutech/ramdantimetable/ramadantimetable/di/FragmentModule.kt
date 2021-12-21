@@ -5,7 +5,10 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.detail.duapager.DuaInfo
 import com.marmutech.ramdantimetable.ramadantimetable.ui.schedule.ScheduleFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.CreditFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.InfoBottomSheetFragment
-import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.*
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.CountryStateSelectionFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LandingFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.LicenseFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.splash.OnBoardingFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -31,10 +34,6 @@ abstract class FragmentModule {
     @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun provideLicenseFragment(): LicenseFragment
-
-    @FragmentScope
-    @ContributesAndroidInjector
-    internal abstract fun provideFontSelectionFragment(): FontSelectionFragment
 
     @FragmentScope
     @ContributesAndroidInjector

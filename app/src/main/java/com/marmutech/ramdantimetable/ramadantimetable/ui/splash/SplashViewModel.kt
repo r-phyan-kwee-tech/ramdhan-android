@@ -21,6 +21,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedS
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -44,9 +45,6 @@ class SplashViewModel @Inject constructor(
     private val _countriesSelectionUiModel = MutableStateFlow<CountrySelectionUiModel?>(null)
     val countrySelectionUiModel: StateFlow<CountrySelectionUiModel?> get() = _countriesSelectionUiModel
 
-    private val _fontSelectionUiModel = MutableStateFlow<FontSelectionUiModel?>(null)
-    val fontSelectionUiModel: LiveData<FontSelectionUiModel?> get() = _fontSelectionUiModel.asLiveData()
-
     private val _movePageByPosition = MutableStateFlow(0)
     val movePageByPosition: LiveData<Int> get() = _movePageByPosition.asLiveData()
 
@@ -61,15 +59,9 @@ class SplashViewModel @Inject constructor(
     private var totalPageCount = 0
     private var currentPagePosition = 0
 
+    @ExperimentalCoroutinesApi
     fun onViewCreated() {
         viewModelScope.launch(dispatcher) {
-
-            _fontSelectionUiModel.value = FontSelectionUiModel(
-                isUnicodeEnable = getIsEnableUnicodeUseCase.execute(
-                    Unit
-                )
-            )
-
             initCountrySelectionUiModel()
         }
     }
@@ -80,6 +72,7 @@ class SplashViewModel @Inject constructor(
         }
     }
 
+    @ExperimentalCoroutinesApi
     private suspend fun initCountrySelectionUiModel() {
         combine(
             getCountryListUseCase.execute(Unit),
@@ -164,7 +157,7 @@ class SplashViewModel @Inject constructor(
                     getNameFromState(states),
                     getStateSelectedIndex(states, getSelectedIdStateUseCase.execute(Unit))
                 ),
-                mapSelectionText(getIsEnableUnicodeUseCase.execute(Unit))
+                mapSelectionText()
             )
         }
     }
@@ -216,11 +209,11 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-    private suspend fun mapSelectionText(isEnableUnicode: Boolean): SelectionText {
+    private fun mapSelectionText(): SelectionText {
         return SelectionText(
-            if (isEnableUnicode) R.string.uni_country_select else R.string.zg_country_select,
-            if (isEnableUnicode) R.string.uni_country_mm else R.string.zg_country_mm,
-            if (isEnableUnicode) R.string.uni_state_mm else R.string.zg_state_mm
+            R.string.uni_country_select,
+            R.string.uni_country_mm,
+            R.string.uni_state_mm
         )
     }
 }

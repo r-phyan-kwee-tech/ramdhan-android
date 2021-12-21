@@ -117,7 +117,6 @@ class OnBoardingFragment : CoreFragment() {
 
     private fun createOnBoardFragments(): List<Fragment> = listOf(
         LandingFragment(),
-        FontSelectionFragment(),
         CountryStateSelectionFragment()
     )
 
