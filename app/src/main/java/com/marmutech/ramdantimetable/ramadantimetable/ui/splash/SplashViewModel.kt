@@ -12,8 +12,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetCountryL
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetSelectedCountryIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryNameUseCase
-import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.GetIsEnableUnicodeUseCase
-import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.SetIsEnableUnicodeUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetSelectedStateIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetStateListBySelectedCountryUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedStateIdUseCase
@@ -29,8 +27,6 @@ import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
     @MainCoroutineDispatcher private val dispatcher: CoroutineDispatcher,
-    private val setIsEnableUnicodeUseCase: SetIsEnableUnicodeUseCase,
-    private val getIsEnableUnicodeUseCase: GetIsEnableUnicodeUseCase,
     private val saveSelectedCountryIdUseCase: SaveSelectedCountryIdUseCase,
     private val getSelectedCountryIdUseCase: GetSelectedCountryIdUseCase,
     private val saveSelectedStateIdUseCase: SaveSelectedStateIdUseCase,
@@ -63,12 +59,6 @@ class SplashViewModel @Inject constructor(
     fun onViewCreated() {
         viewModelScope.launch(dispatcher) {
             initCountrySelectionUiModel()
-        }
-    }
-
-    fun setEnableUnicode(enable: Boolean) {
-        viewModelScope.launch(dispatcher) {
-            setIsEnableUnicodeUseCase.execute(enable)
         }
     }
 
@@ -242,8 +232,4 @@ data class SelectionText(
     @StringRes val selectionTitleText: Int,
     @StringRes val selectionCountryText: Int,
     @StringRes val selectionStateText: Int
-)
-
-data class FontSelectionUiModel(
-    val isUnicodeEnable: Boolean
 )

@@ -16,8 +16,6 @@ class NetworkObserver(
     private val context: Context
 ) : LifecycleObserver {
 
-    private var monitoringConnectivity = false
-
     private val _connectedStatus = MutableLiveData<Boolean>()
     val connectedStatus: LiveData<Boolean>
         get() = _connectedStatus
@@ -26,9 +24,6 @@ class NetworkObserver(
     private val connectivityCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
             _connectedStatus.postValue(true)
-            // we are connected, so we can stop listening
-            connectivityManager.unregisterNetworkCallback(this)
-            monitoringConnectivity = false
         }
 
         override fun onLost(network: Network) {
@@ -38,39 +33,29 @@ class NetworkObserver(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun stopMonitoringConnectivity() {
-        Timber.d("ON_PAUSE")
-        Timber.d("monitoringConnectivity $monitoringConnectivity")
-        if (monitoringConnectivity) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                connectivityManager.unregisterNetworkCallback(connectivityCallback)
-            } else {
-                Timber.d("unregisterReceiver broadcast")
-                context.unregisterReceiver(networkBroadcast)
-            }
-            monitoringConnectivity = false
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            connectivityManager.unregisterNetworkCallback(connectivityCallback)
+        } else {
+            Timber.d("unregisterReceiver broadcast")
+            context.unregisterReceiver(networkBroadcast)
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun startMonitoringConnectivity() {
-        Timber.d("ON_RESUME")
         val connected = isOnline()
         _connectedStatus.postValue(connected)
-        if (!connected) {
-            // we don't have internet connection, so we listen to notifications in connection status
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Timber.d("register callback")
-                connectivityManager.registerNetworkCallback(
-                    NetworkRequest.Builder()
-                        .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET).build(),
-                    connectivityCallback
-                )
-            } else {
-                Timber.d("register broadcast")
-                registerNetworkBroadcast()
-            }
-            monitoringConnectivity = true
+        // we don't have internet connection, so we listen to notifications in connection status
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            connectivityManager.registerNetworkCallback(
+                NetworkRequest.Builder()
+                    .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET).build(),
+                connectivityCallback
+            )
+        } else {
+            registerNetworkBroadcast()
         }
+
     }
 
     private fun isOnline(): Boolean {
@@ -80,13 +65,8 @@ class NetworkObserver(
 
     private val networkBroadcast = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            Timber.d("networkBroadcast onReceive")
             val isConnected = isOnline()
             _connectedStatus.value = isConnected
-//            if (isConnected) {
-//                monitoringConnectivity = false
-//
-//            }
         }
     }
 
