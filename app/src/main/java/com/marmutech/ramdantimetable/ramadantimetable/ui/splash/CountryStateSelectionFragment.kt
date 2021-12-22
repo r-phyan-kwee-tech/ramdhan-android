@@ -54,7 +54,6 @@ class CountryStateSelectionFragment : CoreFragment() {
         netObserver = NetworkObserver(connManager, requireContext())
         lifecycle.addObserver(netObserver)
         observeNetworkChange()
-        splashViewModel.onViewCreated()
     }
 
     private fun observeData() {
@@ -107,14 +106,19 @@ class CountryStateSelectionFragment : CoreFragment() {
     private fun observeNetworkChange() {
         netObserver.connectedStatus.observe(viewLifecycleOwner, {
             Timber.d("connectedStatus $it")
-            if (it) hideNoNetworkDialog() else showNoNetworkDialog()
+            if (it) {
+                hideNoNetworkDialog()
+                splashViewModel.loadData()
+            } else showNoNetworkDialog()
         })
     }
 
     private fun showNoNetworkDialog() {
-        noNetworkDialog = NoNetworkDialog().apply {
-            isCancelable = false
-            show(this@CountryStateSelectionFragment.childFragmentManager, NoNetworkDialog.tag)
+        if (noNetworkDialog == null) {
+            noNetworkDialog = NoNetworkDialog().apply {
+                isCancelable = false
+                show(this@CountryStateSelectionFragment.childFragmentManager, NoNetworkDialog.tag)
+            }
         }
     }
 

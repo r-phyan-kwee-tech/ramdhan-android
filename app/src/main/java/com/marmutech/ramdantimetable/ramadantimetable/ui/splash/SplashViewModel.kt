@@ -56,7 +56,7 @@ class SplashViewModel @Inject constructor(
     private var currentPagePosition = 0
 
     @ExperimentalCoroutinesApi
-    fun onViewCreated() {
+    fun loadData() {
         viewModelScope.launch(dispatcher) {
             initCountrySelectionUiModel()
         }
