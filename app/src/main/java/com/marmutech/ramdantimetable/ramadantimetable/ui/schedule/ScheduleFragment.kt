@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentScheduleListBinding
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
@@ -15,7 +17,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 import com.marmutech.ramdantimetable.ramadantimetable.ui.MainViewModel
 import com.marmutech.ramdantimetable.ramadantimetable.ui.ScreenType
 import com.marmutech.ramdantimetable.ramadantimetable.ui.setting.InfoBottomSheetFragment
-import timber.log.Timber
 import javax.inject.Inject
 
 class ScheduleFragment private constructor() : CoreFragment() {
@@ -63,7 +64,6 @@ class ScheduleFragment private constructor() : CoreFragment() {
 
     private fun prepareUi() {
         scheduleAdapter = ScheduleAdapter {
-            Timber.d("user click on this $it")
             openDetailView(it)
         }
         with(binding.rvScheduleList) {
@@ -77,6 +77,7 @@ class ScheduleFragment private constructor() : CoreFragment() {
             bindLoading(it.loading)
             bindIsEid(it.isEid)
             bindToolBarTitle(it.toolBarTitle)
+            bindError(it.errorMessage)
             it.days?.let { days ->
                 bindListData(days)
             }
@@ -116,6 +117,12 @@ class ScheduleFragment private constructor() : CoreFragment() {
         with(binding) {
             imageView.visibility = View.GONE
             tvEidWish.visibility = View.GONE
+        }
+    }
+
+    private fun bindError(@StringRes errorStringRes: Int?) {
+        errorStringRes?.let {
+            Snackbar.make(binding.root, it, Snackbar.LENGTH_INDEFINITE).show()
         }
     }
 
