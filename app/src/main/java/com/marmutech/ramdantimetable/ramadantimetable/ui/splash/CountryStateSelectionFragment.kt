@@ -1,6 +1,8 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.splash
 
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,8 @@ import androidx.lifecycle.asLiveData
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCountrySelectionBinding
 import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
+import com.marmutech.ramdantimetable.ramadantimetable.ui.NoNetworkDialog
+import com.marmutech.ramdantimetable.ramadantimetable.ui.common.NetworkObserver
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -25,6 +29,14 @@ class CountryStateSelectionFragment : CoreFragment() {
         ViewModelProvider(requireActivity(), viewModelFactory).get(SplashViewModel::class.java)
     }
 
+    private val connManager: ConnectivityManager by lazy {
+        requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    }
+
+    private var noNetworkDialog: NoNetworkDialog? = null
+
+    private lateinit var netObserver: NetworkObserver
+
     private var _binding: FragmentCountrySelectionBinding? = null
     private val binding: FragmentCountrySelectionBinding get() = _binding!!
 
@@ -33,17 +45,15 @@ class CountryStateSelectionFragment : CoreFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCountrySelectionBinding.inflate(layoutInflater, container, false)
-
-        //binding.countrySpinner.setBackgroundResource(R.drawable.bg_dropdown)
-        //binding.stateSpinner.setBackgroundResource(R.drawable.bg_dropdown)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
-        splashViewModel.onViewCreated()
+        netObserver = NetworkObserver(connManager, requireContext())
+        lifecycle.addObserver(netObserver)
+        observeNetworkChange()
     }
 
     private fun observeData() {
@@ -91,6 +101,29 @@ class CountryStateSelectionFragment : CoreFragment() {
         (binding.stateTextInputLayout.editText as? AutoCompleteTextView)?.setOnItemClickListener { parent, view, position, id ->
             splashViewModel.onStateSelected(position)
         }
+    }
+
+    private fun observeNetworkChange() {
+        netObserver.connectedStatus.observe(viewLifecycleOwner, {
+            Timber.d("connectedStatus $it")
+            if (it) {
+                hideNoNetworkDialog()
+                splashViewModel.loadData()
+            } else showNoNetworkDialog()
+        })
+    }
+
+    private fun showNoNetworkDialog() {
+        if (noNetworkDialog == null) {
+            noNetworkDialog = NoNetworkDialog().apply {
+                isCancelable = false
+                show(this@CountryStateSelectionFragment.childFragmentManager, NoNetworkDialog.tag)
+            }
+        }
+    }
+
+    private fun hideNoNetworkDialog() {
+        noNetworkDialog?.dismiss()
     }
 
     private val countrySelectionListener = object : AdapterView.OnItemSelectedListener {

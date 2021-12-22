@@ -12,8 +12,6 @@ import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetCountryL
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.GetSelectedCountryIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.country.SaveSelectedCountryNameUseCase
-import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.GetIsEnableUnicodeUseCase
-import com.marmutech.ramdantimetable.ramadantimetable.domain.fonts.SetIsEnableUnicodeUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetSelectedStateIdUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetStateListBySelectedCountryUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedStateIdUseCase
@@ -21,6 +19,7 @@ import com.marmutech.ramdantimetable.ramadantimetable.domain.state.SaveSelectedS
 import com.marmutech.ramdantimetable.ramadantimetable.model.Country
 import com.marmutech.ramdantimetable.ramadantimetable.model.State
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -28,8 +27,6 @@ import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
     @MainCoroutineDispatcher private val dispatcher: CoroutineDispatcher,
-    private val setIsEnableUnicodeUseCase: SetIsEnableUnicodeUseCase,
-    private val getIsEnableUnicodeUseCase: GetIsEnableUnicodeUseCase,
     private val saveSelectedCountryIdUseCase: SaveSelectedCountryIdUseCase,
     private val getSelectedCountryIdUseCase: GetSelectedCountryIdUseCase,
     private val saveSelectedStateIdUseCase: SaveSelectedStateIdUseCase,
@@ -43,9 +40,6 @@ class SplashViewModel @Inject constructor(
 
     private val _countriesSelectionUiModel = MutableStateFlow<CountrySelectionUiModel?>(null)
     val countrySelectionUiModel: StateFlow<CountrySelectionUiModel?> get() = _countriesSelectionUiModel
-
-    private val _fontSelectionUiModel = MutableStateFlow<FontSelectionUiModel?>(null)
-    val fontSelectionUiModel: LiveData<FontSelectionUiModel?> get() = _fontSelectionUiModel.asLiveData()
 
     private val _movePageByPosition = MutableStateFlow(0)
     val movePageByPosition: LiveData<Int> get() = _movePageByPosition.asLiveData()
@@ -61,25 +55,14 @@ class SplashViewModel @Inject constructor(
     private var totalPageCount = 0
     private var currentPagePosition = 0
 
-    fun onViewCreated() {
+    @ExperimentalCoroutinesApi
+    fun loadData() {
         viewModelScope.launch(dispatcher) {
-
-            _fontSelectionUiModel.value = FontSelectionUiModel(
-                isUnicodeEnable = getIsEnableUnicodeUseCase.execute(
-                    Unit
-                )
-            )
-
             initCountrySelectionUiModel()
         }
     }
 
-    fun setEnableUnicode(enable: Boolean) {
-        viewModelScope.launch(dispatcher) {
-            setIsEnableUnicodeUseCase.execute(enable)
-        }
-    }
-
+    @ExperimentalCoroutinesApi
     private suspend fun initCountrySelectionUiModel() {
         combine(
             getCountryListUseCase.execute(Unit),
@@ -164,7 +147,7 @@ class SplashViewModel @Inject constructor(
                     getNameFromState(states),
                     getStateSelectedIndex(states, getSelectedIdStateUseCase.execute(Unit))
                 ),
-                mapSelectionText(getIsEnableUnicodeUseCase.execute(Unit))
+                mapSelectionText()
             )
         }
     }
@@ -216,11 +199,11 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-    private suspend fun mapSelectionText(isEnableUnicode: Boolean): SelectionText {
+    private fun mapSelectionText(): SelectionText {
         return SelectionText(
-            if (isEnableUnicode) R.string.uni_country_select else R.string.zg_country_select,
-            if (isEnableUnicode) R.string.uni_country_mm else R.string.zg_country_mm,
-            if (isEnableUnicode) R.string.uni_state_mm else R.string.zg_state_mm
+            R.string.uni_country_select,
+            R.string.uni_country_mm,
+            R.string.uni_state_mm
         )
     }
 }
@@ -249,8 +232,4 @@ data class SelectionText(
     @StringRes val selectionTitleText: Int,
     @StringRes val selectionCountryText: Int,
     @StringRes val selectionStateText: Int
-)
-
-data class FontSelectionUiModel(
-    val isUnicodeEnable: Boolean
 )
