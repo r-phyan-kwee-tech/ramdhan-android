@@ -145,8 +145,14 @@ class OnBoardingFragment : CoreFragment() {
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
             when {
-                position > previousPagePosition && position == onBoardAdapter.getPageSize() - 1 -> startNextToDoneAnime()
-                position < previousPagePosition && position == onBoardAdapter.getPageSize() - 2 -> startDoneToNextAnime()
+                position > previousPagePosition && position >= onBoardAdapter.getPageSize() - 1 -> {
+                    startNextToDoneAnime()
+                    vm.onNextClick()
+                }
+                position < previousPagePosition && position < onBoardAdapter.getPageSize() - 1 -> {
+                    startDoneToNextAnime()
+                    vm.onPrevClick()
+                }
             }
             previousPagePosition = position
         }
