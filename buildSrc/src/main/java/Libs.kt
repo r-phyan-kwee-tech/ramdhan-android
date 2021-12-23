@@ -50,8 +50,8 @@ object Libs {
     const val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
 
     //firebase
-    //const val firebaseCore = "com.google.firebase:firebase-core:${Versions.firebaseCoreVersion}"
     const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseVersion}"
+    const val crashlyticGradle = "com.google.firebase:firebase-crashlytics-gradle:2.8.1"
 
     //crashLy
     const val crashlytic = "com.google.firebase:firebase-crashlytics-ktx"
