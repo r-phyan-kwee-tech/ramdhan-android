@@ -6,8 +6,8 @@ object Versions {
     const val googleServiceVersion = "4.3.3"
 
     const val targetSdkVersion = 28
-    const val versionCode = 4
-    const val versionName = "1.0.2"
+    const val versionCode = 5
+    const val versionName = "2.0.0"
     const val appId = "com.marmutech.ramdantimetable.ramadantimetable"
 
     //put back api 16 when this issue resolve https://github.com/material-components/material-components-android/issues/2502
