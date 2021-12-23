@@ -80,7 +80,6 @@ class OnBoardingFragment : CoreFragment() {
 
     private fun attachClickListener() {
         binding.fabNext.setOnClickListener {
-            Timber.d("nav value ${vmMain.mainUiModel.value?.openScreen}")
             vm.onNextClick()
         }
         binding.backImageButton.setOnClickListener {

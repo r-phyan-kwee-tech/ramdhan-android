@@ -5,6 +5,7 @@ plugins {
     id("kotlin-parcelize")
     id(Libs.licenseTools) version Versions.licenseToolsVersion
     kotlin("android")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -76,11 +77,8 @@ dependencies {
 
     implementation(Libs.constraintLayout)
     implementation(Libs.timber)
-    implementation(Libs.firebaseCore)
-
-    implementation(Libs.rabbit) {
-        exclude(group = "org.json", module = "json")
-    }
+    implementation(platform(Libs.firebaseBom))
+    implementation(Libs.crashlytic)
 
     implementation(Libs.multiDex)
 }
