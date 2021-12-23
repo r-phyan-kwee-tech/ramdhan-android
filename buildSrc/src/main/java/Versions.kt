@@ -39,11 +39,7 @@ object Versions {
     const val archCoreTestingVersion = "2.1.0"
 
     //firebase
-    const val firebaseCoreVersion = "12.0.1"
-
-    const val crashlyticsVersion = "2.9.1"
-
-    const val rabbitVersion = "0.0.3"
+    const val firebaseVersion = "29.0.3"
 
     const val multiDexVersion = "2.0.1"
 

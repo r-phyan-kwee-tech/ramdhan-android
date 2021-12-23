@@ -50,12 +50,12 @@ object Libs {
     const val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
 
     //firebase
-    const val firebaseCore = "com.google.firebase:firebase-core:${Versions.firebaseCoreVersion}"
+    //const val firebaseCore = "com.google.firebase:firebase-core:${Versions.firebaseCoreVersion}"
+    const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseVersion}"
 
     //crashLy
-    const val crashlytic = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlyticsVersion}"
+    const val crashlytic = "com.google.firebase:firebase-crashlytics-ktx"
 
-    const val rabbit = "org.rabbit-converter.rabbit:rabbit:${Versions.rabbitVersion}"
 
     const val multiDex = "androidx.multidex:multidex:${Versions.multiDexVersion}"
 }
