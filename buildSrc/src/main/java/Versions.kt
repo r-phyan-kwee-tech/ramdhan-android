@@ -6,7 +6,7 @@ object Versions {
     const val googleServiceVersion = "4.3.3"
 
     const val targetSdkVersion = 28
-    const val versionCode = 5
+    const val versionCode = 6
     const val versionName = "2.0.0"
     const val appId = "com.marmutech.ramdantimetable.ramadantimetable"
 
