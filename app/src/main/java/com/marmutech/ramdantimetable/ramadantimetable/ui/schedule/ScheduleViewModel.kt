@@ -1,56 +1,63 @@
 package com.marmutech.ramdantimetable.ramadantimetable.ui.schedule
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.marmutech.ramdantimetable.ramadantimetable.R
+import com.marmutech.ramdantimetable.ramadantimetable.domain.days.GetDaysListUseCase
+import com.marmutech.ramdantimetable.ramadantimetable.domain.state.GetSelectedStateNameUseCase
 import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
-import com.marmutech.ramdantimetable.ramadantimetable.repository.TimeTableDayRepository
-import com.marmutech.ramdantimetable.ramadantimetable.util.AbsentLiveData
-import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
-import com.marmutech.ramdantimetable.ramadantimetable.vo.Resource
+import com.marmutech.ramdantimetable.ramadantimetable.util.exceptionHandler
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
-//class ScheduleViewModel(application: Application, timeRepo: TimeTableDayRepository) : AndroidViewModel(application) {
-class ScheduleViewModel @Inject constructor(timeRepo: TimeTableDayRepository) : ViewModel() {
+class ScheduleViewModel @Inject constructor(
+    private val getDaysListUseCase: GetDaysListUseCase,
+    private val getSelectedStateNameUseCase: GetSelectedStateNameUseCase
+) : ViewModel() {
 
-    private lateinit var userPrefUtil: UserPrefUtil
-    private val _repoId = MutableLiveData<StateListParam>()
+    private val _uiModel = MutableLiveData(ScheduleUiModel.initial())
+    val uiModel: LiveData<ScheduleUiModel> get() = _uiModel
 
-
-    var daysList: LiveData<Resource<List<TimeTableDay>>> = Transformations.switchMap(_repoId) { input ->
-        input.ifExists { stateId, limit, page ->
-            //userPrefUtil=application.getUserPref()
-            timeRepo.loadTimetableDayList(stateId, limit, page)
-        }
+    private val exceptionHandler = viewModelScope.exceptionHandler {
+        Timber.d("exceptionHandler ${it.localizedMessage}")
+        _uiModel.value = _uiModel.value?.copy(errorMessage = R.string.str_check_connection)
     }
 
-
-//    init {
-//
-//        daysList = timeRepo.loadTimetableDayList(stateId = "c4e237869fc04b3e8cc7a79185a743b7", limit = 50, page = 1)
-//    }
-
-    /**
-     * Load Time Table Day List from Repo
-     */
-    fun loadTimetableDayList(stateId: String?, limit: Int, page: Int) {
-        val update = StateListParam(stateId, limit, page)
-        if (_repoId.value == update) {
-            return
-        }
-        _repoId.value = update
-    }
-
-    data class StateListParam(val stateId: String?, val limit: Int?, val page: Int?) {
-        fun <T> ifExists(f: (String, Int, Int) -> LiveData<T>): LiveData<T> {
-            return if (stateId.isNullOrBlank() || limit == null || page == null) {
-                AbsentLiveData.create()
-            } else {
-                f(stateId!!, limit, page)
+    fun onViewCreated() {
+        viewModelScope.launch(exceptionHandler) {
+            getDaysListUseCase.execute(Unit).collect {
+                _uiModel.value = mapScheduleUiModel(it, getSelectedStateNameUseCase.execute(Unit))
             }
         }
     }
 
+    private fun mapScheduleUiModel(list: List<TimeTableDay>, stateName: String?): ScheduleUiModel {
+        val isEid = list.isEmpty()
+        return ScheduleUiModel(
+            loading = false,
+            isEid = isEid,
+            days = list,
+            toolBarTitle = stateName.orEmpty(),
+            errorMessage = null
+        )
+    }
 
+    data class ScheduleUiModel(
+        val loading: Boolean,
+        val days: List<TimeTableDay>? = null,
+        val isEid: Boolean,
+        val toolBarTitle: String = "",
+        @StringRes val errorMessage: Int? = null
+    ) {
+        companion object {
+            fun initial(): ScheduleUiModel {
+                return ScheduleUiModel(loading = true, isEid = false)
+            }
+        }
+    }
 }

@@ -2,7 +2,6 @@ package com.marmutech.ramdantimetable.ramadantimetable.api
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.marmutech.ramdantimetable.ramadantimetable.model.StateResponse
-import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFactory
 import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataTestUtil.getValue
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -25,7 +24,7 @@ class StateServiceTest {
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var service: StateService
+    private lateinit var serviceLegacy: LegacyApiService
 
     private lateinit var mockWebServer: MockWebServer
 
@@ -33,12 +32,12 @@ class StateServiceTest {
     @Before
     fun createService() {
         mockWebServer = MockWebServer()
-        service = Retrofit.Builder()
-                .baseUrl(mockWebServer.url("/"))
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(StateService::class.java)
+        serviceLegacy = Retrofit.Builder()
+            .baseUrl(mockWebServer.url("/"))
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .build()
+            .create(LegacyApiService::class.java)
     }
 
     @After
@@ -49,7 +48,7 @@ class StateServiceTest {
     @Test
     fun getTimeTable() {
         enqueueResponse("state.json")
-        val yigit = (getValue(service.getState("")) as ApiSuccessResponse).body
+        val yigit = (getValue(serviceLegacy.getState("")) as ApiSuccessResponse).body
 
         val request = mockWebServer.takeRequest()
         assertThat(request.path, `is`("/api?query="))
@@ -61,7 +60,7 @@ class StateServiceTest {
     @Test
     fun getTimeTableList() {
         enqueueResponse("state-list.json")
-        val yigit = (getValue(service.getState("")) as ApiSuccessResponse).body
+        val yigit = (getValue(serviceLegacy.getState("")) as ApiSuccessResponse).body
 
         val request = mockWebServer.takeRequest()
         assertThat(request.path, `is`("/api?query="))

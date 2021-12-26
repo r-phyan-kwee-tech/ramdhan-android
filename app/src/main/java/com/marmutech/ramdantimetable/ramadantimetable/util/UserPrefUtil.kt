@@ -3,8 +3,9 @@ package com.marmutech.ramdantimetable.ramadantimetable.util
 import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import javax.inject.Inject
 
-class UserPrefUtil(app: Application) {
+class UserPrefUtil @Inject constructor(app: Application) {
 
     private val PREF_STATE_ID = "pref_state_id"
     private val PREF_STATE_NAME = "pref_state_name"
@@ -13,26 +14,9 @@ class UserPrefUtil(app: Application) {
     private val PREF_FONT = "pref_font"
     private val SPLASH_FINISH = "pref_splash"
 
-    private lateinit var mSharedPreference: SharedPreferences
-    private lateinit var mApplication: Application
-
-    companion object {
-        private lateinit var userPrefUtil: UserPrefUtil
-
-        fun getInstance(app: Application): UserPrefUtil {
-            if (userPrefUtil == null) {
-                userPrefUtil = UserPrefUtil(app)
-            }
-            return userPrefUtil
-        }
-
-    }
-
-    init {
-        mApplication = app
-        mSharedPreference = PreferenceManager.getDefaultSharedPreferences(mApplication)
-    }
-
+    private val mSharedPreference: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(
+        app.applicationContext
+    )
 
     fun setSplashFinished(isFinished: Boolean) {
         mSharedPreference.edit().putBoolean(SPLASH_FINISH, isFinished).apply()
@@ -58,20 +42,20 @@ class UserPrefUtil(app: Application) {
         mSharedPreference.edit().putString(PREF_LOCATION_NAME, nameLocation).apply()
     }
 
-    fun getStateId(): String {
-        return mSharedPreference.getString(PREF_STATE_ID, "")
+    fun getStateId(): String? {
+        return mSharedPreference.getString(PREF_STATE_ID, null)
     }
 
-    fun getStateName(): String {
-        return mSharedPreference.getString(PREF_STATE_NAME, "")
+    fun getStateName(): String? {
+        return mSharedPreference.getString(PREF_STATE_NAME, null)
     }
 
-    fun getLocationId(): String {
-        return mSharedPreference.getString(PREF_LOCATION_ID, "")
+    fun getLocationId(): String? {
+        return mSharedPreference.getString(PREF_LOCATION_ID, null)
     }
 
-    fun getLocationName(): String {
-        return mSharedPreference.getString(PREF_LOCATION_NAME, "")
+    fun getLocationName(): String? {
+        return mSharedPreference.getString(PREF_LOCATION_NAME, null)
     }
 
     /***
@@ -87,6 +71,4 @@ class UserPrefUtil(app: Application) {
     fun getFont(): Boolean {
         return mSharedPreference.getBoolean(PREF_FONT, false)
     }
-
-
 }

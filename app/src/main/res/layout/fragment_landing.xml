@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black1000"
     tools:context=".ui.splash.LandingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!--todo: used @style/TV_DEFAULT_MASSIVE_LARGE-->
     <TextView
-        style="@style/TV_DEFAULT_MASSIVE_LARGE"
+        style="?attr/textAppearanceHeadline4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="56dp"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -34,6 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_mosque" />
+        app:srcCompat="@drawable/ic_mosque"
+        app:tint="?attr/colorOnSurface" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
