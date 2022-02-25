@@ -20,12 +20,11 @@ import com.marmutech.ramdantimetable.ramadantimetable.model.TimeTableDay
         exportSchema = false
 )
 abstract class RamdanDb : RoomDatabase() {
+    abstract fun timetableDao(): TimeTableDao
 
     abstract fun countryDao(): CountryDao
 
     abstract fun stateDao(): StateDao
-
-    abstract fun timetableDao(): TimeTableDao
 }
 
 fun offsetManager(limit: Int, page: Int): Int {

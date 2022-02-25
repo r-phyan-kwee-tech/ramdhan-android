@@ -2,79 +2,54 @@ package com.marmutech.ramdantimetable.ramadantimetable.di
 
 import android.app.Application
 import androidx.room.Room
-import com.marmutech.ramdantimetable.ramadantimetable.api.CountryService
-import com.marmutech.ramdantimetable.ramadantimetable.api.StateService
-import com.marmutech.ramdantimetable.ramadantimetable.api.TimeTableDayServie
+import com.marmutech.ramdantimetable.ramadantimetable.api.ApiService
 import com.marmutech.ramdantimetable.ramadantimetable.db.CountryDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.RamdanDb
 import com.marmutech.ramdantimetable.ramadantimetable.db.StateDao
 import com.marmutech.ramdantimetable.ramadantimetable.db.TimeTableDao
 import com.marmutech.ramdantimetable.ramadantimetable.util.CommonUtil
-import com.marmutech.ramdantimetable.ramadantimetable.util.LiveDataCallAdapterFactory
 import com.marmutech.ramdantimetable.ramadantimetable.util.UserPrefUtil
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class])
+@Module
 class AppModule {
+
     @Singleton
     @Provides
-    fun provideCountryService(): CountryService {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(logging).build()
+    fun provideApiService(loggingInterceptor: HttpLoggingInterceptor): ApiService {
+        val client = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
         return Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://ramdan-api.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(CountryService::class.java)
+            .client(client)
+            .baseUrl("https://ramdan-api-mm.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideStateService(): StateService {
+    fun provideInterceptor(): HttpLoggingInterceptor {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(logging).build()
-        return Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://ramdan-api.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(StateService::class.java)
+        return logging
     }
-
-    @Singleton
-    @Provides
-    fun provideTimetableDayService(): TimeTableDayServie {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(logging).build()
-        return Retrofit.Builder()
-                .client(client)
-                .baseUrl("https://ramdan-api.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(LiveDataCallAdapterFactory())
-                .build()
-                .create(TimeTableDayServie::class.java)
-    }
-
 
     @Singleton
     @Provides
     fun provideDb(app: Application): RamdanDb {
         return Room
-                .databaseBuilder(app, RamdanDb::class.java, "ramdan_timetable.db")
-                .fallbackToDestructiveMigration()
-                .build()
+            .databaseBuilder(app, RamdanDb::class.java, "ramdan_timetable.db")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton
@@ -106,4 +81,25 @@ class AppModule {
     fun provideCommonUtil(app: Application): CommonUtil {
         return CommonUtil(app)
     }
+
+    @Provides
+    @MainCoroutineDispatcher
+    fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+
+    @Provides
+    @IOCoroutineDispatcher
+    fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Provides
+    @DefaultCoroutineDispatcher
+    fun provideDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
 }
+
+@Qualifier
+annotation class IOCoroutineDispatcher
+
+@Qualifier
+annotation class MainCoroutineDispatcher
+
+@Qualifier
+annotation class DefaultCoroutineDispatcher

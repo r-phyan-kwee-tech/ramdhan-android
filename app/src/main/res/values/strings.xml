@@ -18,16 +18,13 @@
     <string name="uni_country_select">ယခုလက်ရှိရောက်နေတဲ့ နိုင်ငံနဲ့ ပြည်နယ်ကိုရွေးပေးပါ</string>
 
     <string name="zg_country_select">ယခုလက္ရွိေရာက္ေနတဲ့ နိုင္ငံနဲ႔ ျပည္နယ္ကိုေရြးေပးပါ</string>
-    <string name="hello_blank_fragment" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae maximus mi. Aenean sollicitudin leo ac dolor dictum, eget mattis magna mollis. Nullam pharetra imperdiet ante, in ultricies leo semper quis. Cras in imperdiet dui, ac scelerisque risus. Curabitur faucibus maximus auctor. Praesent pulvinar lorem vitae risus placerat, eu porttitor felis ultrices. Maecenas maximus consequat diam, semper rutrum felis cursus quis.
-
-Sed eget lobortis nisl. Donec consequat aliquet laoreet. In feugiat porttitor faucibus. Praesent faucibus libero vitae orci consectetur, sed bibendum leo eleifend. Proin sed justo nec leo tempus commodo. Maecenas ac lorem ut dui gravida tristique ac id turpis. Duis lacinia, enim vel maximus varius, lectus enim faucibus mauris, a iaculis ante dolor vel odio. Nam et augue erat.
-
-Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cursus felis. Maecenas porttitor, enim eu tempor vestibulum, ante massa fringilla purus, non sollicitudin felis nisi vel velit. Phasellus velit justo, imperdiet sit amet efficitur ut, vehicula nec purus. Duis sed hendrerit metus, eu dignissim nisi. Cras posuere lorem mollis, finibus magna ac, posuere augue. Vivamus vel orci molestie, auctor elit ac, cursus est. Quisque cursus libero eu pulvinar lacinia. Cras purus enim, condimentum nec aliquam vitae, feugiat eget nisl. Sed iaculis lacus non lorem ultricies egestas. Curabitur sed felis nunc.</string>
 
     <string name="start_time">Sehri</string>
     <string name="end_time">Iftari</string>
     <string name="dua_mm_zawgyi">ဒိုအာ</string>
-    <string name="dua_mm_uni">Dua (mm)</string>
+    <string name="dua_mm_uni">ဒိုအာ</string>
+    <string name="dua_en">Dua</string>
+    <string name="dua_ar">دُعَاء</string>
 
     <string name="dua_title_mm_uni">ယနေ့ ဖတ်ရမည့်ဒိုအာ</string>
     <string name="dua_title_mm_zawgyi">ယေန႔ ဖတ္ရမည့္ဒိုအာ</string>
@@ -74,4 +71,10 @@ Praesent at nunc quis quam ullamcorper vehicula a eget justo. Donec sit amet cur
     <string name="str_mubarak">With the beginning of Ramadan, may your home be filled with the atmosphere of love and mirth. May your life be as wonderful as you are throughout the year. Ramadan Mubarak!</string>
     <string name="app_name_2018">Ranmadan Timetable 2018</string>
     <string name="str_special_thanks">With special thanks to</string>
+
+    <string name="str_sehri_time">ဝါချည်ချိန်</string>
+    <string name="str_aftari_time">ဝါဖြေချိန်</string>
+    <string name="str_setting">Settings</string>
+    <string name="str_no_net_title">No internet!</string>
+    <string name="str_check_connection">Check internet connection</string>
 </resources>

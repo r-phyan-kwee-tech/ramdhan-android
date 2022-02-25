@@ -6,40 +6,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.marmutech.ramdantimetable.ramadantimetable.R
 import com.marmutech.ramdantimetable.ramadantimetable.databinding.FragmentCreditBinding
-import com.marmutech.ramdantimetable.ramadantimetable.di.Injectable
+import com.marmutech.ramdantimetable.ramadantimetable.ui.CoreFragment
 
 
-class CreditFragment : Fragment(), Injectable {
-    var binding: FragmentCreditBinding? = null
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_credit, container, false)
+class CreditFragment : CoreFragment() {
 
-        return binding?.root
+    private var _binding: FragmentCreditBinding? = null
+    private val binding: FragmentCreditBinding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentCreditBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding?.versionNumber = getAppVersion(this.context!!)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.tvVersion.text = getString(R.string.str_version, getAppVersion(requireContext()))
     }
 
-    /**
-     * @return Application's version code from the `PackageManager`.
-     */
-    fun getAppVersion(context: Context): String {
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
+    private fun getAppVersion(context: Context): String {
         try {
-
-
             val packageInfo = context.packageManager
-                    .getPackageInfo(context.packageName, 0)
+                .getPackageInfo(context.packageName, 0)
             return packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
-            // should never happen
-            throw RuntimeException("Could not get package name: " + e)
+            throw RuntimeException("Could not get package name: $e")
         }
-
     }
 }
